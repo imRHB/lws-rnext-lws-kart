@@ -1,5 +1,7 @@
 import { LucideIcon } from "lucide-react";
 
+import { City } from "@/constants";
+
 export interface IFeatureItem {
     icon: string;
     title: string;
@@ -23,4 +25,9 @@ export interface IAccountLinkItem {
     icon: LucideIcon;
     label: string;
     href: string;
+}
+
+export interface ICity {
+    name: keyof typeof City;
+    value: City[keyof typeof City];
 }

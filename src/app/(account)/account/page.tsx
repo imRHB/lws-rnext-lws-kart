@@ -1,28 +1,81 @@
-import React from "react";
+import { SquarePen } from "lucide-react";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
-import AccountSectionContent from "../(components)/AccountSectionContent";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
 import AccountSectionIntro from "../(components)/AccountSectionIntro";
 
 export default function AccountPage() {
     return (
-        <React.Fragment>
+        <section>
             <AccountSectionIntro
                 title="Account"
                 description="Your account overview"
             />
 
-            <AccountSectionContent>
-                <div className="flex flex-col items-center gap-1 text-center">
-                    <h3 className="text-2xl font-bold tracking-tight">
-                        You have no products
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                        You can start selling as soon as you add a product.
-                    </p>
-                    <Button className="mt-4">Add Product</Button>
-                </div>
-            </AccountSectionContent>
-        </React.Fragment>
+            <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between gap-4">
+                            <span>Personal Profile</span>
+                            <Button variant="outline" size="icon">
+                                <Link href="/account">
+                                    <SquarePen className="h-4 w-4" />
+                                </Link>
+                            </Button>
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <CardDescription>Rakib Hasan Babu</CardDescription>
+                        <CardDescription>rhbabu3@duck.com</CardDescription>
+                        <CardDescription>+880 1234 567890</CardDescription>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between gap-4">
+                            <span>Shipping Address</span>
+                            <Button variant="outline" size="icon">
+                                <Link href="/account">
+                                    <SquarePen className="h-4 w-4" />
+                                </Link>
+                            </Button>
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <CardDescription>Rakib Hasan</CardDescription>
+                        <CardDescription>Dhanmondi-32</CardDescription>
+                        <CardDescription>Dhaka, Bangladesh</CardDescription>
+                        <CardDescription>+880 1234 567890</CardDescription>
+                    </CardContent>
+                </Card>
+
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center justify-between gap-4">
+                            <span>Billing Address</span>
+                            <Button variant="outline" size="icon">
+                                <Link href="/account">
+                                    <SquarePen className="h-4 w-4" />
+                                </Link>
+                            </Button>
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <CardDescription>Rakib Hasan</CardDescription>
+                        <CardDescription>Dhanmondi-32</CardDescription>
+                        <CardDescription>Dhaka, Bangladesh</CardDescription>
+                        <CardDescription>+880 1234 567890</CardDescription>
+                    </CardContent>
+                </Card>
+            </div>
+        </section>
     );
 }

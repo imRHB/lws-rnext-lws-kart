@@ -3,6 +3,7 @@ import { CircleUserRound, Heart, MapPinned, ShoppingCart } from "lucide-react";
 import {
     IAccountLinkItem,
     ICategory,
+    ICity,
     IFeatureItem,
     IProductCard,
 } from "@/types";
@@ -103,6 +104,52 @@ export const PRODUCT_CARD_LIST: IProductCard[] = [
         name: "Mattress X",
         price: 55.9,
         discount: 0,
+    },
+];
+
+export enum City {
+    "Barisal" = "barisal",
+    "Chittagong" = "chittagong",
+    "Dhaka" = "dhaka",
+    "Khulna" = "khulna",
+    "Mymensingh" = "mymensingh",
+    "Rajshahi" = "rajshahi",
+    "Rangpur" = "rangpur",
+    "Sylhet" = "sylhet",
+}
+
+export const CITY_LIST: ICity[] = [
+    {
+        name: "Barisal",
+        value: City.Barisal,
+    },
+    {
+        name: "Chittagong",
+        value: City.Chittagong,
+    },
+    {
+        name: "Dhaka",
+        value: City.Dhaka,
+    },
+    {
+        name: "Khulna",
+        value: City.Khulna,
+    },
+    {
+        name: "Mymensingh",
+        value: City.Mymensingh,
+    },
+    {
+        name: "Rajshahi",
+        value: City.Rajshahi,
+    },
+    {
+        name: "Rangpur",
+        value: City.Rangpur,
+    },
+    {
+        name: "Sylhet",
+        value: City.Sylhet,
     },
 ];
 

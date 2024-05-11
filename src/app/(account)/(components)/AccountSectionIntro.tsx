@@ -1,3 +1,5 @@
+import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+
 export default function AccountSectionIntro({
     title,
     description,
@@ -6,9 +8,9 @@ export default function AccountSectionIntro({
     description?: string;
 }) {
     return (
-        <div className="flex flex-col">
-            <h1 className="text-lg font-semibold md:text-2xl">{title}</h1>
-            {description && <p className="text-slate-600">{description}</p>}
-        </div>
+        <CardHeader>
+            <CardTitle>{title}</CardTitle>
+            {description && <CardDescription>{description}</CardDescription>}
+        </CardHeader>
     );
 }

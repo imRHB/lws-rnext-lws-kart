@@ -1,16 +1,11 @@
 import React from "react";
 
+import { CardContent } from "@/components/ui/card";
+
 export default function AccountSectionContent({
     children,
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <div
-            className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm"
-            x-chunk="dashboard-02-chunk-1"
-        >
-            {children}
-        </div>
-    );
+    return <CardContent>{children}</CardContent>;
 }
