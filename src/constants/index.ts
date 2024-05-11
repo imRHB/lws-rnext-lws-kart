@@ -75,3 +75,21 @@ export const PRODUCT_CARD_LIST: IProductCard[] = [
         discount: 0,
     },
 ];
+
+const PRODUCT_LIST = [
+    {
+        name: "",
+        brand: "",
+        sku: "",
+        price: 0,
+        discount: 0,
+        thumbnail: "",
+        images: [],
+        category: "",
+        description: "",
+        features: [],
+        stock: 0,
+        rating: 0,
+        reviews: 0,
+    },
+];
