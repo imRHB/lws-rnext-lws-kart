@@ -1,6 +1,6 @@
 import { LucideIcon } from "lucide-react";
 
-import { City } from "@/constants";
+import { City, Month } from "@/constants";
 
 export interface IFeatureItem {
     icon: string;
@@ -30,4 +30,9 @@ export interface IAccountLinkItem {
 export interface ICity {
     name: keyof typeof City;
     value: City[keyof typeof City];
+}
+
+export interface IMonth {
+    name: keyof typeof Month;
+    value: Month[keyof typeof Month];
 }

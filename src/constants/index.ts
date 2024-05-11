@@ -5,6 +5,7 @@ import {
     ICategory,
     ICity,
     IFeatureItem,
+    IMonth,
     IProductCard,
 } from "@/types";
 
@@ -150,6 +151,72 @@ export const CITY_LIST: ICity[] = [
     {
         name: "Sylhet",
         value: City.Sylhet,
+    },
+];
+
+export enum Month {
+    January = "january",
+    February = "february",
+    March = "march",
+    April = "april",
+    May = "may",
+    June = "june",
+    July = "july",
+    August = "august",
+    September = "september",
+    October = "october",
+    November = "november",
+    December = "december",
+}
+
+export const MONTHS: IMonth[] = [
+    {
+        name: "January",
+        value: Month.January,
+    },
+    {
+        name: "February",
+        value: Month.February,
+    },
+    {
+        name: "March",
+        value: Month.March,
+    },
+    {
+        name: "April",
+        value: Month.April,
+    },
+    {
+        name: "May",
+        value: Month.May,
+    },
+    {
+        name: "June",
+        value: Month.June,
+    },
+    {
+        name: "July",
+        value: Month.July,
+    },
+    {
+        name: "August",
+        value: Month.August,
+    },
+    {
+        name: "September",
+        value: Month.September,
+    },
+    {
+        name: "October",
+        value: Month.October,
+    },
+    {
+        name: "November",
+        value: Month.November,
+    },
+    {
+        name: "December",
+        value: Month.December,
     },
 ];
 

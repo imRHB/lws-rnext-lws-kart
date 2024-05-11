@@ -59,7 +59,7 @@ export default function AccountAddressPage() {
                                 />
                             </div>
                             <div className="grid gap-3">
-                                <Label htmlFor="City">City</Label>
+                                <Label htmlFor="city">City</Label>
                                 <Select defaultValue="">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select city" />
@@ -138,7 +138,9 @@ export default function AccountAddressPage() {
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="grid gap-3">
-                                <Label htmlFor="street">Street Address</Label>
+                                <Label htmlFor="street">
+                                    Apartment, suite, etc.
+                                </Label>
                                 <Input
                                     id="street"
                                     type="text"
@@ -146,7 +148,7 @@ export default function AccountAddressPage() {
                                 />
                             </div>
                             <div className="grid gap-3">
-                                <Label htmlFor="City">City</Label>
+                                <Label htmlFor="city">City</Label>
                                 <Select defaultValue="">
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select city" />
