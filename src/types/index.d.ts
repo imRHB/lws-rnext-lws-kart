@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react";
+
 export interface IFeatureItem {
     icon: string;
     title: string;
@@ -15,4 +17,10 @@ export interface IProductCard {
     name: string;
     price: number;
     discount?: number;
+}
+
+export interface IAccountLinkItem {
+    icon: LucideIcon;
+    label: string;
+    href: string;
 }

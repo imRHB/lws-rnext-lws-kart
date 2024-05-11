@@ -1,4 +1,34 @@
-import { ICategory, IFeatureItem, IProductCard } from "@/types";
+import { CircleUserRound, Heart, MapPinned, ShoppingCart } from "lucide-react";
+
+import {
+    IAccountLinkItem,
+    ICategory,
+    IFeatureItem,
+    IProductCard,
+} from "@/types";
+
+export const ACCOUNT_SIDEBAR_LINKS: IAccountLinkItem[] = [
+    {
+        icon: CircleUserRound,
+        label: "Account",
+        href: "/account",
+    },
+    {
+        icon: ShoppingCart,
+        label: "Orders",
+        href: "/account/orders",
+    },
+    {
+        icon: Heart,
+        label: "Wishlist",
+        href: "/account/wishlist",
+    },
+    {
+        icon: MapPinned,
+        label: "Address",
+        href: "/account/address",
+    },
+];
 
 export const FEATURE_LIST: IFeatureItem[] = [
     {
@@ -88,7 +118,7 @@ const PRODUCT_LIST = [
         category: "",
         description: "",
         features: [],
-        stock: 0,
+        quantity: 0,
         rating: 0,
         reviews: 0,
     },
