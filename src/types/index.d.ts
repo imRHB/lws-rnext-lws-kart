@@ -2,6 +2,17 @@ import { LucideIcon } from "lucide-react";
 
 import { City, Month } from "@/constants";
 
+export interface IAddress {
+    street: string;
+    city: string;
+    zip: number;
+}
+
+export interface IShippingAndBillingAddress {
+    shippingAddress: IAddress;
+    billingAddress: IAddress;
+}
+
 export interface IFeatureItem {
     icon: string;
     title: string;

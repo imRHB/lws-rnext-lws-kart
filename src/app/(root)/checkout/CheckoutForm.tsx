@@ -132,9 +132,7 @@ export default function CheckoutForm() {
                                 </div>
                             </div>
                         </fieldset>
-                    </form>
 
-                    <form className="grid w-full items-start gap-6">
                         <fieldset className="grid gap-6 rounded-lg border p-4">
                             <legend className="-ml-1 px-1 text-sm font-medium">
                                 Delivery Method
@@ -151,9 +149,7 @@ export default function CheckoutForm() {
                                 </div>
                             </RadioGroup>
                         </fieldset>
-                    </form>
 
-                    <form className="grid w-full items-start gap-6">
                         <fieldset className="grid gap-6 rounded-lg border p-4">
                             <legend className="-ml-1 px-1 text-sm font-medium">
                                 Payment Method

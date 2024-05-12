@@ -219,21 +219,3 @@ export const MONTHS: IMonth[] = [
         value: Month.December,
     },
 ];
-
-const PRODUCT_LIST = [
-    {
-        name: "",
-        brand: "",
-        sku: "",
-        price: 0,
-        discount: 0,
-        thumbnail: "",
-        images: [],
-        category: "",
-        description: "",
-        features: [],
-        quantity: 0,
-        rating: 0,
-        reviews: 0,
-    },
-];
