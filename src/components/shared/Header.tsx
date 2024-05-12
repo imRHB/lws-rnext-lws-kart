@@ -1,6 +1,7 @@
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { Badge } from "../ui/badge";
 import { Input } from "../ui/input";
 
@@ -49,12 +50,12 @@ export default function Header() {
                             5
                         </Badge>
                     </Link>
-                    <Link
+                    {/* <Link
                         href="/account"
                         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
                     >
                         Account
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </header>

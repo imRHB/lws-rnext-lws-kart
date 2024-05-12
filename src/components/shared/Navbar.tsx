@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { NAVBAR_ITEMS } from "@/constants";
+import AuthStatus from "./AuthStatus";
 
 export default function Navbar() {
     return (
         <nav className="bg-gray-800 sticky top-[72px] z-50">
-            <div className="container flex">
+            <div className="container flex h-[72px]">
                 <div className="px-8 py-4 md:flex items-center cursor-pointer relative group hidden">
                     <span className="text-white">
                         <i className="fa-solid fa-bars"></i>
@@ -124,12 +125,7 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </div>
-                    <Link
-                        href="/sign-in"
-                        className="text-gray-200 hover:text-white"
-                    >
-                        Sign in
-                    </Link>
+                    <AuthStatus />
                 </div>
             </div>
         </nav>

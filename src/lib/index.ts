@@ -8,3 +8,12 @@ export function getYears(): number[] {
 
     return years;
 }
+
+export function getInitials(fullName: string): string {
+    const splitNames = fullName.split(" ");
+
+    const firstInitial = splitNames[0].charAt(0);
+    const lastInitial = splitNames[splitNames.length - 1].charAt(0);
+
+    return `${firstInitial}${lastInitial}`;
+}

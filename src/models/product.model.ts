@@ -11,6 +11,7 @@ export interface IProduct {
     quantity: number;
     sku: string;
     brand: Types.ObjectId;
+    views: number;
 }
 
 const ProductSchema = new Schema<IProduct>({
@@ -24,6 +25,7 @@ const ProductSchema = new Schema<IProduct>({
     quantity: { type: Number, required: true },
     sku: { type: String, required: true },
     brand: { type: Schema.Types.ObjectId, ref: "Brand", required: true },
+    views: { type: Number, default: 0 },
 });
 
 const Product = models.Product || model("Product", ProductSchema);
