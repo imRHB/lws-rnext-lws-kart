@@ -1,0 +1,178 @@
+[
+    {
+        "name": "Luxury King Bed",
+        "price": 1599.99,
+        "discount": 20,
+        "thumbnail": "https://source.unsplash.com/Tu8G0FyVTPo/400x300",
+        "images": [
+            "https://source.unsplash.com/Tu8G0FyVTPo/800x600",
+            "https://source.unsplash.com/gR1Zg9l8V8k/800x600",
+            "https://source.unsplash.com/BVfgd4X3e-A/800x600"
+        ],
+        "category": "Bedroom",
+        "features": [
+            "Handcrafted solid wood frame",
+            "Premium velvet upholstery",
+            "Orthopedic memory foam mattress",
+            "Adjustable headrest",
+            "Built-in USB charging ports"
+        ],
+        "quantity": 25,
+        "sku": "LKB001",
+        "brand": "Hatil"
+    },
+    {
+        "name": "Elegant Nightstand",
+        "price": 249.99,
+        "discount": 15,
+        "thumbnail": "https://source.unsplash.com/pLCdL5zgZ0Q/400x300",
+        "images": [
+            "https://source.unsplash.com/pLCdL5zgZ0Q/800x600",
+            "https://source.unsplash.com/rDEOVtE7vOs/800x600",
+            "https://source.unsplash.com/_AMCeqvmL7E/800x600"
+        ],
+        "category": "Bedroom",
+        "features": [
+            "Solid oak construction",
+            "Soft-close drawer",
+            "Built-in wireless charging pad",
+            "Integrated LED night light",
+            "Classic brass hardware"
+        ],
+        "quantity": 50,
+        "sku": "ENS002",
+        "brand": "Hatil"
+    },
+    {
+        "name": "Modern Dresser",
+        "price": 899.99,
+        "discount": 10,
+        "thumbnail": "https://source.unsplash.com/OXGhu60NwxU/400x300",
+        "images": [
+            "https://source.unsplash.com/OXGhu60NwxU/800x600",
+            "https://source.unsplash.com/1Vl0eZgUyL8/800x600",
+            "https://source.unsplash.com/W_3gkr7Ax5s/800x600"
+        ],
+        "category": "Bedroom",
+        "features": [
+            "Sleek lacquered finish",
+            "Spacious drawers",
+            "Soft-close mechanisms",
+            "Tapered metal legs",
+            "Minimalist design"
+        ],
+        "quantity": 35,
+        "sku": "MD003",
+        "brand": "Hatil"
+    },
+    {
+        "name": "Plush Ottoman",
+        "price": 199.99,
+        "discount": 5,
+        "thumbnail": "https://source.unsplash.com/T1S1aZ2gPGk/400x300",
+        "images": [
+            "https://source.unsplash.com/T1S1aZ2gPGk/800x600",
+            "https://source.unsplash.com/7SOKv9AaLAE/800x600",
+            "https://source.unsplash.com/iw_Zn9Jo2nQ/800x600"
+        ],
+        "category": "Bedroom",
+        "features": [
+            "Plush velvet upholstery",
+            "Padded cushion top",
+            "Sturdy wooden frame",
+            "Versatile use as footrest or extra seating",
+            "Available in various colors"
+        ],
+        "quantity": 40,
+        "sku": "PO004",
+        "brand": "Hatil"
+    },
+    {
+        "name": "Rustic Bed Frame",
+        "price": 799.99,
+        "discount": 15,
+        "thumbnail": "https://source.unsplash.com/G3hbqd9YWXw/400x300",
+        "images": [
+            "https://source.unsplash.com/G3hbqd9YWXw/800x600",
+            "https://source.unsplash.com/x9nqec-fjK0/800x600",
+            "https://source.unsplash.com/KIXXsG0jUc0/800x600"
+        ],
+        "category": "Apex",
+        "features": [
+            "Handcrafted reclaimed wood",
+            "Rich natural finish",
+            "Platform design with slat support",
+            "Sturdy metal legs",
+            "Rustic yet modern aesthetic"
+        ],
+        "quantity": 20,
+        "sku": "RBF005",
+        "brand": "Sofa"
+    },
+    {
+        "name": "Velvet Accent Chair",
+        "price": 299.99,
+        "discount": 0,
+        "thumbnail": "https://source.unsplash.com/0nQXfE6Pa6U/400x300",
+        "images": [
+            "https://source.unsplash.com/0nQXfE6Pa6U/800x600",
+            "https://source.unsplash.com/M3Z_UKd9z1U/800x600",
+            "https://source.unsplash.com/2OfWfL8ah04/800x600"
+        ],
+        "category": "Sofa",
+        "features": [
+            "Sumptuous velvet upholstery",
+            "High-density foam cushion",
+            "Elegant button tufting",
+            "Solid wood legs",
+            "Available in various colors"
+        ],
+        "quantity": 30,
+        "sku": "VAC006",
+        "brand": "Apex"
+    },
+    {
+        "name": "Elegant Canopy Bed",
+        "price": 1799.99,
+        "discount": 10,
+        "thumbnail": "https://source.unsplash.com/EX7_EpXlvt8/400x300",
+        "images": [
+            "https://source.unsplash.com/EX7_EpXlvt8/800x600",
+            "https://source.unsplash.com/LsA9T8gPZSY/800x600",
+            "https://source.unsplash.com/uF2pAenNvz8/800x600"
+        ],
+        "category": "Living Room",
+        "features": [
+            "Stunning canopy design",
+            "Premium upholstered headboard",
+            "Durable metal frame",
+            "Decorative finials",
+            "Available in queen and king sizes"
+        ],
+        "quantity": 15,
+        "sku": "ECB007",
+        "brand": "Bata"
+    },
+    {
+        "name": "Modern Lounge Chair",
+        "price": 399.99,
+        "discount": 0,
+        "thumbnail": "https://source.unsplash.com/N6Q--nILNpU/400x300",
+        "images": [
+            "https://source.unsplash.com/N6Q--nILNpU/800x600",
+            "https://source.unsplash.com/x8_W1jZRj14/800x600",
+            "https://source.unsplash.com/Mz3KE4oX00c/800x600"
+        ],
+        "category": "Living Room",
+        "features": [
+            "Sleek minimalist design",
+            "Premium leather upholstery",
+            "Ergonomic backrest and armrests",
+            "Swivel base for easy movement",
+            "Available in multiple colors"
+        ],
+        "quantity": 20,
+        "sku": "MLC008",
+        "brand": "Bata"
+    }
+]
