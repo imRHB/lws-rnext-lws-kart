@@ -1,16 +1,73 @@
+import { Heart } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 import { IProductCard } from "@/types";
+import { Button } from "../ui/button";
+import {
+    Card,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "../ui/card";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "../ui/tooltip";
 
 export default function ProductCard({ product }: { product: IProductCard }) {
     return (
-        <div className="bg-white shadow rounded overflow-hidden group">
-            <div className="relative">
+        <Card>
+            <Image
+                src={product.thumbnail}
+                height={200}
+                width={300}
+                className="w-full aspect-video rounded-t-lg"
+                alt=""
+            />
+            <CardHeader>
+                <CardTitle>{product.name}</CardTitle>
+                <div className="flex gap-4 items-baseline">
+                    <CardDescription className="text-lg font-bold text-red-500">
+                        $
+                        {(
+                            product.price -
+                            (product.discount * product.price) / 100
+                        ).toFixed(2)}
+                    </CardDescription>
+                    <CardDescription className="font-semibold line-through">
+                        ${product.price}
+                    </CardDescription>
+                </div>
+            </CardHeader>
+            <CardFooter className="flex items-center gap-4">
+                <Button className="w-full">Add to cart</Button>
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="outline">
+                                <Heart className="h-4 w-4" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Add to wishlist</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+            </CardFooter>
+        </Card>
+    );
+}
+
+/* 
+
+<div className="relative">
                 <Image
-                    src={product.image}
-                    height={300}
-                    width={200}
+                    src={product.thumbnail}
+                    height={200}
+                    width={300}
                     className="w-full h-auto"
                     alt={product.name}
                 />
@@ -73,6 +130,5 @@ export default function ProductCard({ product }: { product: IProductCard }) {
             >
                 Add to cart
             </Link>
-        </div>
-    );
-}
+
+*/

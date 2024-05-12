@@ -6,6 +6,7 @@ import {
     ICity,
     IFeatureItem,
     IMonth,
+    INavbarItem,
     IProductCard,
 } from "@/types";
 
@@ -79,32 +80,28 @@ export const CATEGORY_LIST: ICategory[] = [
 
 export const PRODUCT_CARD_LIST: IProductCard[] = [
     {
-        _id: "1",
-        image: "/assets/images/products/product1.jpg",
+        thumbnail: "/assets/images/products/product1.jpg",
         name: "Guyer Chair",
-        price: 55.9,
-        discount: 0,
+        price: 330,
+        discount: 15,
     },
     {
-        _id: "1",
-        image: "/assets/images/products/product2.jpg",
+        thumbnail: "/assets/images/products/product2.jpg",
         name: "Bed King Size",
-        price: 55.9,
-        discount: 0,
+        price: 275,
+        discount: 20,
     },
     {
-        _id: "1",
-        image: "/assets/images/products/product3.jpg",
+        thumbnail: "/assets/images/products/product3.jpg",
         name: "Couple Sofa",
-        price: 55.9,
-        discount: 0,
+        price: 850,
+        discount: 15,
     },
     {
-        _id: "1",
-        image: "/assets/images/products/product4.jpg",
+        thumbnail: "/assets/images/products/product4.jpg",
         name: "Mattress X",
-        price: 55.9,
-        discount: 0,
+        price: 670,
+        discount: 20,
     },
 ];
 
@@ -217,5 +214,16 @@ export const MONTHS: IMonth[] = [
     {
         name: "December",
         value: Month.December,
+    },
+];
+
+export const NAVBAR_ITEMS: INavbarItem[] = [
+    {
+        label: "Home",
+        href: "/",
+    },
+    {
+        label: "Shop",
+        href: "/shop",
     },
 ];

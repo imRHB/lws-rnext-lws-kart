@@ -25,11 +25,10 @@ export interface ICategory {
 }
 
 export interface IProductCard {
-    _id: string;
-    image: string;
+    thumbnail: string;
     name: string;
     price: number;
-    discount?: number;
+    discount: number;
 }
 
 export interface IAccountLinkItem {
@@ -46,4 +45,9 @@ export interface ICity {
 export interface IMonth {
     name: keyof typeof Month;
     value: Month[keyof typeof Month];
+}
+
+export interface INavbarItem {
+    label: string;
+    href: string;
 }
