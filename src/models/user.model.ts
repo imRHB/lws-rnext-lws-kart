@@ -10,8 +10,8 @@ export interface IUser extends Document {
     emailVerified?: boolean | null;
     phone?: "";
     address?: IShippingAndBillingAddress;
-    wishlist?: Schema.Types.ObjectId[];
-    cart?: Schema.Types.ObjectId[];
+    wishlist?: Schema.Types.ObjectId;
+    cart?: Schema.Types.ObjectId;
 }
 
 const AddressSchema = new Schema<IAddress>({

@@ -51,3 +51,11 @@ export interface INavbarItem {
     label: string;
     href: string;
 }
+
+export interface ProductCardProps {
+    productId: string;
+    name: string;
+    price: number;
+    discount: number;
+    thumbnail: string;
+}

@@ -1,8 +1,13 @@
-import { Heart } from "lucide-react";
-import Image from "next/image";
+"use client";
 
-import { IProductCard } from "@/types";
+import { Heart } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { toggleWishlist } from "@/lib/actions/user.action";
+import { ProductCardProps } from "@/types";
 import { Button } from "../ui/button";
 import {
     Card,
@@ -17,32 +22,54 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "../ui/tooltip";
+import { useToast } from "../ui/use-toast";
 
-export default function ProductCard({ product }: { product: IProductCard }) {
+export default function ProductCard({
+    productId,
+    name,
+    price,
+    discount,
+    thumbnail,
+}: ProductCardProps) {
+    const { data: session } = useSession();
+    const pathname = usePathname();
+
+    const { toast } = useToast();
+
+    async function handleToggleWishlist() {
+        if (session) {
+            await toggleWishlist({
+                email: session.user!.email,
+                productId: productId,
+                path: pathname,
+            });
+        } else {
+            toast({
+                title: "Please login to add to wishlist",
+            });
+        }
+    }
+
     return (
         <Card className="relative">
-            <Link href={`/product/${product._id}`}>
+            <Link href={`/product/${productId}`}>
                 <span className="absolute inset-0" />
             </Link>
             <Image
-                src={product.thumbnail}
+                src={thumbnail}
                 height={200}
                 width={300}
                 className="w-full aspect-video rounded-t-lg"
-                alt={product.name}
+                alt={name}
             />
             <CardHeader>
-                <CardTitle>{product.name}</CardTitle>
+                <CardTitle>{name}</CardTitle>
                 <div className="flex gap-4 items-baseline">
                     <CardDescription className="text-lg font-bold text-red-500">
-                        $
-                        {(
-                            product.price -
-                            (product.discount * product.price) / 100
-                        ).toFixed(2)}
+                        ${(price - (discount * price) / 100).toFixed(2)}
                     </CardDescription>
                     <CardDescription className="font-semibold line-through">
-                        ${product.price}
+                        ${price}
                     </CardDescription>
                 </div>
             </CardHeader>
@@ -51,7 +78,11 @@ export default function ProductCard({ product }: { product: IProductCard }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" className="z-10">
+                            <Button
+                                variant="outline"
+                                className="z-10"
+                                onClick={handleToggleWishlist}
+                            >
                                 <Heart className="h-4 w-4" />
                             </Button>
                         </TooltipTrigger>

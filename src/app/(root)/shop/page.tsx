@@ -133,7 +133,14 @@ export default async function ShopPage() {
             <div className="col-span-3">
                 <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
                     {products.map((product) => (
-                        <ProductCard key={product._id} product={product} />
+                        <ProductCard
+                            key={product._id}
+                            productId={product._id.toString()}
+                            name={product.name}
+                            price={product.price}
+                            discount={product.discount}
+                            thumbnail={product.thumbnail}
+                        />
                     ))}
                 </div>
             </div>
