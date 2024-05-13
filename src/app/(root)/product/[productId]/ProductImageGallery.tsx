@@ -1,51 +1,31 @@
 import Image from "next/image";
 
-export default function ProductImageGallery() {
+interface Props {
+    thumbnail: string;
+    images: string[];
+}
+
+export default function ProductImageGallery({ thumbnail, images }: Props) {
     return (
         <div>
             <Image
-                src="/assets/images/products/product1.jpg"
+                src={thumbnail}
                 height={500}
                 width={800}
-                className="w-full"
+                className="w-full rounded bg-cover"
                 alt="product"
             />
             <div className="grid grid-cols-5 gap-4 mt-4">
-                <Image
-                    src="/assets/images/products/product2.jpg"
-                    height={200}
-                    width={200}
-                    className="w-full cursor-pointer border border-primary"
-                    alt="product2"
-                />
-                <Image
-                    src="/assets/images/products/product3.jpg"
-                    height={200}
-                    width={200}
-                    className="w-full cursor-pointer border"
-                    alt="product2"
-                />
-                <Image
-                    src="/assets/images/products/product4.jpg"
-                    height={200}
-                    width={200}
-                    className="w-full cursor-pointer border"
-                    alt="product2"
-                />
-                <Image
-                    src="/assets/images/products/product5.jpg"
-                    height={200}
-                    width={200}
-                    className="w-full cursor-pointer border"
-                    alt="product2"
-                />
-                <Image
-                    src="/assets/images/products/product6.jpg"
-                    height={200}
-                    width={200}
-                    className="w-full cursor-pointer border"
-                    alt="product2"
-                />
+                {images?.map((item) => (
+                    <Image
+                        key={item}
+                        src={item}
+                        height={200}
+                        width={300}
+                        className="w-full cursor-pointer border border-primary bg-cover"
+                        alt="product2"
+                    />
+                ))}
             </div>
         </div>
     );

@@ -1,7 +1,8 @@
-import { PRODUCT_CARD_LIST } from "@/constants";
-import { IProductCard } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
+
+import { PRODUCT_CARD_LIST } from "@/constants";
+import { IProductCard } from "@/types";
 
 export default function WishlistPage() {
     return (
@@ -20,7 +21,7 @@ function WishlistItemCard({ product }: { product: IProductCard }) {
         <div className="flex items-center justify-between border gap-6 p-4 border-gray-200 rounded">
             <div className="w-28">
                 <Image
-                    src={product.image}
+                    src={product.thumbnail}
                     height={200}
                     width={200}
                     alt="product 6"

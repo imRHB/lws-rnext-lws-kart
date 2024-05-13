@@ -2,6 +2,7 @@ import { Heart } from "lucide-react";
 import Image from "next/image";
 
 import { IProductCard } from "@/types";
+import Link from "next/link";
 import { Button } from "../ui/button";
 import {
     Card,
@@ -19,13 +20,16 @@ import {
 
 export default function ProductCard({ product }: { product: IProductCard }) {
     return (
-        <Card>
+        <Card className="relative">
+            <Link href={`/product/${product._id}`}>
+                <span className="absolute inset-0" />
+            </Link>
             <Image
                 src={product.thumbnail}
                 height={200}
                 width={300}
                 className="w-full aspect-video rounded-t-lg"
-                alt=""
+                alt={product.name}
             />
             <CardHeader>
                 <CardTitle>{product.name}</CardTitle>
@@ -43,11 +47,11 @@ export default function ProductCard({ product }: { product: IProductCard }) {
                 </div>
             </CardHeader>
             <CardFooter className="flex items-center gap-4">
-                <Button className="w-full">Add to cart</Button>
+                <Button className="w-full z-10">Add to cart</Button>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline">
+                            <Button variant="outline" className="z-10">
                                 <Heart className="h-4 w-4" />
                             </Button>
                         </TooltipTrigger>

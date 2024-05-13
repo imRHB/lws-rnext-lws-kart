@@ -17,3 +17,17 @@ export function getInitials(fullName: string): string {
 
     return `${firstInitial}${lastInitial}`;
 }
+
+export function countdown(duration: number): void {
+    let remainingTime = duration;
+
+    const timer = setInterval(() => {
+        console.log(`${remainingTime} seconds remaining`);
+        remainingTime--;
+
+        if (remainingTime < 0) {
+            clearInterval(timer);
+            console.log("Time's up!");
+        }
+    }, 1000);
+}

@@ -1,22 +1,48 @@
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
-import credentials from "next-auth/providers/credentials";
+import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+
 import clientPromise from "./lib/db";
+import User from "./models/user.model";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
     adapter: MongoDBAdapter(clientPromise, { databaseName: "lws-kart" }),
     providers: [
-        credentials({
-            name: "Credentials",
+        CredentialsProvider({
             credentials: {
                 email: {},
                 password: {},
             },
-            async authorize(credentials, req) {
-                // Add logic here to look up the user from the credentials supplied
-                return null;
+
+            async authorize(credentials, request) {
+                if (credentials === null) return null;
+
+                try {
+                    const user = await User.findOne({
+                        email: credentials.email,
+                    });
+
+                    if (user) {
+                        const isMatched = bcrypt.compare(
+                            credentials.password,
+                            user.password
+                        );
+
+                        if (isMatched) {
+                            return user;
+                        } else {
+                            console.log("user mismatch");
+                        }
+                    } else {
+                        throw new Error("credentials not valid!");
+                    }
+                } catch (error) {
+                    console.log(error);
+                    throw new Error("User not found!");
+                }
             },
         }),
         GoogleProvider({
@@ -28,4 +54,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             clientSecret: process.env.AUTH_GITHUB_SECRET,
         }),
     ],
+    session: {
+        strategy: "jwt",
+    },
 });

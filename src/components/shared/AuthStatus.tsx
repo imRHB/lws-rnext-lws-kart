@@ -18,10 +18,9 @@ import { Skeleton } from "../ui/skeleton";
 
 export default function AuthStatus() {
     const { data: session, status } = useSession();
-    console.log(session);
 
     function handleSignOut() {
-        signOut({ callbackUrl: "http://localhost:3000" });
+        signOut({ redirect: false });
     }
 
     return (
@@ -42,7 +41,12 @@ export default function AuthStatus() {
                         </Avatar>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuLabel className="flex flex-col">
+                            <span>{session?.user?.name}</span>
+                            <span className="text-xs font-normal">
+                                {session?.user?.email}
+                            </span>
+                        </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <Link href="/account" className="w-full">

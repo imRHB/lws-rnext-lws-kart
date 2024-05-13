@@ -1,16 +1,17 @@
-import { Document, model, models, Schema, Types } from "mongoose";
+import { Document, model, models, Schema } from "mongoose";
 
 import { IAddress, IShippingAndBillingAddress } from "@/types";
 
 export interface IUser extends Document {
     name: string;
     email: string;
-    image: string;
-    emailVerified: boolean | null;
-    phone: "";
-    address: IShippingAndBillingAddress;
-    wishlist: Types.ObjectId[];
-    cart: Types.ObjectId[];
+    password: string;
+    image?: string;
+    emailVerified?: boolean | null;
+    phone?: "";
+    address?: IShippingAndBillingAddress;
+    wishlist?: Schema.Types.ObjectId[];
+    cart?: Schema.Types.ObjectId[];
 }
 
 const AddressSchema = new Schema<IAddress>({
@@ -23,6 +24,7 @@ const UserSchema = new Schema<IUser>(
     {
         name: { type: String, required: true },
         email: { type: String, required: true },
+        password: { type: String, required: true },
         image: { type: String, required: true },
         emailVerified: { type: Boolean, default: null },
         phone: { type: String, required: true },
