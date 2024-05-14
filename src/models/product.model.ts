@@ -14,19 +14,26 @@ export interface IProduct {
     views: number;
 }
 
-const ProductSchema = new Schema<IProduct>({
-    name: { type: String, required: true },
-    price: { type: Number, required: true },
-    discount: { type: Number, required: true },
-    thumbnail: { type: String, required: true },
-    images: [{ type: String, required: false }],
-    category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
-    features: [{ type: String, required: true }],
-    quantity: { type: Number, required: true },
-    sku: { type: String, required: true },
-    brand: { type: Schema.Types.ObjectId, ref: "Brand", required: true },
-    views: { type: Number, default: 0 },
-});
+const ProductSchema = new Schema<IProduct>(
+    {
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        discount: { type: Number, required: true },
+        thumbnail: { type: String, required: true },
+        images: [{ type: String, required: false }],
+        category: {
+            type: Schema.Types.ObjectId,
+            ref: "Category",
+            required: true,
+        },
+        features: [{ type: String, required: true }],
+        quantity: { type: Number, required: true },
+        sku: { type: String, required: true },
+        brand: { type: Schema.Types.ObjectId, ref: "Brand", required: true },
+        views: { type: Number, default: 0 },
+    },
+    { timestamps: true }
+);
 
 const Product = models.Product || model("Product", ProductSchema);
 

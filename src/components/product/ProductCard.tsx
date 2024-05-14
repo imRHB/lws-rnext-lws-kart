@@ -36,11 +36,16 @@ export default function ProductCard({
 
     const { toast } = useToast();
 
+    const productData = {
+        productId: JSON.parse(productId),
+        updatedAt: new Date(),
+    };
+
     async function handleToggleWishlist() {
         if (session) {
             await toggleWishlist({
                 email: session.user!.email,
-                productId: productId,
+                productData,
                 path: pathname,
             });
         } else {
@@ -52,7 +57,7 @@ export default function ProductCard({
 
     return (
         <Card className="relative">
-            <Link href={`/product/${productId}`}>
+            <Link href={`/product/${productId.toString()}`}>
                 <span className="absolute inset-0" />
             </Link>
             <Image

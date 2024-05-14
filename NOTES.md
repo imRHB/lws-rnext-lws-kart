@@ -23,3 +23,5 @@
     -   add the product to the user collection wishlist
     -   maybe item count changed from the quantity
     -   need to add the time also, so that after a certain time the can be removed from the wishlist if the user does not wish to buy
+
+<!-- http://localhost:3000/shop?q=bed&category=bedroom,outdoor&price=50-800&size=m -->

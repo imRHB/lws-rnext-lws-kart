@@ -59,3 +59,7 @@ export interface ProductCardProps {
     discount: number;
     thumbnail: string;
 }
+
+export interface SearchParamsProps {
+    searchParams: { [key: string]: string | undefined };
+}

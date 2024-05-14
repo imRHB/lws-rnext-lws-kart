@@ -6,11 +6,14 @@ export interface ICategory {
     products: Types.ObjectId[];
 }
 
-const CategorySchema = new Schema<ICategory>({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-});
+const CategorySchema = new Schema<ICategory>(
+    {
+        name: { type: String, required: true },
+        description: { type: String, required: true },
+        products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+    },
+    { timestamps: true }
+);
 
 const Category = models.Category || model("Category", CategorySchema);
 

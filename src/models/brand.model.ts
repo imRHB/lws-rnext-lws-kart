@@ -6,11 +6,14 @@ export interface IBrand {
     products: Types.ObjectId[];
 }
 
-const BrandSchema = new Schema<IBrand>({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-});
+const BrandSchema = new Schema<IBrand>(
+    {
+        name: { type: String, required: true },
+        description: { type: String, required: true },
+        products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+    },
+    { timestamps: true }
+);
 
 const Brand = models.Brand || model("Brand", BrandSchema);
 

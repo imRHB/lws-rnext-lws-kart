@@ -1,145 +1,103 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
+export const toppings = [
+    {
+        name: "Capsicum",
+        price: 1.2,
+    },
+    {
+        name: "Paneer",
+        price: 2.0,
+    },
+    {
+        name: "Red Paprika",
+        price: 2.5,
+    },
+    {
+        name: "Onions",
+        price: 3.0,
+    },
+    {
+        name: "Extra Cheese",
+        price: 3.5,
+    },
+    {
+        name: "Baby Corns",
+        price: 3.0,
+    },
+    {
+        name: "Mushroom",
+        price: 2.0,
+    },
+];
 
-const items = [
-    {
-        id: "recents",
-        label: "Recents",
-    },
-    {
-        id: "home",
-        label: "Home",
-    },
-    {
-        id: "applications",
-        label: "Applications",
-    },
-    {
-        id: "desktop",
-        label: "Desktop",
-    },
-    {
-        id: "downloads",
-        label: "Downloads",
-    },
-    {
-        id: "documents",
-        label: "Documents",
-    },
-] as const;
+const getFormattedPrice = (price: number) => `$${price.toFixed(2)}`;
 
-const FormSchema = z.object({
-    items: z.array(z.string()).refine((value) => value.some((item) => item), {
-        message: "You have to select at least one item.",
-    }),
-});
+export default function CheckboxSingle() {
+    const [checkedState, setCheckedState] = useState(
+        new Array(toppings.length).fill(false)
+    );
 
-export default function CategoriesCheckbox() {
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
-        defaultValues: {
-            items: ["recents", "home"],
-        },
-    });
+    const [total, setTotal] = useState(0);
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
-        toast({
-            title: "You submitted the following values:",
-            description: (
-                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                    <code className="text-white">
-                        {JSON.stringify(data, null, 2)}
-                    </code>
-                </pre>
-            ),
-        });
-    }
+    console.log("total:", total);
+
+    const handleOnChange = (position) => {
+        const updatedCheckedState = checkedState.map((item, index) =>
+            index === position ? !item : item
+        );
+
+        setCheckedState(updatedCheckedState);
+
+        const totalPrice = updatedCheckedState.reduce(
+            (sum, currentState, index) => {
+                if (currentState === true) {
+                    return sum + toppings[index].price;
+                }
+                return sum;
+            },
+            0
+        );
+
+        setTotal(totalPrice);
+    };
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                    control={form.control}
-                    name="items"
-                    render={() => (
-                        <FormItem>
-                            <div className="mb-4">
-                                <FormLabel className="text-base">
-                                    Sidebar
-                                </FormLabel>
-                                <FormDescription>
-                                    Select the items you want to display in the
-                                    sidebar.
-                                </FormDescription>
-                            </div>
-                            {items.map((item) => (
-                                <FormField
-                                    key={item.id}
-                                    control={form.control}
-                                    name="items"
-                                    render={({ field }) => {
-                                        return (
-                                            <FormItem
-                                                key={item.id}
-                                                className="flex flex-row items-start space-x-3 space-y-0"
-                                            >
-                                                <FormControl>
-                                                    <Checkbox
-                                                        checked={field.value?.includes(
-                                                            item.id
-                                                        )}
-                                                        onCheckedChange={(
-                                                            checked
-                                                        ) => {
-                                                            return checked
-                                                                ? field.onChange(
-                                                                      [
-                                                                          ...field.value,
-                                                                          item.id,
-                                                                      ]
-                                                                  )
-                                                                : field.onChange(
-                                                                      field.value?.filter(
-                                                                          (
-                                                                              value
-                                                                          ) =>
-                                                                              value !==
-                                                                              item.id
-                                                                      )
-                                                                  );
-                                                        }}
-                                                    />
-                                                </FormControl>
-                                                <FormLabel className="font-normal">
-                                                    {item.label}
-                                                </FormLabel>
-                                            </FormItem>
-                                        );
-                                    }}
+        <ul className="toppings-list">
+            {toppings.map(({ name, price }, index) => {
+                return (
+                    <li key={index}>
+                        <div >
+                            <div >
+                                <input
+                                    type="checkbox"
+                                    id={`custom-checkbox-${index}`}
+                                    name={name}
+                                    value={name}
+                                    checked={checkedState[index]}
+                                    onChange={() => handleOnChange(index)}
                                 />
-                            ))}
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <Button type="submit">Submit</Button>
-            </form>
-        </Form>
+                                <label htmlFor={`custom-checkbox-${index}`}>
+                                    {name}
+                                </label>
+                            </div>
+                            <div className="right-section">
+                                {getFormattedPrice(price)}
+                            </div>
+                        </div>
+                    </li>
+                );
+            })}
+            <li>
+                <div className="toppings-list-item">
+                    <div className="left-section">Total:</div>
+                    <div className="right-section">
+                        {getFormattedPrice(total)}
+                    </div>
+                </div>
+            </li>
+        </ul>
     );
 }
