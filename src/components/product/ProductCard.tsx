@@ -7,7 +7,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { toggleWishlist } from "@/lib/actions/user.action";
-import { ProductCardProps } from "@/types";
 import { Button } from "../ui/button";
 import {
     Card,
@@ -24,20 +23,26 @@ import {
 } from "../ui/tooltip";
 import { useToast } from "../ui/use-toast";
 
-export default function ProductCard({
-    productId,
-    name,
-    price,
-    discount,
-    thumbnail,
-}: ProductCardProps) {
+interface Props {
+    _id: string;
+    name: string;
+    price: number;
+    discount: number;
+    thumbnail: string;
+}
+
+export default function ProductCard({ product }: { product: Props }) {
+    const { _id, discount, name, price, thumbnail } = product;
+
     const { data: session } = useSession();
     const pathname = usePathname();
 
     const { toast } = useToast();
 
     const productData = {
-        productId: JSON.parse(productId),
+        productId: _id,
+        size: "lg",
+        color: "violet",
         updatedAt: new Date(),
     };
 
@@ -57,7 +62,7 @@ export default function ProductCard({
 
     return (
         <Card className="relative">
-            <Link href={`/product/${productId.toString()}`}>
+            <Link href={`/product/${_id}`}>
                 <span className="absolute inset-0" />
             </Link>
             <Image

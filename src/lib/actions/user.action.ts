@@ -43,21 +43,10 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
             throw new Error("User not found!");
         }
 
-        /* const isProductInWishlist = await user.wishlist.some(
+        const isProductInWishlist = await user.wishlist.some(
             (item: IWishlistItem) =>
-                String(item.productId) === String(productData.productId)
-        ); */
-
-        const isProductInWishlist = await user.wishlist.find(
-            (item: IWishlistItem) =>
-                String(item.productId) === String(productData.productId)
+                item.productId.toString() === productData.productId
         );
-
-        /* const isProductInWishlist = await user.wishlist.find(
-            (item: any) => item.productId === productData.productId
-        ); */
-
-        console.log(isProductInWishlist);
 
         if (isProductInWishlist) {
             await User.findByIdAndUpdate(

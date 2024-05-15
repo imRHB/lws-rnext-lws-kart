@@ -1,4 +1,5 @@
 import { LucideIcon } from "lucide-react";
+import { Schema } from "mongoose";
 
 import { City, Month } from "@/constants";
 
@@ -53,7 +54,7 @@ export interface INavbarItem {
 }
 
 export interface ProductCardProps {
-    productId: string;
+    productId: Schema.Types.ObjectId;
     name: string;
     price: number;
     discount: number;

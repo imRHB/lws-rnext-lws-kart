@@ -127,11 +127,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                         {products.map((product) => (
                             <ProductCard
                                 key={product._id}
-                                productId={JSON.stringify(product._id)}
-                                name={product.name}
-                                price={product.price}
-                                discount={product.discount}
-                                thumbnail={product.thumbnail}
+                                product={JSON.parse(JSON.stringify(product))}
                             />
                         ))}
                     </div>

@@ -11,7 +11,8 @@ export interface ICartItem {
 }
 
 export interface IWishlistItem {
-    productId: Schema.Types.ObjectId;
+    // productId: Schema.Types.ObjectId;
+    productId: string;
     size?: string;
     color?: string;
     updatedAt: Date;

@@ -6,7 +6,7 @@ export interface CreateUserParams {
 }
 
 export interface ToggleWishlistParams {
-    email: string;
+    email: string | null | undefined;
     productData: IWishlistItem;
     path: string;
 }
