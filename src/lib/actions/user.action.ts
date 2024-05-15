@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-import User, { IWishlistItem } from "@/models/user.model";
+import User from "@/models/user.model";
 import { connectToDatabase } from "../mongoose";
 import { CreateUserParams, ToggleWishlistParams } from "./shared.types";
 
@@ -36,7 +36,7 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
     try {
         await connectToDatabase();
 
-        const { email, productData, path } = params;
+        const { email, productId, path } = params;
         const user = await User.findOne({ email });
 
         if (!user) {
@@ -44,22 +44,21 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
         }
 
         const isProductInWishlist = await user.wishlist.some(
-            (item: IWishlistItem) =>
-                item.productId.toString() === productData.productId
+            (item: any) => String(item._id) === productId
         );
 
         if (isProductInWishlist) {
             await User.findByIdAndUpdate(
                 user._id,
                 {
-                    $pull: { wishlist: { productId: productData.productId } },
+                    $pull: { wishlist: productId },
                 },
                 { new: true }
             );
         } else {
             await User.findByIdAndUpdate(
                 user._id,
-                { $addToSet: { wishlist: productData } },
+                { $addToSet: { wishlist: productId } },
                 { new: true }
             );
         }

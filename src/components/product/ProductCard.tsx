@@ -24,33 +24,30 @@ import {
 import { useToast } from "../ui/use-toast";
 
 interface Props {
-    _id: string;
+    productId: string;
     name: string;
     price: number;
     discount: number;
     thumbnail: string;
 }
 
-export default function ProductCard({ product }: { product: Props }) {
-    const { _id, discount, name, price, thumbnail } = product;
-
+export default function ProductCard({
+    productId,
+    discount,
+    name,
+    price,
+    thumbnail,
+}: Props) {
     const { data: session } = useSession();
     const pathname = usePathname();
 
     const { toast } = useToast();
 
-    const productData = {
-        productId: _id,
-        size: "lg",
-        color: "violet",
-        updatedAt: new Date(),
-    };
-
     async function handleToggleWishlist() {
         if (session) {
             await toggleWishlist({
                 email: session.user!.email,
-                productData,
+                productId,
                 path: pathname,
             });
         } else {
@@ -62,7 +59,7 @@ export default function ProductCard({ product }: { product: Props }) {
 
     return (
         <Card className="relative">
-            <Link href={`/product/${_id}`}>
+            <Link href={`/product/${productId}`}>
                 <span className="absolute inset-0" />
             </Link>
             <Image

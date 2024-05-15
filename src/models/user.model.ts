@@ -13,9 +13,6 @@ export interface ICartItem {
 export interface IWishlistItem {
     // productId: Schema.Types.ObjectId;
     productId: string;
-    size?: string;
-    color?: string;
-    updatedAt: Date;
 }
 
 export interface IUser extends Document {
@@ -26,7 +23,7 @@ export interface IUser extends Document {
     emailVerified?: boolean | null;
     phone?: "";
     address?: IShippingAndBillingAddress;
-    wishlist?: IWishlistItem;
+    wishlist?: Schema.Types.ObjectId;
     cart?: ICartItem;
 }
 
@@ -45,8 +42,8 @@ const UserSchema = new Schema<IUser>(
         emailVerified: { type: Boolean, default: null },
         phone: { type: String, required: true },
         address: { type: AddressSchema, required: true },
-        // wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-        wishlist: [
+        wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+        /* wishlist: [
             {
                 productId: {
                     type: Schema.Types.ObjectId,
@@ -57,7 +54,7 @@ const UserSchema = new Schema<IUser>(
                 color: { type: String },
                 updatedAt: { type: Date, default: Date.now },
             },
-        ],
+        ], */
         // cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
         cart: [
             {
