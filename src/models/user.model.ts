@@ -1,7 +1,5 @@
 import { Document, model, models, Schema } from "mongoose";
 
-import { IAddress, IShippingAndBillingAddress } from "@/types";
-
 export interface ICartItem {
     productId: Schema.Types.ObjectId;
     quantity: number;
@@ -10,10 +8,15 @@ export interface ICartItem {
     updatedAt: Date;
 }
 
-export interface IWishlistItem {
-    // productId: Schema.Types.ObjectId;
-    productId: string;
-}
+const AddressSchema = new Schema({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    street: { type: String, required: true },
+    city: { type: String, required: true },
+    zip: { type: String, required: true },
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
+});
 
 export interface IUser extends Document {
     name: string;
@@ -21,21 +24,12 @@ export interface IUser extends Document {
     password?: string;
     image?: string;
     emailVerified?: boolean | null;
-    phone?: "";
-    address?: IShippingAndBillingAddress;
+    phone?: number | null;
+    shippingAddress?: typeof AddressSchema;
+    billingAddress?: typeof AddressSchema;
     wishlist?: Schema.Types.ObjectId;
     cart?: ICartItem;
 }
-
-const AddressSchema = new Schema<IAddress>({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    zip: { type: Number, required: true },
-    phone: { type: String, required: true },
-    email: { type: String, required: true },
-});
 
 const UserSchema = new Schema<IUser>(
     {
@@ -45,21 +39,9 @@ const UserSchema = new Schema<IUser>(
         image: { type: String, required: true },
         emailVerified: { type: Boolean, default: null },
         phone: { type: String, required: true },
-        address: { type: AddressSchema, required: true },
+        shippingAddress: AddressSchema,
+        billingAddress: AddressSchema,
         wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-        /* wishlist: [
-            {
-                productId: {
-                    type: Schema.Types.ObjectId,
-                    required: true,
-                    ref: "Product",
-                },
-                size: { type: String },
-                color: { type: String },
-                updatedAt: { type: Date, default: Date.now },
-            },
-        ], */
-        // cart: [{ type: Schema.Types.ObjectId, ref: "Product" }],
         cart: [
             {
                 productId: {

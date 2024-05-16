@@ -5,11 +5,7 @@ import { revalidatePath } from "next/cache";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
 import { connectToDatabase } from "../mongoose";
-import {
-    CreateUserParams,
-    ToggleWishlistParams,
-    UpdateAddressParams,
-} from "./shared.types";
+import { CreateUserParams, ToggleWishlistParams } from "./shared.types";
 
 export async function createUser(userData: CreateUserParams) {
     try {
@@ -24,9 +20,7 @@ export async function createUser(userData: CreateUserParams) {
     }
 }
 
-export async function getUserByEmail(params: {
-    email: string | undefined | null;
-}) {
+export async function getUserByEmail(params: { email: string }) {
     try {
         await connectToDatabase();
 
@@ -99,15 +93,68 @@ export async function getWishlist(params: {
     }
 }
 
-export async function updateAddress(params: UpdateAddressParams) {
+interface Params {
+    email: string;
+    addressType: string;
+    addressData: {
+        firstName: string;
+        lastName: string;
+        street: string;
+        city: string;
+        zip: string;
+        phone: string;
+        email: string;
+    };
+}
+
+export async function updateAddress(params: Params) {
     try {
         await connectToDatabase();
 
-        const { email, addressData, path } = params;
+        const { email, addressData, addressType } = params;
 
-        await User.findOneAndUpdate({ email }, addressData, { new: true });
+        console.log("addressData:", addressData);
 
-        revalidatePath(path);
+        /* const updatedData = {
+            $set: {
+                [addressType]: addressData,
+            },
+        }; */
+
+        await User.findOneAndUpdate(
+            { email },
+            { $set: { [addressType]: addressData } },
+            { new: true }
+        );
+
+        // revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function devUpdateAddress(params: Params) {
+    try {
+        await connectToDatabase();
+
+        const { email, addressData, addressType } = params;
+
+        console.log("addressData:", addressData);
+
+        /* const updatedData = {
+            $set: {
+                [addressType]: addressData,
+            },
+        }; */
+
+        await User.findOneAndUpdate(
+            { email },
+            { $set: { [addressType]: addressData } },
+            { new: true }
+        );
+
+        // revalidatePath(path);
     } catch (error) {
         console.log(error);
         throw error;

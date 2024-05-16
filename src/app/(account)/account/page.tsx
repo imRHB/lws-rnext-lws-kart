@@ -1,6 +1,8 @@
 import { SquarePen } from "lucide-react";
 import Link from "next/link";
+import React from "react";
 
+import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -9,9 +11,19 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
+import { getUserByEmail } from "@/lib/actions/user.action";
 import AccountSectionIntro from "../(components)/AccountSectionIntro";
 
-export default function AccountPage() {
+export default async function AccountPage() {
+    const session = await auth();
+
+    let user;
+    if (session) {
+        user = await getUserByEmail({ email: session?.user?.email! });
+    }
+
+    const { shippingAddress, billingAddress } = user || {};
+
     return (
         <section>
             <AccountSectionIntro
@@ -32,9 +44,9 @@ export default function AccountPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <CardDescription>Rakib Hasan Babu</CardDescription>
-                        <CardDescription>rhbabu3@duck.com</CardDescription>
-                        <CardDescription>+880 1234 567890</CardDescription>
+                        <CardDescription>{user.name}</CardDescription>
+                        <CardDescription>{user.email}</CardDescription>
+                        <CardDescription>{user?.phone}</CardDescription>
                     </CardContent>
                 </Card>
 
@@ -42,18 +54,36 @@ export default function AccountPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center justify-between gap-4">
                             <span>Shipping Address</span>
-                            <Button variant="outline" size="icon">
-                                <Link href="/account">
+                            <Link href="/account/address">
+                                <Button variant="outline" size="icon">
                                     <SquarePen className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                </Button>
+                            </Link>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <CardDescription>Rakib Hasan</CardDescription>
-                        <CardDescription>Dhanmondi-32</CardDescription>
-                        <CardDescription>Dhaka, Bangladesh</CardDescription>
-                        <CardDescription>+880 1234 567890</CardDescription>
+                        {user?.shippingAddress ? (
+                            <React.Fragment>
+                                <CardDescription>
+                                    {shippingAddress.firstName}{" "}
+                                    {shippingAddress.lastName}
+                                </CardDescription>
+                                <CardDescription>
+                                    {shippingAddress.street},{" "}
+                                    {shippingAddress.city}
+                                </CardDescription>
+                                <CardDescription>
+                                    +{shippingAddress.phone}
+                                </CardDescription>
+                                <CardDescription>
+                                    {shippingAddress.email}
+                                </CardDescription>
+                            </React.Fragment>
+                        ) : (
+                            <CardDescription>
+                                Update your shipping address
+                            </CardDescription>
+                        )}
                     </CardContent>
                 </Card>
 
@@ -61,18 +91,36 @@ export default function AccountPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center justify-between gap-4">
                             <span>Billing Address</span>
-                            <Button variant="outline" size="icon">
-                                <Link href="/account">
+                            <Link href="/account/address">
+                                <Button variant="outline" size="icon">
                                     <SquarePen className="h-4 w-4" />
-                                </Link>
-                            </Button>
+                                </Button>
+                            </Link>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <CardDescription>Rakib Hasan</CardDescription>
-                        <CardDescription>Dhanmondi-32</CardDescription>
-                        <CardDescription>Dhaka, Bangladesh</CardDescription>
-                        <CardDescription>+880 1234 567890</CardDescription>
+                        {user?.billingAddress ? (
+                            <React.Fragment>
+                                <CardDescription>
+                                    {billingAddress.firstName}{" "}
+                                    {billingAddress.lastName}
+                                </CardDescription>
+                                <CardDescription>
+                                    {billingAddress.street},{" "}
+                                    {billingAddress.city}
+                                </CardDescription>
+                                <CardDescription>
+                                    +{billingAddress.phone}
+                                </CardDescription>
+                                <CardDescription>
+                                    {billingAddress.email}
+                                </CardDescription>
+                            </React.Fragment>
+                        ) : (
+                            <CardDescription>
+                                Update your billing address
+                            </CardDescription>
+                        )}
                     </CardContent>
                 </Card>
             </div>

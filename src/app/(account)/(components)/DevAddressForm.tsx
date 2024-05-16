@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import {
     Form,
     FormControl,
@@ -26,28 +25,21 @@ import { City, CITY_LIST } from "@/constants";
 import { devUpdateAddress } from "@/lib/actions/user.action";
 
 const formSchema = z.object({
-    firstName: z.string().min(2).max(20),
-    lastName: z.string().min(2).max(20),
-    street: z.string().min(4).max(40),
-    city: z.nativeEnum(City),
-    zip: z.string().min(4).max(5),
-    phone: z.string().min(11).max(14),
+    firstName: z.string(),
+    lastName: z.string(),
+    street: z.string(),
+    zip: z.number(),
+    phone: z.string(),
     email: z.string().email(),
+    city: z.nativeEnum(City),
 });
 
 interface Props {
     authEmail: string;
     address: string;
-    addressType: string;
-    legend: string;
 }
 
-export default function AddressForm({
-    authEmail,
-    address,
-    addressType,
-    legend,
-}: Props) {
+export default function DevAddressForm({ authEmail, address }: Props) {
     const parsedAddress = JSON.parse(address);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -64,15 +56,13 @@ export default function AddressForm({
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await devUpdateAddress({
-            email: authEmail,
-            addressType,
-            addressData: values,
-        });
+        console.log(values);
+
+        await devUpdateAddress({ email: authEmail, addressData: values });
     }
 
     return (
-        <Card className="p-4">
+        <div className="bg-white rounded">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -80,7 +70,7 @@ export default function AddressForm({
                 >
                     <fieldset className="grid gap-6 rounded-lg border p-4">
                         <legend className="-ml-1 px-1 text-sm font-medium">
-                            {legend}
+                            Address
                         </legend>
 
                         <div className="grid grid-cols-2 gap-4">
@@ -145,6 +135,84 @@ export default function AddressForm({
                             />
                             <FormField
                                 control={form.control}
+                                name="zip"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <div className="flex items-center justify-between gap-4">
+                                            <FormLabel>ZIP</FormLabel>
+                                            <FormMessage />
+                                        </div>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="ZIP"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <div className="flex items-center justify-between gap-4">
+                                            <FormLabel>Email</FormLabel>
+                                            <FormMessage />
+                                        </div>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="jane@mail.com"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="phone"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <div className="flex items-center justify-between gap-4">
+                                            <FormLabel>Phone</FormLabel>
+                                            <FormMessage />
+                                        </div>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="+880 1234 567890"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                            {/* <FormField
+                                control={form.control}
+                                name="city"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <div className="flex items-center justify-between gap-4">
+                                            <FormLabel>City</FormLabel>
+                                            <FormMessage />
+                                        </div>
+                                        <FormControl>
+                                            <Input
+                                                placeholder="Dhaka"
+                                                {...field}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            /> */}
+                            <FormField
+                                control={form.control}
                                 name="city"
                                 render={({ field }) => (
                                     <FormItem>
@@ -177,79 +245,12 @@ export default function AddressForm({
                                     </FormItem>
                                 )}
                             />
-                        </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <FormField
-                                control={form.control}
-                                name="zip"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <div className="flex items-center justify-between gap-4">
-                                            <FormLabel>ZIP</FormLabel>
-                                            <FormMessage />
-                                        </div>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="1234"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="phone"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <div className="flex items-center justify-between gap-4">
-                                            <FormLabel>Phone</FormLabel>
-                                            <FormMessage />
-                                        </div>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="01234567890"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                            <FormField
-                                control={form.control}
-                                name="email"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <div className="flex items-center justify-between gap-4">
-                                            <FormLabel>Email</FormLabel>
-                                            <FormMessage />
-                                        </div>
-                                        <FormControl>
-                                            <Input
-                                                placeholder="jane@mail.com"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-
-                            <div className="flex items-end justify-end">
-                                <Button
-                                    className="w-full sm:w-fit"
-                                    disabled={form.formState.isSubmitting}
-                                >
-                                    Update
-                                </Button>
-                            </div>
+                            <Button className="w-full sm:w-fit">Save</Button>
                         </div>
                     </fieldset>
                 </form>
             </Form>
-        </Card>
+        </div>
     );
 }

@@ -13,8 +13,8 @@ enum AddressType {
 export default async function AccountAddressPage() {
     const session = await auth();
 
-    const user = await getUserByEmail({ email: session?.user?.email });
-    console.log(user);
+    let user;
+    if (session) user = await getUserByEmail({ email: session?.user?.email! });
 
     return (
         <React.Fragment>
@@ -25,13 +25,15 @@ export default async function AccountAddressPage() {
 
             <div className="grid xl:grid-cols-2 gap-8">
                 <AddressForm
-                    address={JSON.stringify(user?.address?.shippingAddress)}
+                    authEmail={session?.user?.email!}
+                    address={JSON.stringify(user.shippingAddress ?? {})}
                     addressType={AddressType.shippingAddress}
                     legend="Shipping Address"
                 />
 
                 <AddressForm
-                    address={JSON.stringify(user?.address?.billingAddress)}
+                    authEmail={session?.user?.email!}
+                    address={JSON.stringify(user.billingAddress ?? {})}
                     addressType={AddressType.billingAddress}
                     legend="Billing Address"
                 />
