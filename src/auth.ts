@@ -54,6 +54,25 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
             clientSecret: process.env.AUTH_GITHUB_SECRET,
         }),
     ],
+    /* callbacks: {
+        async session({ session, user }) {
+            const name = user.name;
+            const email = user.email;
+            const image = user.image;
+
+            await connectToDatabase();
+
+            let existingUser = await User.findOne({ email });
+            if (!existingUser) {
+                existingUser = await User.create({ name, email, image });
+                await existingUser.save();
+            }
+
+            session.user = existingUser;
+
+            return session;
+        },
+    }, */
     session: {
         strategy: "jwt",
     },

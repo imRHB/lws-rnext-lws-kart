@@ -2,9 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 
+import Product from "@/models/product.model";
 import User from "@/models/user.model";
 import { connectToDatabase } from "../mongoose";
-import { CreateUserParams, ToggleWishlistParams } from "./shared.types";
+import {
+    CreateUserParams,
+    ToggleWishlistParams,
+    UpdateAddressParams,
+} from "./shared.types";
 
 export async function createUser(userData: CreateUserParams) {
     try {
@@ -19,7 +24,9 @@ export async function createUser(userData: CreateUserParams) {
     }
 }
 
-export async function getUserByEmail(params: { email: string }) {
+export async function getUserByEmail(params: {
+    email: string | undefined | null;
+}) {
     try {
         await connectToDatabase();
 
@@ -62,6 +69,43 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
                 { new: true }
             );
         }
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function getWishlist(params: {
+    email: string | undefined | null;
+}) {
+    try {
+        await connectToDatabase();
+
+        const user = await User.findOne({ email: params.email }).populate({
+            path: "wishlist",
+            model: Product,
+            select: "_id name price discount thumbnail",
+        });
+        const wishlist = user.wishlist;
+
+        return {
+            wishlist,
+        };
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function updateAddress(params: UpdateAddressParams) {
+    try {
+        await connectToDatabase();
+
+        const { email, addressData, path } = params;
+
+        await User.findOneAndUpdate({ email }, addressData, { new: true });
 
         revalidatePath(path);
     } catch (error) {

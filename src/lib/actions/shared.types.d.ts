@@ -1,4 +1,4 @@
-import { IWishlistItem } from "@/models/user.model";
+import { IShippingAndBillingAddress } from "@/types";
 
 export interface CreateUserParams {
     name: string;
@@ -7,7 +7,7 @@ export interface CreateUserParams {
 
 export interface ToggleWishlistParams {
     email: string | null | undefined;
-    productData: IWishlistItem;
+    productId: string;
     path: string;
 }
 
@@ -21,4 +21,10 @@ export interface GetProductsParams {
     pmin?: number;
     pmax?: number;
     size?: string;
+}
+
+export interface UpdateAddressParams {
+    email: string | null | undefined;
+    addressData: IShippingAndBillingAddress;
+    path: string;
 }

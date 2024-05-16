@@ -1,9 +1,21 @@
 import React from "react";
 
+import { auth } from "@/auth";
+import { getUserByEmail } from "@/lib/actions/user.action";
 import AccountSectionIntro from "../../(components)/AccountSectionIntro";
 import AddressForm from "./AddressForm";
 
-export default function AccountAddressPage() {
+enum AddressType {
+    shippingAddress = "shippingAddress",
+    billingAddress = "billingAddress",
+}
+
+export default async function AccountAddressPage() {
+    const session = await auth();
+
+    const user = await getUserByEmail({ email: session?.user?.email });
+    console.log(user);
+
     return (
         <React.Fragment>
             <AccountSectionIntro
@@ -12,9 +24,17 @@ export default function AccountAddressPage() {
             />
 
             <div className="grid xl:grid-cols-2 gap-8">
-                <AddressForm legend="Shipping Address" />
+                <AddressForm
+                    address={JSON.stringify(user?.address?.shippingAddress)}
+                    addressType={AddressType.shippingAddress}
+                    legend="Shipping Address"
+                />
 
-                <AddressForm legend="Billing Address" />
+                <AddressForm
+                    address={JSON.stringify(user?.address?.billingAddress)}
+                    addressType={AddressType.billingAddress}
+                    legend="Billing Address"
+                />
             </div>
         </React.Fragment>
     );

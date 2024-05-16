@@ -18,7 +18,7 @@ export interface IWishlistItem {
 export interface IUser extends Document {
     name: string;
     email: string;
-    password: string;
+    password?: string;
     image?: string;
     emailVerified?: boolean | null;
     phone?: "";
@@ -28,9 +28,13 @@ export interface IUser extends Document {
 }
 
 const AddressSchema = new Schema<IAddress>({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     street: { type: String, required: true },
     city: { type: String, required: true },
     zip: { type: Number, required: true },
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
 });
 
 const UserSchema = new Schema<IUser>(

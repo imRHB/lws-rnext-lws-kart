@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className={`${inter.className} bg-zinc-50`}>
                 <NextAuthProvider>
                     {children}
                     <Toaster />

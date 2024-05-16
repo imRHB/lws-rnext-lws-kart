@@ -4,9 +4,13 @@ import { Schema } from "mongoose";
 import { City, Month } from "@/constants";
 
 export interface IAddress {
+    firstName: string;
+    lastName: string;
     street: string;
     city: string;
     zip: number;
+    phone: string;
+    email: string;
 }
 
 export interface IShippingAndBillingAddress {

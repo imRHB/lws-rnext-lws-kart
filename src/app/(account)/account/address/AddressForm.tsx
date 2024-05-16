@@ -33,17 +33,23 @@ const formSchema = z.object({
     email: z.string().email(),
 });
 
-export default function AddressForm({ legend }: { legend: string }) {
+interface Props {
+    address: string;
+    addressType: string;
+    legend: string;
+}
+
+export default function AddressForm({ address, addressType, legend }: Props) {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            firstName: "",
-            lastName: "",
-            street: "",
-            city: undefined,
-            zip: "",
-            phone: "",
-            email: "",
+            firstName: address[addressType] || "",
+            lastName: address[addressType] || "",
+            street: address[addressType] || "",
+            city: address[addressType] || undefined,
+            zip: address[addressType] || "",
+            phone: address[addressType] || "",
+            email: address[addressType] || "",
         },
     });
 
