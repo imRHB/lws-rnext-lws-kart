@@ -13,7 +13,7 @@ const AddressSchema = new Schema({
     lastName: { type: String, required: true },
     street: { type: String, required: true },
     city: { type: String, required: true },
-    zip: { type: String, required: true },
+    zip: { type: Number, required: true },
     phone: { type: String, required: true },
     email: { type: String, required: true },
 });
@@ -24,7 +24,7 @@ export interface IUser extends Document {
     password?: string;
     image?: string;
     emailVerified?: boolean | null;
-    phone?: number | null;
+    phone?: string;
     shippingAddress?: typeof AddressSchema;
     billingAddress?: typeof AddressSchema;
     wishlist?: Schema.Types.ObjectId;

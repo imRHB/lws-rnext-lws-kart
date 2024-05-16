@@ -22,16 +22,22 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { useToast } from "@/components/ui/use-toast";
 import { City, CITY_LIST } from "@/constants";
-import { devUpdateAddress } from "@/lib/actions/user.action";
+import { updateAddress } from "@/lib/actions/user.action";
+import { Loader2 } from "lucide-react";
+import { usePathname } from "next/navigation";
+import React from "react";
+
+const phoneRegEx = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
 
 const formSchema = z.object({
     firstName: z.string().min(2).max(20),
     lastName: z.string().min(2).max(20),
     street: z.string().min(4).max(40),
     city: z.nativeEnum(City),
-    zip: z.string().min(4).max(5),
-    phone: z.string().min(11).max(14),
+    zip: z.coerce.number().int().gte(1000).lte(8799),
+    phone: z.string().regex(phoneRegEx),
     email: z.string().email(),
 });
 
@@ -48,6 +54,9 @@ export default function AddressForm({
     addressType,
     legend,
 }: Props) {
+    const pathname = usePathname();
+
+    const { toast } = useToast();
     const parsedAddress = JSON.parse(address);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -56,18 +65,23 @@ export default function AddressForm({
             firstName: parsedAddress.firstName || "",
             lastName: parsedAddress.lastName || "",
             street: parsedAddress.street || "",
-            zip: parsedAddress.zip || "",
-            phone: parsedAddress.phone || "",
+            zip: parsedAddress.zip || 0,
+            phone: parsedAddress.phone?.toString() || "",
             email: parsedAddress.email || "",
             city: parsedAddress.city || "",
         },
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await devUpdateAddress({
+        await updateAddress({
             email: authEmail,
             addressType,
             addressData: values,
+            path: pathname,
+        });
+
+        toast({
+            title: `${legend} is updated successfully`,
         });
     }
 
@@ -96,6 +110,9 @@ export default function AddressForm({
                                         <FormControl>
                                             <Input
                                                 placeholder="Jane"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
                                             />
                                         </FormControl>
@@ -114,6 +131,9 @@ export default function AddressForm({
                                         <FormControl>
                                             <Input
                                                 placeholder="Doe"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
                                             />
                                         </FormControl>
@@ -137,6 +157,9 @@ export default function AddressForm({
                                         <FormControl>
                                             <Input
                                                 placeholder="Dhanmondi-32"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
                                             />
                                         </FormControl>
@@ -156,6 +179,9 @@ export default function AddressForm({
                                             <Select
                                                 onValueChange={field.onChange}
                                                 defaultValue={field.value}
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                             >
                                                 <FormControl>
                                                     <SelectTrigger>
@@ -191,8 +217,17 @@ export default function AddressForm({
                                         </div>
                                         <FormControl>
                                             <Input
+                                                type="number"
                                                 placeholder="1234"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
+                                                onChange={(evt) =>
+                                                    field.onChange(
+                                                        evt.target.valueAsNumber
+                                                    )
+                                                }
                                             />
                                         </FormControl>
                                     </FormItem>
@@ -209,7 +244,10 @@ export default function AddressForm({
                                         </div>
                                         <FormControl>
                                             <Input
-                                                placeholder="01234567890"
+                                                placeholder="+880 1234 567890"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
                                             />
                                         </FormControl>
@@ -231,6 +269,9 @@ export default function AddressForm({
                                         <FormControl>
                                             <Input
                                                 placeholder="jane@mail.com"
+                                                disabled={
+                                                    form.formState.isSubmitting
+                                                }
                                                 {...field}
                                             />
                                         </FormControl>
@@ -241,9 +282,32 @@ export default function AddressForm({
                             <div className="flex items-end justify-end">
                                 <Button
                                     className="w-full sm:w-fit"
-                                    disabled={form.formState.isSubmitting}
+                                    disabled={
+                                        form.formState.isSubmitting ||
+                                        (form.getValues("firstName") ===
+                                            parsedAddress.firstName &&
+                                            form.getValues("lastName") ===
+                                                parsedAddress.lastName &&
+                                            form.getValues("street") ===
+                                                parsedAddress.street &&
+                                            form.getValues("city") ===
+                                                parsedAddress.city &&
+                                            form.getValues("zip") ===
+                                                parsedAddress.zip &&
+                                            form.getValues("phone") ===
+                                                parsedAddress.phone?.toString() &&
+                                            form.getValues("email") ===
+                                                parsedAddress.email)
+                                    }
                                 >
-                                    Update
+                                    {form.formState.isSubmitting ? (
+                                        <React.Fragment>
+                                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                            Updating
+                                        </React.Fragment>
+                                    ) : (
+                                        "Update"
+                                    )}
                                 </Button>
                             </div>
                         </div>

@@ -101,25 +101,18 @@ interface Params {
         lastName: string;
         street: string;
         city: string;
-        zip: string;
+        zip: number;
         phone: string;
         email: string;
     };
+    path: string;
 }
 
 export async function updateAddress(params: Params) {
     try {
         await connectToDatabase();
 
-        const { email, addressData, addressType } = params;
-
-        console.log("addressData:", addressData);
-
-        /* const updatedData = {
-            $set: {
-                [addressType]: addressData,
-            },
-        }; */
+        const { email, addressData, addressType, path } = params;
 
         await User.findOneAndUpdate(
             { email },
@@ -127,34 +120,7 @@ export async function updateAddress(params: Params) {
             { new: true }
         );
 
-        // revalidatePath(path);
-    } catch (error) {
-        console.log(error);
-        throw error;
-    }
-}
-
-export async function devUpdateAddress(params: Params) {
-    try {
-        await connectToDatabase();
-
-        const { email, addressData, addressType } = params;
-
-        console.log("addressData:", addressData);
-
-        /* const updatedData = {
-            $set: {
-                [addressType]: addressData,
-            },
-        }; */
-
-        await User.findOneAndUpdate(
-            { email },
-            { $set: { [addressType]: addressData } },
-            { new: true }
-        );
-
-        // revalidatePath(path);
+        revalidatePath(path);
     } catch (error) {
         console.log(error);
         throw error;
