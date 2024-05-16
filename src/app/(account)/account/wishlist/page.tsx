@@ -2,10 +2,18 @@ import Image from "next/image";
 import React from "react";
 
 import { auth } from "@/auth";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from "@/components/ui/table";
 import { getWishlist } from "@/lib/actions/user.action";
 import AccountSectionIntro from "../../(components)/AccountSectionIntro";
+import AddToCart from "./AddToCart";
 import RemoveWished from "./RemoveWished";
 
 interface Props {
@@ -20,7 +28,6 @@ export default async function AccountWishlistPage() {
     const session = await auth();
 
     const { wishlist } = await getWishlist({ email: session?.user?.email });
-    console.log("wishlist:", wishlist);
 
     return (
         <React.Fragment>
@@ -29,23 +36,48 @@ export default async function AccountWishlistPage() {
                 description="Your wishlist products"
             />
 
-            <div className="space-y-6">
-                {wishlist.map((product: any) => (
-                    <WishlistItemCard
-                        key={product._id}
-                        productId={String(product._id)}
-                        name={product.name}
-                        price={product.price}
-                        discount={product.discount}
-                        thumbnail={product.thumbnail}
-                    />
-                ))}
-            </div>
+            <Card>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="hidden w-[150px] sm:table-cell">
+                                <span className="sr-only">Image</span>
+                            </TableHead>
+                            <TableHead>Name</TableHead>
+                            <TableHead>SKU</TableHead>
+                            <TableHead className="hidden md:table-cell">
+                                Price
+                            </TableHead>
+                            <TableHead className="hidden md:table-cell">
+                                Quantity
+                            </TableHead>
+                            <TableHead className="hidden md:table-cell">
+                                Ordered at
+                            </TableHead>
+                            <TableHead>
+                                <span className="sr-only">Actions</span>
+                            </TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {wishlist.map((product: any) => (
+                            <WishlistItemTableRow
+                                key={product._id}
+                                productId={String(product._id)}
+                                name={product.name}
+                                price={product.price}
+                                discount={product.discount}
+                                thumbnail={product.thumbnail}
+                            />
+                        ))}
+                    </TableBody>
+                </Table>
+            </Card>
         </React.Fragment>
     );
 }
 
-function WishlistItemCard({
+function WishlistItemTableRow({
     productId,
     discount,
     name,
@@ -53,29 +85,29 @@ function WishlistItemCard({
     thumbnail,
 }: Props) {
     return (
-        <Card className="flex items-center gap-6 p-4">
-            <div className="w-28">
+        <TableRow>
+            <TableCell className="hidden sm:table-cell">
                 <Image
                     src={thumbnail}
-                    height={120}
-                    width={120}
-                    className="rounded"
+                    height={200}
+                    width={200}
+                    className="aspect-video rounded-md"
                     alt={name}
                 />
-            </div>
-
-            <CardHeader>
-                <div>
-                    <CardTitle>{name}</CardTitle>
-                    {/* <CardDescription>Description</CardDescription> */}
+            </TableCell>
+            <TableCell className="font-medium">{name}</TableCell>
+            <TableCell className="hidden md:table-cell">LWS-K-SKU</TableCell>
+            <TableCell className="hidden md:table-cell">${price}</TableCell>
+            <TableCell className="hidden md:table-cell">25</TableCell>
+            <TableCell className="hidden md:table-cell">
+                2023-07-12 10:42 AM
+            </TableCell>
+            <TableCell>
+                <div className="flex items-center gap-4">
+                    <AddToCart />
+                    <RemoveWished productId={productId} />
                 </div>
-            </CardHeader>
-
-            <CardContent className="flex gap-6 items-center">
-                <h3>${price}</h3>
-                <Button>Add to cart</Button>
-                <RemoveWished productId={productId} />
-            </CardContent>
-        </Card>
+            </TableCell>
+        </TableRow>
     );
 }

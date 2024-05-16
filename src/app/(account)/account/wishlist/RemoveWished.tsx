@@ -20,5 +20,9 @@ export default function RemoveWished({ productId }: { productId: string }) {
         }
     }
 
-    return <Button onClick={removeWished}>Remove</Button>;
+    return (
+        <Button onClick={removeWished} variant="destructive">
+            Remove
+        </Button>
+    );
 }

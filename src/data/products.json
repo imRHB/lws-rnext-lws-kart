@@ -18,6 +18,8 @@
             "Built-in USB charging ports"
         ],
         "quantity": 25,
+        "size": ["sm", "md", "lg"],
+        "color": ["violet", "green", "orange"],
         "sku": "LKB001",
         "brand": "Hatil"
     },
@@ -40,6 +42,8 @@
             "Classic brass hardware"
         ],
         "quantity": 50,
+        "size": ["sm", "lg"],
+        "color": ["violet", "orange"],
         "sku": "ENS002",
         "brand": "Hatil"
     },
@@ -62,6 +66,8 @@
             "Minimalist design"
         ],
         "quantity": 35,
+        "size": ["md", "lg"],
+        "color": ["green", "orange"],
         "sku": "MD003",
         "brand": "Hatil"
     },
@@ -84,6 +90,8 @@
             "Available in various colors"
         ],
         "quantity": 40,
+        "size": ["sm", "md", "lg"],
+        "color": ["violet", "green"],
         "sku": "PO004",
         "brand": "Hatil"
     },
@@ -106,6 +114,8 @@
             "Rustic yet modern aesthetic"
         ],
         "quantity": 20,
+        "size": ["md", "lg"],
+        "color": ["violet", "green", "orange"],
         "sku": "RBF005",
         "brand": "Sofa"
     },
@@ -128,6 +138,8 @@
             "Available in various colors"
         ],
         "quantity": 30,
+        "size": ["sm", "md"],
+        "color": ["violet", "orange"],
         "sku": "VAC006",
         "brand": "Apex"
     },
@@ -150,6 +162,8 @@
             "Available in queen and king sizes"
         ],
         "quantity": 15,
+        "size": ["sm", "md"],
+        "color": ["violet", "green", "orange"],
         "sku": "ECB007",
         "brand": "Bata"
     },
@@ -172,6 +186,8 @@
             "Available in multiple colors"
         ],
         "quantity": 20,
+        "size": ["sm", "md", "lg"],
+        "color": ["violet", "green"],
         "sku": "MLC008",
         "brand": "Bata"
     }

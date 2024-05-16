@@ -1,4 +1,4 @@
-import { model, models, Schema, Types } from "mongoose";
+import { model, models, Schema } from "mongoose";
 
 export interface IProduct {
     name: string;
@@ -6,11 +6,13 @@ export interface IProduct {
     discount: number;
     thumbnail: string;
     images?: string[];
-    category: Types.ObjectId;
-    features: string[];
+    category: string;
+    features?: string[];
     quantity: number;
+    size: string[];
+    color: string[];
     sku: string;
-    brand: Types.ObjectId;
+    brand: string;
     views: number;
 }
 
@@ -21,15 +23,13 @@ const ProductSchema = new Schema<IProduct>(
         discount: { type: Number, required: true },
         thumbnail: { type: String, required: true },
         images: [{ type: String, required: false }],
-        category: {
-            type: Schema.Types.ObjectId,
-            ref: "Category",
-            required: true,
-        },
+        category: { type: String, required: true },
         features: [{ type: String, required: true }],
         quantity: { type: Number, required: true },
+        size: [{ type: String, required: true }],
+        color: [{ type: String, required: true }],
         sku: { type: String, required: true },
-        brand: { type: Schema.Types.ObjectId, ref: "Brand", required: true },
+        brand: { type: String, required: true },
         views: { type: Number, default: 0 },
     },
     { timestamps: true }

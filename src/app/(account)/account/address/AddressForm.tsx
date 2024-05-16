@@ -86,7 +86,7 @@ export default function AddressForm({
     }
 
     return (
-        <Card className="p-4">
+        <Card className="p-4 md:p-6 lg:p-8">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
