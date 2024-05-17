@@ -1,5 +1,6 @@
 "use server";
 
+import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
 
 import Product from "@/models/product.model";
@@ -119,6 +120,103 @@ export async function updateAddress(params: Params) {
             { $set: { [addressType]: addressData } },
             { new: true }
         );
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface AddToCartParams {
+    email: string;
+    productId: string;
+    cartData: {
+        quantity: number;
+        size?: string;
+        color?: string;
+    };
+    path: string;
+}
+
+export async function addToCart(params: AddToCartParams) {
+    try {
+        await connectToDatabase();
+
+        const { email, cartData, productId, path } = params;
+
+        const user = await User.findOne({ email });
+        const product = await Product.findById(productId);
+        console.log("product:", product);
+
+        const existingProductIndex = await user.cart.findIndex(
+            (item: any) => item.product.toString() === productId
+        );
+
+        if (existingProductIndex > -1) {
+            user.cart[existingProductIndex].quantity += 1;
+            // if (size) user.cart[existingProductIndex].size = size;
+            // if (color) user.cart[existingProductIndex].color = color;
+            user.cart[existingProductIndex].updatedAt = new Date();
+        } else {
+            user.cart.push({
+                product: new ObjectId(productId),
+                ...cartData,
+                updatedAt: new Date(),
+            });
+        }
+
+        // product.quantity -= quantity
+
+        // await product.save();
+        await user.save();
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface UpdateCartItemQuantityParams {
+    email: string;
+    productId: string;
+    quantity: number;
+    path: string;
+}
+
+export async function updateCartItemQuantity(
+    params: UpdateCartItemQuantityParams
+) {
+    try {
+        await connectToDatabase();
+
+        const { email, productId, quantity, path } = params;
+
+        const user = await User.findOne({ email });
+        const cartItemIndex = user.cart.findIndex(
+            (item: any) => item.product.toString() === productId
+        );
+
+        if (cartItemIndex === -1) throw new Error("Product not found");
+
+        const cartItem = user.cart[cartItemIndex];
+        const product = await Product.findById(productId);
+
+        if (quantity > 0) {
+            const difference = quantity - cartItem.quantity;
+            if (product.quantity < difference) {
+                throw new Error("Not enough quantity");
+            }
+            product.quantity -= difference;
+            cartItem.quantity = difference;
+        } else {
+            product.quantity += cartItem.quantity;
+            user.cart.splice(cartItemIndex, 1);
+        }
+
+        await product.save();
+        await user.save();
 
         revalidatePath(path);
     } catch (error) {

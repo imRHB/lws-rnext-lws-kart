@@ -28,21 +28,40 @@ export interface IUser extends Document {
     shippingAddress?: typeof AddressSchema;
     billingAddress?: typeof AddressSchema;
     wishlist?: Schema.Types.ObjectId;
-    cart?: ICartItem;
+    cart?: {
+        product: Schema.Types.ObjectId;
+        quantity: number;
+        size?: string;
+        color?: string;
+    };
 }
 
 const UserSchema = new Schema<IUser>(
     {
         name: { type: String, required: true },
         email: { type: String, required: true },
-        password: { type: String, required: true },
-        image: { type: String, required: true },
+        password: { type: String },
+        image: { type: String },
         emailVerified: { type: Boolean, default: null },
-        phone: { type: String, required: true },
+        phone: { type: String },
         shippingAddress: AddressSchema,
         billingAddress: AddressSchema,
         wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+        /* cart: [
+            {
+                product: { type: Schema.Types.ObjectId, ref: "Product" },
+            },
+        ], */
         cart: [
+            {
+                product: { type: Schema.Types.ObjectId, ref: "Product" },
+                quantity: { type: Number, required: true, default: 1 },
+                size: { type: String },
+                color: { type: String },
+                updatedAt: { type: Date, default: Date.now },
+            },
+        ],
+        /* cart: [
             {
                 productId: {
                     type: Schema.Types.ObjectId,
@@ -50,12 +69,11 @@ const UserSchema = new Schema<IUser>(
                     ref: "Product",
                 },
                 quantity: { type: Number, required: true, default: 1 },
-                size: { type: String },
-                color: { type: String },
-                // createdAt: {type: Date, default:Date.now},
+                size: { type: String, required: true },
+                color: { type: String, required: true },
                 updatedAt: { type: Date, default: Date.now },
             },
-        ],
+        ], */
     },
     { timestamps: true }
 );

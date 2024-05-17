@@ -2,10 +2,21 @@ import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { auth } from "@/auth";
+import { getUserByEmail } from "@/lib/actions/user.action";
 import { Badge } from "../ui/badge";
 import { Input } from "../ui/input";
 
-export default function Header() {
+export default async function Header() {
+    const session = await auth();
+
+    let user;
+    if (session) {
+        user = await getUserByEmail({ email: session?.user?.email! });
+    }
+
+    const { wishlist, cart } = user || {};
+
     return (
         <header className="py-4 shadow-sm bg-white sticky top-0 z-50">
             <div className="container flex items-center justify-between">
@@ -37,18 +48,22 @@ export default function Header() {
                         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
                     >
                         Wish
-                        <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                            3
-                        </Badge>
+                        {wishlist && wishlist?.length > 0 && (
+                            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                                {wishlist.length}
+                            </Badge>
+                        )}
                     </Link>
                     <Link
                         href="/account/cart"
                         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
                     >
                         Cart
-                        <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                            5
-                        </Badge>
+                        {cart && cart?.length > 0 && (
+                            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                                {cart.length}
+                            </Badge>
+                        )}
                     </Link>
                     {/* <Link
                         href="/account"

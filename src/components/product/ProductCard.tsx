@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { toggleWishlist } from "@/lib/actions/user.action";
+import { addToCart, toggleWishlist } from "@/lib/actions/user.action";
 import { Button } from "../ui/button";
 import {
     Card,
@@ -43,12 +43,33 @@ export default function ProductCard({
 
     const { toast } = useToast();
 
+    async function handleAddToCart() {
+        await addToCart({
+            email: session?.user?.email!,
+            cartData: {
+                quantity: 1,
+                size: "md",
+                color: "orange",
+            },
+            productId,
+            path: pathname,
+        });
+
+        toast({
+            title: "Product added to the cart",
+        });
+    }
+
     async function handleToggleWishlist() {
         if (session) {
             await toggleWishlist({
                 email: session.user!.email,
                 productId,
                 path: pathname,
+            });
+
+            toast({
+                title: "Product added to the wishlist",
             });
         } else {
             toast({
@@ -81,7 +102,9 @@ export default function ProductCard({
                 </div>
             </CardHeader>
             <CardFooter className="flex items-center gap-4">
-                <Button className="w-full z-10">Add to cart</Button>
+                <Button className="w-full z-10" onClick={handleAddToCart}>
+                    Add to cart
+                </Button>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
