@@ -27,7 +27,7 @@ interface Props {
 export default async function AccountWishlistPage() {
     const session = await auth();
 
-    const { wishlist } = await getWishlist({ email: session?.user?.email });
+    const { wishlist } = await getWishlist({ email: session?.user?.email! });
 
     return (
         <React.Fragment>

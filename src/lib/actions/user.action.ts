@@ -72,9 +72,7 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
     }
 }
 
-export async function getWishlist(params: {
-    email: string | undefined | null;
-}) {
+export async function getWishlist(params: { email: string }) {
     try {
         await connectToDatabase();
 
@@ -178,6 +176,33 @@ export async function addToCart(params: AddToCartParams) {
     }
 }
 
+export async function getCart(params: { email: string }) {
+    try {
+        await connectToDatabase();
+
+        const { email } = params;
+
+        const user = await User.findOne({ email }).populate({
+            path: "cart",
+            populate: [
+                {
+                    path: "product",
+                    model: Product,
+                    select: "_id name price discount thumbnail quantity",
+                },
+            ],
+        });
+        const cart = user.cart;
+
+        return {
+            cart,
+        };
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 interface UpdateCartItemQuantityParams {
     email: string;
     productId: string;
@@ -225,6 +250,78 @@ export async function updateCartItemQuantity(
     }
 }
 
+interface AddOrRemoveProductToWishlistParams {
+    email: string;
+    productId: string;
+    path: string;
+}
+
+export async function addProductToWishlist(
+    params: AddOrRemoveProductToWishlistParams
+) {
+    try {
+        await connectToDatabase();
+
+        const { email, productId, path } = params;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            throw new Error("User not found!");
+        }
+
+        const isProductInWishlist = user.wishlist.some(
+            (item: any) => String(item._id) === productId
+        );
+
+        if (!isProductInWishlist) {
+            await User.findByIdAndUpdate(
+                user._id,
+                { $addToSet: { wishlist: productId } },
+                { new: true }
+            );
+        }
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function removeProductFromWishlist(
+    params: AddOrRemoveProductToWishlistParams
+) {
+    try {
+        await connectToDatabase();
+
+        const { email, productId, path } = params;
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            throw new Error("User not found!");
+        }
+
+        const isProductInWishlist = user.wishlist.some(
+            (item: any) => String(item._id) === productId
+        );
+
+        if (isProductInWishlist) {
+            await User.findByIdAndUpdate(
+                user._id,
+                {
+                    $pull: { wishlist: productId },
+                },
+                { new: true }
+            );
+        }
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 /* 
 
 export async function handleWishlist() {
@@ -235,6 +332,5 @@ export async function handleWishlist() {
         throw error;
     }
 }
-
 
 */

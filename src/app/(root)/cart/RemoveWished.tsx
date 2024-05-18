@@ -1,5 +1,6 @@
 "use client";
 
+import { Trash2 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
@@ -21,8 +22,13 @@ export default function RemoveWished({ productId }: { productId: string }) {
     }
 
     return (
-        <Button onClick={removeWished} variant="destructive">
-            Remove
+        <Button
+            aria-haspopup="true"
+            size="icon"
+            variant="ghost"
+            onClick={removeWished}
+        >
+            <Trash2 className="h-4 w-4" />
         </Button>
     );
 }
