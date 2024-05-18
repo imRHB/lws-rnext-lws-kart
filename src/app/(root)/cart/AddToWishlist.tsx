@@ -1,19 +1,19 @@
 "use client";
 
-import { Trash2 } from "lucide-react";
+import { Heart } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { removeProductFromWishlist } from "@/lib/actions/user.action";
+import { addProductToWishlist } from "@/lib/actions/user.action";
 
-export default function RemoveWished({ productId }: { productId: string }) {
+export default function AddToWishlist({ productId }: { productId: string }) {
     const { data: session } = useSession();
     const pathname = usePathname();
 
-    async function removeWished() {
+    async function addToWishlist() {
         if (session) {
-            await removeProductFromWishlist({
+            await addProductToWishlist({
                 email: session?.user?.email!,
                 productId,
                 path: pathname,
@@ -22,8 +22,8 @@ export default function RemoveWished({ productId }: { productId: string }) {
     }
 
     return (
-        <Button size="icon" variant="ghost" onClick={removeWished}>
-            <Trash2 className="h-4 w-4" />
+        <Button size="icon" variant="ghost" onClick={addToWishlist}>
+            <Heart className="h-4 w-4" />
         </Button>
     );
 }

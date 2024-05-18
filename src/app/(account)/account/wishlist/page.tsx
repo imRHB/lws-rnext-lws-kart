@@ -104,7 +104,7 @@ function WishlistItemTableRow({
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-4">
-                    <AddToCart />
+                    <AddToCart productId={productId} />
                     <RemoveWished productId={productId} />
                 </div>
             </TableCell>

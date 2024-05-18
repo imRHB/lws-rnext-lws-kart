@@ -145,7 +145,6 @@ export async function addToCart(params: AddToCartParams) {
 
         const user = await User.findOne({ email });
         const product = await Product.findById(productId);
-        console.log("product:", product);
 
         const existingProductIndex = await user.cart.findIndex(
             (item: any) => item.product.toString() === productId
@@ -156,17 +155,17 @@ export async function addToCart(params: AddToCartParams) {
             // if (size) user.cart[existingProductIndex].size = size;
             // if (color) user.cart[existingProductIndex].color = color;
             user.cart[existingProductIndex].updatedAt = new Date();
+            product.quantity -= 1;
         } else {
             user.cart.push({
                 product: new ObjectId(productId),
                 ...cartData,
                 updatedAt: new Date(),
             });
+            product.quantity -= 1;
         }
 
-        // product.quantity -= quantity
-
-        // await product.save();
+        await product.save();
         await user.save();
 
         revalidatePath(path);
@@ -241,6 +240,54 @@ export async function updateCartItemQuantity(
         }
 
         await product.save();
+        await user.save();
+
+        revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface RemoveProductFromCartParams {
+    email: string;
+    productId: string;
+    path: string;
+}
+
+export async function removeProductFromCart(
+    params: RemoveProductFromCartParams
+) {
+    try {
+        await connectToDatabase();
+
+        const { email, productId, path } = params;
+
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const cartItemIndex = user.cart.findIndex(
+            (item: any) => item.product.toString() === productId
+        );
+
+        if (cartItemIndex === -1) {
+            throw new Error("Product not found in cart");
+        }
+
+        const cartItem = user.cart[cartItemIndex];
+        const product = await Product.findById(productId);
+
+        if (!product) {
+            throw new Error("Product not found");
+        }
+
+        product.quantity += cartItem.quantity;
+        await product.save();
+
+        user.cart.splice(cartItemIndex, 1);
         await user.save();
 
         revalidatePath(path);

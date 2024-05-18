@@ -5,15 +5,15 @@ import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { removeProductFromWishlist } from "@/lib/actions/user.action";
+import { removeProductFromCart } from "@/lib/actions/user.action";
 
-export default function RemoveWished({ productId }: { productId: string }) {
+export default function RemoveCartItem({ productId }: { productId: string }) {
     const { data: session } = useSession();
     const pathname = usePathname();
 
-    async function removeWished() {
+    async function removeCartItem() {
         if (session) {
-            await removeProductFromWishlist({
+            await removeProductFromCart({
                 email: session?.user?.email!,
                 productId,
                 path: pathname,
@@ -22,7 +22,7 @@ export default function RemoveWished({ productId }: { productId: string }) {
     }
 
     return (
-        <Button size="icon" variant="ghost" onClick={removeWished}>
+        <Button size="icon" variant="ghost" onClick={removeCartItem}>
             <Trash2 className="h-4 w-4" />
         </Button>
     );

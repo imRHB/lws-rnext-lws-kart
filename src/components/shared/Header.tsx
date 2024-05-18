@@ -55,7 +55,7 @@ export default async function Header() {
                         )}
                     </Link>
                     <Link
-                        href="/account/cart"
+                        href="/cart"
                         className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
                     >
                         Cart

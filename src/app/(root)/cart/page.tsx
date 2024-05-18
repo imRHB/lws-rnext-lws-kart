@@ -1,4 +1,3 @@
-import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +21,8 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { getCart } from "@/lib/actions/user.action";
-import RemoveWished from "./RemoveWished";
+import AddToWishlist from "./AddToWishlist";
+import RemoveCartItem from "./RemoveCartItem";
 
 interface Props {
     productId: string;
@@ -40,6 +40,12 @@ export default async function CartPage() {
     const session = await auth();
 
     const { cart } = await getCart({ email: session?.user?.email! });
+
+    const SHIPPING_CHARGE = 20;
+    const SUB_TOTAL = cart.reduce(
+        (acc: number, item: any) => acc + item.product.price * item.quantity,
+        0
+    );
 
     return (
         <section className="container grid grid-cols-1 lg:grid-cols-3 items-start pb-16 pt-4 gap-6">
@@ -81,11 +87,33 @@ export default async function CartPage() {
                 <Card>
                     <CardHeader>
                         <CardTitle>Order Summary</CardTitle>
-                        <CardDescription>Subtotal</CardDescription>
+                        <CardDescription>
+                            {cart.length} {cart.length > 1 ? "items" : "item"}
+                        </CardDescription>
                     </CardHeader>
                     <CardContent>
+                        <CardDescription className="flex items-center justify-between gap-4">
+                            <span className="font-semibold">Subtotal</span>
+                            <span>${SUB_TOTAL}</span>
+                        </CardDescription>
                         {/* promo code, if any, input and button */}
-                        <CardDescription>Total</CardDescription>
+                    </CardContent>
+                    <CardContent>
+                        <CardDescription className="flex items-center justify-between gap-4">
+                            <span className="font-semibold">
+                                Shipping charge
+                            </span>
+                            <span>${SHIPPING_CHARGE}</span>
+                        </CardDescription>
+                        {/* promo code, if any, input and button */}
+                    </CardContent>
+                    <CardContent>
+                        <CardDescription className="flex items-center justify-between gap-4">
+                            <span className="font-semibold text-lg">Total</span>
+                            <span className="font-semibold text-lg">
+                                ${SUB_TOTAL + SHIPPING_CHARGE}
+                            </span>
+                        </CardDescription>
                     </CardContent>
                     <CardFooter>
                         <Button>Proceed to checkout</Button>
@@ -141,10 +169,8 @@ function WishlistItemTableRow({
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-2">
-                    <Button aria-haspopup="true" size="icon" variant="ghost">
-                        <Heart className="h-4 w-4" />
-                    </Button>
-                    <RemoveWished productId={productId} />
+                    <AddToWishlist productId={productId} />
+                    <RemoveCartItem productId={productId} />
                 </div>
             </TableCell>
         </TableRow>
