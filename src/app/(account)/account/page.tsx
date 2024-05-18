@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/card";
 import { getUserByEmail } from "@/lib/actions/user.action";
 import AccountSectionIntro from "../(components)/AccountSectionIntro";
-import CartCounter from "./cart/CartCounter";
 
 export default async function AccountPage() {
     const session = await auth();
@@ -127,7 +126,8 @@ export default async function AccountPage() {
             </div>
 
             <Card className="p-12">
-                <CartCounter />
+                {/* <CartCounter /> */}
+                cart counter
             </Card>
         </section>
     );

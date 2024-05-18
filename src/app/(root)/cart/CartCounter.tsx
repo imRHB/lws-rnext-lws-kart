@@ -1,26 +1,52 @@
 "use client";
 
 import { Minus, Plus } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { updateCartItemQuantity } from "@/lib/actions/user.action";
 
-export default function CartCounter() {
+export default function CartCounter({
+    productId,
+    quantity,
+    stock,
+}: {
+    productId: string;
+    quantity: number;
+    stock: number;
+}) {
+    const { data: session } = useSession();
+    const pathname = usePathname();
+
     const min = 1;
-    const max = 99;
+    const max = stock;
 
-    const [count, setCount] = useState(min);
+    const [count, setCount] = useState(quantity);
 
-    const handleDecrease = () => {
-        if (count <= min) return;
+    async function handleDecrease() {
+        await updateCartItemQuantity({
+            email: session?.user?.email!,
+            productId,
+            type: "DECREASE",
+            path: pathname,
+        });
+
         setCount(count - 1);
-    };
+    }
 
-    const handleIncrease = () => {
-        if (count >= max) return;
+    async function handleIncrease() {
+        await updateCartItemQuantity({
+            email: session?.user?.email!,
+            productId,
+            type: "INCREASE",
+            path: pathname,
+        });
+
         setCount(count + 1);
-    };
+    }
 
     return (
         <div className="flex w-full max-w-sm items-center space-x-2">

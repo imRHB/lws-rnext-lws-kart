@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import CartCounter from "@/app/(account)/account/cart/CartCounter";
 import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +21,7 @@ import {
 } from "@/components/ui/table";
 import { getCart } from "@/lib/actions/user.action";
 import AddToWishlist from "./AddToWishlist";
+import CartCounter from "./CartCounter";
 import RemoveCartItem from "./RemoveCartItem";
 
 interface Props {
@@ -94,7 +94,7 @@ export default async function CartPage() {
                     <CardContent>
                         <CardDescription className="flex items-center justify-between gap-4">
                             <span className="font-semibold">Subtotal</span>
-                            <span>${SUB_TOTAL}</span>
+                            <span>${SUB_TOTAL.toFixed(2)}</span>
                         </CardDescription>
                         {/* promo code, if any, input and button */}
                     </CardContent>
@@ -103,7 +103,7 @@ export default async function CartPage() {
                             <span className="font-semibold">
                                 Shipping charge
                             </span>
-                            <span>${SHIPPING_CHARGE}</span>
+                            <span>${SHIPPING_CHARGE.toFixed(2)}</span>
                         </CardDescription>
                         {/* promo code, if any, input and button */}
                     </CardContent>
@@ -111,7 +111,7 @@ export default async function CartPage() {
                         <CardDescription className="flex items-center justify-between gap-4">
                             <span className="font-semibold text-lg">Total</span>
                             <span className="font-semibold text-lg">
-                                ${SUB_TOTAL + SHIPPING_CHARGE}
+                                ${(SUB_TOTAL + SHIPPING_CHARGE).toFixed(2)}
                             </span>
                         </CardDescription>
                     </CardContent>
@@ -165,7 +165,11 @@ function WishlistItemTableRow({
                 <span>-{discount}%</span>
             </TableCell>
             <TableCell>
-                <CartCounter />
+                <CartCounter
+                    productId={productId}
+                    quantity={quantity}
+                    stock={stock}
+                />
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-2">

@@ -205,7 +205,7 @@ export async function getCart(params: { email: string }) {
 interface UpdateCartItemQuantityParams {
     email: string;
     productId: string;
-    quantity: number;
+    type: string;
     path: string;
 }
 
@@ -215,9 +215,12 @@ export async function updateCartItemQuantity(
     try {
         await connectToDatabase();
 
-        const { email, productId, quantity, path } = params;
+        const { email, productId, path, type } = params;
 
         const user = await User.findOne({ email });
+
+        console.log(productId);
+
         const cartItemIndex = user.cart.findIndex(
             (item: any) => item.product.toString() === productId
         );
@@ -227,16 +230,32 @@ export async function updateCartItemQuantity(
         const cartItem = user.cart[cartItemIndex];
         const product = await Product.findById(productId);
 
-        if (quantity > 0) {
-            const difference = quantity - cartItem.quantity;
-            if (product.quantity < difference) {
-                throw new Error("Not enough quantity");
+        switch (type) {
+            case "INCREASE": {
+                if (product.quantity < 1) {
+                    throw new Error("Not enough quantity");
+                }
+                product.quantity -= 1;
+                cartItem.quantity += 1;
+
+                break;
             }
-            product.quantity -= difference;
-            cartItem.quantity = difference;
-        } else {
-            product.quantity += cartItem.quantity;
-            user.cart.splice(cartItemIndex, 1);
+
+            case "DECREASE": {
+                if (cartItem.quantity > 1) {
+                    product.quantity += 1;
+                    cartItem.quantity -= 1;
+                } else {
+                    product.quantity += cartItem.quantity;
+                    user.cart.splice(cartItemIndex, 1);
+                }
+
+                break;
+            }
+
+            default: {
+                throw new Error("Invalid action type");
+            }
         }
 
         await product.save();

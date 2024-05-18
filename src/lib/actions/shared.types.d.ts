@@ -28,3 +28,8 @@ export interface UpdateAddressParams {
     addressData: IShippingAndBillingAddress;
     path: string;
 }
+
+export enum CartItemQuantityUpdateType {
+    increase = "INCREASE",
+    decrease = "DECREASE",
+}
