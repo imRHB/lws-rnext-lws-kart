@@ -12,7 +12,7 @@ export default async function CategoryList() {
             <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
                 shop by category
             </h2>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-8">
                 {categories.map((category) => (
                     <CategoryCard key={category.name} category={category} />
                 ))}

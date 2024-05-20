@@ -1,6 +1,6 @@
-import { model, models, Schema, Types } from "mongoose";
+import { Document, model, models, Schema, Types } from "mongoose";
 
-export interface IBrand {
+export interface IBrand extends Document {
     name: string;
     description: string;
     products: Types.ObjectId[];

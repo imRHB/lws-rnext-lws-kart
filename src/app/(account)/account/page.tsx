@@ -124,11 +124,6 @@ export default async function AccountPage() {
                     </CardContent>
                 </Card>
             </div>
-
-            <Card className="p-12">
-                {/* <CartCounter /> */}
-                cart counter
-            </Card>
         </section>
     );
 }

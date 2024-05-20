@@ -17,11 +17,12 @@
             "Adjustable headrest",
             "Built-in USB charging ports"
         ],
-        "quantity": 25,
+        "stock": 25,
         "size": ["sm", "md", "lg"],
         "color": ["violet", "green", "orange"],
         "sku": "LKB001",
-        "brand": "Hatil"
+        "brand": "Hatil",
+        "createdAt": "2024-05-16T09:11:06.999+00:00"
     },
     {
         "name": "Elegant Nightstand",
@@ -41,11 +42,12 @@
             "Integrated LED night light",
             "Classic brass hardware"
         ],
-        "quantity": 50,
+        "stock": 50,
         "size": ["sm", "lg"],
         "color": ["violet", "orange"],
         "sku": "ENS002",
-        "brand": "Hatil"
+        "brand": "Hatil",
+        "createdAt": "2024-05-19T09:11:06.999+00:00"
     },
     {
         "name": "Modern Dresser",
@@ -65,11 +67,12 @@
             "Tapered metal legs",
             "Minimalist design"
         ],
-        "quantity": 35,
+        "stock": 35,
         "size": ["md", "lg"],
         "color": ["green", "orange"],
         "sku": "MD003",
-        "brand": "Hatil"
+        "brand": "Hatil",
+        "createdAt": "2024-05-16T15:11:06.999+00:00"
     },
     {
         "name": "Plush Ottoman",
@@ -89,11 +92,12 @@
             "Versatile use as footrest or extra seating",
             "Available in various colors"
         ],
-        "quantity": 40,
+        "stock": 40,
         "size": ["sm", "md", "lg"],
         "color": ["violet", "green"],
         "sku": "PO004",
-        "brand": "Hatil"
+        "brand": "Hatil",
+        "createdAt": "2024-05-20T02:11:06.999+00:00"
     },
     {
         "name": "Rustic Bed Frame",
@@ -113,11 +117,12 @@
             "Sturdy metal legs",
             "Rustic yet modern aesthetic"
         ],
-        "quantity": 20,
+        "stock": 20,
         "size": ["md", "lg"],
         "color": ["violet", "green", "orange"],
         "sku": "RBF005",
-        "brand": "Sofa"
+        "brand": "Sofa",
+        "createdAt": "2024-05-17T09:11:06.999+00:00"
     },
     {
         "name": "Velvet Accent Chair",
@@ -137,11 +142,12 @@
             "Solid wood legs",
             "Available in various colors"
         ],
-        "quantity": 30,
+        "stock": 30,
         "size": ["sm", "md"],
         "color": ["violet", "orange"],
         "sku": "VAC006",
-        "brand": "Apex"
+        "brand": "Apex",
+        "createdAt": "2024-05-17T09:11:06.999+00:00"
     },
     {
         "name": "Elegant Canopy Bed",
@@ -161,11 +167,12 @@
             "Decorative finials",
             "Available in queen and king sizes"
         ],
-        "quantity": 15,
+        "stock": 15,
         "size": ["sm", "md"],
         "color": ["violet", "green", "orange"],
         "sku": "ECB007",
-        "brand": "Bata"
+        "brand": "Bata",
+        "createdAt": "2024-05-16T15:11:06.999+00:00"
     },
     {
         "name": "Modern Lounge Chair",
@@ -185,10 +192,11 @@
             "Swivel base for easy movement",
             "Available in multiple colors"
         ],
-        "quantity": 20,
+        "stock": 20,
         "size": ["sm", "md", "lg"],
         "color": ["violet", "green"],
         "sku": "MLC008",
-        "brand": "Bata"
+        "brand": "Bata",
+        "createdAt": "2024-05-16T15:11:06.999+00:00"
     }
 ]

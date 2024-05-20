@@ -17,7 +17,7 @@ import { SearchParamsProps } from "@/types";
 import Size from "./Size";
 
 export default async function ShopPage({ searchParams }: SearchParamsProps) {
-    const { minimalProducts: products } = await getProducts({
+    const products = await getProducts({
         searchQuery: searchParams.q,
     });
 

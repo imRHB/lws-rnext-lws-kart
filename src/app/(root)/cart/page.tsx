@@ -39,10 +39,10 @@ interface Props {
 export default async function CartPage() {
     const session = await auth();
 
-    const { cart } = await getCart({ email: session?.user?.email! });
+    const cart = await getCart({ email: session?.user?.email! });
 
     const SHIPPING_CHARGE = 20;
-    const SUB_TOTAL = cart.reduce(
+    const SUB_TOTAL = (cart as { product: any; quantity: number }[]).reduce(
         (acc: number, item: any) => acc + item.product.price * item.quantity,
         0
     );
@@ -65,7 +65,7 @@ export default async function CartPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {cart.map((item: any) => (
+                        {(cart as any[]).map((item) => (
                             <WishlistItemTableRow
                                 key={item._id}
                                 productId={String(item.product._id)}
@@ -88,7 +88,8 @@ export default async function CartPage() {
                     <CardHeader>
                         <CardTitle>Order Summary</CardTitle>
                         <CardDescription>
-                            {cart.length} {cart.length > 1 ? "items" : "item"}
+                            {(cart as any[]).length}{" "}
+                            {(cart as any[]).length > 1 ? "items" : "item"}
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

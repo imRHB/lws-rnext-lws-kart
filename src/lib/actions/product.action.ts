@@ -2,11 +2,13 @@
 
 import { FilterQuery } from "mongoose";
 
-import Product from "@/models/product.model";
+import Product, { IProduct } from "@/models/product.model";
 import { connectToDatabase } from "../mongoose";
 import { GetProductByIdParams, GetProductsParams } from "./shared.types";
 
-export async function getProducts(params: GetProductsParams) {
+export async function getProducts(
+    params: GetProductsParams
+): Promise<IProduct[]> {
     try {
         await connectToDatabase();
 
@@ -24,29 +26,21 @@ export async function getProducts(params: GetProductsParams) {
 
         const products = await Product.find(query);
 
-        const minimalProducts = products.map((product) => ({
-            _id: product._id,
-            name: product.name,
-            price: product.price,
-            discount: product.discount,
-            thumbnail: product.thumbnail,
-        }));
-
-        return {
-            products,
-            minimalProducts,
-        };
+        return products;
     } catch (error) {
         console.log(error);
         throw error;
     }
 }
 
-export async function getProductById(params: GetProductByIdParams) {
+export async function getProductById(
+    params: GetProductByIdParams
+): Promise<IProduct> {
     try {
         await connectToDatabase();
 
         const { productId } = params;
+
         const product = await Product.findById(productId);
         await Product.findByIdAndUpdate(productId, { $inc: { views: 1 } });
 
@@ -62,7 +56,9 @@ interface GetTrendingProductsParams {
     fields?: string;
 }
 
-export async function getTrendingProducts(params: GetTrendingProductsParams) {
+export async function getTrendingProducts(
+    params: GetTrendingProductsParams
+): Promise<IProduct[]> {
     try {
         await connectToDatabase();
 
@@ -87,7 +83,9 @@ export async function getTrendingProducts(params: GetTrendingProductsParams) {
     }
 }
 
-export async function getNewArrivalProducts(params: GetTrendingProductsParams) {
+export async function getNewArrivalProducts(
+    params: GetTrendingProductsParams
+): Promise<IProduct[]> {
     try {
         await connectToDatabase();
 

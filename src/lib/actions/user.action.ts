@@ -4,11 +4,11 @@ import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
 
 import Product from "@/models/product.model";
-import User from "@/models/user.model";
+import User, { IUser } from "@/models/user.model";
 import { connectToDatabase } from "../mongoose";
 import { CreateUserParams, ToggleWishlistParams } from "./shared.types";
 
-export async function createUser(userData: CreateUserParams) {
+export async function createUser(userData: CreateUserParams): Promise<IUser> {
     try {
         await connectToDatabase();
 
@@ -72,7 +72,9 @@ export async function toggleWishlist(params: ToggleWishlistParams) {
     }
 }
 
-export async function getWishlist(params: { email: string }) {
+export async function getWishlist(params: {
+    email: string;
+}): Promise<Pick<IUser, "wishlist">> {
     try {
         await connectToDatabase();
 
@@ -155,14 +157,14 @@ export async function addToCart(params: AddToCartParams) {
             // if (size) user.cart[existingProductIndex].size = size;
             // if (color) user.cart[existingProductIndex].color = color;
             user.cart[existingProductIndex].updatedAt = new Date();
-            product.quantity -= 1;
+            product.stock -= 1;
         } else {
             user.cart.push({
                 product: new ObjectId(productId),
                 ...cartData,
                 updatedAt: new Date(),
             });
-            product.quantity -= 1;
+            product.stock -= 1;
         }
 
         await product.save();
@@ -175,7 +177,9 @@ export async function addToCart(params: AddToCartParams) {
     }
 }
 
-export async function getCart(params: { email: string }) {
+export async function getCart(params: {
+    email: string;
+}): Promise<Pick<IUser, "cart">> {
     try {
         await connectToDatabase();
 
@@ -193,9 +197,7 @@ export async function getCart(params: { email: string }) {
         });
         const cart = user.cart;
 
-        return {
-            cart,
-        };
+        return cart;
     } catch (error) {
         console.log(error);
         throw error;
@@ -232,21 +234,21 @@ export async function updateCartItemQuantity(
 
         switch (type) {
             case "INCREASE": {
-                if (product.quantity < 1) {
+                if (product.stock < 1) {
                     throw new Error("Not enough quantity");
                 }
-                product.quantity -= 1;
-                cartItem.quantity += 1;
+                product.stock -= 1;
+                cartItem.stock += 1;
 
                 break;
             }
 
             case "DECREASE": {
                 if (cartItem.quantity > 1) {
-                    product.quantity += 1;
+                    product.stock += 1;
                     cartItem.quantity -= 1;
                 } else {
-                    product.quantity += cartItem.quantity;
+                    product.stock += cartItem.quantity;
                     user.cart.splice(cartItemIndex, 1);
                 }
 
@@ -303,7 +305,7 @@ export async function removeProductFromCart(
             throw new Error("Product not found");
         }
 
-        product.quantity += cartItem.quantity;
+        product.stock += cartItem.quantity;
         await product.save();
 
         user.cart.splice(cartItemIndex, 1);
