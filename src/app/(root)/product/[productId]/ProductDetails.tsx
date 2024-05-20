@@ -106,8 +106,8 @@ export default async function ProductDetails({
             </div>
 
             <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
-                <AddToCart productId={productId} />
-                <AddToWishlist productId={productId} />
+                <AddToCart productId={JSON.parse(productId)} />
+                <AddToWishlist productId={JSON.parse(productId)} />
             </div>
 
             <div className="flex gap-3 mt-4">

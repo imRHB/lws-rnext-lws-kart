@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -9,121 +12,107 @@ import {
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
-import { Trash2 } from "lucide-react";
-import Image from "next/image";
+import { getCart } from "@/lib/actions/user.action";
+import RemoveCartItem from "./RemoveCartItem";
 
-export default function CheckoutSummary() {
+export default async function CheckoutSummary() {
+    const session = await auth();
+
+    const cart = await getCart({ email: session?.user?.email! });
+
+    const SHIPPING_CHARGE = 20;
+    const SUB_TOTAL = (cart as { product: any; quantity: number }[]).reduce(
+        (acc: number, item: any) =>
+            acc +
+            (item.product.price -
+                (item.product.discount * item.product.price) / 100) *
+                item.quantity,
+        0
+    );
+    const TAX_AMOUNT = (7 * SUB_TOTAL) / 100;
+
     return (
         <div className="col-span-4 space-y-6">
             <Card>
                 <CardHeader>
                     <CardTitle>Order Summary</CardTitle>
-                    <CardDescription>You have ordered 3 items</CardDescription>
+                    <CardDescription>
+                        You have ordered {(cart as any[]).length} items
+                    </CardDescription>
                 </CardHeader>
 
                 <Separator />
 
-                <CardContent className="mt-4 space-y-4">
-                    <div className="flex items-center justify-between gap-4">
-                        <Image
-                            src="/assets/images/products/product1.jpg"
-                            height={64}
-                            width={64}
-                            className="rounded"
-                            alt=""
-                        />
-                        <CardDescription className="flex flex-col gap-1">
-                            <span className="font-semibold">T-shirt</span>
-                            <span className="font-semibold">$50.00</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <span className="font-semibold">x3</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <Button
-                                aria-haspopup="true"
-                                size="icon"
-                                variant="ghost"
-                            >
-                                <Trash2 className="h-4 w-4" />
-                            </Button>
-                        </CardDescription>
-                    </div>
-                    <Separator />
-                    <div className="flex items-center justify-between gap-4">
-                        <Image
-                            src="/assets/images/products/product1.jpg"
-                            height={64}
-                            width={64}
-                            className="rounded"
-                            alt=""
-                        />
-                        <CardDescription className="flex flex-col gap-1">
-                            <span className="font-semibold">T-shirt</span>
-                            <span className="font-semibold">$50.00</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <span className="font-semibold">x3</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <Button
-                                aria-haspopup="true"
-                                size="icon"
-                                variant="ghost"
-                            >
-                                <Trash2 className="h-4 w-4" />
-                            </Button>
-                        </CardDescription>
-                    </div>
-                    <Separator />
-                    <div className="flex items-center justify-between gap-4">
-                        <Image
-                            src="/assets/images/products/product1.jpg"
-                            height={64}
-                            width={64}
-                            className="rounded"
-                            alt=""
-                        />
-                        <CardDescription className="flex flex-col gap-1">
-                            <span className="font-semibold">T-shirt</span>
-                            <span className="font-semibold">$50.00</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <span className="font-semibold">x3</span>
-                        </CardDescription>
-                        <CardDescription>
-                            <Button
-                                aria-haspopup="true"
-                                size="icon"
-                                variant="ghost"
-                            >
-                                <Trash2 className="h-4 w-4" />
-                            </Button>
-                        </CardDescription>
-                    </div>
-                </CardContent>
+                {(cart as any[]).map((item: any) => (
+                    <CardContent key={item._id} className="mt-4 space-y-4">
+                        <div className="flex items-center justify-between gap-4">
+                            <Image
+                                src={item.product.thumbnail}
+                                height={64}
+                                width={64}
+                                className="aspect-video rounded-md"
+                                alt={item.product.name}
+                            />
+                            <CardDescription className="flex flex-col gap-1">
+                                <span className="font-semibold">
+                                    {item.product.name}
+                                </span>
+                                <span className="font-semibold">
+                                    $
+                                    {(
+                                        item.product.price -
+                                        (item.product.discount *
+                                            item.product.price) /
+                                            100
+                                    ).toFixed(2)}
+                                </span>
+                            </CardDescription>
+                            <CardDescription>
+                                <span className="font-semibold">
+                                    x{item.quantity}
+                                </span>
+                            </CardDescription>
+                            <CardDescription>
+                                <RemoveCartItem
+                                    productId={String(item.product._id)}
+                                />
+                            </CardDescription>
+                        </div>
+                    </CardContent>
+                ))}
 
                 <Separator />
 
                 <CardFooter className="mt-4 flex flex-col gap-4">
                     <CardDescription className="flex w-full items-center justify-between gap-4">
                         <span className="font-semibold">Subtotal</span>
-                        <span className="font-semibold">$50.00</span>
+                        <span className="font-semibold">
+                            ${SUB_TOTAL.toFixed(2)}
+                        </span>
                     </CardDescription>
                     <CardDescription className="flex w-full items-center justify-between gap-4">
                         <span className="font-semibold">Shipping</span>
-                        <span className="font-semibold">FREE</span>
+                        <span className="font-semibold">
+                            ${SHIPPING_CHARGE}
+                        </span>
                     </CardDescription>
                     <CardDescription className="flex w-full items-center justify-between gap-4">
                         <span className="font-semibold">Taxes</span>
-                        <span className="font-semibold">$5.00</span>
+                        <span className="font-semibold">
+                            ${TAX_AMOUNT.toFixed(2)}
+                        </span>
                     </CardDescription>
 
                     <Separator />
 
                     <CardDescription className="flex w-full items-center justify-between gap-4">
                         <span className="text-lg font-semibold">Total</span>
-                        <span className="text-lg font-semibold">$55.00</span>
+                        <span className="text-lg font-semibold">
+                            $
+                            {(SUB_TOTAL + SHIPPING_CHARGE + TAX_AMOUNT).toFixed(
+                                2
+                            )}
+                        </span>
                     </CardDescription>
                 </CardFooter>
             </Card>

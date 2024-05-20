@@ -189,7 +189,7 @@ export async function getCart(params: {
                 {
                     path: "product",
                     model: Product,
-                    select: "_id name price discount thumbnail quantity",
+                    select: "_id name price discount thumbnail stock",
                 },
             ],
         });
@@ -219,8 +219,6 @@ export async function updateCartItemQuantity(
 
         const user = await User.findOne({ email });
 
-        console.log(productId);
-
         const cartItemIndex = user.cart.findIndex(
             (item: any) => item.product.toString() === productId
         );
@@ -236,7 +234,7 @@ export async function updateCartItemQuantity(
                     throw new Error("Not enough quantity");
                 }
                 product.stock -= 1;
-                cartItem.stock += 1;
+                cartItem.quantity += 1;
 
                 break;
             }

@@ -36,7 +36,7 @@ export default async function ProductPage({ params }: Props) {
                     images={product.images ?? []}
                 />
                 <ProductDetails
-                    productId={_id}
+                    productId={JSON.stringify(_id)}
                     name={name}
                     brand={brand}
                     category={category}

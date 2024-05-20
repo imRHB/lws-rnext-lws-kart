@@ -2,15 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { auth } from "@/auth";
-import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import {
     Table,
     TableBody,
@@ -22,6 +13,7 @@ import {
 import { getCart } from "@/lib/actions/user.action";
 import AddToWishlist from "./AddToWishlist";
 import CartCounter from "./CartCounter";
+import CartSummary from "./CartSummary";
 import RemoveCartItem from "./RemoveCartItem";
 
 interface Props {
@@ -43,7 +35,11 @@ export default async function CartPage() {
 
     const SHIPPING_CHARGE = 20;
     const SUB_TOTAL = (cart as { product: any; quantity: number }[]).reduce(
-        (acc: number, item: any) => acc + item.product.price * item.quantity,
+        (acc: number, item: any) =>
+            acc +
+            (item.product.price -
+                (item.product.discount * item.product.price) / 100) *
+                item.quantity,
         0
     );
 
@@ -73,7 +69,7 @@ export default async function CartPage() {
                                 price={item.product.price}
                                 discount={item.product.discount}
                                 thumbnail={item.product.thumbnail}
-                                stock={item.product.quantity}
+                                stock={item.product.stock}
                                 quantity={item.quantity}
                                 size={item.size}
                                 color={item.color}
@@ -84,42 +80,7 @@ export default async function CartPage() {
             </div>
 
             <div>
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Order Summary</CardTitle>
-                        <CardDescription>
-                            {(cart as any[]).length}{" "}
-                            {(cart as any[]).length > 1 ? "items" : "item"}
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <CardDescription className="flex items-center justify-between gap-4">
-                            <span className="font-semibold">Subtotal</span>
-                            <span>${SUB_TOTAL.toFixed(2)}</span>
-                        </CardDescription>
-                        {/* promo code, if any, input and button */}
-                    </CardContent>
-                    <CardContent>
-                        <CardDescription className="flex items-center justify-between gap-4">
-                            <span className="font-semibold">
-                                Shipping charge
-                            </span>
-                            <span>${SHIPPING_CHARGE.toFixed(2)}</span>
-                        </CardDescription>
-                        {/* promo code, if any, input and button */}
-                    </CardContent>
-                    <CardContent>
-                        <CardDescription className="flex items-center justify-between gap-4">
-                            <span className="font-semibold text-lg">Total</span>
-                            <span className="font-semibold text-lg">
-                                ${(SUB_TOTAL + SHIPPING_CHARGE).toFixed(2)}
-                            </span>
-                        </CardDescription>
-                    </CardContent>
-                    <CardFooter>
-                        <Button>Proceed to checkout</Button>
-                    </CardFooter>
-                </Card>
+                <CartSummary />
             </div>
         </section>
     );
