@@ -110,7 +110,7 @@ export default async function AccountPage() {
                                     {billingAddress.city}
                                 </CardDescription>
                                 <CardDescription>
-                                    +{billingAddress.phone}
+                                    {billingAddress.phone}
                                 </CardDescription>
                                 <CardDescription>
                                     {billingAddress.email}

@@ -8,7 +8,7 @@ export interface ICartItem {
     updatedAt: Date;
 }
 
-const AddressSchema = new Schema({
+export const AddressSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     street: { type: String, required: true },
