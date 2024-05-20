@@ -85,9 +85,7 @@ export async function getWishlist(params: {
         });
         const wishlist = user.wishlist;
 
-        return {
-            wishlist,
-        };
+        return wishlist;
     } catch (error) {
         console.log(error);
         throw error;

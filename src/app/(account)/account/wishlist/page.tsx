@@ -27,7 +27,7 @@ interface Props {
 export default async function AccountWishlistPage() {
     const session = await auth();
 
-    const { wishlist } = await getWishlist({ email: session?.user?.email! });
+    const wishlist = await getWishlist({ email: session?.user?.email! });
 
     return (
         <React.Fragment>
@@ -60,7 +60,7 @@ export default async function AccountWishlistPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {wishlist.map((product: any) => (
+                        {(wishlist as any[]).map((product: any) => (
                             <WishlistItemTableRow
                                 key={product._id}
                                 productId={String(product._id)}
