@@ -48,8 +48,64 @@ export async function getProductById(params: GetProductByIdParams) {
 
         const { productId } = params;
         const product = await Product.findById(productId);
+        await Product.findByIdAndUpdate(productId, { $inc: { views: 1 } });
 
         return product;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface GetTrendingProductsParams {
+    limit?: number;
+    fields?: string;
+}
+
+export async function getTrendingProducts(params: GetTrendingProductsParams) {
+    try {
+        await connectToDatabase();
+
+        const { limit, fields } = params;
+
+        const query = Product.find({}).sort({ views: -1 });
+
+        if (fields) {
+            query.select(fields);
+        }
+
+        if (limit) {
+            query.limit(limit);
+        }
+
+        const products = await query.exec();
+
+        return products;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function getNewArrivalProducts(params: GetTrendingProductsParams) {
+    try {
+        await connectToDatabase();
+
+        const { limit, fields } = params;
+
+        const query = Product.find({}).sort({ createdAt: -1 });
+
+        if (fields) {
+            query.select(fields);
+        }
+
+        if (limit) {
+            query.limit(limit);
+        }
+
+        const products = await query.exec();
+
+        return products;
     } catch (error) {
         console.log(error);
         throw error;

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Bedroom",
+        "description": "Create your dream bedroom with our stylish and comfortable furniture collection. From beds to nightstands, we have everything you need to make your bedroom a cozy retreat.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200175/lws-kart/icons/bed_fhefin.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199933/lws-kart/categories/category-1_uwtq0f.jpg"
+    },
+    {
+        "name": "Mattress",
+        "description": "Experience unparalleled comfort and support with our range of high-quality mattresses. Designed to provide a restful night's sleep, our mattresses cater to all sleep preferences.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200175/lws-kart/icons/bed-2_spehp9.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199932/lws-kart/categories/category-2_evnlio.jpg"
+    },
+    {
+        "name": "Outdoor",
+        "description": "Transform your outdoor space into a relaxing oasis with our selection of outdoor furniture. Perfect for patios, gardens, and balconies, our pieces are designed to withstand the elements and look great.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200176/lws-kart/icons/outdoor-cafe_trzfyt.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199933/lws-kart/categories/category-3_z9q2ml.jpg"
+    },
+    {
+        "name": "Sofa",
+        "description": "Discover the perfect sofa for your living room with our diverse collection. Whether you prefer modern or classic styles, our sofas offer both comfort and elegance.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200174/lws-kart/icons/sofa_fqdseo.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199932/lws-kart/categories/category-4_ocvdtm.jpg"
+    },
+    {
+        "name": "Living Room",
+        "description": "Enhance your living room with our stylish and functional furniture. From sofas to coffee tables, we offer a wide range of options to create a space that suits your lifestyle.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200174/lws-kart/icons/terrace_jccseu.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199933/lws-kart/categories/category-5_tjk073.jpg"
+    },
+    {
+        "name": "Kitchen",
+        "description": "Upgrade your kitchen with our innovative and practical furniture solutions. Our collection includes everything from dining tables to storage cabinets, designed to make your kitchen both beautiful and efficient.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1716200176/lws-kart/icons/office_ouyt5p.svg",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1716199932/lws-kart/categories/category-6_cfnnoj.jpg"
+    }
+]

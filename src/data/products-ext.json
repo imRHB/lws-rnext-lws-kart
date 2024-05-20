@@ -1,0 +1,2360 @@
+[
+    {
+        "name": "Classic Fabric Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 799.99,
+        "discount_price": 699.99,
+        "reviewsNumber": 25,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Comfort Furniture",
+        "category": "sofa",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "80\"W x 36\"H x 40\"D",
+            "weight": "120 lbs"
+        },
+        "description": "A comfortable and stylish sofa perfect for your living room.",
+        "sizes": ["2-seater", "3-seater", "L-shaped"],
+        "colors": ["#808080", "#F5F5DC", "#000080"],
+        "sku": 50,
+        "soldCounts": 20
+    },
+    {
+        "name": "Elegant Leather Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 1099.99,
+        "discount_price": 999.99,
+        "reviewsNumber": 30,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "Luxury Living",
+        "category": "sofa",
+        "details": {
+            "material": "Leather",
+            "dimensions": "88\"W x 34\"H x 39\"D",
+            "weight": "130 lbs"
+        },
+        "description": "An elegant leather sofa that exudes sophistication.",
+        "sizes": ["3-seater", "Sectional", "Recliner"],
+        "colors": ["#8B4513", "#000000", "#FFF8DC"],
+        "sku": 40,
+        "soldCounts": 15
+    },
+    {
+        "name": "Contemporary Velvet Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Modern Comfort",
+        "category": "sofa",
+        "details": {
+            "material": "Velvet",
+            "dimensions": "82\"W x 35\"H x 38\"D",
+            "weight": "125 lbs"
+        },
+        "description": "A contemporary velvet sofa that adds a pop of color to your space.",
+        "sizes": ["2-seater", "Chaise Lounge", "Modular"],
+        "colors": ["#008080", "#708090", "#800080"],
+        "sku": 35,
+        "soldCounts": 10
+    },
+    {
+        "name": "Minimalist Linen Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 749.99,
+        "discount_price": 699.99,
+        "reviewsNumber": 15,
+        "ratings": 4.3,
+        "availability": true,
+        "brand": "Simple Living",
+        "category": "sofa",
+        "details": {
+            "material": "Linen",
+            "dimensions": "78\"W x 32\"H x 36\"D",
+            "weight": "110 lbs"
+        },
+        "description": "A minimalist linen sofa that brings a sense of tranquility to your home.",
+        "sizes": ["2-seater", "Sleeper Sofa", "Futon"],
+        "colors": ["#FFFFFF", "#F5F5F5", "#D3D3D3"],
+        "sku": 45,
+        "soldCounts": 25
+    },
+    {
+        "name": "Retro Style Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 849.99,
+        "discount_price": 749.99,
+        "reviewsNumber": 18,
+        "ratings": 4.4,
+        "availability": true,
+        "brand": "Vintage Vibes",
+        "category": "sofa",
+        "details": {
+            "material": "Polyester",
+            "dimensions": "84\"W x 33\"H x 37\"D",
+            "weight": "120 lbs"
+        },
+        "description": "A retro style sofa that adds a nostalgic touch to your living room.",
+        "sizes": ["3-seater", "Armchair", "Loveseat"],
+        "colors": ["#FFD700", "#808000", "#A0522D"],
+        "sku": 55,
+        "soldCounts": 30
+    },
+    {
+        "name": "Luxe Modular Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 1299.99,
+        "discount_price": 1199.99,
+        "reviewsNumber": 22,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Chic Living",
+        "category": "sofa",
+        "details": {
+            "material": "Polyester Blend",
+            "dimensions": "95\"W x 36\"H x 40\"D",
+            "weight": "140 lbs"
+        },
+        "description": "A luxurious modular sofa that offers versatility and comfort.",
+        "sizes": ["Modular", "Sectional", "Corner Sofa"],
+        "colors": ["#696969", "#2F4F4F", "#DCDCDC"],
+        "sku": 20,
+        "soldCounts": 5
+    },
+    {
+        "name": "Scandinavian Style Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 28,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Nordic Home",
+        "category": "sofa",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "86\"W x 35\"H x 38\"D",
+            "weight": "130 lbs"
+        },
+        "description": "A Scandinavian style sofa that combines simplicity and functionality.",
+        "sizes": ["2-seater", "3-seater", "Daybed"],
+        "colors": ["#D3D3D3", "#B0C4DE", "#F0F8FF"],
+        "sku": 25,
+        "soldCounts": 12
+    },
+    {
+        "name": "Mid-Century Modern Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 949.99,
+        "discount_price": 849.99,
+        "reviewsNumber": 24,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Retro Revival",
+        "category": "sofa",
+        "details": {
+            "material": "Polyester Blend",
+            "dimensions": "82\"W x 33\"H x 36\"D",
+            "weight": "120 lbs"
+        },
+        "description": "A mid-century modern sofa that brings retro charm to your living space.",
+        "sizes": ["3-seater", "Sectional", "Armchair"],
+        "colors": ["#FFD700", "#008080", "#808080"],
+        "sku": 30,
+        "soldCounts": 18
+    },
+    {
+        "name": "Plush Velvet Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 999.99,
+        "discount_price": 899.99,
+        "reviewsNumber": 26,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Opulent Living",
+        "category": "sofa",
+        "details": {
+            "material": "Velvet",
+            "dimensions": "84\"W x 35\"H x 39\"D",
+            "weight": "140 lbs"
+        },
+        "description": "A plush velvet sofa that offers unparalleled comfort and style.",
+        "sizes": ["3-seater", "Chaise Lounge", "Modular"],
+        "colors": ["#008000", "#000080", "#800080"],
+        "sku": 22,
+        "soldCounts": 8
+    },
+    {
+        "name": "Industrial Chic Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 799.99,
+        "discount_price": 699.99,
+        "reviewsNumber": 18,
+        "ratings": 4.4,
+        "availability": true,
+        "brand": "Urban Loft",
+        "category": "sofa",
+        "details": {
+            "material": "Leather",
+            "dimensions": "86\"W x 36\"H x 38\"D",
+            "weight": "130 lbs"
+        },
+        "description": "An industrial chic sofa with a blend of leather and metal accents.",
+        "sizes": ["2-seater", "3-seater", "L-shaped"],
+        "colors": ["#8B4513", "#A0522D", "#000000"],
+        "sku": 28,
+        "soldCounts": 10
+    },
+    {
+        "name": "Bohemian Style Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Eclectic Living",
+        "category": "sofa",
+        "details": {
+            "material": "Cotton",
+            "dimensions": "82\"W x 34\"H x 38\"D",
+            "weight": "120 lbs"
+        },
+        "description": "A bohemian style sofa that adds warmth and character to your space.",
+        "sizes": ["3-seater", "Sectional", "Daybed"],
+        "colors": ["#008080", "#FFD700", "#800000"],
+        "sku": 33,
+        "soldCounts": 14
+    },
+    {
+        "name": "Chic Linen Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 749.99,
+        "discount_price": 699.99,
+        "reviewsNumber": 22,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Modern Comfort",
+        "category": "sofa",
+        "details": {
+            "material": "Linen",
+            "dimensions": "80\"W x 33\"H x 37\"D",
+            "weight": "130 lbs"
+        },
+        "description": "A chic linen sofa that combines style and comfort effortlessly.",
+        "sizes": ["2-seater", "3-seater", "Modular"],
+        "colors": ["#F5F5DC", "#D3D3D3", "#FFFFFF"],
+        "sku": 38,
+        "soldCounts": 16
+    },
+    {
+        "name": "Modern Sectional Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 999.99,
+        "discount_price": 899.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Contemporary Designs",
+        "category": "sofa",
+        "details": {
+            "material": "Leather",
+            "dimensions": "90\"W x 36\"H x 38\"D",
+            "weight": "140 lbs"
+        },
+        "description": "A modern sectional sofa that adds versatility to your living space.",
+        "sizes": ["Sectional", "L-shaped", "Chaise Lounge"],
+        "colors": ["#FFFFFF", "#D3D3D3", "#000000"],
+        "sku": 30,
+        "soldCounts": 12
+    },
+    {
+        "name": "Luxurious Velvet Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 1199.99,
+        "discount_price": 1099.99,
+        "reviewsNumber": 28,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Opulent Interiors",
+        "category": "sofa",
+        "details": {
+            "material": "Velvet",
+            "dimensions": "88\"W x 35\"H x 40\"D",
+            "weight": "150 lbs"
+        },
+        "description": "A luxurious velvet sofa that epitomizes opulence and comfort.",
+        "sizes": ["3-seater", "Chaise Lounge", "Modular"],
+        "colors": ["#800080", "#4B0082", "#483D8B"],
+        "sku": 18,
+        "soldCounts": 8
+    },
+    {
+        "name": "Cozy Fabric Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 20,
+        "ratings": 4.4,
+        "availability": true,
+        "brand": "Warm Living",
+        "category": "sofa",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "86\"W x 34\"H x 38\"D",
+            "weight": "130 lbs"
+        },
+        "description": "A cozy fabric sofa that invites you to relax and unwind.",
+        "sizes": ["2-seater", "3-seater", "Sleeper Sofa"],
+        "colors": ["#F5F5F5", "#D3D3D3", "#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 10
+    },
+    {
+        "name": "Stylish Leather Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 1299.99,
+        "discount_price": 1199.99,
+        "reviewsNumber": 22,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Trendy Designs",
+        "category": "sofa",
+        "details": {
+            "material": "Leather",
+            "dimensions": "90\"W x 36\"H x 38\"D",
+            "weight": "140 lbs"
+        },
+        "description": "A stylish leather sofa that adds sophistication to any room.",
+        "sizes": ["3-seater", "Sectional", "Recliner"],
+        "colors": ["#8B4513", "#000000", "#A0522D"],
+        "sku": 20,
+        "soldCounts": 8
+    },
+    {
+        "name": "Transitional Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 949.99,
+        "discount_price": 849.99,
+        "reviewsNumber": 18,
+        "ratings": 4.3,
+        "availability": true,
+        "brand": "Timeless Furnishings",
+        "category": "sofa",
+        "details": {
+            "material": "Polyester Blend",
+            "dimensions": "84\"W x 35\"H x 38\"D",
+            "weight": "130 lbs"
+        },
+        "description": "A transitional sofa that seamlessly blends modern and traditional elements.",
+        "sizes": ["2-seater", "3-seater", "Sectional"],
+        "colors": ["#FFFFFF", "#D3D3D3", "#000000"],
+        "sku": 30,
+        "soldCounts": 12
+    },
+    {
+        "name": "French Country Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa",
+            "https://source.unsplash.com/random/360x265?sofa"
+        ],
+        "price": 999.99,
+        "discount_price": 899.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Country Home",
+        "category": "sofa",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "86\"W x 36\"H x 40\"D",
+            "weight": "140 lbs"
+        },
+        "description": "A French country sofa that adds charm and elegance to your home.",
+        "sizes": ["3-seater", "Sectional", "Daybed"],
+        "colors": ["#D3D3D3", "#F0F8FF", "#8B4513"],
+        "sku": 33,
+        "soldCounts": 14
+    },
+
+    {
+        "name": "Garden Patio Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 15,
+        "ratings": 4.2,
+        "availability": true,
+        "brand": "Outdoor Living",
+        "category": "outdoor",
+        "details": {
+            "material": "Wicker",
+            "table": "48\"W x 30\"H",
+            "chair": "24\"W x 36\"H x 24\"D",
+            "weight": "Table: 40 lbs; Chairs: 20 lbs each"
+        },
+        "description": "A stylish and durable patio set perfect for outdoor gatherings.",
+        "colors": ["#A52A2A", "#228B22", "#4169E1"],
+        "sku": 20,
+        "soldCounts": 10
+    },
+    {
+        "name": "Outdoor Dining Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 1299.99,
+        "discount_price": 1199.99,
+        "reviewsNumber": 20,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Alfresco Designs",
+        "category": "outdoor",
+        "details": {
+            "material": "Aluminum",
+            "table": "60\"W x 30\"H",
+            "chair": "24\"W x 36\"H x 24\"D",
+            "weight": "Table: 50 lbs; Chairs: 25 lbs each"
+        },
+        "description": "An elegant outdoor dining set that enhances your patio or deck.",
+        "colors": ["#D2691E", "#006400", "#6495ED"],
+        "sku": 15,
+        "soldCounts": 8
+    },
+    {
+        "name": "Rattan Garden Sofa Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 1499.99,
+        "discount_price": 1399.99,
+        "reviewsNumber": 25,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Rattan Retreat",
+        "category": "outdoor",
+        "details": {
+            "material": "Rattan",
+            "sofa": "86\"W x 36\"H x 40\"D",
+            "chair": "24\"W x 36\"H x 24\"D",
+            "table": "48\"W x 18\"H x 24\"D",
+            "weight": "Sofa: 60 lbs; Chairs: 30 lbs each; Table: 25 lbs"
+        },
+        "description": "A luxurious rattan sofa set for your garden or patio oasis.",
+        "colors": ["#8B4513", "#2E8B57", "#8A2BE2"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Outdoor Hammock with Stand",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 199.99,
+        "discount_price": 179.99,
+        "reviewsNumber": 10,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Relaxation Haven",
+        "category": "outdoor",
+        "details": {
+            "material": "Cotton",
+            "hammock": "80\"L x 60\"W",
+            "stand": "96\"L x 45\"W x 48\"H",
+            "weight": "Hammock: 10 lbs; Stand: 40 lbs"
+        },
+        "description": "An outdoor hammock set with a sturdy stand for ultimate relaxation.",
+        "colors": ["#228B22", "#4169E1", "#800080"],
+        "sku": 25,
+        "soldCounts": 15
+    },
+    {
+        "name": "Outdoor Fire Pit",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 399.99,
+        "discount_price": 349.99,
+        "reviewsNumber": 12,
+        "ratings": 4.3,
+        "availability": true,
+        "brand": "Fire & Heat",
+        "category": "outdoor",
+        "details": {
+            "material": "Steel",
+            "firePit": "36\" Diameter x 24\" Height",
+            "weight": "75 lbs"
+        },
+        "description": "An outdoor fire pit for cozy evenings with friends and family.",
+        "colors": ["#A52A2A", "#D2691E", "#696969"],
+        "sku": 20,
+        "soldCounts": 10
+    },
+    {
+        "name": "Adirondack Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 8,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Rustic Outdoors",
+        "category": "outdoor",
+        "details": {
+            "material": "Wood",
+            "dimensions": "32\"W x 40\"H x 38\"D",
+            "weight": "30 lbs"
+        },
+        "description": "A classic Adirondack chair for lounging in your backyard.",
+        "colors": ["#8B4513", "#228B22", "#0000FF"],
+        "sku": 30,
+        "soldCounts": 15
+    },
+    {
+        "name": "Outdoor Bench",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 249.99,
+        "discount_price": 199.99,
+        "reviewsNumber": 10,
+        "ratings": 4.2,
+        "availability": true,
+        "brand": "Nature's Retreat",
+        "category": "outdoor",
+        "details": {
+            "material": "Metal",
+            "dimensions": "48\"W x 36\"H x 24\"D",
+            "weight": "40 lbs"
+        },
+        "description": "A sturdy outdoor bench for enjoying your garden or patio.",
+        "colors": ["#808080", "#FFD700", "#008000"],
+        "sku": 25,
+        "soldCounts": 12
+    },
+    {
+        "name": "Outdoor Umbrella",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 6,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Sunshade Solutions",
+        "category": "outdoor",
+        "details": {
+            "material": "Polyester",
+            "dimensions": "9' Diameter",
+            "weight": "10 lbs"
+        },
+        "description": "A large outdoor umbrella to provide shade on sunny days.",
+        "colors": ["#FFD700", "#008080", "#A52A2A"],
+        "sku": 20,
+        "soldCounts": 8
+    },
+    {
+        "name": "Outdoor Rocking Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 199.99,
+        "discount_price": 179.99,
+        "reviewsNumber": 12,
+        "ratings": 4.3,
+        "availability": true,
+        "brand": "Relaxation Rockers",
+        "category": "outdoor",
+        "details": {
+            "material": "Wood",
+            "dimensions": "26\"W x 42\"H x 32\"D",
+            "weight": "35 lbs"
+        },
+        "description": "A comfortable rocking chair for relaxing outdoors.",
+        "colors": ["#8B4513", "#228B22", "#D2691E"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Outdoor Dining Table",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 599.99,
+        "discount_price": 549.99,
+        "reviewsNumber": 10,
+        "ratings": 4.1,
+        "availability": true,
+        "brand": "Alfresco Designs",
+        "category": "outdoor",
+        "details": {
+            "material": "Metal",
+            "dimensions": "72\"W x 30\"H x 36\"D",
+            "weight": "60 lbs"
+        },
+        "description": "A spacious outdoor dining table for hosting gatherings.",
+        "colors": ["#808080", "#008080", "#800080"],
+        "sku": 18,
+        "soldCounts": 8
+    },
+    {
+        "name": "Outdoor Lounge Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 299.99,
+        "discount_price": 249.99,
+        "reviewsNumber": 15,
+        "ratings": 4.2,
+        "availability": true,
+        "brand": "Relaxation Retreat",
+        "category": "outdoor",
+        "details": {
+            "material": "Wicker",
+            "dimensions": "28\"W x 36\"H x 30\"D",
+            "weight": "40 lbs"
+        },
+        "description": "A comfortable lounge chair for enjoying your outdoor space.",
+        "colors": ["#A52A2A", "#228B22", "#D2691E"],
+        "sku": 20,
+        "soldCounts": 12
+    },
+    {
+        "name": "Outdoor Storage Box",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 199.99,
+        "discount_price": 179.99,
+        "reviewsNumber": 8,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Storage Solutions",
+        "category": "outdoor",
+        "details": {
+            "material": "Plastic",
+            "dimensions": "48\"W x 24\"H x 24\"D",
+            "weight": "30 lbs"
+        },
+        "description": "A durable outdoor storage box to keep your belongings organized.",
+        "colors": ["#808080", "#008080", "#800080"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Outdoor Plant Stand",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 6,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Garden Elegance",
+        "category": "outdoor",
+        "details": {
+            "material": "Metal",
+            "dimensions": "36\"W x 30\"H x 12\"D",
+            "weight": "20 lbs"
+        },
+        "description": "A decorative outdoor plant stand to showcase your favorite plants.",
+        "colors": ["#808080", "#008080", "#800080"],
+        "sku": 20,
+        "soldCounts": 12
+    },
+    {
+        "name": "Outdoor Folding Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor",
+            "https://source.unsplash.com/random/360x265?outdoor"
+        ],
+        "price": 49.99,
+        "discount_price": 39.99,
+        "reviewsNumber": 5,
+        "ratings": 3.8,
+        "availability": true,
+        "brand": "Easy Fold",
+        "category": "outdoor",
+        "details": {
+            "material": "Plastic",
+            "dimensions": "20\"W x 32\"H x 18\"D",
+            "weight": "15 lbs"
+        },
+        "description": "A lightweight and portable folding chair for outdoor events.",
+        "colors": ["#808080", "#008000", "#800080"],
+        "sku": 30,
+        "soldCounts": 20
+    },
+    {
+        "name": "Queen Size Bed Frame",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 699.99,
+        "discount_price": 599.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Sleep Haven",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "84\"L x 60\"W",
+            "weight": "100 lbs"
+        },
+        "description": "A stylish and sturdy queen size bed frame for a comfortable sleep.",
+        "colors": ["#8B4513", "#4169E1", "#228B22"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Nightstand with Drawer",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Home Harmony",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "24\"W x 24\"H x 18\"D",
+            "weight": "30 lbs"
+        },
+        "description": "A compact nightstand with a convenient drawer for storing essentials.",
+        "colors": ["#A52A2A", "#D2691E", "#000080"],
+        "sku": 20,
+        "soldCounts": 12
+    },
+    {
+        "name": "Dresser with Mirror",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Elegant Living",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "60\"W x 30\"H x 18\"D",
+            "weight": "150 lbs"
+        },
+        "description": "A spacious dresser with a mirror for organizing clothes and accessories.",
+        "colors": ["#8B4513", "#2E8B57", "#8A2BE2"],
+        "sku": 10,
+        "soldCounts": 5
+    },
+    {
+        "name": "King Size Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 999.99,
+        "discount_price": 899.99,
+        "reviewsNumber": 30,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "Luxury Slumber",
+        "category": "bedroom",
+        "details": {
+            "material": "Memory Foam",
+            "size": "King",
+            "dimensions": "80\"L x 76\"W x 12\"H",
+            "weight": "90 lbs"
+        },
+        "description": "A premium king size mattress for a restful and rejuvenating sleep experience.",
+        "colors": ["#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 15
+    },
+    {
+        "name": "Wardrobe Closet",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 1299.99,
+        "discount_price": 1199.99,
+        "reviewsNumber": 18,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Closet Creations",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "72\"W x 84\"H x 24\"D",
+            "weight": "200 lbs"
+        },
+        "description": "A spacious wardrobe closet for organizing clothes and accessories.",
+        "colors": ["#A52A2A", "#D2691E", "#000080"],
+        "sku": 8,
+        "soldCounts": 4
+    },
+    {
+        "name": "Bedside Lamp",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 49.99,
+        "discount_price": 39.99,
+        "reviewsNumber": 10,
+        "ratings": 4.2,
+        "availability": true,
+        "brand": "Light & Bright",
+        "category": "bedroom",
+        "details": {
+            "material": "Metal",
+            "dimensions": "18\"H",
+            "weight": "5 lbs"
+        },
+        "description": "A stylish bedside lamp to add ambiance to your bedroom.",
+        "colors": ["#FFD700", "#800080", "#008080"],
+        "sku": 30,
+        "soldCounts": 20
+    },
+    {
+        "name": "Bedroom Rug",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 129.99,
+        "discount_price": 99.99,
+        "reviewsNumber": 8,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Cozy Comfort",
+        "category": "bedroom",
+        "details": {
+            "material": "Polyester",
+            "dimensions": "5' x 7'",
+            "weight": "10 lbs"
+        },
+        "description": "A soft and plush rug to add warmth and comfort to your bedroom.",
+        "colors": ["#A52A2A", "#D2691E", "#000080"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Bedroom Vanity Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 299.99,
+        "discount_price": 249.99,
+        "reviewsNumber": 12,
+        "ratings": 4.3,
+        "availability": true,
+        "brand": "Glamorous Vanity",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "36\"W x 30\"H x 18\"D",
+            "weight": "50 lbs"
+        },
+        "description": "A stylish vanity set for grooming and makeup application.",
+        "colors": ["#8A2BE2", "#2E8B57", "#8B4513"],
+        "sku": 18,
+        "soldCounts": 10
+    },
+    {
+        "name": "Bedroom Wall Art",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 6,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Artistic Expressions",
+        "category": "bedroom",
+        "details": {
+            "material": "Canvas",
+            "dimensions": "24\" x 36\"",
+            "weight": "5 lbs"
+        },
+        "description": "Beautiful wall art to add character and style to your bedroom.",
+        "colors": ["#FFD700", "#800080", "#008080"],
+        "sku": 25,
+        "soldCounts": 12
+    },
+    {
+        "name": "Bedroom Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 99.99,
+        "discount_price": 79.99,
+        "reviewsNumber": 5,
+        "ratings": 3.8,
+        "availability": true,
+        "brand": "Comfort Corner",
+        "category": "bedroom",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "30\"W x 36\"H x 24\"D",
+            "weight": "15 lbs"
+        },
+        "description": "A cozy and comfortable chair for reading or relaxation in your bedroom.",
+        "colors": ["#8A2BE2", "#2E8B57", "#8B4513"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Bedroom Wall Clock",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 39.99,
+        "discount_price": 29.99,
+        "reviewsNumber": 4,
+        "ratings": 3.5,
+        "availability": true,
+        "brand": "Timeless Decor",
+        "category": "bedroom",
+        "details": {
+            "material": "Plastic",
+            "dimensions": "12\" Diameter",
+            "weight": "2 lbs"
+        },
+        "description": "A stylish wall clock to keep track of time in your bedroom.",
+        "colors": ["#FFD700", "#800080", "#008080"],
+        "sku": 15,
+        "soldCounts": 8
+    },
+    {
+        "name": "Bedroom Throw Blanket",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 29.99,
+        "discount_price": 24.99,
+        "reviewsNumber": 3,
+        "ratings": 3.0,
+        "availability": true,
+        "brand": "Cozy Comfort",
+        "category": "bedroom",
+        "details": {
+            "material": "Cotton",
+            "dimensions": "50\" x 60\"",
+            "weight": "1 lb"
+        },
+        "description": "A soft and cozy throw blanket to keep you warm on chilly nights.",
+        "colors": ["#A52A2A", "#D2691E", "#000080"],
+        "sku": 30,
+        "soldCounts": 20
+    },
+    {
+        "name": "Bedroom Desk",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 8,
+        "ratings": 3.8,
+        "availability": true,
+        "brand": "Study Space",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "48\"W x 30\"H x 24\"D",
+            "weight": "50 lbs"
+        },
+        "description": "A functional desk for studying or working in the comfort of your bedroom.",
+        "colors": ["#8A2BE2", "#2E8B57", "#8B4513"],
+        "sku": 25,
+        "soldCounts": 15
+    },
+    {
+        "name": "Bedroom Mirror",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 6,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Reflections",
+        "category": "bedroom",
+        "details": {
+            "material": "Glass",
+            "dimensions": "36\"W x 48\"H",
+            "weight": "20 lbs"
+        },
+        "description": "A large mirror to brighten up your bedroom and add depth to the space.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 12
+    },
+    {
+        "name": "Bedroom Accent Chair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 129.99,
+        "discount_price": 109.99,
+        "reviewsNumber": 8,
+        "ratings": 3.9,
+        "availability": true,
+        "brand": "Accent Allure",
+        "category": "bedroom",
+        "details": {
+            "material": "Fabric",
+            "dimensions": "28\"W x 36\"H x 24\"D",
+            "weight": "20 lbs"
+        },
+        "description": "An elegant accent chair to add sophistication to your bedroom decor.",
+        "colors": ["#8A2BE2", "#2E8B57", "#8B4513"],
+        "sku": 18,
+        "soldCounts": 10
+    },
+    {
+        "name": "Bedroom Storage Bench",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 99.99,
+        "discount_price": 79.99,
+        "reviewsNumber": 6,
+        "ratings": 4.0,
+        "availability": true,
+        "brand": "Storage Solutions",
+        "category": "bedroom",
+        "details": {
+            "material": "Wood",
+            "dimensions": "36\"W x 18\"H x 18\"D",
+            "weight": "25 lbs"
+        },
+        "description": "A versatile storage bench to keep your bedroom tidy and organized.",
+        "colors": ["#8A2BE2", "#2E8B57", "#8B4513"],
+        "sku": 15,
+        "soldCounts": 8
+    },
+    {
+        "name": "Bedroom Floor Lamp",
+        "image": [
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom",
+            "https://source.unsplash.com/random/360x265?bedroom"
+        ],
+        "price": 69.99,
+        "discount_price": 59.99,
+        "reviewsNumber": 5,
+        "ratings": 3.8,
+        "availability": true,
+        "brand": "Bright Glow",
+        "category": "bedroom",
+        "details": {
+            "material": "Metal",
+            "dimensions": "60\"H",
+            "weight": "10 lbs"
+        },
+        "description": "A sleek floor lamp to provide ambient lighting in your bedroom.",
+        "colors": ["#FFD700", "#800080", "#008080"],
+        "sku": 20,
+        "soldCounts": 12
+    },
+
+    {
+        "name": "Stainless Steel Cookware Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 199.99,
+        "discount_price": 169.99,
+        "reviewsNumber": 30,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "Chef's Choice",
+        "category": "kitchen",
+        "details": {
+            "material": "Stainless Steel",
+            "pieces": 10,
+            "weight": "15 lbs"
+        },
+        "description": "A complete stainless steel cookware set for all your cooking needs.",
+        "colors": ["#A9A9A9"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Non-Stick Bakeware Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 59.99,
+        "discount_price": 49.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "BakeMaster",
+        "category": "kitchen",
+        "details": {
+            "material": "Carbon Steel",
+            "pieces": 6,
+            "weight": "10 lbs"
+        },
+        "description": "A versatile non-stick bakeware set for baking delicious treats.",
+        "colors": ["#A9A9A9"],
+        "sku": 30,
+        "soldCounts": 25
+    },
+    {
+        "name": "Blender",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "BlendMaster",
+        "category": "kitchen",
+        "details": {
+            "material": "Plastic",
+            "features": "600W Motor",
+            "weight": "8 lbs"
+        },
+        "description": "A powerful blender for making smoothies, soups, and sauces.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Coffee Maker",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 49.99,
+        "discount_price": 39.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Cafe Express",
+        "category": "kitchen",
+        "details": {
+            "material": "Plastic",
+            "features": "12-Cup Capacity",
+            "weight": "6 lbs"
+        },
+        "description": "A convenient coffee maker for brewing your favorite morning pick-me-up.",
+        "colors": ["#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Toaster Oven",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 89.99,
+        "discount_price": 79.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "ToastMaster",
+        "category": "kitchen",
+        "details": {
+            "material": "Stainless Steel",
+            "features": "Convection Heating",
+            "weight": "12 lbs"
+        },
+        "description": "A versatile toaster oven for toasting, baking, and broiling.",
+        "colors": ["#FFFFFF"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Food Processor",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 129.99,
+        "discount_price": 109.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "PrepMaster",
+        "category": "kitchen",
+        "details": {
+            "material": "Plastic",
+            "features": "500W Motor",
+            "weight": "10 lbs"
+        },
+        "description": "A powerful food processor for chopping, slicing, and shredding.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Kitchen Knife Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 99.99,
+        "discount_price": 89.99,
+        "reviewsNumber": 30,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "Cutlery Craft",
+        "category": "kitchen",
+        "details": {
+            "material": "Stainless Steel",
+            "pieces": 12,
+            "weight": "8 lbs"
+        },
+        "description": "A comprehensive knife set for all your kitchen cutting needs.",
+        "colors": ["#A9A9A9"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Kitchen Scale",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 29.99,
+        "discount_price": 24.99,
+        "reviewsNumber": 15,
+
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Precision Measure",
+        "category": "kitchen",
+        "details": {
+            "material": "Plastic",
+            "features": "Digital Display",
+            "weight": "2 lbs"
+        },
+        "description": "A handy kitchen scale for accurate measurement of ingredients.",
+        "colors": ["#A9A9A9"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Electric Kettle",
+        "image": [
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen",
+            "https://source.unsplash.com/random/360x265?kitchen"
+        ],
+        "price": 39.99,
+        "discount_price": 29.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "QuickHeat",
+        "category": "kitchen",
+        "details": {
+            "material": "Plastic",
+            "features": "1.7L Capacity",
+            "weight": "3 lbs"
+        },
+        "description": "An efficient electric kettle for quickly boiling water for tea or coffee.",
+        "colors": ["#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+
+    {
+        "name": "Modern Sectional Sofa",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 899.99,
+        "discount_price": 799.99,
+        "reviewsNumber": 50,
+        "ratings": 4.9,
+        "availability": true,
+        "brand": "Modern Living",
+        "category": "living room",
+        "details": {
+            "color": "Grey",
+            "material": "Fabric",
+            "dimensions": "86\"W x 36\"H x 40\"D",
+            "seatingCapacity": 5
+        },
+        "description": "A stylish and comfortable modern sectional sofa for your living room.",
+        "colors": ["#808080"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Coffee Table with Storage",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 40,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "Home Essentials",
+        "category": "living room",
+        "details": {
+            "color": "Espresso",
+            "material": "Wood",
+            "dimensions": "48\"W x 24\"D x 18\"H",
+            "storageCapacity": "2 compartments"
+        },
+        "description": "A functional coffee table with ample storage space for your living room.",
+        "colors": ["#654321"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Accent Armchair",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 299.99,
+        "discount_price": 259.99,
+        "reviewsNumber": 35,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Comfort Plus",
+        "category": "living room",
+        "details": {
+            "color": "Beige",
+            "material": "Fabric",
+            "dimensions": "32\"W x 34\"H x 30\"D"
+        },
+        "description": "An elegant and comfortable accent armchair to complement your living room decor.",
+        "colors": ["#F5F5DC"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "TV Stand",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 199.99,
+        "discount_price": 179.99,
+        "reviewsNumber": 30,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Media Master",
+        "category": "living room",
+        "details": {
+            "color": "Black",
+            "material": "Wood",
+            "dimensions": "60\"W x 16\"D x 24\"H",
+            "maxTVSize": "60 inches"
+        },
+        "description": "A sleek and sturdy TV stand to organize your entertainment center in style.",
+        "colors": ["#000000"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Floor Lamp",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Light Trends",
+        "category": "living room",
+        "details": {
+            "color": "Silver",
+            "material": "Metal",
+            "dimensions": "60\"H",
+            "bulbType": "LED"
+        },
+        "description": "A contemporary floor lamp to add ambient lighting to your living space.",
+        "colors": ["#C0C0C0"],
+        "sku": 30,
+        "soldCounts": 25
+    },
+    {
+        "name": "Rug",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 129.99,
+        "discount_price": 109.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "RugMart",
+        "category": "living room",
+        "details": {
+            "color": "Grey",
+            "material": "Wool",
+            "dimensions": "8' x 10'"
+        },
+        "description": "A soft and stylish rug to tie together your living room decor.",
+        "colors": ["#808080"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Bookshelf",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 179.99,
+        "discount_price": 159.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Book Haven",
+        "category": "living room",
+        "details": {
+            "color": "Walnut",
+            "material": "Wood",
+            "dimensions": "36\"W x 12\"D x 72\"H",
+            "shelfCount": 5
+        },
+        "description": "A spacious bookshelf to showcase your favorite reads and decorative items.",
+        "colors": ["#654321"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Wall Art",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 99.99,
+        "discount_price": 79.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Artistic Expressions",
+        "category": "living room",
+        "details": {
+            "color": "Multi-color",
+            "material": "Canvas",
+            "dimensions": "24\" x 36\""
+        },
+        "description": "A vibrant piece of wall art to enhance the visual appeal of your living room.",
+        "colors": ["#FFFFFF"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Throw Pillows",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 29.99,
+        "discount_price": 24.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Pillow Palace",
+        "category": "living room",
+        "details": {
+            "color": "Assorted",
+            "material": "Polyester",
+            "dimensions": "18\" x 18\"",
+            "setCount": 3
+        },
+        "description": "A set of stylish throw pillows to add comfort and flair to your living room furniture.",
+        "colors": ["#A9A9A9"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Floor Mirror",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Reflective Designs",
+        "category": "living room",
+        "details": {
+            "color": "Silver",
+            "material": "Glass",
+            "dimensions": "24\"W x 72\"H"
+        },
+        "description": "A sleek floor mirror to create the illusion of space and light in your living room.",
+        "colors": ["#C0C0C0"],
+        "sku": 22,
+        "soldCounts": 17
+    },
+    {
+        "name": "Sofa Table",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 129.99,
+        "discount_price": 109.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Table Trends",
+        "category": "living room",
+        "details": {
+            "color": "Espresso",
+            "material": "Wood",
+            "dimensions": "48\"W x 16\"D x 30\"H"
+        },
+        "description": "A versatile sofa table to complete the look of your living room ensemble.",
+        "colors": ["#654321"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Area Rug",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 179.99,
+        "discount_price": 159.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "RugMasters",
+        "category": "living room",
+        "details": {
+            "color": "Beige",
+            "material": "Wool",
+            "dimensions": "9' x 12'"
+        },
+        "description": "A luxurious area rug to add warmth and texture to your living room flooring.",
+        "colors": ["#F5F5DC"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Wall Clock",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 39.99,
+        "discount_price": 29.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Timeless Classics",
+        "category": "living room",
+        "details": {
+            "color": "Silver",
+            "material": "Metal",
+            "dimensions": "24\" diameter",
+            "batteryType": "AA"
+        },
+        "description": "A stylish wall clock to keep you on schedule while adding a decorative touch to your living room.",
+        "colors": ["#C0C0C0"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "End Table",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 79.99,
+        "discount_price": 69.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "FurniCraft",
+        "category": "living room",
+        "details": {
+            "color": "Cherry",
+            "material": "Wood",
+            "dimensions": "24\"W x 24\"D x 24\"H"
+        },
+        "description": "A stylish end table to complement your living room seating ensemble.",
+        "colors": ["#800000"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Ceiling Fan",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 129.99,
+        "discount_price": 109.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "BreezeMax",
+        "category": "living room",
+        "details": {
+            "color": "White",
+            "material": "Metal",
+            "dimensions": "52\" blades",
+            "fanType": "Standard"
+        },
+        "description": "A functional ceiling fan to circulate air and add comfort to your living room.",
+        "colors": ["#FFFFFF"],
+        "sku": 22,
+        "soldCounts": 17
+    },
+    {
+        "name": "Throw Blanket",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 49.99,
+        "discount_price": 39.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Cozy Comforts",
+        "category": "living room",
+        "details": {
+            "color": "Navy Blue",
+            "material": "Fleece",
+            "dimensions": "50\" x 60\""
+        },
+        "description": "A soft and cozy throw blanket to keep you warm during chilly evenings in the living room.",
+        "colors": ["#000080"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Floor Pouf",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 59.99,
+        "discount_price": 49.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Urban Chic",
+        "category": "living room",
+        "details": {
+            "color": "Turquoise",
+            "material": "Fabric",
+            "dimensions": "24\" diameter x 12\"H"
+        },
+        "description": "A versatile floor pouf that serves as both extra seating and a decorative accent in your living room.",
+        "colors": ["#40E0D0"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Table Lamp",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 39.99,
+        "discount_price": 29.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Luminance",
+        "category": "living room",
+        "details": {
+            "color": "Bronze",
+            "material": "Metal",
+            "dimensions": "18\"H",
+            "bulbType": "Incandescent"
+        },
+        "description": "A classic table lamp to provide task lighting and enhance the ambiance of your living room.",
+        "colors": ["#CD7F32"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Curtains",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 49.99,
+        "discount_price": 39.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Window Wonders",
+        "category": "living room",
+        "details": {
+            "color": "Beige",
+            "material": "Polyester",
+            "dimensions": "84\"H x 52\"W",
+            "setCount": 2
+        },
+        "description": "A set of elegant curtains to add privacy and style to your living room windows.",
+        "colors": ["#F5F5DC"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Wall Shelf",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 34.99,
+        "discount_price": 29.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "ShelfMaster",
+        "category": "living room",
+        "details": {
+            "color": "White",
+            "material": "Wood",
+            "dimensions": "24\"W x 6\"D x 8\"H"
+        },
+        "description": "A simple and functional wall shelf to display decorative items in your living room.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Plant Stand",
+        "image": [
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom",
+            "https://source.unsplash.com/random/360x265?livingroom"
+        ],
+        "price": 24.99,
+        "discount_price": 19.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Botanical Accents",
+        "category": "living room",
+        "details": {
+            "color": "Black",
+            "material": "Metal",
+            "dimensions": "30\"H x 12\"D",
+            "tierCount": 2
+        },
+        "description": "A sleek plant stand to showcase your favorite houseplants in your living room.",
+        "colors": ["#000000"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Memory Foam Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 499.99,
+        "discount_price": 449.99,
+        "reviewsNumber": 50,
+        "ratings": 4.9,
+        "availability": true,
+        "brand": "Cloud Comfort",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Memory Foam",
+            "thickness": "12 inches",
+            "firmness": "Medium"
+        },
+        "description": "Experience ultimate comfort and support with our premium memory foam mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Hybrid Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 699.99,
+        "discount_price": 599.99,
+        "reviewsNumber": 40,
+        "ratings": 4.8,
+        "availability": true,
+        "brand": "DreamSlumber",
+        "category": "mattress",
+        "details": {
+            "size": "King",
+            "material": "Memory Foam and Pocket Coils",
+            "thickness": "14 inches",
+            "firmness": "Medium-Firm"
+        },
+        "description": "Indulge in the perfect balance of comfort and support with our hybrid mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 15,
+        "soldCounts": 10
+    },
+    {
+        "name": "Innerspring Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 399.99,
+        "discount_price": 349.99,
+        "reviewsNumber": 35,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "SleepWell",
+        "category": "mattress",
+        "details": {
+            "size": "Full",
+            "material": "Innerspring",
+            "thickness": "10 inches",
+            "firmness": "Medium-Soft"
+        },
+        "description": "Get the support you need for a restful night's sleep with our innerspring mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Latex Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 799.99,
+        "discount_price": 699.99,
+        "reviewsNumber": 30,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "Natural Sleep",
+        "category": "mattress",
+        "details": {
+            "size": "California King",
+            "material": "Latex",
+            "thickness": "12 inches",
+            "firmness": "Medium-Firm"
+        },
+        "description": "Experience superior support and breathability with our natural latex mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Pillow Top Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 599.99,
+        "discount_price": 549.99,
+        "reviewsNumber": 25,
+        "ratings": 4.7,
+        "availability": true,
+        "brand": "Luxury Rest",
+        "category": "mattress",
+        "details": {
+            "size": "Twin XL",
+            "material": "Memory Foam and Pillow Top",
+            "thickness": "14 inches",
+            "firmness": "Plush"
+        },
+        "description": "Sink into plush comfort and support with our pillow top mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 30,
+        "soldCounts": 25
+    },
+    {
+        "name": "Gel Memory Foam Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 599.99,
+        "discount_price": 549.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "CoolSleep",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Gel Memory Foam",
+            "thickness": "12 inches",
+            "firmness": "Medium-Firm"
+        },
+        "description": "Stay cool and comfortable all night with our gel memory foam mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 25,
+        "soldCounts": 20
+    },
+    {
+        "name": "Orthopedic Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 699.99,
+        "discount_price": 649.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "OrthoSleep",
+        "category": "mattress",
+        "details": {
+            "size": "King",
+            "material": "Orthopedic Foam",
+            "thickness": "10 inches",
+            "firmness": "Firm"
+        },
+        "description": "Experience superior support and alleviate pressure points with our orthopedic mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Firm Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 349.99,
+        "discount_price": 299.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Sturdy Sleep",
+        "category": "mattress",
+        "details": {
+            "size": "Full",
+            "material": "High-Density Foam",
+            "thickness": "8 inches",
+            "firmness": "Firm"
+        },
+        "description": "Get the support you need for a restful night's sleep with our firm mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 22,
+        "soldCounts": 17
+    },
+    {
+        "name": "Euro Top Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 499.99,
+        "discount_price": 449.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "EuroComfort",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Memory Foam and Euro Top",
+            "thickness": "12 inches",
+            "firmness": "Medium-Firm"
+        },
+        "description": "Experience luxurious comfort and support with our euro top mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Plush Mattress",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 449.99,
+        "discount_price": 399.99,
+        "reviewsNumber": 20,
+        "ratings": 4.6,
+        "availability": true,
+        "brand": "SoftDreams",
+        "category": "mattress",
+        "details": {
+            "size": "Twin",
+            "material": "Memory Foam",
+            "thickness": "10 inches",
+            "firmness": "Plush"
+        },
+        "description": "Indulge in plush comfort and support with our soft mattress.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Waterproof Mattress Protector",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 29.99,
+        "discount_price": 24.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Guardian Bedding",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Polyester",
+            "thickness": "Fits up to 14 inches deep"
+        },
+        "description": "Protect your mattress from spills, stains, and allergens with our waterproof mattress protector.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Fitted Sheet Set",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 39.99,
+        "discount_price": 34.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Dreamy Nights",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Cotton",
+            "threadCount": 400,
+            "deepPocket": "Fits mattresses up to 18 inches deep",
+            "setCount": 4
+        },
+        "description": "Experience luxurious comfort with our high-quality fitted sheet set.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Mattress Topper",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 99.99,
+        "discount_price": 79.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Comfort Plus",
+        "category": "mattress",
+        "details": {
+            "size": "Full",
+            "material": "Memory Foam",
+            "thickness": "3 inches"
+        },
+        "description": "Enhance your mattress's comfort and support with our premium mattress topper.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Mattress Foundation",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 149.99,
+        "discount_price": 129.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Steady Support",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Metal",
+            "height": "14 inches",
+            "assembly": "Easy assembly, no tools required"
+        },
+        "description": "Provide sturdy support for your mattress with our durable mattress foundation.",
+        "colors": ["#FFFFFF"],
+        "sku": 20,
+        "soldCounts": 15
+    },
+    {
+        "name": "Mattress Bag",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 19.99,
+        "discount_price": 14.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "Protect-A-Bed",
+        "category": "mattress",
+        "details": {
+            "size": "Queen",
+            "material": "Polyethylene",
+            "thickness": "4 mil",
+            "closure": "Zipper closure"
+        },
+        "description": "Protect your mattress during storage or moving with our heavy-duty mattress bag.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Mattress Encasement",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 59.99,
+        "discount_price": 49.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "SafeGuard",
+        "category": "mattress",
+        "details": {
+            "size": "King",
+            "material": "Polyester",
+            "thickness": "Fits mattresses up to 18 inches deep",
+            "closure": "Zippered closure"
+        },
+        "description": "Protect your mattress from bed bugs, dust mites, and allergens with our mattress encasement.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    },
+    {
+        "name": "Mattress Cleaner Spray",
+        "image": [
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress",
+            "https://source.unsplash.com/random/360x265?mattress"
+        ],
+        "price": 14.99,
+        "discount_price": 12.99,
+        "reviewsNumber": 15,
+        "ratings": 4.5,
+        "availability": true,
+        "brand": "CleanSleep",
+        "category": "mattress",
+        "details": {
+            "size": "16 oz",
+            "scent": "Lavender",
+            "use": "Spray directly onto mattress surface, no rinsing required"
+        },
+        "description": "Keep your mattress clean and fresh with our mattress cleaner spray.",
+        "colors": ["#FFFFFF"],
+        "sku": 18,
+        "soldCounts": 12
+    }
+]

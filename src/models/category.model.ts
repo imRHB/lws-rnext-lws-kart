@@ -1,16 +1,20 @@
-import { model, models, Schema, Types } from "mongoose";
+import { Document, model, models, Schema } from "mongoose";
 
-export interface ICategory {
+export interface ICategory extends Document {
     name: string;
     description: string;
-    products: Types.ObjectId[];
+    icon: string;
+    thumbnail: string;
+    product?: Schema.Types.ObjectId;
 }
 
 const CategorySchema = new Schema<ICategory>(
     {
         name: { type: String, required: true },
         description: { type: String, required: true },
-        products: [{ type: Schema.Types.ObjectId, ref: "Product" }],
+        icon: { type: String, required: true },
+        thumbnail: { type: String, required: true },
+        product: [{ type: Schema.Types.ObjectId, ref: "Product" }],
     },
     { timestamps: true }
 );

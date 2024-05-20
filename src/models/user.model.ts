@@ -47,11 +47,6 @@ const UserSchema = new Schema<IUser>(
         shippingAddress: AddressSchema,
         billingAddress: AddressSchema,
         wishlist: [{ type: Schema.Types.ObjectId, ref: "Product" }],
-        /* cart: [
-            {
-                product: { type: Schema.Types.ObjectId, ref: "Product" },
-            },
-        ], */
         cart: [
             {
                 product: { type: Schema.Types.ObjectId, ref: "Product" },
@@ -61,19 +56,6 @@ const UserSchema = new Schema<IUser>(
                 updatedAt: { type: Date, default: Date.now },
             },
         ],
-        /* cart: [
-            {
-                productId: {
-                    type: Schema.Types.ObjectId,
-                    required: true,
-                    ref: "Product",
-                },
-                quantity: { type: Number, required: true, default: 1 },
-                size: { type: String, required: true },
-                color: { type: String, required: true },
-                updatedAt: { type: Date, default: Date.now },
-            },
-        ], */
     },
     { timestamps: true }
 );

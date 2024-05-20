@@ -30,10 +30,11 @@ export interface ICategory {
 }
 
 export interface IProductCard {
-    thumbnail: string;
+    _id: Schema.Types.ObjectId;
     name: string;
     price: number;
     discount: number;
+    thumbnail: string;
 }
 
 export interface IAccountLinkItem {

@@ -2,9 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { NAVBAR_ITEMS } from "@/constants";
+import { getCategories } from "@/lib/actions/category.action";
 import AuthStatus from "./AuthStatus";
 
-export default function Navbar() {
+export default async function Navbar() {
+    const categories = await getCategories();
+
     return (
         <nav className="bg-gray-800 sticky top-[72px] z-50">
             <div className="container flex h-[72px]">
@@ -12,7 +15,7 @@ export default function Navbar() {
                     <span className="text-white">
                         <i className="fa-solid fa-bars"></i>
                     </span>
-                    <span className="capitalize ml-2 text-white">
+                    <span className="capitalize text-white">
                         All Categories
                     </span>
 
@@ -20,96 +23,24 @@ export default function Navbar() {
                         className="absolute left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible w-[600px]"
                         style={{ width: "300px" }}
                     >
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/sofa.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="sofa"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Sofa
-                            </span>
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/terrace.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="terrace"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Living Room
-                            </span>
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/bed.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="bed"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Bedroom
-                            </span>
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/office.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="Outdoor"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Outdoor
-                            </span>
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/outdoor-cafe.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="outdoor"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Outdoor
-                            </span>
-                        </a>
-                        <a
-                            href="#"
-                            className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
-                        >
-                            <Image
-                                src="/assets/images/icons/bed-2.svg"
-                                height={20}
-                                width={20}
-                                className="w-5 h-5 object-contain"
-                                alt="Mattress"
-                            />
-                            <span className="ml-6 text-gray-600 text-sm">
-                                Mattress
-                            </span>
-                        </a>
+                        {categories.map((category) => (
+                            <Link
+                                key={category._id}
+                                href="/"
+                                className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
+                            >
+                                <Image
+                                    src={category.icon}
+                                    height={20}
+                                    width={20}
+                                    className="w-5 h-5 object-contain"
+                                    alt="sofa"
+                                />
+                                <span className="ml-6 text-gray-600 text-sm">
+                                    {category.name}
+                                </span>
+                            </Link>
+                        ))}
                     </div>
                 </div>
 

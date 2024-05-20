@@ -7,7 +7,6 @@ import {
     IFeatureItem,
     IMonth,
     INavbarItem,
-    IProductCard,
 } from "@/types";
 
 export const ACCOUNT_SIDEBAR_LINKS: IAccountLinkItem[] = [
@@ -78,7 +77,7 @@ export const CATEGORY_LIST: ICategory[] = [
     },
 ];
 
-export const PRODUCT_CARD_LIST: IProductCard[] = [
+/* export const PRODUCT_CARD_LIST: IProductCard[] = [
     {
         thumbnail: "/assets/images/products/product1.jpg",
         name: "Guyer Chair",
@@ -104,7 +103,7 @@ export const PRODUCT_CARD_LIST: IProductCard[] = [
         discount: 20,
     },
 ];
-
+ */
 export enum City {
     "Barisal" = "barisal",
     "Chittagong" = "chittagong",
