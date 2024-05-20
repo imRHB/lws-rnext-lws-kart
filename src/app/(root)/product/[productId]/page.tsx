@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: Props) {
             <div className="container grid grid-cols-2 gap-6 my-4">
                 <ProductImageGallery
                     thumbnail={product.thumbnail}
-                    images={product.images}
+                    images={product.images ?? []}
                 />
                 <ProductDetails
                     productId={_id}
@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
                     stock={stock}
                 />
             </div>
-            <ProductDescription features={product.features} />
+            <ProductDescription features={product.features ?? []} />
             <RelatedProducts />
         </React.Fragment>
     );
