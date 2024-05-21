@@ -1,8 +1,11 @@
+import Link from "next/link";
+import { Button } from "./ui/button";
+
 export default function Banner() {
     return (
         <div
             className="bg-cover bg-no-repeat bg-center py-36"
-            style={{ backgroundImage: `url('assets/images/banner-bg.jpg')` }}
+            style={{ backgroundImage: `url('/assets/images/banner-bg.jpg')` }}
         >
             <div className="container">
                 <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize">
@@ -15,13 +18,13 @@ export default function Banner() {
                     dolores odio
                 </p>
                 <div className="mt-12">
-                    <a
-                        href="#"
-                        className="bg-primary border border-primary text-white px-8 py-3 font-medium 
-                    rounded-md hover:bg-transparent hover:text-primary"
+                    <Link
+                        href="/shop"
+                        //     className="bg-primary border border-primary text-white px-8 py-3 font-medium
+                        // rounded-md hover:bg-transparent hover:text-primary"
                     >
-                        Shop Now
-                    </a>
+                        <Button size="lg">Shop Now</Button>
+                    </Link>
                 </div>
             </div>
         </div>

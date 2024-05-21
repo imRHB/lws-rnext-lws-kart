@@ -20,6 +20,7 @@ export interface GetProductsParams {
     category?: string;
     pmin?: string | number;
     pmax?: string | number;
+    color?: string;
     size?: string;
 }
 

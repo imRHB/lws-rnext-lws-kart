@@ -13,6 +13,7 @@ import { Separator } from "@/components/ui/separator";
 import { getProducts } from "@/lib/actions/product.action";
 import { SearchParamsProps } from "@/types";
 import Category from "./Category";
+import Color from "./Color";
 import Price from "./Price";
 import Size from "./Size";
 
@@ -22,6 +23,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
         category: searchParams.category,
         pmin: searchParams.pmin,
         pmax: searchParams.pmax,
+        color: searchParams.color,
         size: searchParams.size,
     });
 
@@ -35,15 +37,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                 <div className="col-span-1 overflow-hidden hidden md:block">
                     <Card>
                         <Category route="/shop" />
-
-                        {/* <Category route="/shop" /> */}
-
                         <Separator />
-
-                        {/* <CheckboxSingle /> */}
-
-                        {/* <Separator /> */}
-
                         <div>
                             <CardHeader>
                                 <CardTitle>Price</CardTitle>
@@ -55,9 +49,19 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                                 <Price route="/shop" />
                             </CardContent>
                         </div>
-
                         <Separator />
-
+                        <div>
+                            <CardHeader>
+                                <CardTitle>Color</CardTitle>
+                                <CardDescription>
+                                    Filter items by color
+                                </CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <Color route="/shop" />
+                            </CardContent>
+                        </div>
+                        <Separator />
                         <div>
                             <CardHeader>
                                 <CardTitle>Size</CardTitle>

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getCategories } from "@/lib/actions/category.action";
-import { ICategory } from "@/models/category.model";
 
 export default async function CategoryList() {
     const categories = await getCategories();
@@ -14,28 +13,38 @@ export default async function CategoryList() {
             </h2>
             <div className="grid grid-cols-3 gap-8">
                 {categories.map((category) => (
-                    <CategoryCard key={category.name} category={category} />
+                    <CategoryCard
+                        key={category.name}
+                        name={category.name}
+                        thumbnail={category.thumbnail}
+                    />
                 ))}
             </div>
         </div>
     );
 }
 
-function CategoryCard({ category }: { category: ICategory }) {
+function CategoryCard({
+    name,
+    thumbnail,
+}: {
+    name: string;
+    thumbnail: string;
+}) {
     return (
         <div className="relative rounded-sm overflow-hidden group">
             <Image
-                src={category.thumbnail}
+                src={thumbnail}
                 height={300}
                 width={300}
                 className="w-full h-auto"
-                alt={category.name}
+                alt={name}
             />
             <Link
-                href={`/category/${category.name}`}
+                href={`/category/${name}`}
                 className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
             >
-                {category.name}
+                {name}
             </Link>
         </div>
     );

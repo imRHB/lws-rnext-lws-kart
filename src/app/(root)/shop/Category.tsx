@@ -1,5 +1,8 @@
 "use client";
 
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
 import {
     CardContent,
     CardDescription,
@@ -8,9 +11,6 @@ import {
 } from "@/components/ui/card";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib";
 import { getCategories } from "@/lib/actions/category.action";
-import { ICategory } from "@/models/category.model";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 interface Props {
     route: string;
@@ -21,13 +21,13 @@ export default function Category({ route }: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const [categories, setCategories] = useState<ICategory[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchCategories() {
             const categories = await getCategories();
-            setCategories(categories);
+            setCategories(categories.map((category) => category.name));
         }
 
         fetchCategories();
@@ -76,21 +76,21 @@ export default function Category({ route }: Props) {
             </CardHeader>
             <CardContent className="space-y-2">
                 {categories.map((cat) => (
-                    <div key={cat.name} className="flex items-center space-x-2">
+                    <div key={cat} className="flex items-center space-x-2">
                         <input
                             type="checkbox"
-                            id={cat.name}
-                            value={cat.name}
-                            checked={selectedCategories.includes(cat.name)}
+                            id={cat}
+                            value={cat}
+                            checked={selectedCategories.includes(cat)}
                             onChange={(evt) =>
                                 handleCheckboxChange(evt.target.value)
                             }
                         />
                         <label
-                            htmlFor={cat.name}
+                            htmlFor={cat}
                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                            {cat.name}
+                            {cat}
                         </label>
                     </div>
                 ))}

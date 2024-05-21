@@ -12,7 +12,7 @@ export async function getProducts(
     try {
         await connectToDatabase();
 
-        const { searchQuery, category, pmin, pmax, size } = params;
+        const { searchQuery, category, pmin, pmax, color, size } = params;
 
         const query: FilterQuery<typeof Product> = {};
 
@@ -32,6 +32,11 @@ export async function getProducts(
         if (category) {
             const categoriesArray = category.split(",");
             query.category = { $in: categoriesArray };
+        }
+
+        if (color) {
+            const colorArray = [color];
+            query.color = { $in: colorArray };
         }
 
         if (size) {
@@ -142,6 +147,23 @@ export async function getProductsByCategory(
         });
 
         return products;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function getProductColors(): Promise<string[]> {
+    try {
+        await connectToDatabase();
+
+        const products = await Product.find({});
+        const allColors = products.map((product) => product.color);
+
+        const flattenColors = allColors.flat(Infinity);
+        const uniqueColors = [...new Set(flattenColors)];
+
+        return uniqueColors;
     } catch (error) {
         console.log(error);
         throw error;
