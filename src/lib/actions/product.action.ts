@@ -12,7 +12,7 @@ export async function getProducts(
     try {
         await connectToDatabase();
 
-        const { searchQuery, pmin, pmax } = params;
+        const { searchQuery, category, pmin, pmax, size } = params;
 
         const query: FilterQuery<typeof Product> = {};
 
@@ -22,6 +22,16 @@ export async function getProducts(
 
         if (pmin !== undefined && pmax !== undefined) {
             query.price = { $gte: Number(pmin), $lte: Number(pmax) };
+        }
+
+        if (category) {
+            const categoriesArray = category.split(",");
+            query.category = { $in: categoriesArray };
+        }
+
+        if (size) {
+            const sizeArray = [size];
+            query.size = { $in: sizeArray };
         }
 
         const products = await Product.find(query);

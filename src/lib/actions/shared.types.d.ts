@@ -18,8 +18,8 @@ export interface GetProductByIdParams {
 export interface GetProductsParams {
     searchQuery?: string;
     category?: string;
-    pmin?: number;
-    pmax?: number;
+    pmin?: string | number;
+    pmax?: string | number;
     size?: string;
 }
 

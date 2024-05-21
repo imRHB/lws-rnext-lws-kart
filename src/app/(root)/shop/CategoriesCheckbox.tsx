@@ -44,7 +44,7 @@ export default function CheckboxSingle() {
 
     console.log("total:", total);
 
-    const handleOnChange = (position) => {
+    const handleOnChange = (position: any) => {
         const updatedCheckedState = checkedState.map((item, index) =>
             index === position ? !item : item
         );
@@ -69,8 +69,8 @@ export default function CheckboxSingle() {
             {toppings.map(({ name, price }, index) => {
                 return (
                     <li key={index}>
-                        <div >
-                            <div >
+                        <div>
+                            <div>
                                 <input
                                     type="checkbox"
                                     id={`custom-checkbox-${index}`}

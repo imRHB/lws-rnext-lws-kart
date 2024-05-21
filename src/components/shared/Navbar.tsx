@@ -26,7 +26,7 @@ export default async function Navbar() {
                         {categories.map((category) => (
                             <Link
                                 key={category._id}
-                                href="/"
+                                href={`/category/${category.name}`}
                                 className="flex items-center px-6 py-3 hover:bg-gray-100 transition"
                             >
                                 <Image

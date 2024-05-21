@@ -9,16 +9,20 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { getProducts } from "@/lib/actions/product.action";
 import { SearchParamsProps } from "@/types";
+import Category from "./Category";
 import Size from "./Size";
 
 export default async function ShopPage({ searchParams }: SearchParamsProps) {
     const products = await getProducts({
         searchQuery: searchParams.q,
+        category: searchParams.category,
+        pmin: searchParams.pmin,
+        pmax: searchParams.pmax,
+        size: searchParams.size,
     });
 
     return (
@@ -30,43 +34,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
             <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
                 <div className="col-span-1 overflow-hidden hidden md:block">
                     <Card>
-                        <div>
-                            <CardHeader>
-                                <CardTitle>Categories</CardTitle>
-                                <CardDescription>
-                                    Filter items by category
-                                </CardDescription>
-                            </CardHeader>
-                            <CardContent className="space-y-2">
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="bedroom" />
-                                    <label
-                                        htmlFor="bedroom"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        Bedroom
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="livingRoom" />
-                                    <label
-                                        htmlFor="livingRoom"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        Living Room
-                                    </label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                    <Checkbox id="sofa" />
-                                    <label
-                                        htmlFor="sofa"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        Sofa
-                                    </label>
-                                </div>
-                            </CardContent>
-                        </div>
+                        <Category route="/shop" />
 
                         {/* <Category route="/shop" /> */}
 
