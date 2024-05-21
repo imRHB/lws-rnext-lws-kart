@@ -110,6 +110,29 @@ export async function getNewArrivalProducts(
     }
 }
 
+interface GetProductByCategoryParams {
+    category: string;
+}
+
+export async function getProductsByCategory(
+    params: GetProductByCategoryParams
+): Promise<IProduct[]> {
+    try {
+        await connectToDatabase();
+
+        const { category } = params;
+
+        const products = await Product.find({ category }).sort({
+            createdAt: -1,
+        });
+
+        return products;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 /* 
 
 export async function getProducts() {

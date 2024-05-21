@@ -15,3 +15,24 @@ export async function getCategories(): Promise<ICategory[]> {
         throw error;
     }
 }
+
+interface GetCategoryByNameParams {
+    name: string;
+}
+
+export async function getCategoryByName(
+    params: GetCategoryByNameParams
+): Promise<ICategory> {
+    try {
+        await connectToDatabase();
+
+        const { name } = params;
+
+        const category = await Category.findOne({ name });
+
+        return category;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}

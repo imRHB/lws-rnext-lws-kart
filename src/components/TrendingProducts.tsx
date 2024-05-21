@@ -1,5 +1,4 @@
 import { getTrendingProducts } from "@/lib/actions/product.action";
-import { IProductCard } from "@/types";
 import ProductCard from "./product/ProductCard";
 
 export default async function TrendingProducts() {
@@ -14,7 +13,7 @@ export default async function TrendingProducts() {
                 Trending Products
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {products.map((product: IProductCard) => (
+                {products.map((product) => (
                     <ProductCard
                         key={String(product._id)}
                         productId={String(product._id)}
