@@ -9,11 +9,11 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { getProducts } from "@/lib/actions/product.action";
 import { SearchParamsProps } from "@/types";
 import Category from "./Category";
+import Price from "./Price";
 import Size from "./Size";
 
 export default async function ShopPage({ searchParams }: SearchParamsProps) {
@@ -52,25 +52,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                                 </CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="grid gap-3">
-                                        {/* <Label htmlFor="firstName">First Name</Label> */}
-                                        <Input
-                                            id="pmin"
-                                            type="number"
-                                            placeholder="min"
-                                        />
-                                    </div>
-                                    <div className="grid gap-3">
-                                        {/* <Label htmlFor="lastName">Last Name</Label> */}
-                                        <Input
-                                            id="pmax"
-                                            type="number"
-                                            placeholder="max"
-                                        />
-                                    </div>
-                                </div>
-                                {/* <Price route="/shop" /> */}
+                                <Price route="/shop" />
                             </CardContent>
                         </div>
 

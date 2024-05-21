@@ -16,13 +16,18 @@ export async function getProducts(
 
         const query: FilterQuery<typeof Product> = {};
 
+        const prices = (await Product.find({})).map((product) => product.price);
+
+        const minPrice =
+            pmin !== undefined ? Number(pmin) : Math.min(...prices);
+        const maxPrice =
+            pmax !== undefined ? Number(pmax) : Math.max(...prices);
+
         if (searchQuery) {
             query.$or = [{ name: { $regex: new RegExp(searchQuery, "i") } }];
         }
 
-        if (pmin !== undefined && pmax !== undefined) {
-            query.price = { $gte: Number(pmin), $lte: Number(pmax) };
-        }
+        query.price = { $gte: minPrice, $lte: maxPrice };
 
         if (category) {
             const categoriesArray = category.split(",");
