@@ -8,21 +8,18 @@ export default function Banner() {
             style={{ backgroundImage: `url('/assets/images/banner-bg.jpg')` }}
         >
             <div className="container">
-                <h1 className="text-6xl text-gray-800 font-medium mb-4 capitalize">
+                <h1 className="text-6xl text-gray-800 font-bold mb-4 capitalize">
                     best collection for <br /> home decoration
                 </h1>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Aperiam <br />
-                    accusantium perspiciatis, sapiente magni eos dolorum ex quos
-                    dolores odio
+                <p className="max-w-2xl text-zinc-700">
+                    A home decoration shop sells items designed to enhance the
+                    aesthetic and functional aspects of a home, including
+                    furniture, lighting, wall art, decorative accessories,
+                    textiles, and sometimes kitchenware and small home
+                    improvement items.
                 </p>
                 <div className="mt-12">
-                    <Link
-                        href="/shop"
-                        //     className="bg-primary border border-primary text-white px-8 py-3 font-medium
-                        // rounded-md hover:bg-transparent hover:text-primary"
-                    >
+                    <Link href="/shop">
                         <Button size="lg">Shop Now</Button>
                     </Link>
                 </div>

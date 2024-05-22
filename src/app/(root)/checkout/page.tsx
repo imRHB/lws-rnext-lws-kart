@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation";
+
 import { auth } from "@/auth";
 import { getUserByEmail } from "@/lib/actions/user.action";
 import AddressCard from "./AddressCard";
@@ -6,6 +8,10 @@ import CheckoutSummary from "./CheckoutSummary";
 
 export default async function CheckoutPage() {
     const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
 
     let user;
     if (session) user = await getUserByEmail({ email: session?.user?.email! });

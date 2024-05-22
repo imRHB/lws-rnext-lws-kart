@@ -14,6 +14,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ACCOUNT_SIDEBAR_LINKS } from "@/constants";
 import { IAccountLinkItem } from "@/types";
+import SignOut from "./(components)/SignOut";
 
 export default async function AccountLayout({
     children,
@@ -58,9 +59,7 @@ export default async function AccountLayout({
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                                <Button size="sm" className="w-full">
-                                    Sign out
-                                </Button>
+                                <SignOut />
                             </CardContent>
                         </Card>
                     </div>
@@ -115,9 +114,7 @@ export default async function AccountLayout({
                                         </CardDescription>
                                     </CardHeader>
                                     <CardContent>
-                                        <Button size="sm" className="w-full">
-                                            Sign out
-                                        </Button>
+                                        <SignOut />
                                     </CardContent>
                                 </Card>
                             </div>

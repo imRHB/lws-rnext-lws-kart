@@ -1,5 +1,6 @@
 import { SquarePen } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
@@ -16,6 +17,10 @@ import AccountSectionIntro from "../(components)/AccountSectionIntro";
 
 export default async function AccountPage() {
     const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
 
     let user;
     if (session) {

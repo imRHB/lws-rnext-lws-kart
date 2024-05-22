@@ -18,7 +18,7 @@ export default async function Header() {
     const { wishlist, cart } = user || {};
 
     return (
-        <header className="py-4 shadow-sm bg-white sticky top-0 z-50">
+        <header className="py-4 shadow-sm bg-zinc-50 sticky top-0 z-50">
             <div className="container flex items-center justify-between">
                 <Link href="/">
                     <Image
@@ -42,12 +42,14 @@ export default async function Header() {
                     </form>
                 </div>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-1">
                     <Link
                         href="/account/wishlist"
-                        className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
-                        Wish
+                        <span className="text-sm font-medium leading-none">
+                            Wish
+                        </span>
                         {wishlist && wishlist?.length > 0 && (
                             <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                                 {wishlist.length}
@@ -56,9 +58,11 @@ export default async function Header() {
                     </Link>
                     <Link
                         href="/cart"
-                        className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:bg-muted"
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
-                        Cart
+                        <span className="text-sm font-medium leading-none">
+                            Cart
+                        </span>
                         {cart && cart?.length > 0 && (
                             <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
                                 {cart.length}

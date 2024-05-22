@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
@@ -26,6 +27,10 @@ interface Props {
 
 export default async function AccountWishlistPage() {
     const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
 
     const wishlist = await getWishlist({ email: session?.user?.email! });
 

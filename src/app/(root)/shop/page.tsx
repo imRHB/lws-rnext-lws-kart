@@ -1,6 +1,5 @@
 import React from "react";
 
-import GlobalSearch from "@/components/GlobalSearch";
 import ProductCard from "@/components/product/ProductCard";
 import {
     Card,
@@ -29,12 +28,12 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
 
     return (
         <React.Fragment>
-            <div className="container p-4">
+            {/* <div className="container p-4">
                 <GlobalSearch route="/shop" />
-            </div>
+            </div> */}
 
             <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
-                <div className="col-span-1 overflow-hidden hidden md:block">
+                <div className="col-span-1 overflow-hidden hidden md:block sticky top-36">
                     <Card>
                         <Category route="/shop" />
                         <Separator />

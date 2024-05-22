@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
 import {
@@ -30,6 +31,10 @@ interface Props {
 
 export default async function CartPage() {
     const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
 
     const cart = await getCart({ email: session?.user?.email! });
 

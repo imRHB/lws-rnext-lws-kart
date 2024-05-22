@@ -1,6 +1,6 @@
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import bcrypt from "bcryptjs";
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthConfig } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
@@ -8,7 +8,7 @@ import GoogleProvider from "next-auth/providers/google";
 import clientPromise from "./lib/db";
 import User from "./models/user.model";
 
-export const { auth, handlers, signIn, signOut } = NextAuth({
+export const authConfig = {
     adapter: MongoDBAdapter(clientPromise, { databaseName: "lws-kart" }),
     providers: [
         CredentialsProvider({
@@ -17,7 +17,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                 password: { label: "Password", type: "password" },
             },
 
-            async authorize(credentials, request) {
+            async authorize(credentials) {
                 if (credentials === null) return null;
 
                 try {
@@ -55,25 +55,20 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
         }),
     ],
     /* callbacks: {
-        async session({ session, user }) {
-            const name = user.name;
-            const email = user.email;
-            const image = user.image;
+        authorized({ request, auth }) {
+            const { pathname } = request.nextUrl;
 
-            await connectToDatabase();
+            if (pathname === "/account") return !!auth;
 
-            let existingUser = await User.findOne({ email });
-            if (!existingUser) {
-                existingUser = await User.create({ name, email, image });
-                await existingUser.save();
-            }
-
-            session.user = existingUser;
-
-            return session;
+            return true;
         },
     }, */
     session: {
         strategy: "jwt",
     },
-});
+    pages: {
+        signIn: "/sign-in",
+    },
+} satisfies NextAuthConfig;
+
+export const { handlers, auth, signIn, signOut } = NextAuth(authConfig);

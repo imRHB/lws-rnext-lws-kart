@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
@@ -12,6 +13,10 @@ enum AddressType {
 
 export default async function AccountAddressPage() {
     const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
 
     let user;
     if (session) user = await getUserByEmail({ email: session?.user?.email! });

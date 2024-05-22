@@ -6,6 +6,7 @@ import React from "react";
 
 import { getInitials } from "@/lib";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -65,11 +66,8 @@ export default function AuthStatus() {
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
-                <Link
-                    href="/sign-in"
-                    className="text-gray-200 hover:text-white"
-                >
-                    Sign in
+                <Link href="/sign-in">
+                    <Button>Sign in</Button>
                 </Link>
             )}
         </React.Fragment>

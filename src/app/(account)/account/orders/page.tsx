@@ -1,6 +1,8 @@
 import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
+import { auth } from "@/auth";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -21,7 +23,13 @@ import {
 } from "@/components/ui/table";
 import AccountSectionIntro from "../../(components)/AccountSectionIntro";
 
-export default function AccountOrderPage() {
+export default async function AccountOrderPage() {
+    const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
+
     return (
         <section>
             <AccountSectionIntro
