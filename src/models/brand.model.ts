@@ -1,9 +1,9 @@
-import { Document, model, models, Schema, Types } from "mongoose";
+import { Document, model, models, Schema } from "mongoose";
 
 export interface IBrand extends Document {
     name: string;
     description: string;
-    products: Types.ObjectId[];
+    products: Schema.Types.ObjectId[];
 }
 
 const BrandSchema = new Schema<IBrand>(

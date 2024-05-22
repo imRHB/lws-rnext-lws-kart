@@ -8,7 +8,7 @@ import User, { IUser } from "@/models/user.model";
 import { connectToDatabase } from "../mongoose";
 import { CreateUserParams, ToggleWishlistParams } from "./shared.types";
 
-export async function createUser(userData: CreateUserParams): Promise<IUser> {
+export async function createUser(userData: CreateUserParams) {
     try {
         await connectToDatabase();
 
@@ -21,7 +21,9 @@ export async function createUser(userData: CreateUserParams): Promise<IUser> {
     }
 }
 
-export async function getUserByEmail(params: { email: string }) {
+export async function getUserByEmail(params: {
+    email: string;
+}): Promise<IUser> {
     try {
         await connectToDatabase();
 

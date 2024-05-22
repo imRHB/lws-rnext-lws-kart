@@ -27,13 +27,13 @@ export interface IUser extends Document {
     phone?: string;
     shippingAddress?: typeof AddressSchema;
     billingAddress?: typeof AddressSchema;
-    wishlist?: Schema.Types.ObjectId;
+    wishlist?: Schema.Types.ObjectId[];
     cart?: {
         product: Schema.Types.ObjectId;
         quantity: number;
         size?: string;
         color?: string;
-    };
+    }[];
 }
 
 const UserSchema = new Schema<IUser>(

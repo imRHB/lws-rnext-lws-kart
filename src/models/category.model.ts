@@ -5,7 +5,7 @@ export interface ICategory extends Document {
     description: string;
     icon: string;
     thumbnail: string;
-    product?: Schema.Types.ObjectId;
+    product?: Schema.Types.ObjectId[];
 }
 
 const CategorySchema = new Schema<ICategory>(

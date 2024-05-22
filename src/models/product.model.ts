@@ -8,8 +8,8 @@ export interface IProduct extends Document {
     images?: string[];
     category: string;
     features?: string[];
-    size: string;
-    color: string;
+    size: string[];
+    color: string[];
     sku: string;
     brand: string;
     stock: number;
