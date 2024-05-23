@@ -69,3 +69,8 @@ export interface ProductCardProps {
 export interface SearchParamsProps {
     searchParams: { [key: string]: string | undefined };
 }
+
+export interface LocalizationStrings {
+    welcome: string;
+    description: string;
+}

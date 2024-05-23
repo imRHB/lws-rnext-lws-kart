@@ -4,6 +4,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { getUserByEmail } from "@/lib/actions/user.action";
 import GlobalSearch from "../GlobalSearch";
+import LanguageToggler from "../LanguageToggler";
 import { Badge } from "../ui/badge";
 
 export default async function Header() {
@@ -57,6 +58,8 @@ export default async function Header() {
                             </Badge>
                         )}
                     </Link>
+
+                    <LanguageToggler />
                 </div>
             </div>
         </header>

@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,7 +27,7 @@ export default function SignUpPage() {
     return (
         <section className="flex flex-col items-center justify-center h-screen">
             {status === "loading" ? (
-                "checking auth"
+                <Loader2 className="mr-2 h-8 w-8 animate-spin text-zinc-400" />
             ) : (
                 <Card className="mx-auto max-w-sm">
                     <CardHeader>

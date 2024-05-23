@@ -8,6 +8,7 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
+import LanguageProvider from "@/components/LanguageProvider";
 import NextAuthProvider from "@/components/NextAuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -34,10 +35,12 @@ export default function RootLayout({
                     listClasses="hover:underline mx-2 font-bold"
                     capitalizeLinks
                 /> */}
-                <NextAuthProvider>
-                    {children}
-                    <Toaster />
-                </NextAuthProvider>
+                <LanguageProvider>
+                    <NextAuthProvider>
+                        {children}
+                        <Toaster />
+                    </NextAuthProvider>
+                </LanguageProvider>
             </body>
         </html>
     );
