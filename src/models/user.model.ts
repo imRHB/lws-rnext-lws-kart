@@ -25,8 +25,8 @@ export interface IUser extends Document {
     image?: string;
     emailVerified?: boolean | null;
     phone?: string;
-    shippingAddress?: typeof AddressSchema;
-    billingAddress?: typeof AddressSchema;
+    shippingAddress?: typeof AddressSchema | null;
+    billingAddress?: typeof AddressSchema | null;
     wishlist?: Schema.Types.ObjectId[];
     cart?: {
         product: Schema.Types.ObjectId;

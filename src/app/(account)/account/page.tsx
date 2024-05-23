@@ -49,8 +49,8 @@ export default async function AccountPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <CardDescription>{user.name}</CardDescription>
-                        <CardDescription>{user.email}</CardDescription>
+                        <CardDescription>{user?.name}</CardDescription>
+                        <CardDescription>{user?.email}</CardDescription>
                         <CardDescription>{user?.phone}</CardDescription>
                     </CardContent>
                 </Card>
@@ -70,18 +70,18 @@ export default async function AccountPage() {
                         {user?.shippingAddress ? (
                             <React.Fragment>
                                 <CardDescription>
-                                    {shippingAddress.firstName}{" "}
-                                    {shippingAddress.lastName}
+                                    {shippingAddress?.firstName}{" "}
+                                    {shippingAddress?.lastName}
                                 </CardDescription>
                                 <CardDescription>
-                                    {shippingAddress.street},{" "}
-                                    {shippingAddress.city}
+                                    {shippingAddress?.street},{" "}
+                                    {shippingAddress?.city}
                                 </CardDescription>
                                 <CardDescription>
-                                    {shippingAddress.phone}
+                                    {shippingAddress?.phone}
                                 </CardDescription>
                                 <CardDescription>
-                                    {shippingAddress.email}
+                                    {shippingAddress?.email}
                                 </CardDescription>
                             </React.Fragment>
                         ) : (
@@ -107,18 +107,18 @@ export default async function AccountPage() {
                         {user?.billingAddress ? (
                             <React.Fragment>
                                 <CardDescription>
-                                    {billingAddress.firstName}{" "}
-                                    {billingAddress.lastName}
+                                    {billingAddress?.firstName}{" "}
+                                    {billingAddress?.lastName}
                                 </CardDescription>
                                 <CardDescription>
-                                    {billingAddress.street},{" "}
-                                    {billingAddress.city}
+                                    {billingAddress?.street},{" "}
+                                    {billingAddress?.city}
                                 </CardDescription>
                                 <CardDescription>
-                                    {billingAddress.phone}
+                                    {billingAddress?.phone}
                                 </CardDescription>
                                 <CardDescription>
-                                    {billingAddress.email}
+                                    {billingAddress?.email}
                                 </CardDescription>
                             </React.Fragment>
                         ) : (

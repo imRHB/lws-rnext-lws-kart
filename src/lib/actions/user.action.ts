@@ -21,9 +21,7 @@ export async function createUser(userData: CreateUserParams) {
     }
 }
 
-export async function getUserByEmail(params: {
-    email: string;
-}): Promise<IUser> {
+export async function getUserByEmail(params: { email: string }) {
     try {
         await connectToDatabase();
 
