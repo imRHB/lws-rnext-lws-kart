@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import ProductCard from "@/components/product/ProductCard";
 import { getCategoryByName } from "@/lib/actions/category.action";
 import { getProductsByCategory } from "@/lib/actions/product.action";
@@ -12,6 +14,9 @@ export default async function CategoryWiseProductPage({ params }: Props) {
     const category = await getCategoryByName({
         name: decodeURIComponent(params.slug),
     });
+
+    if (!category) notFound();
+
     const { name, description, thumbnail } = category || {};
 
     const products = await getProductsByCategory({

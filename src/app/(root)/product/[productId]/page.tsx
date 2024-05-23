@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import React from "react";
 
 import { getProductById } from "@/lib/actions/product.action";
@@ -14,6 +15,9 @@ interface Props {
 
 export default async function ProductPage({ params }: Props) {
     const product = await getProductById({ productId: params.productId });
+
+    if (!product) notFound();
+
     const {
         _id,
         name,

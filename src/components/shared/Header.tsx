@@ -33,26 +33,26 @@ export default async function Header() {
                 <div className="flex items-center space-x-1">
                     <Link
                         href="/account/wishlist"
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className="flex items-baseline gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
                         <span className="text-sm font-medium leading-none">
                             Wish
                         </span>
                         {wishlist && wishlist?.length > 0 && (
-                            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                            <Badge className="ml-auto flex h-4 w-4 p-1 items-center justify-center rounded-full">
                                 {wishlist.length}
                             </Badge>
                         )}
                     </Link>
                     <Link
                         href="/cart"
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className="flex items-baseline gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
                         <span className="text-sm font-medium leading-none">
                             Cart
                         </span>
                         {cart && cart?.length > 0 && (
-                            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                            <Badge className="ml-auto flex h-4 w-4 p-1 items-center justify-center rounded-full">
                                 {cart.length}
                             </Badge>
                         )}

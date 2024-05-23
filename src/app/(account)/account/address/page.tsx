@@ -31,14 +31,14 @@ export default async function AccountAddressPage() {
             <div className="grid xl:grid-cols-2 gap-8">
                 <AddressForm
                     authEmail={session?.user?.email!}
-                    address={JSON.stringify(user.shippingAddress ?? {})}
+                    address={JSON.stringify(user!.shippingAddress ?? {})}
                     addressType={AddressType.shippingAddress}
                     legend="Shipping Address"
                 />
 
                 <AddressForm
                     authEmail={session?.user?.email!}
-                    address={JSON.stringify(user.billingAddress ?? {})}
+                    address={JSON.stringify(user!.billingAddress ?? {})}
                     addressType={AddressType.billingAddress}
                     legend="Billing Address"
                 />
