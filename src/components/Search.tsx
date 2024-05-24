@@ -2,8 +2,9 @@
 
 import { Search as SearchIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
+import useSearch from "@/hooks/useSearch";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib";
 import { Input } from "./ui/input";
 
@@ -16,9 +17,9 @@ export default function Search({ route }: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const query = searchParams.get("q");
+    const { search, setSearch } = useSearch();
 
-    const [search, setSearch] = useState(query || "");
+    const query = searchParams.get("q");
 
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {

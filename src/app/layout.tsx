@@ -10,6 +10,7 @@ config.autoAddCss = false;
 
 import LanguageProvider from "@/components/LanguageProvider";
 import NextAuthProvider from "@/components/NextAuthProvider";
+import SearchProvider from "@/components/SearchProvider";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,8 +38,10 @@ export default function RootLayout({
                 /> */}
                 <LanguageProvider>
                     <NextAuthProvider>
-                        {children}
-                        <Toaster />
+                        <SearchProvider>
+                            {children}
+                            <Toaster />
+                        </SearchProvider>
                     </NextAuthProvider>
                 </LanguageProvider>
             </body>

@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { getProducts } from "@/lib/actions/product.action";
 import { IProduct } from "@/models/product.model";
-import Image from "next/image";
-import Link from "next/link";
 import Search from "./Search";
 import { Card, CardContent, CardDescription, CardHeader } from "./ui/card";
 
@@ -16,7 +16,8 @@ export default function GlobalSearch() {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const query = searchParams.get("q");
+    let query: string | null;
+    query = searchParams.get("q");
 
     useEffect(() => {
         async function fetchProducts() {
@@ -62,6 +63,7 @@ export default function GlobalSearch() {
                                         key={product.id}
                                         href={`/product/${product._id}`}
                                         className="flex items-center gap-2 py-1 px-2 rounded-lg hover:bg-zinc-100"
+                                        // onClick={handleProductClick}
                                     >
                                         <Image
                                             src={product.thumbnail}
