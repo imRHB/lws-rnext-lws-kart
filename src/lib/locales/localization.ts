@@ -14,6 +14,7 @@ export const getLocalizationStrings = async (
 
     if (loadLocale) {
         const strings = await loadLocale();
+
         return strings.default;
     }
 

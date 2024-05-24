@@ -7,28 +7,52 @@ import { LanguageContext } from "@/context";
 import { getLocalizationStrings } from "@/lib/locales/localization";
 import { LocalizationStrings } from "@/types";
 
+const validLocales = ["en", "bn"];
+
 export default function LanguageProvider({
     children,
 }: {
     children: React.ReactNode;
 }) {
     const [locale, setLocaleState] = useState<string>(() => {
-        const storedLocale = localStorage.getItem("locale");
-        return storedLocale || "en";
+        const browserLanguages = navigator.languages || [navigator.language];
+        for (const lang of browserLanguages) {
+            const language = lang.split("-")[0];
+            if (validLocales.includes(language)) {
+                return language;
+            }
+        }
+
+        return "en";
     });
     const [strings, setStrings] = useState<LocalizationStrings | null>(null);
 
     useEffect(() => {
-        const loadStrings = async () => {
-            const localizationStrings = await getLocalizationStrings(locale);
-            setStrings(localizationStrings);
-        };
-        loadStrings();
+        if (typeof window !== "undefined") {
+            const storedLocale = localStorage.getItem("locale");
+            const initialLocale = validLocales.includes(storedLocale!)
+                ? storedLocale!
+                : locale;
+            setLocaleState(initialLocale);
+
+            const loadStrings = async () => {
+                const localizationStrings = await getLocalizationStrings(
+                    initialLocale
+                );
+                setStrings(localizationStrings);
+            };
+            loadStrings();
+        }
     }, [locale]);
 
     const setLocale = (newLocale: string) => {
-        localStorage.setItem("locale", newLocale);
-        setLocaleState(newLocale);
+        if (typeof window !== "undefined") {
+            const validatedLocale = validLocales.includes(newLocale)
+                ? newLocale
+                : "en";
+            localStorage.setItem("locale", validatedLocale);
+            setLocaleState(validatedLocale);
+        }
     };
 
     return (

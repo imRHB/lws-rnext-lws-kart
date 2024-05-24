@@ -38,8 +38,8 @@ export default async function ProductPage({ params }: Props) {
         <React.Fragment>
             <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 my-4">
                 <ProductImageGallery
-                    thumbnail={product.thumbnail}
-                    images={product.images ?? []}
+                    thumbnail={thumbnail}
+                    images={images ?? []}
                 />
 
                 <ProductDetails

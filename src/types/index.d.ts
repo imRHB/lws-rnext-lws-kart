@@ -73,4 +73,12 @@ export interface SearchParamsProps {
 export interface LocalizationStrings {
     welcome: string;
     description: string;
+    product: {
+        addToCart: string;
+        removeFromCart: string;
+        addToWishlist: string;
+        removeFromWishlist: string;
+        inStock: string;
+        outOfStock: string;
+    };
 }

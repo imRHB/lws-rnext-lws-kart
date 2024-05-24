@@ -1,4 +1,13 @@
 {
     "welcome": "স্বাগতম",
-    "description": "এটি স্থানীয়করণের একটি উদাহরণ।"
+    "description": "এটি স্থানীয়করণের একটি উদাহরণ।",
+    "addToCart": "কার্টে যোগ করুন",
+    "product": {
+        "addToCart": "কার্টে যোগ করুন",
+        "removeFromCart": "কার্ট থেকে সরান",
+        "addToWishlist": "ইচ্ছা তালিকায় যোগ করুন",
+        "removeFromWishlist": "ইচ্ছা তালিকা থেকে সরান",
+        "inStock": "স্টকে আছে",
+        "outOfStock": "স্টকে নেই"
+    }
 }

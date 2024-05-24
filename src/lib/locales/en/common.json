@@ -1,4 +1,13 @@
 {
     "welcome": "Welcome",
-    "description": "This is an example of localization."
+    "description": "This is an example of localization.",
+    "addToCart": "Add to cart",
+    "product": {
+        "addToCart": "Add to cart",
+        "removeFromCart": "Remove from cart",
+        "addToWishlist": "Add to wishlist",
+        "removeFromWishlist": "Remove from wishlist",
+        "inStock": "In stock",
+        "outOfStock": "Out of stock"
+    }
 }

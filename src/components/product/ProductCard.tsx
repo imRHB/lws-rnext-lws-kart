@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import useLanguage from "@/hooks/useLanguage";
 import { addToCart, toggleWishlist } from "@/lib/actions/user.action";
 import { Button } from "../ui/button";
 import {
@@ -41,6 +42,8 @@ export default function ProductCard({
 }: Props) {
     const { data: session } = useSession();
     const pathname = usePathname();
+
+    const { locale, strings } = useLanguage();
 
     const { toast } = useToast();
 
@@ -112,7 +115,7 @@ export default function ProductCard({
                 <Button className="w-full z-10" onClick={handleAddToCart}>
                     <ShoppingCart className="h-4 w-4" />
                     <Separator orientation="vertical" className="mx-4" />
-                    Add to cart
+                    {strings.product.addToCart}
                 </Button>
                 <TooltipProvider>
                     <Tooltip>
@@ -126,7 +129,7 @@ export default function ProductCard({
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            <p>Add to wishlist</p>
+                            <p>{strings.product.addToWishlist}</p>
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
