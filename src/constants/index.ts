@@ -1,4 +1,4 @@
-import { CircleUserRound, Heart, MapPinned, ShoppingCart } from "lucide-react";
+import { CircleUserRound, Heart, MapPinned } from "lucide-react";
 
 import {
     IAccountLinkItem,
@@ -15,11 +15,11 @@ export const ACCOUNT_SIDEBAR_LINKS: IAccountLinkItem[] = [
         label: "Account",
         href: "/account",
     },
-    {
+    /* {
         icon: ShoppingCart,
         label: "Orders",
         href: "/account/orders",
-    },
+    }, */
     {
         icon: Heart,
         label: "Wishlist",

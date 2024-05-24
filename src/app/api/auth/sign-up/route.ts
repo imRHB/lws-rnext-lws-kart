@@ -10,6 +10,14 @@ export async function POST(request: Request) {
 
         await connectToDatabase();
 
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return new NextResponse("User already exists", {
+                status: 409,
+            });
+        }
+
         const hashedPassword = await bcrypt.hash(password, 5);
         const newUser = {
             name: `${firstName} ${lastName}`,
@@ -17,19 +25,11 @@ export async function POST(request: Request) {
             password: hashedPassword,
         };
 
-        try {
-            await User.create(newUser);
+        await User.create(newUser);
 
-            return new NextResponse("User created successfully", {
-                status: 201,
-            });
-        } catch (error) {
-            console.error("ERROR:", error);
-
-            return new NextResponse("error", {
-                status: 500,
-            });
-        }
+        return new NextResponse("User created successfully", {
+            status: 201,
+        });
     } catch (error) {
         console.error("Error parsing request body:", error);
         throw error;

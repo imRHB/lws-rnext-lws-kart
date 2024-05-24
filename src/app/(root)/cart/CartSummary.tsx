@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { auth } from "@/auth";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -11,6 +10,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 
+import { auth } from "@/auth";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import { getCart } from "@/lib/actions/user.action";

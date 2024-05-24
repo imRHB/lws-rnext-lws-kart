@@ -41,11 +41,11 @@ export default async function AccountPage() {
                     <CardHeader>
                         <CardTitle className="flex items-center justify-between gap-4">
                             <span>Personal Profile</span>
-                            <Button variant="outline" size="icon">
+                            {/* <Button variant="outline" size="icon">
                                 <Link href="/account">
                                     <SquarePen className="h-4 w-4" />
                                 </Link>
-                            </Button>
+                            </Button> */}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>

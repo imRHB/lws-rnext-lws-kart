@@ -4,6 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
+import { connectToDatabase } from "./lib/mongoose";
 import User from "./models/user.model";
 
 export default {
@@ -17,28 +18,31 @@ export default {
             async authorize(credentials) {
                 if (credentials === null) return null;
 
+                const { email, password } = credentials as {
+                    email: string;
+                    password: string;
+                };
+
                 try {
+                    await connectToDatabase();
+
                     const user = await User.findOne({
-                        email: credentials.email,
+                        email,
                     });
 
-                    if (user) {
-                        const isMatched = await bcrypt.compare(
-                            credentials.password as string,
-                            user.password
-                        );
+                    if (!user) return null;
 
-                        if (isMatched) {
-                            return user;
-                        } else {
-                            console.log("user mismatch");
-                        }
-                    } else {
-                        throw new Error("credentials not valid!");
-                    }
+                    const isMatched = await bcrypt.compare(
+                        password,
+                        user.password
+                    );
+
+                    if (!isMatched) return null;
+
+                    return user;
                 } catch (error) {
                     console.log(error);
-                    throw new Error("User not found!");
+                    throw error;
                 }
             },
         }),
@@ -51,4 +55,22 @@ export default {
             clientSecret: process.env.AUTH_GITHUB_SECRET,
         }),
     ],
+    callbacks: {
+        async jwt({ token, user }) {
+            if (user) {
+                token.email = user.email;
+                token.name = user.name;
+            }
+
+            return token;
+        },
+        async session({ session, token }) {
+            if (session.user) {
+                session.user.email = token.email ?? "";
+                session.user.name = token.name ?? "";
+            }
+
+            return session;
+        },
+    },
 } satisfies NextAuthConfig;
