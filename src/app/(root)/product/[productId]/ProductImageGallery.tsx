@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 interface Props {
     thumbnail: string;
@@ -6,10 +9,12 @@ interface Props {
 }
 
 export default function ProductImageGallery({ thumbnail, images }: Props) {
+    const [show, setShow] = useState(thumbnail);
+
     return (
         <div>
             <Image
-                src={thumbnail}
+                src={show}
                 height={500}
                 width={800}
                 className="w-full rounded bg-cover"
@@ -24,6 +29,7 @@ export default function ProductImageGallery({ thumbnail, images }: Props) {
                         width={300}
                         className="w-full cursor-pointer border border-primary bg-cover"
                         alt="product2"
+                        onClick={() => setShow(item)}
                     />
                 ))}
             </div>

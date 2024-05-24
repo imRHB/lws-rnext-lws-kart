@@ -170,6 +170,42 @@ export async function getProductColors(): Promise<string[]> {
     }
 }
 
+export async function getRelatedProducts(params: {
+    productId: string;
+}): Promise<IProduct[]> {
+    try {
+        await connectToDatabase();
+
+        const { productId } = params;
+
+        const product = await Product.findById(productId);
+
+        if (!product) throw new Error("Product not found");
+
+        const searchQuery = product.name
+            .split(" ")
+            .concat(product.category)
+            .join(" ");
+        const relatedProducts = await Product.aggregate([
+            {
+                $match: {
+                    $text: { $search: searchQuery },
+                    _id: { $ne: product._id },
+                },
+            },
+            {
+                $sort: { score: { $meta: "textScore" } },
+            },
+            { $limit: 6 },
+        ]);
+
+        return relatedProducts;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 /* 
 
 export async function getProducts() {

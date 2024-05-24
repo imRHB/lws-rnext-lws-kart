@@ -1,11 +1,12 @@
 import ProductCard from "@/components/product/ProductCard";
-import { getTrendingProducts } from "@/lib/actions/product.action";
+import { getRelatedProducts } from "@/lib/actions/product.action";
 
-export default async function RelatedProducts() {
-    const products = await getTrendingProducts({
-        fields: "_id name price discount thumbnail",
-        limit: 4,
-    });
+export default async function RelatedProducts({
+    productId,
+}: {
+    productId: string;
+}) {
+    const products = await getRelatedProducts({ productId });
 
     return (
         <div className="container pb-16">

@@ -14,7 +14,9 @@ interface Props {
 }
 
 export default async function ProductPage({ params }: Props) {
-    const product = await getProductById({ productId: params.productId });
+    const { productId } = params;
+
+    const product = await getProductById({ productId });
 
     if (!product) notFound();
 
@@ -34,11 +36,12 @@ export default async function ProductPage({ params }: Props) {
 
     return (
         <React.Fragment>
-            <div className="container grid grid-cols-2 gap-6 my-4">
+            <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 my-4">
                 <ProductImageGallery
                     thumbnail={product.thumbnail}
                     images={product.images ?? []}
                 />
+
                 <ProductDetails
                     productId={JSON.stringify(_id)}
                     name={name}
@@ -50,8 +53,10 @@ export default async function ProductPage({ params }: Props) {
                     stock={stock}
                 />
             </div>
+
             <ProductDescription features={product.features ?? []} />
-            <RelatedProducts />
+
+            <RelatedProducts productId={productId} />
         </React.Fragment>
     );
 }
