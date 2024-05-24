@@ -14,44 +14,38 @@ export default function LanguageProvider({
 }: {
     children: React.ReactNode;
 }) {
-    const [locale, setLocaleState] = useState<string>(() => {
-        const browserLanguages = navigator.languages || [navigator.language];
-        for (const lang of browserLanguages) {
-            const language = lang.split("-")[0];
-            if (validLocales.includes(language)) {
-                return language;
-            }
-        }
-
-        return "en";
-    });
+    const [locale, setLocaleState] = useState<string>("en");
     const [strings, setStrings] = useState<LocalizationStrings | null>(null);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const storedLocale = localStorage.getItem("locale");
-            const initialLocale = validLocales.includes(storedLocale!)
-                ? storedLocale!
-                : locale;
-            setLocaleState(initialLocale);
+            const browserLanguages = navigator.languages || [
+                navigator.language,
+            ];
 
-            const loadStrings = async () => {
-                const localizationStrings = await getLocalizationStrings(
-                    initialLocale
-                );
-                setStrings(localizationStrings);
-            };
-            loadStrings();
+            for (const lang of browserLanguages) {
+                const language = lang.split("-")[0];
+                if (validLocales.includes(language)) {
+                    setLocaleState(language);
+                    break;
+                }
+            }
         }
+    }, []);
+
+    useEffect(() => {
+        const loadStrings = async () => {
+            const localizationStrings = await getLocalizationStrings(locale);
+            setStrings(localizationStrings);
+        };
+
+        loadStrings();
     }, [locale]);
 
     const setLocale = (newLocale: string) => {
-        if (typeof window !== "undefined") {
-            const validatedLocale = validLocales.includes(newLocale)
-                ? newLocale
-                : "en";
-            localStorage.setItem("locale", validatedLocale);
-            setLocaleState(validatedLocale);
+        if (validLocales.includes(newLocale)) {
+            localStorage.setItem("locale", newLocale);
+            setLocaleState(newLocale);
         }
     };
 
