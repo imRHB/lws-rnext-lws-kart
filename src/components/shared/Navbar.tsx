@@ -12,7 +12,7 @@ export default async function Navbar() {
     });
 
     return (
-        <nav className="bg-white sticky top-[72px] z-50">
+        <nav className="bg-white sticky top-[72px] z-40">
             <div className="container flex items-center justify-between h-[72px]">
                 <NavigationItems
                     categories={JSON.stringify(selectedCategoryItems)}

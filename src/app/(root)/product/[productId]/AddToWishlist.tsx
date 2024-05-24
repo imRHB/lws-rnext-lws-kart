@@ -6,14 +6,14 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/components/ui/use-toast";
+import useLanguage from "@/hooks/useLanguage";
 import { addProductToWishlist } from "@/lib/actions/user.action";
 
 export default function AddToWishlist({ productId }: { productId: string }) {
     const { data: session } = useSession();
     const pathname = usePathname();
 
-    const { toast } = useToast();
+    const { strings } = useLanguage();
 
     async function saveToWishlist() {
         if (session) {
@@ -29,7 +29,7 @@ export default function AddToWishlist({ productId }: { productId: string }) {
         <Button onClick={saveToWishlist} variant="outline">
             <Heart className="h-4 w-4" />
             <Separator orientation="vertical" className="mx-4" />
-            Save to wishlist
+            {strings.product.addToWishlist}
         </Button>
     );
 }
