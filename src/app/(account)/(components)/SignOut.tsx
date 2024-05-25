@@ -11,6 +11,7 @@ export default function SignOut() {
     function handleSignOut() {
         signOut({
             redirect: false,
+            callbackUrl: "/sign-in",
         });
 
         router.push("/sign-in");

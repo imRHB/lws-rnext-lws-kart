@@ -2,7 +2,7 @@ import { Document, model, models, Schema } from "mongoose";
 
 import { AddressSchema } from "./user.model";
 
-export interface IOrder extends Document {
+export interface IOrderOld extends Document {
     customer: Schema.Types.ObjectId;
     shippingAddress: typeof AddressSchema;
     billingAddress: typeof AddressSchema;
@@ -13,8 +13,7 @@ export interface IOrder extends Document {
         quantity: number;
         size?: string;
         color?: string;
-        createdAt: Date;
-    };
+    }[];
     payment: {
         method: string;
         transactionId: string;
@@ -23,7 +22,7 @@ export interface IOrder extends Document {
     note?: string;
 }
 
-const OrderSchema = new Schema<IOrder>(
+const OrderSchemaOld = new Schema(
     {
         customer: { type: Schema.Types.ObjectId, ref: "User" },
         shippingAddress: AddressSchema,
@@ -36,7 +35,6 @@ const OrderSchema = new Schema<IOrder>(
                 quantity: { type: Number, required: true },
                 size: { type: String },
                 color: { type: String },
-                createdAt: { type: Date, default: Date.now },
             },
         ],
         payment: {
@@ -45,6 +43,37 @@ const OrderSchema = new Schema<IOrder>(
         },
         amount: { type: Number, required: true },
         note: { type: String },
+    },
+    { timestamps: true }
+);
+
+export interface IOrder extends Document {
+    customer: Schema.Types.ObjectId;
+    shippingAddress: typeof AddressSchema;
+    billingAddress: typeof AddressSchema;
+    items: {
+        product: Schema.Types.ObjectId;
+        quantity: number;
+        size: string;
+        color: string;
+    }[];
+    amount: number;
+}
+
+const OrderSchema = new Schema<IOrder>(
+    {
+        customer: { type: Schema.Types.ObjectId, ref: "User" },
+        shippingAddress: AddressSchema,
+        billingAddress: AddressSchema,
+        items: [
+            {
+                product: { type: Schema.Types.ObjectId, ref: "Product" },
+                quantity: { type: Number, required: true },
+                size: { type: String, required: true },
+                color: { type: String, required: true },
+            },
+        ],
+        amount: { type: Number, required: true },
     },
     { timestamps: true }
 );

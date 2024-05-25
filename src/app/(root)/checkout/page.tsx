@@ -16,20 +16,26 @@ export default async function CheckoutPage() {
     let user;
     if (session) user = await getUserByEmail({ email: session?.user?.email! });
 
+    const shippingAddress = user?.shippingAddress ?? {};
+    const billingAddress = user?.billingAddress ?? {};
+
     return (
         <section className="container grid grid-cols-12 items-start pb-16 pt-4 gap-6">
             <div className="col-span-8 space-y-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <AddressCard
-                        address={JSON.stringify(user.shippingAddress ?? {})}
+                        address={JSON.stringify(shippingAddress)}
                         label="Shipping Address"
                     />
                     <AddressCard
-                        address={JSON.stringify(user.billingAddress ?? {})}
+                        address={JSON.stringify(billingAddress)}
                         label="Billing Address"
                     />
                 </div>
-                <CheckoutForm />
+                <CheckoutForm
+                    shippingAddress={JSON.stringify(shippingAddress)}
+                    billingAddress={JSON.stringify(billingAddress)}
+                />
             </div>
             <CheckoutSummary />
         </section>

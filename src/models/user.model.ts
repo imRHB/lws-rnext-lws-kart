@@ -8,15 +8,18 @@ export interface ICartItem {
     updatedAt: Date;
 }
 
-export const AddressSchema = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    street: { type: String, required: true },
-    city: { type: String, required: true },
-    zip: { type: Number, required: true },
-    phone: { type: String, required: true },
-    email: { type: String, required: true },
-});
+export const AddressSchema = new Schema(
+    {
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+        street: { type: String, required: true },
+        city: { type: String, required: true },
+        zip: { type: Number, required: true },
+        phone: { type: String, required: true },
+        email: { type: String, required: true },
+    },
+    { _id: false }
+);
 
 export interface IUser extends Document {
     name: string;
@@ -31,8 +34,9 @@ export interface IUser extends Document {
     cart?: {
         product: Schema.Types.ObjectId;
         quantity: number;
-        size?: string;
-        color?: string;
+        size: string;
+        color: string;
+        updatedAt: Date;
     }[];
 }
 
@@ -51,8 +55,8 @@ const UserSchema = new Schema<IUser>(
             {
                 product: { type: Schema.Types.ObjectId, ref: "Product" },
                 quantity: { type: Number, required: true, default: 1 },
-                size: { type: String },
-                color: { type: String },
+                size: { type: String, required: true },
+                color: { type: String, required: true },
                 updatedAt: { type: Date, default: Date.now },
             },
         ],

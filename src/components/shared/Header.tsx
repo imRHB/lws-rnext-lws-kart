@@ -34,7 +34,7 @@ export default async function Header() {
                 <div className="flex items-center space-x-1">
                     <Link
                         href="/account/wishlist"
-                        className="flex items-baseline gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className="max-h-10 flex items-center gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
                         <span className="text-sm font-medium leading-none">
                             Wish
@@ -47,7 +47,7 @@ export default async function Header() {
                     </Link>
                     <Link
                         href="/cart"
-                        className="flex items-baseline gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        className="max-h-10 flex items-center gap-2 select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                     >
                         <span className="text-sm font-medium leading-none">
                             Cart

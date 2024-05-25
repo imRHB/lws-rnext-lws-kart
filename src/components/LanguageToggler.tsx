@@ -12,7 +12,6 @@ import useLanguage from "@/hooks/useLanguage";
 
 export default function LanguageToggler() {
     const { locale, setLocale } = useLanguage();
-    console.log(locale);
 
     return (
         <Select
@@ -28,7 +27,7 @@ export default function LanguageToggler() {
             }
         >
             <SelectTrigger className="w-32">
-                <SelectValue placeholder="Select Language" />
+                <SelectValue placeholder="Select" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>

@@ -44,8 +44,8 @@ export default async function CheckoutSummary() {
                 <Separator />
 
                 {(cart as any[]).map((item: any) => (
-                    <CardContent key={item._id} className="mt-4 space-y-4">
-                        <div className="flex items-center justify-between gap-4">
+                    <div key={item._id} className="mt-4 space-y-4">
+                        <CardContent className="flex items-center justify-between gap-4">
                             <Image
                                 src={item.product.thumbnail}
                                 height={64}
@@ -77,8 +77,8 @@ export default async function CheckoutSummary() {
                                     productId={String(item.product._id)}
                                 />
                             </CardDescription>
-                        </div>
-                    </CardContent>
+                        </CardContent>
+                    </div>
                 ))}
 
                 <Separator />
