@@ -81,7 +81,7 @@ export async function getWishlist(params: {
         const user = await User.findOne({ email: params.email }).populate({
             path: "wishlist",
             model: Product,
-            select: "_id name price discount thumbnail",
+            select: "_id name price discount thumbnail stock sku",
         });
         const wishlist = user.wishlist;
 

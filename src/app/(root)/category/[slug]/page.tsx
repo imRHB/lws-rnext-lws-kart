@@ -24,26 +24,38 @@ export default async function CategoryWiseProductPage({ params }: Props) {
     });
 
     return (
-        <div className="container pt-4 pb-16 space-y-8">
+        <section className="container pt-4 pb-16 space-y-8">
             <CategoryBanner
                 name={name}
                 description={description}
                 thumbnail={thumbnail}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                {products.map((product) => (
-                    <ProductCard
-                        key={String(product._id)}
-                        productId={String(product._id)}
-                        name={product.name}
-                        price={product.price}
-                        discount={product.discount}
-                        thumbnail={product.thumbnail}
-                    />
-                ))}
-            </div>
-        </div>
+            {products.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    {products.map((product) => (
+                        <ProductCard
+                            key={String(product._id)}
+                            productId={String(product._id)}
+                            name={product.name}
+                            price={product.price}
+                            discount={product.discount}
+                            thumbnail={product.thumbnail}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <h3 className="text-3xl font-semibold text-zinc-800">
+                        No products found
+                    </h3>
+                    <p className="text-md text-zinc-600 text-center max-w-lg">
+                        No products found for this category, try different
+                        category
+                    </p>
+                </div>
+            )}
+        </section>
     );
 }
 

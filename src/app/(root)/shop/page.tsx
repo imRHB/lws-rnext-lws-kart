@@ -1,5 +1,3 @@
-import React from "react";
-
 import ProductCard from "@/components/product/ProductCard";
 import {
     Card,
@@ -27,8 +25,8 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
     });
 
     return (
-        <React.Fragment>
-            <div className="container grid md:grid-cols-4 grid-cols-2 gap-6 pt-4 pb-16 items-start">
+        <section className="container pt-4 pb-16">
+            <div className="grid md:grid-cols-4 grid-cols-2 gap-6 items-start">
                 <div className="col-span-1 overflow-hidden hidden md:block sticky top-36">
                     <Card>
                         <Category route="/shop" />
@@ -72,20 +70,34 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                 </div>
 
                 <div className="col-span-3">
-                    <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
-                        {products.map((product) => (
-                            <ProductCard
-                                key={product._id}
-                                productId={String(product._id)}
-                                name={product.name}
-                                price={product.price}
-                                discount={product.discount}
-                                thumbnail={product.thumbnail}
-                            />
-                        ))}
-                    </div>
+                    {products.length > 0 ? (
+                        <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
+                            {products.map((product) => (
+                                <ProductCard
+                                    key={product._id}
+                                    productId={String(product._id)}
+                                    name={product.name}
+                                    price={product.price}
+                                    discount={product.discount}
+                                    thumbnail={product.thumbnail}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center gap-2">
+                            <h3 className="text-3xl font-semibold text-zinc-800">
+                                No products found
+                            </h3>
+                            <p className="text-md text-zinc-600 text-center max-w-lg">
+                                No products found, seems like your filter
+                                criteria not matched with any of the products,
+                                try different filters
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
-        </React.Fragment>
+            )
+        </section>
     );
 }
