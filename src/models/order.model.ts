@@ -58,6 +58,12 @@ export interface IOrder extends Document {
         color: string;
     }[];
     amount: number;
+    payment: {
+        method: string;
+        name: string;
+        cardNumber: string;
+    };
+    note?: string;
 }
 
 const OrderSchema = new Schema<IOrder>(
@@ -74,6 +80,12 @@ const OrderSchema = new Schema<IOrder>(
             },
         ],
         amount: { type: Number, required: true },
+        payment: {
+            method: { type: String, required: true },
+            name: { type: String, required: true },
+            cardNumber: { type: String, required: true },
+        },
+        note: { type: String },
     },
     { timestamps: true }
 );

@@ -24,6 +24,54 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { createOrder } from "@/lib/actions/order.action";
+import { usePathname } from "next/navigation";
+
+const luhnCheck = (cardNumber: string) => {
+    let sum = 0;
+    let shouldDouble = false;
+
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+        let digit = parseInt(cardNumber.charAt(i), 10);
+
+        if (shouldDouble) {
+            digit *= 2;
+            if (digit > 9) digit -= 9;
+        }
+
+        sum += digit;
+        shouldDouble = !shouldDouble;
+    }
+
+    return sum % 10 === 0;
+};
+
+const cardNumberSchema = z
+    .string()
+    .refine(
+        (val) => {
+            const sanitizedVal = val.replace(/\D/g, "");
+
+            return (
+                sanitizedVal.length >= 13 &&
+                sanitizedVal.length <= 19 &&
+                luhnCheck(sanitizedVal)
+            );
+        },
+        {
+            message: "Invalid credit card number",
+        }
+    )
+    .transform((val) => {
+        const sanitizedVal = val.replace(/\D/g, "");
+        const last4Digits = sanitizedVal.slice(-4);
+        const starGroups =
+            sanitizedVal
+                .slice(0, -4)
+                .replace(/\d/g, "*")
+                .match(/.{1,4}/g) || [];
+
+        return `${starGroups.join(" ")} ${last4Digits}`;
+    });
 
 const zodAddressSchema = z.object({
     firstName: z.string(),
@@ -44,6 +92,12 @@ const itemSchema = z.object({
     color: z.string(),
 });
 
+const paymentSchema = z.object({
+    method: z.string(),
+    name: z.string(),
+    cardNumber: cardNumberSchema,
+});
+
 const formSchema = z.object({
     customer: z.string().refine((val) => /^[a-fA-F0-9]{24}$/.test(val), {
         message: "Invalid customer ID",
@@ -52,6 +106,8 @@ const formSchema = z.object({
     billingAddress: zodAddressSchema,
     items: z.array(itemSchema),
     amount: z.number(),
+    payment: paymentSchema,
+    note: z.string().optional(),
 });
 
 interface CheckoutFormProps {
@@ -63,6 +119,8 @@ interface CheckoutFormProps {
 }
 
 export default function DevCheckoutForm(params: CheckoutFormProps) {
+    const pathname = usePathname();
+
     const { userId, shippingAddress, billingAddress, items, amount } = params;
 
     const parsedShippingAddress = JSON.parse(shippingAddress) as z.infer<
@@ -73,6 +131,12 @@ export default function DevCheckoutForm(params: CheckoutFormProps) {
     >;
     const parsedItems = JSON.parse(items) as z.infer<typeof itemSchema>[];
 
+    const paymentInfo = {
+        method: "CreditCard",
+        name: "John Doe",
+        cardNumber: "4000 0566 5566 5556",
+    };
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -81,13 +145,15 @@ export default function DevCheckoutForm(params: CheckoutFormProps) {
             billingAddress: parsedBillingAddress,
             items: parsedItems,
             amount,
+            payment: paymentInfo,
+            note: "Please call before shipping",
         },
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         console.log(values);
 
-        await createOrder(values);
+        await createOrder({ ...values, path: pathname });
     }
 
     return (

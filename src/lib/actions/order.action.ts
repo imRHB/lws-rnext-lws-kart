@@ -4,8 +4,10 @@ import { ObjectId } from "mongodb";
 import { Resend } from "resend";
 
 import Order, { IOrder } from "@/models/order.model";
+import Product from "@/models/product.model";
+import User from "@/models/user.model";
+import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
-import { log } from "console";
 
 interface CreateOrderParams {
     customer: string;
@@ -34,14 +36,31 @@ interface CreateOrderParams {
         color: string;
     }[];
     amount: number;
+    payment: {
+        method: string;
+        name: string;
+        cardNumber: string;
+    };
+    note?: string;
+    path: string;
 }
 
 export async function createOrder(params: CreateOrderParams) {
     try {
         await connectToDatabase();
 
-        const { customer, shippingAddress, billingAddress, items, amount } =
-            params;
+        const {
+            customer,
+            shippingAddress,
+            billingAddress,
+            items,
+            amount,
+            payment,
+            note,
+            path,
+        } = params;
+
+        const user = await User.findById(customer);
 
         const newOrder = await Order.create({
             customer: new ObjectId(customer),
@@ -49,11 +68,24 @@ export async function createOrder(params: CreateOrderParams) {
             billingAddress,
             items,
             amount,
+            payment,
+            note,
         });
+
+        for (const item of user.cart) {
+            const product = await Product.findById(item.product);
+            if (product) {
+                product.stock -= item.quantity;
+                await product.save();
+            }
+        }
+
+        user.cart = [];
+        await user.save();
 
         // await sendEmail({ orderId: newOrder._id, email: billingAddress.email });
 
-        return newOrder;
+        revalidatePath(path);
     } catch (error) {
         console.log(error);
         throw error;
