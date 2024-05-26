@@ -24,6 +24,12 @@ export default async function DevCheckoutPage() {
         return {
             product: String(item.product._id),
             quantity: item.quantity,
+            unitPrice: Number(
+                (
+                    item.product.price -
+                    (item.product.discount * item.product.price) / 100
+                ).toFixed(2)
+            ),
             size: item.size,
             color: item.color,
         };

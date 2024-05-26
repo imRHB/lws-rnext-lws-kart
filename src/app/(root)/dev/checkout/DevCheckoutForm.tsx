@@ -88,6 +88,7 @@ const itemSchema = z.object({
         message: "Invalid product ID",
     }),
     quantity: z.number(),
+    unitPrice: z.number(),
     size: z.string(),
     color: z.string(),
 });
@@ -108,6 +109,7 @@ const formSchema = z.object({
     amount: z.number(),
     payment: paymentSchema,
     note: z.string().optional(),
+    status: z.enum(["pending", "delivered"]),
 });
 
 interface CheckoutFormProps {
@@ -147,12 +149,11 @@ export default function DevCheckoutForm(params: CheckoutFormProps) {
             amount,
             payment: paymentInfo,
             note: "Please call before shipping",
+            status: "pending",
         },
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
-
         await createOrder({ ...values, path: pathname });
     }
 

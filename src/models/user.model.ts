@@ -38,6 +38,7 @@ export interface IUser extends Document {
         color: string;
         updatedAt: Date;
     }[];
+    orders?: Schema.Types.ObjectId[];
 }
 
 const UserSchema = new Schema<IUser>(
@@ -60,6 +61,7 @@ const UserSchema = new Schema<IUser>(
                 updatedAt: { type: Date, default: Date.now },
             },
         ],
+        orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
     },
     { timestamps: true }
 );

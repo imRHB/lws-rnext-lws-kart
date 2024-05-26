@@ -1,12 +1,12 @@
 "use server";
 
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 
 import Order, { IOrder } from "@/models/order.model";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
-import { revalidatePath } from "next/cache";
 import { connectToDatabase } from "../mongoose";
 
 interface CreateOrderParams {
@@ -32,6 +32,7 @@ interface CreateOrderParams {
     items: {
         product: string;
         quantity: number;
+        unitPrice: number;
         size: string;
         color: string;
     }[];
@@ -42,6 +43,7 @@ interface CreateOrderParams {
         cardNumber: string;
     };
     note?: string;
+    status: string;
     path: string;
 }
 
@@ -57,6 +59,7 @@ export async function createOrder(params: CreateOrderParams) {
             amount,
             payment,
             note,
+            status,
             path,
         } = params;
 
@@ -70,6 +73,7 @@ export async function createOrder(params: CreateOrderParams) {
             amount,
             payment,
             note,
+            status,
         });
 
         for (const item of user.cart) {
@@ -81,11 +85,55 @@ export async function createOrder(params: CreateOrderParams) {
         }
 
         user.cart = [];
+        if (!user.orders) {
+            user.orders = [];
+        }
+        user.orders.push(newOrder._id);
         await user.save();
 
         // await sendEmail({ orderId: newOrder._id, email: billingAddress.email });
 
         revalidatePath(path);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface GetOrdersByCustomerIdProps {
+    customer: string;
+}
+
+export async function getOrdersByCustomerId(
+    params: GetOrdersByCustomerIdProps
+) {
+    try {
+        await connectToDatabase();
+
+        const { customer } = params;
+        const user = await User.findById(customer);
+
+        const orders = await Order.find({
+            customer: user._id,
+        })
+            .populate({
+                path: "items.product",
+                model: Product,
+                select: "_id name thumbnail",
+            })
+            .sort({ createdAt: -1 });
+
+        const minimalOrders = orders.map((order) => {
+            return {
+                _id: order._id,
+                items: order.items,
+                amount: order.amount,
+                status: order.status,
+                createdAt: order.createdAt,
+            };
+        });
+
+        return minimalOrders;
     } catch (error) {
         console.log(error);
         throw error;

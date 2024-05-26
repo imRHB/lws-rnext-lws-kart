@@ -11,6 +11,7 @@ export interface IOrderOld extends Document {
     items: {
         product: Schema.Types.ObjectId;
         quantity: number;
+        unitPrice: number;
         size?: string;
         color?: string;
     }[];
@@ -54,6 +55,7 @@ export interface IOrder extends Document {
     items: {
         product: Schema.Types.ObjectId;
         quantity: number;
+        unitPrice: number;
         size: string;
         color: string;
     }[];
@@ -64,6 +66,7 @@ export interface IOrder extends Document {
         cardNumber: string;
     };
     note?: string;
+    status: string;
 }
 
 const OrderSchema = new Schema<IOrder>(
@@ -75,9 +78,11 @@ const OrderSchema = new Schema<IOrder>(
             {
                 product: { type: Schema.Types.ObjectId, ref: "Product" },
                 quantity: { type: Number, required: true },
+                unitPrice: { type: Number, required: true },
                 size: { type: String, required: true },
                 color: { type: String, required: true },
             },
+            { _id: false },
         ],
         amount: { type: Number, required: true },
         payment: {
@@ -86,6 +91,7 @@ const OrderSchema = new Schema<IOrder>(
             cardNumber: { type: String, required: true },
         },
         note: { type: String },
+        status: { type: String, required: true, default: "pending" },
     },
     { timestamps: true }
 );
