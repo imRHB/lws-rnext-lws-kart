@@ -151,18 +151,18 @@ export const CITY_LIST: ICity[] = [
 ];
 
 export enum Month {
-    January = "january",
-    February = "february",
-    March = "march",
-    April = "april",
-    May = "may",
-    June = "june",
-    July = "july",
-    August = "august",
-    September = "september",
-    October = "october",
-    November = "november",
-    December = "december",
+    January = "January",
+    February = "February",
+    March = "March",
+    April = "April",
+    May = "May",
+    June = "June",
+    July = "July",
+    August = "August",
+    September = "September",
+    October = "October",
+    November = "November",
+    December = "December",
 }
 
 export const MONTHS: IMonth[] = [

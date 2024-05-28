@@ -64,6 +64,9 @@ export interface IOrder extends Document {
         method: string;
         name: string;
         cardNumber: string;
+        expiryMonth: string;
+        expiryYear: string;
+        cvc: string;
     };
     note?: string;
     status: string;
@@ -89,6 +92,9 @@ const OrderSchema = new Schema<IOrder>(
             method: { type: String, required: true },
             name: { type: String, required: true },
             cardNumber: { type: String, required: true },
+            expiryMonth: { type: String, required: true },
+            expiryYear: { type: String, required: true },
+            cvc: { type: String, required: true },
         },
         note: { type: String },
         status: { type: String, required: true, default: "pending" },

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
-import { getUserByEmail } from "@/lib/actions/user.action";
+import { getCart, getUserByEmail } from "@/lib/actions/user.action";
 import AddressCard from "./AddressCard";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
@@ -19,6 +19,34 @@ export default async function CheckoutPage() {
     const shippingAddress = user?.shippingAddress ?? {};
     const billingAddress = user?.billingAddress ?? {};
 
+    const cart = await getCart({ email: session?.user?.email! });
+    const checkoutItems = (cart as any[]).map((item) => {
+        return {
+            product: String(item.product._id),
+            quantity: item.quantity,
+            unitPrice: Number(
+                (
+                    item.product.price -
+                    (item.product.discount * item.product.price) / 100
+                ).toFixed(2)
+            ),
+            size: item.size,
+            color: item.color,
+        };
+    });
+
+    const SHIPPING_CHARGE = (cart as any[]).length > 0 ? 20 : 0;
+    const SUB_TOTAL = (cart as { product: any; quantity: number }[]).reduce(
+        (acc: number, item: any) =>
+            acc +
+            (item.product.price -
+                (item.product.discount * item.product.price) / 100) *
+                item.quantity,
+        0
+    );
+    const TAX_AMOUNT = (7 * SUB_TOTAL) / 100;
+    const totalAmount = (SUB_TOTAL + SHIPPING_CHARGE + TAX_AMOUNT).toFixed(2);
+
     return (
         <section className="container grid grid-cols-12 items-start pb-16 pt-4 gap-6">
             <div className="col-span-8 space-y-6">
@@ -33,8 +61,11 @@ export default async function CheckoutPage() {
                     />
                 </div>
                 <CheckoutForm
+                    userId={String(user._id)}
                     shippingAddress={JSON.stringify(shippingAddress)}
                     billingAddress={JSON.stringify(billingAddress)}
+                    items={JSON.stringify(checkoutItems)}
+                    amount={Number(totalAmount)}
                 />
             </div>
             <CheckoutSummary />

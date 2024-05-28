@@ -71,14 +71,11 @@ export default async function AccountOrdersPage() {
                                         </TableHead>
                                         <TableHead>Name</TableHead>
                                         <TableHead>Unit Price</TableHead>
-                                        <TableHead className="hidden md:table-cell">
+                                        <TableHead className="table-cell">
                                             Quantity
                                         </TableHead>
-                                        <TableHead className="hidden md:table-cell">
+                                        <TableHead className="table-cell">
                                             Status
-                                        </TableHead>
-                                        <TableHead className="hidden md:table-cell">
-                                            Availability
                                         </TableHead>
                                         <TableHead>
                                             <span className="sr-only">
@@ -154,11 +151,9 @@ function OrderItemTableRow({
                     {name}
                 </Link>
             </TableCell>
-            <TableCell className="hidden md:table-cell">${unitPrice}</TableCell>
-            <TableCell className="hidden md:table-cell">
-                {quantity} pcs
-            </TableCell>
-            <TableCell className="hidden md:table-cell">
+            <TableCell className="table-cell">${unitPrice}</TableCell>
+            <TableCell className="table-cell">{quantity} pcs</TableCell>
+            <TableCell className="table-cell">
                 <Badge variant="secondary">
                     <span className="capitalize">{status}</span>
                 </Badge>

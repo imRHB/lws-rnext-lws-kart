@@ -41,6 +41,9 @@ interface CreateOrderParams {
         method: string;
         name: string;
         cardNumber: string;
+        expiryMonth: string;
+        expiryYear: string;
+        cvc: string;
     };
     note?: string;
     status: string;

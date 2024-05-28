@@ -8,16 +8,7 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Month, MONTHS } from "@/constants";
-import { getYears } from "@/lib";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -26,7 +17,6 @@ import { z } from "zod";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -35,128 +25,164 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useSession } from "next-auth/react";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Month, MONTHS } from "@/constants";
+import { getYears } from "@/lib";
+import { createOrder } from "@/lib/actions/order.action";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const phoneRegEx = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
+const luhnCheck = (cardNumber: string) => {
+    let sum = 0;
+    let shouldDouble = false;
 
-enum DeliveryMethods {
-    "Standard" = "standard",
-    "Express" = "express",
-}
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+        let digit = parseInt(cardNumber.charAt(i), 10);
 
-enum PaymentMethods {
-    "Card" = "card",
-    "Bank" = "bank",
-}
+        if (shouldDouble) {
+            digit *= 2;
+            if (digit > 9) digit -= 9;
+        }
 
-const years = getYears();
+        sum += digit;
+        shouldDouble = !shouldDouble;
+    }
 
-const formSchemaOriginal = z.object({
-    delivery: z.nativeEnum(DeliveryMethods),
-    payment: z.nativeEnum(PaymentMethods),
-    name: z.string(),
-    cardNumber: z.coerce.number(),
-    expMonth: z.nativeEnum(Month),
-    expYear: z.coerce.number().int().gte(2024).lte(2033),
-    cvc: z.coerce.number().int().gte(100).lte(999),
-});
+    return sum % 10 === 0;
+};
 
-interface Props {
-    shippingAddress: string;
-    billingAddress: string;
-}
+const cardNumberSchema = z
+    .string()
+    .refine(
+        (val) => {
+            const sanitizedVal = val.replace(/\D/g, "");
 
-const AddressSchema = z.object({
+            return (
+                sanitizedVal.length >= 13 &&
+                sanitizedVal.length <= 19 &&
+                luhnCheck(sanitizedVal)
+            );
+        },
+        {
+            message: "Invalid credit card number",
+        }
+    )
+    .transform((val) => {
+        const sanitizedVal = val.replace(/\D/g, "");
+        const last4Digits = sanitizedVal.slice(-4);
+        const starGroups =
+            sanitizedVal
+                .slice(0, -4)
+                .replace(/\d/g, "*")
+                .match(/.{1,4}/g) || [];
+
+        return `${starGroups.join(" ")} ${last4Digits}`;
+    });
+
+const zodAddressSchema = z.object({
+    firstName: z.string(),
+    lastName: z.string(),
     street: z.string(),
     city: z.string(),
-    state: z.string(),
-    postalCode: z.string().length(5),
-    country: z.string(),
+    zip: z.number().positive("Zip must be a positive number"),
+    phone: z.string(),
+    email: z.string().email("Invalid email format"),
 });
 
-// Order item schema
-const OrderItemSchema = z.object({
+const itemSchema = z.object({
     product: z.string().refine((val) => /^[a-fA-F0-9]{24}$/.test(val), {
         message: "Invalid product ID",
     }),
-    quantity: z.number().int().positive(),
-    size: z.string().optional(),
-    color: z.string().optional(),
+    quantity: z.number(),
+    unitPrice: z.number(),
+    size: z.string(),
+    color: z.string(),
 });
 
-// Payment schema
-const PaymentSchema = z.object({
-    method: z.nativeEnum(PaymentMethods),
-    transactionId: z.string(),
+const paymentSchema = z.object({
+    method: z.string(),
+    name: z.string(),
+    cardNumber: cardNumberSchema,
+    expiryMonth: z.nativeEnum(Month),
+    expiryYear: z.string().refine((val) => /^[0-9]{4}$/.test(val)),
+    cvc: z.string().refine((val) => /^[0-9]{3}$/.test(val)),
 });
 
-// Order form schema
 const formSchema = z.object({
     customer: z.string().refine((val) => /^[a-fA-F0-9]{24}$/.test(val), {
         message: "Invalid customer ID",
     }),
-    shippingAddress: AddressSchema,
-    billingAddress: AddressSchema,
-    orderDate: z.date(),
-    status: z.string(),
-    items: z.array(OrderItemSchema),
-    payment: PaymentSchema,
-    amount: z.number().positive(),
+    shippingAddress: zodAddressSchema,
+    billingAddress: zodAddressSchema,
+    items: z.array(itemSchema),
+    amount: z.number(),
+    payment: paymentSchema,
     note: z.string().optional(),
-    delivery: z.nativeEnum(DeliveryMethods),
-    name: z.string(),
-    cardNumber: z.string().refine((val) => /^\d{16}$/.test(val), {
-        message: "Invalid card number",
-    }),
-    expMonth: z.nativeEnum(Month),
-    expYear: z.string().refine((val) => /^(202[4-9]|203[0-3])$/.test(val), {
-        message: "Invalid expiration year",
-    }),
-    cvc: z
-        .string()
-        .refine((val) => /^\d{3}$/.test(val), { message: "Invalid CVC" }),
+    status: z.enum(["pending", "delivered"]),
 });
 
-export default function CheckoutForm(params: Props) {
-    const { data: session } = useSession();
+const YEARS = getYears();
 
-    const { billingAddress, shippingAddress } = params;
+interface CheckoutFormProps {
+    userId: string;
+    shippingAddress: string;
+    billingAddress: string;
+    items: string;
+    amount: number;
+}
 
-    const parsedShippingAddress = JSON.parse(shippingAddress);
-    const parsedBillingAddress = JSON.parse(billingAddress);
-
-    const YEARS = getYears();
-
+export default function CheckoutForm(params: CheckoutFormProps) {
     const pathname = usePathname();
+
+    const { userId, shippingAddress, billingAddress, items, amount } = params;
+
+    const parsedShippingAddress = JSON.parse(shippingAddress) as z.infer<
+        typeof zodAddressSchema
+    >;
+    const parsedBillingAddress = JSON.parse(billingAddress) as z.infer<
+        typeof zodAddressSchema
+    >;
+    const parsedItems = JSON.parse(items) as z.infer<typeof itemSchema>[];
+
+    const paymentInfo = {
+        method: "CreditCard",
+        name: "John Doe",
+        cardNumber: "4000056655665556",
+        expiryMonth: "12",
+        expiryYear: "2026",
+        cvc: "123",
+    };
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            customer: "", // Initially an empty string, replace with a valid ID as needed
+            customer: userId,
             shippingAddress: parsedShippingAddress,
             billingAddress: parsedBillingAddress,
-            orderDate: new Date(), // Defaults to the current date
-            status: "", // Set the default status as appropriate
-            items: [], // Start with an empty array, items can be added dynamically
+            items: parsedItems,
+            amount,
             payment: {
-                method: PaymentMethods.Card, // Assuming 'CreditCard' is a valid enum value
-                transactionId: "", // Initially an empty string, replace with a valid transaction ID as needed
+                method: "",
+                name: "",
+                cardNumber: "",
+                expiryMonth: undefined,
+                expiryYear: "",
+                cvc: "",
             },
-            amount: 0, // Initially set to 0, update as needed
-            note: "", // Optional, so it starts as an empty string
-            delivery: DeliveryMethods.Standard,
-            name: "",
-            cardNumber: "", // Initially an empty string
-            expMonth: Month.January,
-            expYear: YEARS[0].toString(), // Set the first year in the generated range (2024)
-            cvc: "", // Initially an empty string
+            note: "",
+            status: "pending",
         },
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+        await createOrder({ ...values, path: pathname });
     }
 
     return (
@@ -179,87 +205,18 @@ export default function CheckoutForm(params: Props) {
                         >
                             <fieldset className="grid gap-6 rounded-lg border p-4">
                                 <legend className="-ml-1 px-1 text-sm font-medium">
-                                    Delivery Method
-                                </legend>
-
-                                <div className="grid grid-cols-2 gap-4">
-                                    <FormField
-                                        control={form.control}
-                                        name="delivery"
-                                        render={({ field }) => (
-                                            <FormItem>
-                                                <div className="flex items-center justify-between gap-4">
-                                                    <FormLabel>
-                                                        Delivery
-                                                    </FormLabel>
-                                                    <FormMessage />
-                                                </div>
-                                                <FormControl>
-                                                    <RadioGroup
-                                                        onValueChange={
-                                                            field.onChange
-                                                        }
-                                                        defaultValue={
-                                                            field.value
-                                                        }
-                                                        className="flex flex-col space-y-1"
-                                                    >
-                                                        <FormItem className="flex items-baseline space-x-3 space-y-0">
-                                                            <FormControl>
-                                                                <RadioGroupItem value="standard" />
-                                                            </FormControl>
-                                                            <div>
-                                                                <FormLabel className="font-normal">
-                                                                    Standard
-                                                                </FormLabel>
-                                                                <FormDescription>
-                                                                    3-5 business
-                                                                    days
-                                                                </FormDescription>
-                                                                <FormDescription>
-                                                                    FREE
-                                                                </FormDescription>
-                                                            </div>
-                                                        </FormItem>
-                                                        <FormItem className="flex items-baseline space-x-3 space-y-0">
-                                                            <FormControl>
-                                                                <RadioGroupItem value="express" />
-                                                            </FormControl>
-                                                            <div>
-                                                                <FormLabel className="font-normal">
-                                                                    Express
-                                                                </FormLabel>
-                                                                <FormDescription>
-                                                                    1 business
-                                                                    day
-                                                                </FormDescription>
-                                                                <FormDescription>
-                                                                    $20
-                                                                </FormDescription>
-                                                            </div>
-                                                        </FormItem>
-                                                    </RadioGroup>
-                                                </FormControl>
-                                            </FormItem>
-                                        )}
-                                    />
-                                </div>
-                            </fieldset>
-
-                            <fieldset className="grid gap-6 rounded-lg border p-4">
-                                <legend className="-ml-1 px-1 text-sm font-medium">
                                     Payment Method
                                 </legend>
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <FormField
                                         control={form.control}
-                                        name="delivery"
+                                        name="payment.method"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
                                                     <FormLabel>
-                                                        Delivery
+                                                        Payment Method
                                                     </FormLabel>
                                                     <FormMessage />
                                                 </div>
@@ -268,14 +225,11 @@ export default function CheckoutForm(params: Props) {
                                                         onValueChange={
                                                             field.onChange
                                                         }
-                                                        defaultValue={
-                                                            field.value
-                                                        }
                                                         className="flex items-center gap-4"
                                                     >
                                                         <FormItem className="flex items-center space-x-3 space-y-0">
                                                             <FormControl>
-                                                                <RadioGroupItem value="standard" />
+                                                                <RadioGroupItem value="CreditCard" />
                                                             </FormControl>
                                                             <FormLabel className="font-normal">
                                                                 Credit Card
@@ -283,7 +237,7 @@ export default function CheckoutForm(params: Props) {
                                                         </FormItem>
                                                         <FormItem className="flex items-center space-x-3 space-y-0">
                                                             <FormControl>
-                                                                <RadioGroupItem value="express" />
+                                                                <RadioGroupItem value="Bank" />
                                                             </FormControl>
                                                             <FormLabel className="font-normal">
                                                                 Bank
@@ -299,7 +253,7 @@ export default function CheckoutForm(params: Props) {
                                 <div className="grid grid-cols-2 gap-4">
                                     <FormField
                                         control={form.control}
-                                        name="name"
+                                        name="payment.name"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
@@ -321,7 +275,7 @@ export default function CheckoutForm(params: Props) {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="cardNumber"
+                                        name="payment.cardNumber"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
@@ -348,7 +302,7 @@ export default function CheckoutForm(params: Props) {
                                 <div className="grid grid-cols-3 gap-4">
                                     <FormField
                                         control={form.control}
-                                        name="expMonth"
+                                        name="payment.expiryMonth"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
@@ -361,9 +315,6 @@ export default function CheckoutForm(params: Props) {
                                                     <Select
                                                         onValueChange={
                                                             field.onChange
-                                                        }
-                                                        defaultValue={
-                                                            field.value
                                                         }
                                                         disabled={
                                                             form.formState
@@ -400,7 +351,7 @@ export default function CheckoutForm(params: Props) {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="expYear"
+                                        name="payment.expiryYear"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
@@ -424,7 +375,7 @@ export default function CheckoutForm(params: Props) {
                                                         </FormControl>
                                                         <SelectContent>
                                                             {YEARS.map(
-                                                                (year) => (
+                                                                (year: any) => (
                                                                     <SelectItem
                                                                         key={
                                                                             year
@@ -443,7 +394,7 @@ export default function CheckoutForm(params: Props) {
                                     />
                                     <FormField
                                         control={form.control}
-                                        name="cvc"
+                                        name="payment.cvc"
                                         render={({ field }) => (
                                             <FormItem>
                                                 <div className="flex items-center justify-between gap-4">
@@ -465,6 +416,28 @@ export default function CheckoutForm(params: Props) {
                                     />
                                 </div>
                             </fieldset>
+
+                            <div>
+                                <FormField
+                                    control={form.control}
+                                    name="note"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>Note</FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    placeholder="Add extra note regarding your
+                                                order or delivery"
+                                                    className="resize-none"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </div>
 
                             <Button className="w-full sm:w-fit">
                                 Place order
