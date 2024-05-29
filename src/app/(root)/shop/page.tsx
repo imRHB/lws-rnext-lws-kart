@@ -74,7 +74,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                         <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
                             {products.map((product) => (
                                 <ProductCard
-                                    key={product._id}
+                                    key={String(product._id)}
                                     productId={String(product._id)}
                                     name={product.name}
                                     price={product.price}
