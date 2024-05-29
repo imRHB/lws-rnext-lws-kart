@@ -17,11 +17,12 @@ import {
 } from "@/components/ui/table";
 import { getOrdersByCustomerId } from "@/lib/actions/order.action";
 import User from "@/models/user.model";
-import { FileDown } from "lucide-react";
 import Link from "next/link";
 import AccountSectionIntro from "../../(components)/AccountSectionIntro";
+import DownloadInvoice from "./DownloadInvoice";
 
 interface Props {
+    orderId: string;
     productId: string;
     name: string;
     quantity: number;
@@ -89,6 +90,7 @@ export default async function AccountOrdersPage() {
                                         (item: any) => (
                                             <OrderItemTableRow
                                                 key={item._id}
+                                                orderId={String(order._id)}
                                                 productId={String(
                                                     item.product._id
                                                 )}
@@ -125,6 +127,7 @@ export default async function AccountOrdersPage() {
 }
 
 function OrderItemTableRow({
+    orderId,
     productId,
     name,
     unitPrice,
@@ -160,9 +163,7 @@ function OrderItemTableRow({
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-4">
-                    <Button>
-                        <FileDown className="mr-2 h-4 w-4" /> Invoice
-                    </Button>
+                    <DownloadInvoice orderId={orderId} />
                 </div>
             </TableCell>
         </TableRow>

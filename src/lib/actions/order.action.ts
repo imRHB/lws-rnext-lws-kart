@@ -153,7 +153,11 @@ export async function getOrderById(params: GetOrderByIdProps): Promise<IOrder> {
 
         const { orderId } = params;
 
-        const order = await Order.findById(orderId);
+        const order = await Order.findById(orderId).populate({
+            path: "items.product",
+            model: Product,
+            select: "name",
+        });
 
         return order;
     } catch (error) {
