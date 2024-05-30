@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 
 import { LanguageContext } from "@/context";
 import { getLocalizationStrings } from "@/lib/locales/localization";
-import { LocalizationStrings } from "@/types";
 
 const validLocales = ["en", "bn"];
 
@@ -19,15 +18,20 @@ export default function LanguageProvider({
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            const browserLanguages = navigator.languages || [
-                navigator.language,
-            ];
+            const storedLocale = localStorage.getItem("locale");
 
-            for (const lang of browserLanguages) {
-                const language = lang.split("-")[0];
-                if (validLocales.includes(language)) {
-                    setLocaleState(language);
-                    break;
+            if (storedLocale && validLocales.includes(storedLocale)) {
+                setLocaleState(storedLocale);
+            } else {
+                const browserLanguages = navigator.languages || [
+                    navigator.language,
+                ];
+                for (const lang of browserLanguages) {
+                    const language = lang.split("-")[0];
+                    if (validLocales.includes(language)) {
+                        setLocaleState(language);
+                        break;
+                    }
                 }
             }
         }

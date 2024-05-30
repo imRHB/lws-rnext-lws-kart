@@ -7,7 +7,10 @@ import { Resend } from "resend";
 import Order, { IOrder } from "@/models/order.model";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
+import { sendInvoiceEmail } from "../email";
+import { generateInvoicePdf } from "../invoice";
 import { connectToDatabase } from "../mongoose";
+import { testTransporter, transporter } from "../nodemailer";
 
 interface CreateOrderParams {
     customer: string;
@@ -50,7 +53,7 @@ interface CreateOrderParams {
     path: string;
 }
 
-export async function createOrder(params: CreateOrderParams) {
+export async function createOrder(params: CreateOrderParams): Promise<IOrder> {
     try {
         await connectToDatabase();
 
@@ -94,9 +97,13 @@ export async function createOrder(params: CreateOrderParams) {
         user.orders.push(newOrder._id);
         await user.save();
 
-        // await sendEmail({ orderId: newOrder._id, email: billingAddress.email });
+        // await sendTestEmail();
+        const invoiceData = { ...newOrder.toObject(), customer: user };
+        const pdfBuffer = await generateInvoicePdf(invoiceData);
+        await sendInvoiceEmail(invoiceData, pdfBuffer);
 
         revalidatePath(path);
+        return newOrder;
     } catch (error) {
         console.log(error);
         throw error;
@@ -171,7 +178,7 @@ interface SendEmailProps {
     email: string;
 }
 
-export async function sendEmail(params: SendEmailProps) {
+export async function sendResendEmail(params: SendEmailProps) {
     try {
         await connectToDatabase();
 
@@ -189,6 +196,49 @@ export async function sendEmail(params: SendEmailProps) {
             subject: "Order created successfully",
             react: EmailTemplate({ message: emailBody }),
         }); */
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+interface SendInvoiceParams {
+    to: string;
+    subject: string;
+    htmlContent: string;
+    attachment: Buffer;
+    attachmentName: string;
+}
+
+export async function sendInvoice(props: SendInvoiceParams) {
+    try {
+        await connectToDatabase();
+
+        const { to, subject, htmlContent, attachment, attachmentName } = props;
+
+        await transporter.sendMail({
+            from: "rhbabu3@gmail.com",
+            to,
+            subject,
+            html: htmlContent,
+            attachments: [{ filename: attachmentName, content: attachment }],
+        });
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function sendTestEmail() {
+    const mailOptions = {
+        from: "'LWS Kart' <75a144002@smtp-brevo.com>",
+        to: "rhbabu03@gmail.com",
+        subject: `Order confirmation`,
+        text: `You have placed your order successfully`,
+    };
+
+    try {
+        testTransporter.sendMail(mailOptions);
     } catch (error) {
         console.log(error);
         throw error;

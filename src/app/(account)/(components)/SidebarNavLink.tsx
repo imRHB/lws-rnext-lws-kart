@@ -1,31 +1,29 @@
-"use client";
-
-import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import React from "react";
 
 export default function SidebarNavLink({
     label,
     href,
-    Icon,
+    children,
 }: {
     label: string;
     href: string;
-    Icon: LucideIcon;
+    children: React.ReactNode;
 }) {
-    // const navItem = JSON.parse(item);
     const pathname = usePathname();
-
-    // const IconComponent = item.icon;
-    // const Icon = item.icon as LucideIcon;
+    const isActive = pathname === href;
 
     return (
         <Link
-            key={label}
             href={href}
-            className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+            className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all ${
+                isActive
+                    ? "text-primary font-semibold bg-zinc-100"
+                    : "text-muted-foreground hover:text-primary"
+            }`}
         >
-            <Icon className="h-6 w-6" />
+            {children}
             {label}
         </Link>
     );

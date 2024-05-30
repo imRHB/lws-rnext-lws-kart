@@ -1,13 +1,126 @@
 {
-    "welcome": "স্বাগতম",
-    "description": "এটি স্থানীয়করণের একটি উদাহরণ।",
-    "addToCart": "কার্টে যোগ করুন",
     "product": {
-        "addToCart": "কার্টে যোগ করুন",
-        "removeFromCart": "কার্ট থেকে সরান",
-        "addToWishlist": "ইচ্ছা তালিকায় যোগ করুন",
-        "removeFromWishlist": "ইচ্ছা তালিকা থেকে সরান",
+        "productDetails": "পণ্যের বিবরণ",
         "inStock": "স্টকে আছে",
-        "outOfStock": "স্টকে নেই"
+        "outOfStock": "স্টকে নেই",
+        "notFound": {
+            "title": "কোনো পণ্য পাওয়া যায়নি।",
+            "description": "উফ! দেখে মনে হচ্ছে আমরা আপনার ফিল্টার মাপদণ্ডের সাথে মেলে এমন কোনো পণ্য খুঁজে পাইনি।"
+        }
+    },
+    "cart": {
+        "buttonText": "কার্টে যোগ করুন",
+        "addText": "পণ্যটি আপনার কার্টে যোগ করা হয়েছে",
+        "removeText": "পণ্যটি আপনার কার্ট থেকে সরানো হয়েছে",
+        "empty": {
+            "title": "আপনার কার্ট খালি",
+            "description": "আপনার কার্টে কোনো পণ্য নেই।"
+        }
+    },
+    "wishlist": {
+        "buttonText": "পছন্দের তালিকায় যোগ করুন",
+        "addText": "পণ্যটি আপনার পছন্দের তালিকায় যোগ করা হয়েছে",
+        "removeText": "পণ্যটি আপনার পছন্দের তালিকা থেকে সরানো হয়েছে",
+        "empty": {
+            "title": "আপনার পছন্দের তালিকা খালি",
+            "description": "আপনার পছন্দের তালিকায় কোনো পণ্য নেই।"
+        }
+    },
+    "mainNav": {
+        "allCategories": "সকল ক্যাটেগরি",
+        "home": {
+            "label": "হোম",
+            "href": "/"
+        },
+        "shop": {
+            "label": "শপ",
+            "href": "/shop"
+        },
+        "wishlist": {
+            "label": "পছন্দ",
+            "href": "/account/wishlist"
+        },
+        "cart": {
+            "label": "কার্ট",
+            "href": "/cart"
+        }
+    },
+    "accountNav": {
+        "account": {
+            "icon": "CircleUserRound",
+            "label": "একাউন্ট",
+            "href": "/account"
+        },
+        "orders": {
+            "icon": "ShoppingCart",
+            "label": "অর্ডারস",
+            "href": "/account/orders"
+        },
+        "wishlist": {
+            "icon": "Heart",
+            "label": "পছন্দের তালিকা",
+            "href": "/account/wishlist"
+        },
+        "address": {
+            "icon": "MapPinned",
+            "label": "ঠিকানা",
+            "href": "/account/address"
+        }
+    },
+    "auth": {
+        "signIn": {
+            "label": "সাইন ইন",
+            "href": "/sign-in"
+        },
+        "signUp": {
+            "label": "সাইন আপ",
+            "href": "/sign-up"
+        },
+        "signOut": {
+            "label": "সাইন আউট",
+            "href": ""
+        }
+    },
+    "features": [
+        {
+            "icon": "/assets/images/icons/delivery-van.svg",
+            "title": "ফ্রি শিপিং",
+            "description": "$200 এর বেশি অর্ডার করুন"
+        },
+        {
+            "icon": "/assets/images/icons/money-back.svg",
+            "title": "টাকা ফেরত",
+            "description": "30 দিনের টাকা ফেরত"
+        },
+        {
+            "icon": "/assets/images/icons/service-hours.svg",
+            "title": "২৪/৭ সহায়তা",
+            "description": "গ্রাহক সহায়তা"
+        }
+    ],
+    "sectionTitle": {
+        "shopByCategory": { "title": "শ্রেণী অনুসারে কেনাকাটা করুন" },
+        "topNewArrival": { "title": "নতুন আগমন" },
+        "trendingProducts": { "title": "ট্রেন্ডিং পণ্য" },
+        "relatedProducts": { "title": "সংশ্লিষ্ট পণ্য" },
+        "account": {
+            "title": "একাউন্ট",
+            "description": "আপনার একাউন্টের বিবরণ"
+        },
+        "orders": {
+            "title": "অর্ডারস",
+            "description": "আপনার অর্ডার এর তালিকা"
+        },
+        "wishlist": {
+            "title": "পছন্দের তালিকা",
+            "description": "আপনার পছন্দের তালিকা"
+        },
+        "address": {
+            "title": "ঠিকানা",
+            "description": "আপনার ঠিকানার তথ্য"
+        }
+    },
+    "search": {
+        "placeholder": "অনুসন্ধান করুন"
     }
 }

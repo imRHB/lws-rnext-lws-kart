@@ -43,7 +43,7 @@ export default function ProductCard({
     const { data: session } = useSession();
     const pathname = usePathname();
 
-    const { locale, strings } = useLanguage();
+    const { strings } = useLanguage();
 
     const { toast } = useToast();
 
@@ -61,7 +61,7 @@ export default function ProductCard({
             });
 
             toast({
-                title: "Product added to the cart",
+                title: strings.cart.addText,
             });
         } else {
             toast({
@@ -79,7 +79,7 @@ export default function ProductCard({
             });
 
             toast({
-                title: "Product added to the wishlist",
+                title: strings.wishlist.addText,
             });
         } else {
             toast({
@@ -115,7 +115,7 @@ export default function ProductCard({
                 <Button className="w-full z-10" onClick={handleAddToCart}>
                     <ShoppingCart className="h-4 w-4" />
                     <Separator orientation="vertical" className="mx-4" />
-                    {strings.product.addToCart}
+                    {strings.cart.buttonText}
                 </Button>
                 <TooltipProvider>
                     <Tooltip>
@@ -129,7 +129,7 @@ export default function ProductCard({
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            <p>{strings.product.addToWishlist}</p>
+                            <p>{strings.wishlist.buttonText}</p>
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>

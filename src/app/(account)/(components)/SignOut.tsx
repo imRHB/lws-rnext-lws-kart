@@ -4,9 +4,12 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import useLanguage from "@/hooks/useLanguage";
 
 export default function SignOut() {
     const router = useRouter();
+
+    const { strings } = useLanguage();
 
     function handleSignOut() {
         signOut({
@@ -19,7 +22,7 @@ export default function SignOut() {
 
     return (
         <Button size="sm" className="w-full" onClick={handleSignOut}>
-            Sign out
+            {strings.auth.signOut.label}
         </Button>
     );
 }

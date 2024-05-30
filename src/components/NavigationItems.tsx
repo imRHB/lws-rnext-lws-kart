@@ -12,16 +12,24 @@ import {
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import useLanguage from "@/hooks/useLanguage";
+import { usePathname } from "next/navigation";
 
 export function NavigationItems({ categories }: { categories: string }) {
+    const pathname = usePathname();
+
     const parsedCategories = JSON.parse(categories);
+    const { strings } = useLanguage();
+
+    const activeLink =
+        "text-violet-500 font-semibold hover:text-violet-500 focus:text-violet-500";
 
     return (
         <NavigationMenu>
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger>
-                        All categories
+                        {strings.mainNav.allCategories}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
                         <ul className="p-4 w-[220px]">
@@ -53,20 +61,34 @@ export function NavigationItems({ categories }: { categories: string }) {
                     </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/" legacyBehavior passHref>
+                    <Link
+                        href={strings.mainNav.home.href}
+                        legacyBehavior
+                        passHref
+                    >
                         <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}
+                            className={`${navigationMenuTriggerStyle()} ${
+                                pathname === strings.mainNav.home.href &&
+                                activeLink
+                            }`}
                         >
-                            Home
+                            {strings.mainNav.home.label}
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/shop" legacyBehavior passHref>
+                    <Link
+                        href={strings.mainNav.shop.href}
+                        legacyBehavior
+                        passHref
+                    >
                         <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}
+                            className={`${navigationMenuTriggerStyle()} ${
+                                pathname === strings.mainNav.shop.href &&
+                                activeLink
+                            }`}
                         >
-                            Shop
+                            {strings.mainNav.shop.label}
                         </NavigationMenuLink>
                     </Link>
                 </NavigationMenuItem>

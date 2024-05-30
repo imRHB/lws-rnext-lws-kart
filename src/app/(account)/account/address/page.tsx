@@ -2,8 +2,8 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
+import UserAddressIntro from "@/components/metrics/UserAddressIntro";
 import { getUserByEmail } from "@/lib/actions/user.action";
-import AccountSectionIntro from "../../(components)/AccountSectionIntro";
 import AddressForm from "./AddressForm";
 
 enum AddressType {
@@ -26,10 +26,7 @@ export default async function AccountAddressPage() {
 
     return (
         <React.Fragment>
-            <AccountSectionIntro
-                title="Address"
-                description="Update your address information"
-            />
+            <UserAddressIntro />
 
             <div className="grid xl:grid-cols-2 gap-8">
                 <AddressForm

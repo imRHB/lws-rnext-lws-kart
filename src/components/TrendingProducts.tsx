@@ -1,4 +1,5 @@
 import { getTrendingProducts } from "@/lib/actions/product.action";
+import TrendingProductsHeading from "./metrics/TrendingProductsHeading";
 import ProductCard from "./product/ProductCard";
 
 export default async function TrendingProducts() {
@@ -9,9 +10,7 @@ export default async function TrendingProducts() {
 
     return (
         <div className="container pb-16">
-            <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
-                Trending Products
-            </h2>
+            <TrendingProductsHeading />
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {products.map((product) => (
                     <ProductCard

@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
     email: z.string().email(),
@@ -25,12 +26,23 @@ const formSchema = z.object({
 });
 
 export default function SignInForm() {
+    const searchParams = useSearchParams();
+    const callbackUrl = searchParams.get("callbackUrl");
+
     const handleGoogleSignIn = () => {
-        signIn("google", { callbackUrl: "http://localhost:3000" });
+        signIn("google", {
+            callbackUrl: callbackUrl
+                ? `${process.env.SITE_URL}${callbackUrl}`
+                : `${process.env.SITE_URL}/shop`,
+        });
     };
 
     const handleGitHubSignIn = () => {
-        signIn("github", { callbackUrl: "http://localhost:3000" });
+        signIn("github", {
+            callbackUrl: callbackUrl
+                ? `${process.env.SITE_URL}${callbackUrl}`
+                : `${process.env.SITE_URL}/shop`,
+        });
     };
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -47,7 +59,9 @@ export default function SignInForm() {
                 email: values.email,
                 password: values.password,
                 redirect: false,
-                // callbackUrl: "http://localhost:3000",
+                callbackUrl: callbackUrl
+                    ? `${process.env.SITE_URL}${callbackUrl}`
+                    : `${process.env.SITE_URL}/shop`,
             });
         } catch (error) {
             console.log(error);

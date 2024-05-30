@@ -11,6 +11,7 @@ import { getProducts } from "@/lib/actions/product.action";
 import { SearchParamsProps } from "@/types";
 import Category from "./Category";
 import Color from "./Color";
+import NotFound from "./NotFound";
 import Price from "./Price";
 import Size from "./Size";
 
@@ -84,20 +85,12 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                             ))}
                         </div>
                     ) : (
-                        <div className="flex flex-col items-center justify-center gap-2">
-                            <h3 className="text-3xl font-semibold text-zinc-800">
-                                No products found
-                            </h3>
-                            <p className="text-md text-zinc-600 text-center max-w-lg">
-                                No products found, seems like your filter
-                                criteria not matched with any of the products,
-                                try different filters
-                            </p>
+                        <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
+                            <NotFound />
                         </div>
                     )}
                 </div>
             </div>
-            )
         </section>
     );
 }

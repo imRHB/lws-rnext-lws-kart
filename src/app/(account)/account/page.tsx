@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
+import UserAccountIntro from "@/components/metrics/UserAccountIntro";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -13,7 +14,6 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { getUserByEmail } from "@/lib/actions/user.action";
-import AccountSectionIntro from "../(components)/AccountSectionIntro";
 
 export default async function AccountPage() {
     const session = await auth();
@@ -31,10 +31,7 @@ export default async function AccountPage() {
 
     return (
         <section>
-            <AccountSectionIntro
-                title="Account"
-                description="Your account overview"
-            />
+            <UserAccountIntro />
 
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
                 <Card>

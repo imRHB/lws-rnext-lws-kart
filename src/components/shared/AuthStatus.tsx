@@ -4,6 +4,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
+import useLanguage from "@/hooks/useLanguage";
 import { getInitials } from "@/lib";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
@@ -20,8 +21,13 @@ import { Skeleton } from "../ui/skeleton";
 export default function AuthStatus() {
     const { data: session, status } = useSession();
 
+    const { strings } = useLanguage();
+
     function handleSignOut() {
-        signOut({ redirect: false });
+        signOut({
+            redirect: false,
+            callbackUrl: `/sign-in`,
+        });
     }
 
     return (
@@ -50,8 +56,11 @@ export default function AuthStatus() {
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
-                            <Link href="/account" className="w-full">
-                                Account
+                            <Link
+                                href={strings.accountNav.account.href}
+                                className="w-full"
+                            >
+                                {strings.accountNav.account.label}
                             </Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
@@ -60,7 +69,7 @@ export default function AuthStatus() {
                                 onClick={handleSignOut}
                                 className="cursor-pointer w-full"
                             >
-                                Sign out
+                                {strings.auth.signOut.label}
                             </span>
                         </DropdownMenuItem>
                     </DropdownMenuContent>

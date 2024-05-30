@@ -4,6 +4,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { PDFDocument } from "pdf-lib";
 import { useRef } from "react";
+import { Button } from "./ui/button";
 
 interface InvoiceData {
     businessName: string;
@@ -60,11 +61,11 @@ export default function InvoiceGenerator({
         try {
             const canvas = await html2canvas(containerRef.current, {
                 scale: 1.5,
-            }); // Adjusted scale factor
+            });
             const imgData = canvas.toDataURL("image/png");
 
             const pdf = new jsPDF({
-                orientation: "portrait", // or 'landscape'
+                orientation: "portrait",
                 unit: "mm",
                 format: "a4",
             });
@@ -111,20 +112,11 @@ export default function InvoiceGenerator({
     };
 
     return (
-        <div>
+        <div className="container">
             <div
-                className="container mx-auto p-4 bg-white rounded shadow my-8"
                 ref={containerRef}
+                className="space-y-8 mx-auto p-16 bg-white rounded shadow my-8"
             >
-                <div className="flex justify-between items-center mb-4">
-                    <div className="text-xl font-bold">Invoice</div>
-
-                    <div className="text-sm text-gray-600">
-                        {businessAddress} <br />
-                        {businessEmail} {phoneNumber && `- ${phoneNumber}`}
-                    </div>
-                </div>
-
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-bold">Invoice</h2>
                     <div>
@@ -136,17 +128,6 @@ export default function InvoiceGenerator({
                         </p>
                     </div>
                 </div>
-
-                <div className="mb-4">
-                    <h3 className="text-base font-medium">Billing To:</h3>
-                    <p className="text-sm">{customerName}</p>
-                    <p className="text-sm">{customerAddress}</p>
-                    {customerEmail && (
-                        <p className="text-sm">{customerEmail}</p>
-                    )}
-                </div>
-
-                <hr />
 
                 <div className="flex flex-col sm:flex-row justify-between gap-8">
                     {/* company */}
@@ -198,16 +179,6 @@ export default function InvoiceGenerator({
                     </div>
                 </div>
 
-                <div className="mt-4 flex justify-between">
-                    <div className="text-sm">
-                        <p>Subtotal: {subTotal}</p>
-                        <p>Tax (if applicable): {taxAmount}</p>
-                    </div>
-                    <div className="text-xl font-bold">
-                        Total: {totalAmount}
-                    </div>
-                </div>
-
                 <div className="mt-4">
                     <h2 className="text-base font-medium">
                         Payment Information
@@ -221,7 +192,7 @@ export default function InvoiceGenerator({
                 </div>
             </div>
 
-            <button onClick={handleGeneratePDF}>Generate PDF</button>
+            <Button onClick={handleGeneratePDF}>Generate PDF</Button>
         </div>
     );
 }

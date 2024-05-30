@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { auth } from "@/auth";
-import { Button } from "@/components/ui/button";
 import {
     Card,
     CardContent,
@@ -10,7 +9,6 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Separator } from "@/components/ui/separator";
 import { getCart } from "@/lib/actions/user.action";
 import RemoveCartItem from "./RemoveCartItem";
@@ -116,23 +114,6 @@ export default async function CheckoutSummary() {
                     </CardDescription>
                 </CardFooter>
             </Card>
-
-            <div className="items-top flex space-x-2">
-                <Checkbox id="terms1" />
-                <div className="grid gap-1.5 leading-none">
-                    <label
-                        htmlFor="terms1"
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                        Accept terms and conditions
-                    </label>
-                    <p className="text-sm text-muted-foreground">
-                        You agree to our Terms of Service and Privacy Policy.
-                    </p>
-                </div>
-            </div>
-
-            <Button className="w-full">Place order</Button>
         </div>
     );
 }

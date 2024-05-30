@@ -6,22 +6,20 @@ import {
     CardDescription,
     CardTitle,
 } from "@/components/ui/card";
-import { FEATURE_LIST } from "@/constants";
 import { IFeatureItem } from "@/types";
+import FeatureList from "./metrics/FeatureList";
 
 export default function Features() {
     return (
         <div className="container py-16">
             <div className="w-10/12 grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center">
-                {FEATURE_LIST.map((feature) => (
-                    <FeatureCard key={feature.title} feature={feature} />
-                ))}
+                <FeatureList />
             </div>
         </div>
     );
 }
 
-function FeatureCard({ feature }: { feature: IFeatureItem }) {
+export function FeatureCard({ feature }: { feature: IFeatureItem }) {
     return (
         <Card>
             <CardContent className="flex items-center gap-8 p-8">

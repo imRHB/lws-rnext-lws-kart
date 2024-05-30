@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
+import UserOrdersIntro from "@/components/metrics/UserOrdersIntro";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader } from "@/components/ui/card";
@@ -18,7 +19,6 @@ import {
 import { getOrdersByCustomerId } from "@/lib/actions/order.action";
 import User from "@/models/user.model";
 import Link from "next/link";
-import AccountSectionIntro from "../../(components)/AccountSectionIntro";
 import DownloadInvoice from "./DownloadInvoice";
 
 interface Props {
@@ -44,10 +44,7 @@ export default async function AccountOrdersPage() {
 
     return (
         <React.Fragment>
-            <AccountSectionIntro
-                title="Orders"
-                description="Your order summary"
-            />
+            <UserOrdersIntro />
 
             {(orders as any[]).length > 0 ? (
                 <React.Fragment>

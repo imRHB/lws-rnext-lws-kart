@@ -1,5 +1,3 @@
-import { LocalizationStrings } from "@/types";
-
 export interface LanguageContextProps {
     locale: string;
     strings: LocalizationStrings;

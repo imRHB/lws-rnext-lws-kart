@@ -36,11 +36,11 @@ export default function SignUpForm() {
     const { toast } = useToast();
 
     const handleGoogleSignIn = () => {
-        signIn("google", { callbackUrl: "http://localhost:3000" });
+        signIn("google", { callbackUrl: `${process.env.SITE_URL}/shop` });
     };
 
     const handleGitHubSignIn = () => {
-        signIn("github", { callbackUrl: "http://localhost:3000" });
+        signIn("github", { callbackUrl: `${process.env.SITE_URL}/shop` });
     };
 
     const form = useForm<z.infer<typeof formSchema>>({

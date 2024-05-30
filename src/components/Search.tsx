@@ -4,6 +4,7 @@ import { Search as SearchIcon } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
+import useLanguage from "@/hooks/useLanguage";
 import useSearch from "@/hooks/useSearch";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib";
 import { Input } from "./ui/input";
@@ -17,6 +18,7 @@ export default function Search({ route }: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
+    const { strings } = useLanguage();
     const { search, setSearch } = useSearch();
 
     const query = searchParams.get("q");
@@ -53,7 +55,7 @@ export default function Search({ route }: Props) {
                 type="text"
                 value={search}
                 onChange={(evt) => setSearch(evt.target.value)}
-                placeholder="Search"
+                placeholder={strings.search.placeholder}
                 className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
             />
         </div>

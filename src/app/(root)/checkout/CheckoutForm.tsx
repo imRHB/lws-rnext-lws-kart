@@ -138,6 +138,15 @@ interface CheckoutFormProps {
     amount: number;
 }
 
+const paymentInfo = {
+    method: "CreditCard",
+    name: "John Doe",
+    cardNumber: "4000056655665556",
+    expiryMonth: "12",
+    expiryYear: "2026",
+    cvc: "123",
+};
+
 export default function CheckoutForm(params: CheckoutFormProps) {
     const pathname = usePathname();
 
@@ -151,15 +160,6 @@ export default function CheckoutForm(params: CheckoutFormProps) {
     >;
     const parsedItems = JSON.parse(items) as z.infer<typeof itemSchema>[];
 
-    const paymentInfo = {
-        method: "CreditCard",
-        name: "John Doe",
-        cardNumber: "4000056655665556",
-        expiryMonth: "12",
-        expiryYear: "2026",
-        cvc: "123",
-    };
-
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -168,13 +168,21 @@ export default function CheckoutForm(params: CheckoutFormProps) {
             billingAddress: parsedBillingAddress,
             items: parsedItems,
             amount,
+            // payment: {
+            //     method: "",
+            //     name: "",
+            //     cardNumber: "",
+            //     expiryMonth: undefined,
+            //     expiryYear: "",
+            //     cvc: "",
+            // },
             payment: {
-                method: "",
-                name: "",
-                cardNumber: "",
-                expiryMonth: undefined,
-                expiryYear: "",
-                cvc: "",
+                method: "CreditCard",
+                name: "John Doe",
+                cardNumber: "4000056655665556",
+                expiryMonth: Month.June,
+                expiryYear: YEARS[5].toString(),
+                cvc: "123",
             },
             note: "",
             status: "pending",
@@ -182,7 +190,9 @@ export default function CheckoutForm(params: CheckoutFormProps) {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await createOrder({ ...values, path: pathname });
+        const order = await createOrder({ ...values, path: pathname });
+
+        console.log("order._id:", order._id);
     }
 
     return (

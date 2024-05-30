@@ -1,13 +1,126 @@
 {
-    "welcome": "Welcome",
-    "description": "This is an example of localization.",
-    "addToCart": "Add to cart",
     "product": {
-        "addToCart": "Add to cart",
-        "removeFromCart": "Remove from cart",
-        "addToWishlist": "Add to wishlist",
-        "removeFromWishlist": "Remove from wishlist",
+        "productDetails": "Product details",
         "inStock": "In stock",
-        "outOfStock": "Out of stock"
+        "outOfStock": "Out of stock",
+        "notFound": {
+            "title": "No products were found.",
+            "description": "Oops! It looks like we couldn't find any products that match your filter criteria."
+        }
+    },
+    "cart": {
+        "buttonText": "Add to cart",
+        "addText": "Product is added to your cart",
+        "removeText": "Product is removed from your cart",
+        "empty": {
+            "title": "Your cart is empty",
+            "description": "You have no items in your cart."
+        }
+    },
+    "wishlist": {
+        "buttonText": "Add to wishlist",
+        "addText": "Product is added to your wishlist",
+        "removeText": "Product is removed from your wishlist",
+        "empty": {
+            "title": "Your wishlist is empty",
+            "description": "You have no items in your wishlist."
+        }
+    },
+    "mainNav": {
+        "allCategories": "All categories",
+        "home": {
+            "label": "Home",
+            "href": "/"
+        },
+        "shop": {
+            "label": "Shop",
+            "href": "/shop"
+        },
+        "wishlist": {
+            "label": "Wish",
+            "href": "/account/wishlist"
+        },
+        "cart": {
+            "label": "Cart",
+            "href": "/cart"
+        }
+    },
+    "accountNav": {
+        "account": {
+            "icon": "CircleUserRound",
+            "label": "Account",
+            "href": "/account"
+        },
+        "orders": {
+            "icon": "ShoppingCart",
+            "label": "Orders",
+            "href": "/account/orders"
+        },
+        "wishlist": {
+            "icon": "Heart",
+            "label": "Wishlist",
+            "href": "/account/wishlist"
+        },
+        "address": {
+            "icon": "MapPinned",
+            "label": "Address",
+            "href": "/account/address"
+        }
+    },
+    "auth": {
+        "signIn": {
+            "label": "Sign in",
+            "href": "/sign-in"
+        },
+        "signUp": {
+            "label": "Sign up",
+            "href": "/sign-up"
+        },
+        "signOut": {
+            "label": "Sign out",
+            "href": ""
+        }
+    },
+    "features": [
+        {
+            "icon": "/assets/images/icons/delivery-van.svg",
+            "title": "Free Shipping",
+            "description": "Order over $200"
+        },
+        {
+            "icon": "/assets/images/icons/money-back.svg",
+            "title": "Money Returns",
+            "description": "30 days money returns"
+        },
+        {
+            "icon": "/assets/images/icons/service-hours.svg",
+            "title": "24/7 Support",
+            "description": "Customer support"
+        }
+    ],
+    "sectionTitle": {
+        "shopByCategory": { "title": "Shop By Category" },
+        "topNewArrival": { "title": "Top New Arrival" },
+        "trendingProducts": { "title": "Trending Products" },
+        "relatedProducts": { "title": "Related Products" },
+        "account": {
+            "title": "Account",
+            "description": "Your account overview"
+        },
+        "orders": {
+            "title": "Orders",
+            "description": "Your order history"
+        },
+        "wishlist": {
+            "title": "Wishlist",
+            "description": "Your wishlist"
+        },
+        "address": {
+            "title": "Address",
+            "description": "Your address information"
+        }
+    },
+    "search": {
+        "placeholder": "Search"
     }
 }

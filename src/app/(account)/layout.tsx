@@ -12,8 +12,8 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { ACCOUNT_SIDEBAR_LINKS } from "@/constants";
 import { IAccountLinkItem } from "@/types";
+import AccountSidebar from "./(components)/AccountSidebar";
 import SignOut from "./(components)/SignOut";
 
 export default async function AccountLayout({
@@ -38,16 +38,7 @@ export default async function AccountLayout({
                     </div>
                     <div className="flex-1">
                         <nav className="grid items-start px-2 font-medium lg:px-4">
-                            {ACCOUNT_SIDEBAR_LINKS.map((item) => (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-                                >
-                                    <AccountIcon item={item} />
-                                    {item.label}
-                                </Link>
-                            ))}
+                            <AccountSidebar />
                         </nav>
                     </div>
                     <div className="mt-auto p-4">
@@ -89,19 +80,7 @@ export default async function AccountLayout({
                                     <Package2 className="h-6 w-6" />
                                     <span className="sr-only">LWS Kart</span>
                                 </Link>
-                                {ACCOUNT_SIDEBAR_LINKS.map((item) => (
-                                    <Link
-                                        key={item.label}
-                                        href={item.href}
-                                        className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                                    >
-                                        <AccountIcon item={item} />
-                                        {item.label}
-                                        {/* <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                                            6
-                                        </Badge> */}
-                                    </Link>
-                                ))}
+                                <AccountSidebar />
                             </nav>
                             <div className="mt-auto">
                                 <Card>

@@ -32,7 +32,7 @@ export default function LanguageToggler() {
             <SelectContent>
                 <SelectGroup>
                     <SelectItem value="en">English</SelectItem>
-                    <SelectItem value="bn">Bengali</SelectItem>
+                    <SelectItem value="bn">বাংলা</SelectItem>
                 </SelectGroup>
             </SelectContent>
         </Select>

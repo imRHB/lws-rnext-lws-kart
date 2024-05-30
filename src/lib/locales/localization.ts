@@ -1,5 +1,3 @@
-import { LocalizationStrings } from "@/types";
-
 const locales: {
     [key: string]: () => Promise<{ default: LocalizationStrings }>;
 } = {

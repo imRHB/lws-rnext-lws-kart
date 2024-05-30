@@ -34,7 +34,7 @@ export default async function CartPage() {
     const session = await auth();
 
     if (!session) {
-        redirect("/sign-in");
+        redirect("/sign-in?callbackUrl=/cart");
     }
 
     const cart = await getCart({ email: session?.user?.email! });

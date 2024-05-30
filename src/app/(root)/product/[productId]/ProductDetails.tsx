@@ -81,30 +81,6 @@ export default async function ProductDetails({
                 <p className="text-base text-gray-400 line-through">${price}</p>
             </div>
 
-            {/* <p className="mt-4 text-gray-600">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
-                eius eum reprehenderit dolore vel mollitia optio consequatur hic
-                asperiores inventore suscipit, velit consequuntur, voluptate
-                doloremque iure necessitatibus adipisci magnam porro.
-            </p> */}
-
-            <div className="mt-4">
-                <h3 className="text-sm text-gray-800 uppercase mb-1">
-                    Quantity
-                </h3>
-                <div className="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-                    <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
-                        -
-                    </div>
-                    <div className="h-8 w-8 text-base flex items-center justify-center">
-                        4
-                    </div>
-                    <div className="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none">
-                        +
-                    </div>
-                </div>
-            </div>
-
             <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
                 <AddToCart productId={JSON.parse(productId)} />
                 <AddToWishlist productId={JSON.parse(productId)} />

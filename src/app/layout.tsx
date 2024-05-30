@@ -25,6 +25,12 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    /* useEffect(() => {
+        if (typeof window === "undefined") {
+            import("../lib/cronJobs/clearCart");
+        }
+    }, []); */
+
     return (
         <html lang="en">
             <body className={`${inter.className} bg-zinc-50`}>

@@ -1,3 +1,4 @@
+import RelatedProductsHeading from "@/components/metrics/RelatedProductsHeading";
 import ProductCard from "@/components/product/ProductCard";
 import { getRelatedProducts } from "@/lib/actions/product.action";
 
@@ -10,9 +11,7 @@ export default async function RelatedProducts({
 
     return (
         <div className="container pb-16">
-            <h2 className="text-2xl font-medium text-gray-800 uppercase mb-6">
-                Related products
-            </h2>
+            <RelatedProductsHeading />
             <div className="grid grid-cols-4 gap-6">
                 {products.map((product) => (
                     <ProductCard

@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 import { auth } from "@/auth";
+import UserWishlistIntro from "@/components/metrics/UserWishlistIntro";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -16,7 +17,6 @@ import {
 } from "@/components/ui/table";
 import { getWishlist } from "@/lib/actions/user.action";
 import Link from "next/link";
-import AccountSectionIntro from "../../(components)/AccountSectionIntro";
 import AddToCart from "./AddToCart";
 import RemoveWished from "./RemoveWished";
 
@@ -41,10 +41,7 @@ export default async function AccountWishlistPage() {
 
     return (
         <React.Fragment>
-            <AccountSectionIntro
-                title="Wishlist"
-                description="Your wishlist products"
-            />
+            <UserWishlistIntro />
 
             {(wishlist as any[]).length > 0 ? (
                 <Card>
