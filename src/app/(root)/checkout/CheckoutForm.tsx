@@ -1,5 +1,11 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { usePathname, useRouter } from "next/navigation";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
 import {
     Card,
     CardContent,
@@ -9,10 +15,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import {
     Form,
@@ -36,8 +38,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Month, MONTHS } from "@/constants";
 import { getYears } from "@/lib";
 import { createOrder } from "@/lib/actions/order.action";
-import { usePathname } from "next/navigation";
-import React from "react";
 
 const luhnCheck = (cardNumber: string) => {
     let sum = 0;
@@ -148,6 +148,7 @@ const paymentInfo = {
 };
 
 export default function CheckoutForm(params: CheckoutFormProps) {
+    const router = useRouter();
     const pathname = usePathname();
 
     const { userId, shippingAddress, billingAddress, items, amount } = params;
@@ -190,9 +191,7 @@ export default function CheckoutForm(params: CheckoutFormProps) {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        const order = await createOrder({ ...values, path: pathname });
-
-        console.log("order._id:", order._id);
+        await createOrder({ ...values, path: pathname });
     }
 
     return (

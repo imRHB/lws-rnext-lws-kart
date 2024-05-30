@@ -122,5 +122,8 @@
     },
     "search": {
         "placeholder": "Search"
+    },
+    "common": {
+        "share": "Share"
     }
 }

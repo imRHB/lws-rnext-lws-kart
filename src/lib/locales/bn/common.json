@@ -122,5 +122,8 @@
     },
     "search": {
         "placeholder": "অনুসন্ধান করুন"
+    },
+    "common": {
+        "share": "শেয়ার"
     }
 }

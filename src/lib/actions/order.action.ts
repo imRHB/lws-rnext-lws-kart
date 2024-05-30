@@ -7,8 +7,6 @@ import { Resend } from "resend";
 import Order, { IOrder } from "@/models/order.model";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
-import { sendInvoiceEmail } from "../email";
-import { generateInvoicePdf } from "../invoice";
 import { connectToDatabase } from "../mongoose";
 import { testTransporter, transporter } from "../nodemailer";
 
@@ -98,9 +96,9 @@ export async function createOrder(params: CreateOrderParams): Promise<IOrder> {
         await user.save();
 
         // await sendTestEmail();
-        const invoiceData = { ...newOrder.toObject(), customer: user };
-        const pdfBuffer = await generateInvoicePdf(invoiceData);
-        await sendInvoiceEmail(invoiceData, pdfBuffer);
+        // const invoiceData = { ...newOrder.toObject(), customer: user };
+        // const pdfBuffer = await generateInvoicePdf(invoiceData);
+        // await sendInvoiceEmail(invoiceData, pdfBuffer);
 
         revalidatePath(path);
         return newOrder;

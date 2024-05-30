@@ -81,6 +81,10 @@ interface Search {
     placeholder: string;
 }
 
+interface Common {
+    share: string;
+}
+
 interface LocalizationStrings {
     product: Product;
     cart: Cart;
@@ -91,6 +95,7 @@ interface LocalizationStrings {
     features: Feature[];
     sectionTitle: SectionTitles;
     search: Search;
+    common: Common;
 }
 
 // LocalizationStrings
