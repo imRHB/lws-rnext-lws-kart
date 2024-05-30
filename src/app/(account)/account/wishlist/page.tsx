@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -29,6 +30,11 @@ interface Props {
     stock: number;
     sku: string;
 }
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Wishlist",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function AccountWishlistPage() {
     const session = await auth();

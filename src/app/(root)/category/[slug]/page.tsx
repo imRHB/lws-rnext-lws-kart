@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import ProductCard from "@/components/product/ProductCard";
@@ -7,6 +8,33 @@ import { getProductsByCategory } from "@/lib/actions/product.action";
 interface Props {
     params: {
         slug: string;
+    };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = params;
+
+    const category = await getCategoryByName({
+        name: decodeURIComponent(slug),
+    });
+
+    return {
+        title: `LWS Kart | ${category ? category.name : "not found"}`,
+        description: category.description,
+        openGraph: {
+            title: `LWS Kart | ${category ? category.name : "not found"}`,
+            description: category.description,
+            images: [
+                {
+                    url: category?.thumbnail,
+                    width: 1200,
+                    height: 630,
+                    alt: category.name,
+                },
+            ],
+            siteName: "LWS Kart",
+            type: "website",
+        },
     };
 }
 
@@ -45,7 +73,7 @@ export default async function CategoryWiseProductPage({ params }: Props) {
                     ))}
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
                     <h3 className="text-3xl font-semibold text-zinc-800">
                         No products found
                     </h3>

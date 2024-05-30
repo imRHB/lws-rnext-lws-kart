@@ -1,4 +1,5 @@
 import { SquarePen } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -14,6 +15,11 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { getUserByEmail } from "@/lib/actions/user.action";
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Account",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function AccountPage() {
     const session = await auth();

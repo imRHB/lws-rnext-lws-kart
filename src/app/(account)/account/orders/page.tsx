@@ -1,3 +1,5 @@
+import User from "@/models/user.model";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import React from "react";
@@ -17,7 +19,6 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { getOrdersByCustomerId } from "@/lib/actions/order.action";
-import User from "@/models/user.model";
 import Link from "next/link";
 import DownloadInvoice from "./DownloadInvoice";
 
@@ -30,6 +31,11 @@ interface Props {
     thumbnail: string;
     status: string;
 }
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Orders",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function AccountOrdersPage() {
     const session = await auth();

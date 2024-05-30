@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import InvoiceGenerator from "@/components/InvoiceGenerator";
 
 const invoiceData = {
@@ -57,6 +59,11 @@ const invoiceData = {
     totalAmount: 2194.15,
     paymentMethods: "Credit Card",
     dueDate: new Date().toLocaleDateString(),
+};
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Invoice",
+    description: "An online shop brought to you by Learn With Sumit",
 };
 
 export default function InvoicePage() {

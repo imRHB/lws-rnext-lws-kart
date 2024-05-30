@@ -29,7 +29,7 @@ export default function AddToWishlist({ productId }: { productId: string }) {
         <Button onClick={saveToWishlist} variant="outline">
             <Heart className="h-4 w-4" />
             <Separator orientation="vertical" className="mx-4" />
-            {strings.product.addToWishlist}
+            {strings.wishlist.buttonText}
         </Button>
     );
 }

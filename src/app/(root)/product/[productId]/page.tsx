@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -10,6 +11,31 @@ import RelatedProducts from "./RelatedProducts";
 interface Props {
     params: {
         productId: string;
+    };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { productId } = params;
+
+    const product = await getProductById({ productId });
+
+    return {
+        title: `LWS Kart | ${product ? product.name : "not found"}`,
+        description: product.features?.join(", "),
+        openGraph: {
+            title: `LWS Kart | ${product ? product.name : "not found"}`,
+            description: product.features?.join(", "),
+            images: [
+                {
+                    url: product?.thumbnail,
+                    width: 1200,
+                    height: 630,
+                    alt: product.name,
+                },
+            ],
+            siteName: "LWS Kart",
+            type: "website",
+        },
     };
 }
 

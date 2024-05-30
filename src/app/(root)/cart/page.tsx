@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -29,6 +30,11 @@ interface Props {
     size: string;
     color: string;
 }
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Cart",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function CartPage() {
     const session = await auth();
@@ -94,7 +100,7 @@ export default async function CartPage() {
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center gap-2">
+                <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
                     <h3 className="text-3xl font-semibold text-zinc-800">
                         Empty
                     </h3>

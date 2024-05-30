@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import ProductCard from "@/components/product/ProductCard";
 import {
     Card,
@@ -14,6 +16,11 @@ import Color from "./Color";
 import NotFound from "./NotFound";
 import Price from "./Price";
 import Size from "./Size";
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Shop",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function ShopPage({ searchParams }: SearchParamsProps) {
     const products = await getProducts({

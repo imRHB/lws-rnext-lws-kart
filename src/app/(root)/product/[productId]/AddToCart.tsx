@@ -45,7 +45,7 @@ export default function AddToCart({ productId }: { productId: string }) {
         <Button onClick={handleAddToCart}>
             <ShoppingCart className="h-4 w-4" />
             <Separator orientation="vertical" className="mx-4" />
-            {strings.product.addToCart}
+            {strings.cart.buttonText}
         </Button>
     );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader2 } from "lucide-react";
+import type { Metadata } from "next";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,6 +16,11 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import SignInForm from "./SignInForm";
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Sign in",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default function SignInPage() {
     const { data: session, status } = useSession();

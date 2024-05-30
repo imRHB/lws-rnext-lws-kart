@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -10,6 +11,11 @@ enum AddressType {
     shippingAddress = "shippingAddress",
     billingAddress = "billingAddress",
 }
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Address",
+    description: "An online shop brought to you by Learn With Sumit",
+};
 
 export default async function AccountAddressPage() {
     const session = await auth();

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { auth } from "@/auth";
@@ -5,6 +6,12 @@ import { getCart, getUserByEmail } from "@/lib/actions/user.action";
 import AddressCard from "./AddressCard";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
+
+export const metadata: Metadata = {
+    title: "LWS Kart | Checkout",
+    description: "An online shop brought to you by Learn With Sumit",
+};
+
 
 export default async function CheckoutPage() {
     const session = await auth();
