@@ -34,9 +34,9 @@ export default async function Header() {
                 <div className="flex items-center space-x-1">
                     <HeaderNavItem
                         label="wishlist"
-                        length={wishlist.length ?? 0}
+                        length={wishlist?.length ?? 0}
                     />
-                    <HeaderNavItem label="cart" length={cart.length ?? 0} />
+                    <HeaderNavItem label="cart" length={cart?.length ?? 0} />
 
                     <LanguageToggler />
                 </div>

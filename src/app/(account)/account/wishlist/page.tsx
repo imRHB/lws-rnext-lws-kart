@@ -40,7 +40,7 @@ export default async function AccountWishlistPage() {
     const session = await auth();
 
     if (!session) {
-        redirect("/sign-in");
+        redirect("/sign-in?callbackUrl=/account/wishlist");
     }
 
     const wishlist = await getWishlist({ email: session?.user?.email! });

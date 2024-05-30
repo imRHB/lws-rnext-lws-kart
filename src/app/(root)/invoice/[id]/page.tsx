@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
+import { auth } from "@/auth";
 import InvoiceGenerator from "@/components/InvoiceGenerator";
 
 const invoiceData = {
@@ -66,6 +68,16 @@ export const metadata: Metadata = {
     description: "An online shop brought to you by Learn With Sumit",
 };
 
-export default function InvoicePage() {
-    return <InvoiceGenerator invoiceData={invoiceData} />;
+export default async function InvoicePage() {
+    const session = await auth();
+
+    if (!session) {
+        redirect("/sign-in?callbackUrl=/account/orders");
+    }
+
+    return (
+        <div className="container pt-4 pb-16">
+            <InvoiceGenerator invoiceData={invoiceData} />
+        </div>
+    );
 }

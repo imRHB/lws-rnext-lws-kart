@@ -1,6 +1,7 @@
-import User from "@/models/user.model";
+import { FileDown } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import React from "react";
 
@@ -19,8 +20,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import { getOrdersByCustomerId } from "@/lib/actions/order.action";
-import Link from "next/link";
-import DownloadInvoice from "./DownloadInvoice";
+import User from "@/models/user.model";
 
 interface Props {
     orderId: string;
@@ -41,7 +41,7 @@ export default async function AccountOrdersPage() {
     const session = await auth();
 
     if (!session) {
-        redirect("/sign-in");
+        redirect("/sign-in?callbackUrl=/account/orders");
     }
 
     const user = await User.findOne({ email: session?.user?.email });
@@ -166,7 +166,13 @@ function OrderItemTableRow({
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-4">
-                    <DownloadInvoice orderId={orderId} />
+                    <Link
+                        href={`/invoice/${orderId}`}
+                        className="flex items-center py-2.5 px-4 bg-zinc-50 hover:bg-zinc-100 rounded-lg"
+                    >
+                        <FileDown className="mr-2 h-4 w-4" />
+                        <span>Invoice</span>
+                    </Link>
                 </div>
             </TableCell>
         </TableRow>

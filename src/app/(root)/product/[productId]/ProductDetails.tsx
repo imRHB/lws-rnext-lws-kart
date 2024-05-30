@@ -31,7 +31,7 @@ export default async function ProductDetails({
     return (
         <div>
             <h2 className="text-3xl font-medium uppercase mb-2">{name}</h2>
-            <div className="flex items-center mb-4">
+            {/* <div className="flex items-center mb-4">
                 <div className="flex gap-1 text-sm text-yellow-400">
                     <span>
                         <i className="fa-solid fa-star"></i>
@@ -50,7 +50,7 @@ export default async function ProductDetails({
                     </span>
                 </div>
                 <div className="text-xs text-gray-500 ml-3">(150 Reviews)</div>
-            </div>
+            </div> */}
             <div className="space-y-2">
                 <p className="text-gray-800 font-semibold space-x-2">
                     <span>Availability: </span>

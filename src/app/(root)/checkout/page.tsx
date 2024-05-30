@@ -21,7 +21,7 @@ export default async function CheckoutPage({
     const session = await auth();
 
     if (!session) {
-        redirect("/sign-in");
+        redirect("/sign-in?callbackUrl=/checkout");
     }
 
     let user;

@@ -2,6 +2,7 @@
 
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
+import { FileDown } from "lucide-react";
 import { PDFDocument } from "pdf-lib";
 import { useRef } from "react";
 import { Button } from "./ui/button";
@@ -112,10 +113,10 @@ export default function InvoiceGenerator({
     };
 
     return (
-        <div className="container">
+        <div className="space-y-6">
             <div
                 ref={containerRef}
-                className="space-y-8 mx-auto p-16 bg-white rounded shadow my-8"
+                className="space-y-8 mx-auto p-16 bg-white rounded shadow"
             >
                 <div className="flex justify-between items-center mb-4">
                     <h2 className="text-xl font-bold">Invoice</h2>
@@ -192,7 +193,11 @@ export default function InvoiceGenerator({
                 </div>
             </div>
 
-            <Button onClick={handleGeneratePDF}>Generate PDF</Button>
+            <div className="text-center">
+                <Button onClick={handleGeneratePDF}>
+                    <FileDown className="mr-2 h-4 w-4" /> Invoice
+                </Button>
+            </div>
         </div>
     );
 }

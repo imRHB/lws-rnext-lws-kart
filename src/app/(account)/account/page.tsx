@@ -25,7 +25,7 @@ export default async function AccountPage() {
     const session = await auth();
 
     if (!session) {
-        redirect("/sign-in");
+        redirect("/sign-in?callbackUrl=/account");
     }
 
     let user;
