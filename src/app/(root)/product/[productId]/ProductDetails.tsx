@@ -83,7 +83,7 @@ export default async function ProductDetails({
             </div>
 
             <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
-                <AddToCart productId={JSON.parse(productId)} />
+                <AddToCart productId={JSON.parse(productId)} stock={stock} />
                 <AddToWishlist productId={JSON.parse(productId)} />
             </div>
 

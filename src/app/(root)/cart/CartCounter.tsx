@@ -21,9 +21,6 @@ export default function CartCounter({
     const { data: session } = useSession();
     const pathname = usePathname();
 
-    const min = 1;
-    const max = stock;
-
     const [count, setCount] = useState(quantity);
 
     async function handleDecrease() {
@@ -52,9 +49,9 @@ export default function CartCounter({
         <div className="flex w-full max-w-sm items-center space-x-2">
             <Button
                 variant="outline"
-                size="icon"
+                size="sm"
                 onClick={handleDecrease}
-                disabled={count === min}
+                disabled={count <= 1}
             >
                 <Minus className="h-4 w-4" />
             </Button>
@@ -63,15 +60,15 @@ export default function CartCounter({
                 type="number"
                 value={count}
                 onChange={(evt) => setCount(evt.target.valueAsNumber)}
-                className="w-12 text-center focus:ring-0 focus:outline-none"
+                className="w-12 h-[36px] text-center focus:ring-0 focus:outline-none"
                 readOnly
             />
 
             <Button
                 variant="outline"
-                size="icon"
+                size="sm"
                 onClick={handleIncrease}
-                disabled={count === max}
+                disabled={stock === 0}
             >
                 <Plus className="h-4 w-4" />
             </Button>

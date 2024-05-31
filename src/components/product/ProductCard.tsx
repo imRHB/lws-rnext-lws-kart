@@ -31,6 +31,7 @@ interface Props {
     price: number;
     discount: number;
     thumbnail: string;
+    stock: number;
 }
 
 export default function ProductCard({
@@ -39,6 +40,7 @@ export default function ProductCard({
     name,
     price,
     thumbnail,
+    stock,
 }: Props) {
     const { data: session } = useSession();
     const pathname = usePathname();
@@ -49,20 +51,26 @@ export default function ProductCard({
 
     async function handleAddToCart() {
         if (session) {
-            await addToCart({
-                email: session?.user?.email!,
-                cartData: {
-                    quantity: 1,
-                    size: "md",
-                    color: "orange",
-                },
-                productId,
-                path: pathname,
-            });
+            if (stock > 0) {
+                await addToCart({
+                    email: session?.user?.email!,
+                    cartData: {
+                        quantity: 1,
+                        size: "md",
+                        color: "orange",
+                    },
+                    productId,
+                    path: pathname,
+                });
 
-            toast({
-                title: strings.cart.addText,
-            });
+                toast({
+                    title: strings.cart.addText,
+                });
+            } else {
+                toast({
+                    title: "Product is out of stock",
+                });
+            }
         } else {
             toast({
                 title: "Please login to add to cart",

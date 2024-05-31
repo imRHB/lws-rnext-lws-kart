@@ -10,7 +10,13 @@ import { useToast } from "@/components/ui/use-toast";
 import useLanguage from "@/hooks/useLanguage";
 import { addToCart } from "@/lib/actions/user.action";
 
-export default function AddToCart({ productId }: { productId: string }) {
+export default function AddToCart({
+    productId,
+    stock,
+}: {
+    productId: string;
+    stock: number;
+}) {
     const { data: session } = useSession();
     const pathname = usePathname();
 
@@ -20,20 +26,26 @@ export default function AddToCart({ productId }: { productId: string }) {
 
     async function handleAddToCart() {
         if (session) {
-            await addToCart({
-                email: session?.user?.email!,
-                cartData: {
-                    quantity: 1,
-                    size: "md",
-                    color: "orange",
-                },
-                productId,
-                path: pathname,
-            });
+            if (stock > 0) {
+                await addToCart({
+                    email: session?.user?.email!,
+                    cartData: {
+                        quantity: 1,
+                        size: "md",
+                        color: "orange",
+                    },
+                    productId,
+                    path: pathname,
+                });
 
-            toast({
-                title: "Product added to the cart",
-            });
+                toast({
+                    title: strings.cart.addText,
+                });
+            } else {
+                toast({
+                    title: "Product is out of stock",
+                });
+            }
         } else {
             toast({
                 title: "Please login to add to cart",

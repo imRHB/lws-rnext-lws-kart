@@ -241,6 +241,7 @@ interface SendEmailProps {
 
 export async function sendEmail(props: SendEmailProps) {
     const { toEmail, emailBody } = props;
+    console.log(props);
     const mailOptions = {
         from: "'LWS Kart' <75a144002@smtp-brevo.com>",
         to: toEmail,

@@ -88,6 +88,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                                     price={product.price}
                                     discount={product.discount}
                                     thumbnail={product.thumbnail}
+                                    stock={product.stock}
                                 />
                             ))}
                         </div>
