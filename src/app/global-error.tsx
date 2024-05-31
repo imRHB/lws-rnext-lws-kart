@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
 
 export default function GlobalErrorPage({
     error,
@@ -10,15 +11,23 @@ export default function GlobalErrorPage({
     error: Error & { digest?: string };
     reset: () => void;
 }) {
+    const [stateError, setStateError] = useState<
+        (Error & { digest?: string }) | null
+    >(null);
+
     useEffect(() => {
-        console.error(error);
+        setStateError(error);
     }, [error]);
 
     return (
         <html>
             <body>
                 <div className="flex flex-col items-center justify-center h-screen gap-2">
-                    <h3 className="font-semibold">Something went wrong!</h3>
+                    <h2 className="font-semibold text-red-400">
+                        {stateError
+                            ? stateError?.message
+                            : "Something went wrong!"}
+                    </h2>
                     <Button variant="destructive" onClick={() => reset()}>
                         Try again
                     </Button>

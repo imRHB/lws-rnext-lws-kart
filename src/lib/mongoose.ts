@@ -1,18 +1,58 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
-export const connectToDatabase = async () => {
-    mongoose.set("strictQuery", true);
+// export const connectToDatabase = async () => {
+//     mongoose.set("strictQuery", true);
 
-    if (!process.env.MONGODB_URI)
-        return console.log("MONGODB URI IS NOT FOUND!");
+//     if (!process.env.MONGODB_URI)
+//         return console.log("MONGODB URI IS NOT FOUND!");
+
+//     try {
+//         await mongoose.connect(process.env.MONGODB_URI, {
+//             dbName: "lws-kart",
+//         });
+
+//         console.log("Connected to database!");
+//     } catch (error) {
+//         console.error(error);
+//     }
+// };
+
+import mongoose, { Mongoose } from "mongoose";
+
+const MONGODB_URI = process.env.MONGODB_URI as string;
+
+interface Cached {
+    connection: Mongoose | undefined;
+    promise: Promise<Mongoose> | undefined;
+}
+
+const cached: Cached = { connection: undefined, promise: undefined };
+
+export const connectToDatabase = async (): Promise<Mongoose> => {
+    if (!MONGODB_URI) {
+        throw new Error(
+            "Please define the MONGODB_URI environment variable inside .env.local"
+        );
+    }
+
+    if (cached.connection) {
+        return cached.connection;
+    }
+
+    if (!cached.promise) {
+        const opts = {
+            bufferCommands: false,
+            dbName: "lws-kart",
+        };
+        cached.promise = mongoose.connect(MONGODB_URI, opts);
+    }
 
     try {
-        await mongoose.connect(process.env.MONGODB_URI, {
-            dbName: "lws-kart",
-        });
-
-        console.log("Connected to database!");
+        cached.connection = await cached.promise;
     } catch (error) {
-        console.error(error);
+        cached.promise = undefined;
+        throw error;
     }
+
+    return cached.connection;
 };

@@ -5,31 +5,9 @@ import jsPDF from "jspdf";
 import { FileDown } from "lucide-react";
 import { PDFDocument } from "pdf-lib";
 import { useRef } from "react";
-import { Button } from "./ui/button";
 
-interface InvoiceData {
-    businessName: string;
-    businessAddress: string;
-    businessEmail: string;
-    phoneNumber: string;
-    invoiceNumber: string;
-    invoiceDate: string;
-    customerName: string;
-    customerAddress: string;
-    customerEmail: string;
-    items: {
-        id: number;
-        name: string;
-        description: string;
-        quantity: number;
-        price: number;
-    }[];
-    subTotal: number;
-    taxAmount: number;
-    totalAmount: number;
-    paymentMethods: string;
-    dueDate: string;
-}
+import { InvoiceData } from "@/types";
+import { Button } from "./ui/button";
 
 export default function InvoiceGenerator({
     invoiceData,
@@ -101,12 +79,12 @@ export default function InvoiceGenerator({
 
     const renderItems = () => {
         return items.map((item) => (
-            <tr key={item.id}>
+            <tr key={item._id}>
                 <td className="p-2 border text-left">{item.name}</td>
                 <td className="p-2 border text-center">{item.quantity}</td>
-                <td className="p-2 border text-right">{item.price}</td>
+                <td className="p-2 border text-right">${item.price}</td>
                 <td className="p-2 border text-right">
-                    {item.quantity * item.price}
+                    ${item.quantity * item.price}
                 </td>
             </tr>
         ));
@@ -133,19 +111,19 @@ export default function InvoiceGenerator({
                 <div className="flex flex-col sm:flex-row justify-between gap-8">
                     {/* company */}
                     <div>
-                        <p className="text-sm">LWS Kart</p>
-                        <p className="text-sm">Dhaka, bangladesh</p>
-                        <p className="text-sm">lws-kart@mail.com</p>
-                        <p className="text-sm">+880 1234 567890</p>
+                        <p className="text-sm">{businessName}</p>
+                        <p className="text-sm">{businessAddress}</p>
+                        <p className="text-sm">{businessEmail}</p>
+                        <p className="text-sm">{phoneNumber}</p>
                     </div>
 
                     {/* customer */}
                     <div className="sm:text-right">
                         <h4 className="font-semibold">Billing To:</h4>
-                        <p className="text-sm">Jane Doe</p>
-                        <p className="text-sm">Dhaka, bangladesh</p>
-                        <p className="text-sm">jane@mail.com</p>
-                        <p className="text-sm">+880 1234 567890</p>
+                        <p className="text-sm">{customerName}</p>
+                        <p className="text-sm">{customerAddress}</p>
+                        <p className="text-sm">{customerEmail}</p>
+                        <p className="text-sm">{customerEmail}</p>
                     </div>
                 </div>
 
@@ -167,15 +145,15 @@ export default function InvoiceGenerator({
                     <div className="w-96 space-y-2">
                         <p className="flex justify-between gap-4">
                             <span>Subtotal</span>
-                            <span>$1200</span>
+                            <span>${subTotal}</span>
                         </p>
                         <p className="flex justify-between gap-4">
                             <span>Tax</span>
-                            <span>$60</span>
+                            <span>${taxAmount}</span>
                         </p>
                         <p className="flex justify-between gap-4">
                             <span>Total</span>
-                            <span>$1260</span>
+                            <span>${totalAmount}</span>
                         </p>
                     </div>
                 </div>

@@ -105,14 +105,14 @@ export const CATEGORY_LIST: ICategory[] = [
 ];
  */
 export enum City {
-    "Barisal" = "barisal",
-    "Chittagong" = "chittagong",
-    "Dhaka" = "dhaka",
-    "Khulna" = "khulna",
-    "Mymensingh" = "mymensingh",
-    "Rajshahi" = "rajshahi",
-    "Rangpur" = "rangpur",
-    "Sylhet" = "sylhet",
+    "Barisal" = "Barisal",
+    "Chittagong" = "Chittagong",
+    "Dhaka" = "Dhaka",
+    "Khulna" = "Khulna",
+    "Mymensingh" = "Mymensingh",
+    "Rajshahi" = "Rajshahi",
+    "Rangpur" = "Rangpur",
+    "Sylhet" = "Sylhet",
 }
 
 export const CITY_LIST: ICity[] = [

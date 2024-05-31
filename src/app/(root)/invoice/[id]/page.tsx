@@ -1,79 +1,58 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { auth } from "@/auth";
 import InvoiceGenerator from "@/components/InvoiceGenerator";
-
-const invoiceData = {
-    businessName: "Starlight Electronics",
-    businessAddress: "123 Main Street, Anytown, CA 12345",
-    businessEmail: "sales@starlightelectronics.com",
-    phoneNumber: "(555) 555-1234",
-    invoiceNumber: "INV-2024-05-29-001",
-    invoiceDate: new Date().toLocaleDateString(), // Today's date
-    customerName: "John Doe",
-    customerAddress: "456 Elm Street, Anytown, CA 98765",
-    customerEmail: "john.doe@email.com",
-    items: [
-        {
-            id: 1,
-            name: "Gaming Laptop (Model XYZ)",
-            description:
-                "High-performance laptop with powerful graphics card for intense gaming",
-            quantity: 1,
-            price: 1499.99,
-        },
-        {
-            id: 2,
-            name: "Wireless Gaming Headset",
-            description:
-                "Immersive surround sound and comfortable design for extended gaming sessions",
-            quantity: 1,
-            price: 99.99,
-        },
-        {
-            id: 3,
-            name: "Gaming Mouse (RGB Lighting)",
-            description:
-                "High-precision mouse with customizable RGB lighting for enhanced control",
-            quantity: 1,
-            price: 79.99,
-        },
-        {
-            id: 4,
-            name: '27" Curved Gaming Monitor',
-            description:
-                "Immersive viewing experience with high refresh rate for smooth game play",
-            quantity: 1,
-            price: 349.99,
-        },
-        {
-            id: 5,
-            name: "Anti-Virus Software (1 Year Subscription)",
-            description:
-                "Protects your system from viruses, malware, and online threats",
-            quantity: 1,
-            price: 39.99,
-        },
-    ],
-    subTotal: 2069.96,
-    taxAmount: 124.19,
-    totalAmount: 2194.15,
-    paymentMethods: "Credit Card",
-    dueDate: new Date().toLocaleDateString(),
-};
+import { getOrderById } from "@/lib/actions/order.action";
+import { InvoiceData } from "@/types";
 
 export const metadata: Metadata = {
     title: "LWS Kart | Invoice",
     description: "An online shop brought to you by Learn With Sumit",
 };
 
-export default async function InvoicePage() {
+interface Props {
+    params: {
+        id: string;
+    };
+}
+
+export default async function InvoicePage({ params }: Props) {
+    const { id } = params;
+
     const session = await auth();
 
     if (!session) {
         redirect("/sign-in?callbackUrl=/account/orders");
     }
+
+    const order = await getOrderById({ orderId: id });
+
+    if (!order) notFound();
+
+    const invoiceData: InvoiceData = {
+        businessName: "LWS Kart",
+        businessAddress: "Dhaka, Bangladesh",
+        businessEmail: "lws-kart@mail.com",
+        phoneNumber: "+880 1234 567890",
+        invoiceNumber: String(order._id),
+        invoiceDate: new Date().toLocaleDateString(),
+        customerName: `${order.shippingAddress.firstName} ${order.shippingAddress.lastName}`,
+        customerAddress: `${order.shippingAddress.street}, ${order.shippingAddress.city}, ${order.shippingAddress.zip}`,
+        customerEmail: order.shippingAddress.email,
+        items: order.items.map((item: any) => ({
+            _id: String(item.product._id),
+            name: item.product.name,
+            description: `Size: ${item.size}, Color: ${item.color}`,
+            quantity: item.quantity,
+            price: item.unitPrice,
+        })),
+        subTotal: order.amount,
+        taxAmount: (order.amount * 0.1).toFixed(2),
+        totalAmount: (order.amount * 1.1).toFixed(2),
+        paymentMethods: order.payment.method,
+        dueDate: new Date().toLocaleDateString(),
+    };
 
     return (
         <div className="container pt-4 pb-16">

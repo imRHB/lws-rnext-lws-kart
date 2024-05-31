@@ -8,12 +8,6 @@ import ProductDetails from "./ProductDetails";
 import ProductImageGallery from "./ProductImageGallery";
 import RelatedProducts from "./RelatedProducts";
 
-interface Props {
-    params: {
-        productId: string;
-    };
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { productId } = params;
 
@@ -36,6 +30,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
             siteName: "LWS Kart",
             type: "website",
         },
+    };
+}
+
+interface Props {
+    params: {
+        productId: string;
     };
 }
 

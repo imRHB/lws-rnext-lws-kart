@@ -152,7 +152,7 @@ interface GetOrderByIdProps {
     orderId: string;
 }
 
-export async function getOrderById(params: GetOrderByIdProps): Promise<IOrder> {
+export async function getOrderById(params: GetOrderByIdProps) {
     try {
         await connectToDatabase();
 

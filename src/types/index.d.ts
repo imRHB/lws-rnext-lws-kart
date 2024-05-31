@@ -69,3 +69,27 @@ export interface ProductCardProps {
 export interface SearchParamsProps {
     searchParams: { [key: string]: string | undefined };
 }
+
+export interface InvoiceData {
+    businessName: string;
+    businessAddress: string;
+    businessEmail: string;
+    phoneNumber: string;
+    invoiceNumber: string;
+    invoiceDate: string;
+    customerName: string;
+    customerAddress: string;
+    customerEmail: string;
+    items: {
+        _id: string;
+        name: string;
+        description: string;
+        quantity: number;
+        price: number;
+    }[];
+    subTotal: number;
+    taxAmount: string;
+    totalAmount: string;
+    paymentMethods: string;
+    dueDate: string;
+}
