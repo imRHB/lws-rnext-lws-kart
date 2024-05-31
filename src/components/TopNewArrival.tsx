@@ -20,6 +20,7 @@ export default async function TopNewArrival() {
                         price={product.price}
                         discount={product.discount}
                         thumbnail={product.thumbnail}
+                        stock={product.stock}
                     />
                 ))}
             </div>
