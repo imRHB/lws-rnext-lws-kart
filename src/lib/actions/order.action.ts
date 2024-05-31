@@ -7,8 +7,9 @@ import { Resend } from "resend";
 import Order, { IOrder } from "@/models/order.model";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
+import { redirect } from "next/navigation";
 import { connectToDatabase } from "../mongoose";
-import { testTransporter, transporter } from "../nodemailer";
+import { transporter } from "../nodemailer";
 
 interface CreateOrderParams {
     customer: string;
@@ -99,9 +100,15 @@ export async function createOrder(params: CreateOrderParams): Promise<IOrder> {
         // const invoiceData = { ...newOrder.toObject(), customer: user };
         // const pdfBuffer = await generateInvoicePdf(invoiceData);
         // await sendInvoiceEmail(invoiceData, pdfBuffer);
+        const invoiceId = String(newOrder._id);
+        await sendEmail({
+            toEmail: billingAddress?.email,
+            emailBody: `We have received your order. You can download your invoice from the following link: ${process.env.SITE_URL}/invoice/${invoiceId}`,
+        });
 
         revalidatePath(path);
-        return newOrder;
+        redirect(`/checkout?oid=${invoiceId}`);
+        // return newOrder;
     } catch (error) {
         console.log(error);
         throw error;
@@ -171,12 +178,12 @@ export async function getOrderById(params: GetOrderByIdProps) {
     }
 }
 
-interface SendEmailProps {
+interface SendResendEmailProps {
     orderId: string;
     email: string;
 }
 
-export async function sendResendEmail(params: SendEmailProps) {
+export async function sendResendEmail(params: SendResendEmailProps) {
     try {
         await connectToDatabase();
 
@@ -227,16 +234,22 @@ export async function sendInvoice(props: SendInvoiceParams) {
     }
 }
 
-export async function sendTestEmail() {
+interface SendEmailProps {
+    toEmail: string;
+    emailBody: string;
+}
+
+export async function sendEmail(props: SendEmailProps) {
+    const { toEmail, emailBody } = props;
     const mailOptions = {
         from: "'LWS Kart' <75a144002@smtp-brevo.com>",
-        to: "rhbabu03@gmail.com",
+        to: toEmail,
         subject: `Order confirmation`,
-        text: `You have placed your order successfully`,
+        text: emailBody,
     };
 
     try {
-        testTransporter.sendMail(mailOptions);
+        transporter.sendMail(mailOptions);
     } catch (error) {
         console.log(error);
         throw error;

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { getCart, getUserByEmail } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
+import Link from "next/link";
 import AddressCard from "./AddressCard";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
@@ -16,8 +17,6 @@ export const metadata: Metadata = {
 export default async function CheckoutPage({
     searchParams,
 }: SearchParamsProps) {
-    console.log(searchParams);
-
     const session = await auth();
 
     if (!session) {
@@ -58,6 +57,10 @@ export default async function CheckoutPage({
     const TAX_AMOUNT = (7 * SUB_TOTAL) / 100;
     const totalAmount = (SUB_TOTAL + SHIPPING_CHARGE + TAX_AMOUNT).toFixed(2);
 
+    const validOrderId = await user.orders.some(
+        (orderId: string) => String(orderId) === searchParams?.oid
+    );
+
     return (
         <section className="container pb-16 pt-4">
             {(cart as any[]).length > 0 ? (
@@ -84,14 +87,35 @@ export default async function CheckoutPage({
                     <CheckoutSummary />
                 </div>
             ) : searchParams?.oid ? (
-                <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
-                    <h3 className="text-3xl font-semibold text-zinc-800">
-                        Successful
-                    </h3>
-                    <p className="text-md text-zinc-600">
-                        You order is successfully completed.
-                    </p>
-                </div>
+                <>
+                    {validOrderId ? (
+                        <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
+                            <h3 className="text-3xl font-semibold text-zinc-800">
+                                Successful
+                            </h3>
+                            <p className="text-md text-zinc-600">
+                                You order is successfully completed.
+                            </p>
+
+                            <Link
+                                href="/account/orders"
+                                className="flex items-center py-2.5 px-4 bg-zinc-100 rounded-lg"
+                            >
+                                Check orders
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
+                            <h3 className="text-3xl font-semibold text-zinc-800">
+                                Not found
+                            </h3>
+                            <p className="text-md text-zinc-600">
+                                Unfortunately, the order not found or you have
+                                no access!
+                            </p>
+                        </div>
+                    )}
+                </>
             ) : (
                 <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
                     <h3 className="text-3xl font-semibold text-zinc-800">
