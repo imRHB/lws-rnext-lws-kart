@@ -6,6 +6,7 @@ import React from "react";
 import { auth } from "@/auth";
 import { getCart, getUserByEmail } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
+import AddressAlert from "./AddressAlert";
 import AddressCard from "./AddressCard";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
@@ -62,6 +63,9 @@ export default async function CheckoutPage({
         (orderId: string) => String(orderId) === searchParams?.oid
     );
 
+    const isShippingAdEmpty = Object.keys(shippingAddress).length <= 0;
+    const isBillingAdEmpty = Object.keys(billingAddress).length <= 0;
+
     return (
         <section className="container pb-16 pt-4">
             {(cart as any[]).length > 0 ? (
@@ -77,12 +81,16 @@ export default async function CheckoutPage({
                                 label="Billing Address"
                             />
                         </div>
+                        {isShippingAdEmpty ||
+                            (isBillingAdEmpty && <AddressAlert />)}
                         <CheckoutForm
                             userId={String(user._id)}
                             shippingAddress={JSON.stringify(shippingAddress)}
                             billingAddress={JSON.stringify(billingAddress)}
                             items={JSON.stringify(checkoutItems)}
                             amount={Number(totalAmount)}
+                            isShipAdEmpty={isShippingAdEmpty}
+                            isBillAdEmpty={isBillingAdEmpty}
                         />
                     </div>
                     <CheckoutSummary />

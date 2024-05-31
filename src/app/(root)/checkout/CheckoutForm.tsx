@@ -1,21 +1,13 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
     Form,
     FormControl,
@@ -24,8 +16,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form";
-
-import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
     Select,
@@ -34,7 +25,9 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
 import { Month, MONTHS } from "@/constants";
 import { getYears } from "@/lib";
 import { createOrder } from "@/lib/actions/order.action";
@@ -107,12 +100,18 @@ const itemSchema = z.object({
 });
 
 const paymentSchema = z.object({
-    method: z.string(),
-    name: z.string(),
+    method: z.string({ required_error: "Required" }),
+    name: z.string().min(1, { message: "Required" }),
     cardNumber: cardNumberSchema,
-    expiryMonth: z.nativeEnum(Month),
-    expiryYear: z.string().refine((val) => /^[0-9]{4}$/.test(val)),
-    cvc: z.string().refine((val) => /^[0-9]{3}$/.test(val)),
+    expiryMonth: z.nativeEnum(Month, {
+        errorMap: () => ({ message: "Invalid month" }),
+    }),
+    expiryYear: z
+        .string()
+        .refine((val) => /^[0-9]{4}$/.test(val), { message: "Invalid year" }),
+    cvc: z
+        .string()
+        .refine((val) => /^[0-9]{3}$/.test(val), { message: "Invalid cvc" }),
 });
 
 const formSchema = z.object({
@@ -136,6 +135,8 @@ interface CheckoutFormProps {
     billingAddress: string;
     items: string;
     amount: number;
+    isShipAdEmpty: boolean;
+    isBillAdEmpty: boolean;
 }
 
 const paymentInfo = {
@@ -148,10 +149,19 @@ const paymentInfo = {
 };
 
 export default function CheckoutForm(params: CheckoutFormProps) {
-    const router = useRouter();
     const pathname = usePathname();
 
-    const { userId, shippingAddress, billingAddress, items, amount } = params;
+    const { toast } = useToast();
+
+    const {
+        userId,
+        shippingAddress,
+        billingAddress,
+        items,
+        amount,
+        isShipAdEmpty,
+        isBillAdEmpty,
+    } = params;
 
     const parsedShippingAddress = JSON.parse(shippingAddress) as z.infer<
         typeof zodAddressSchema
@@ -169,21 +179,13 @@ export default function CheckoutForm(params: CheckoutFormProps) {
             billingAddress: parsedBillingAddress,
             items: parsedItems,
             amount,
-            // payment: {
-            //     method: "",
-            //     name: "",
-            //     cardNumber: "",
-            //     expiryMonth: undefined,
-            //     expiryYear: "",
-            //     cvc: "",
-            // },
             payment: {
-                method: "CreditCard",
-                name: "John Doe",
-                cardNumber: "4000056655665556",
-                expiryMonth: Month.June,
-                expiryYear: YEARS[5].toString(),
-                cvc: "123",
+                method: "",
+                name: "",
+                cardNumber: "",
+                expiryMonth: undefined,
+                expiryYear: undefined,
+                cvc: "",
             },
             note: "",
             status: "pending",
@@ -191,7 +193,13 @@ export default function CheckoutForm(params: CheckoutFormProps) {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        await createOrder({ ...values, path: pathname });
+        if (isShipAdEmpty || isBillAdEmpty) {
+            toast({
+                title: `Shipping or billing address is required! Please update!`,
+            });
+        } else {
+            await createOrder({ ...values, path: pathname });
+        }
     }
 
     return (
@@ -199,9 +207,6 @@ export default function CheckoutForm(params: CheckoutFormProps) {
             <Card>
                 <CardHeader>
                     <CardTitle>Checkout Form</CardTitle>
-                    <CardDescription>
-                        Enter your shipping address to complete your order.
-                    </CardDescription>
                 </CardHeader>
 
                 <Separator />
@@ -448,7 +453,10 @@ export default function CheckoutForm(params: CheckoutFormProps) {
                                 />
                             </div>
 
-                            <Button className="w-full sm:w-fit">
+                            <Button
+                                className="w-full sm:w-fit"
+                                disabled={isShipAdEmpty || isBillAdEmpty}
+                            >
                                 Place order
                             </Button>
                         </form>

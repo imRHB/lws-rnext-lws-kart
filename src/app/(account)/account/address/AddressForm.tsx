@@ -32,13 +32,26 @@ import React from "react";
 const phoneRegEx = /^(?:(?:\+|00)88|01)?\d{11}\r?$/;
 
 const formSchema = z.object({
-    firstName: z.string().min(2).max(20),
-    lastName: z.string().min(2).max(20),
-    street: z.string().min(4).max(40),
-    city: z.nativeEnum(City),
-    zip: z.coerce.number().int().gte(1000).lte(8799),
-    phone: z.string().regex(phoneRegEx),
-    email: z.string().email(),
+    firstName: z
+        .string()
+        .min(2, { message: "Too short" })
+        .max(20, { message: "Too long" }),
+    lastName: z
+        .string()
+        .min(2, { message: "Too short" })
+        .max(20, { message: "Too long" }),
+    street: z
+        .string()
+        .min(4, { message: "Too short" })
+        .max(40, { message: "Too long" }),
+    city: z.nativeEnum(City, { message: "Invalid city" }),
+    zip: z.coerce
+        .number()
+        .int({ message: "Not integer" })
+        .gte(1000, { message: "Too low" })
+        .lte(8799, { message: "Too high" }),
+    phone: z.string().regex(phoneRegEx, { message: "Invalid phone" }),
+    email: z.string().email({ message: "Invalid email" }),
 });
 
 interface Props {
