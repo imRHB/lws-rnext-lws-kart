@@ -67,10 +67,8 @@ export default async function CartPage() {
                                         <span className="sr-only">Image</span>
                                     </TableHead>
                                     <TableHead>Name</TableHead>
-                                    <TableHead className="">Price</TableHead>
-                                    <TableHead className="">
-                                        Ordered at
-                                    </TableHead>
+                                    <TableHead>Price</TableHead>
+                                    <TableHead>Variants</TableHead>
                                     <TableHead>
                                         <span className="sr-only">Actions</span>
                                     </TableHead>
@@ -145,8 +143,6 @@ function WishlistItemTableRow({
                 >
                     {name}
                 </Link>
-                <p>Color: {color}</p>
-                <p>Size: {size.toUpperCase()}</p>
                 <p>Only {stock} left</p>
             </TableCell>
             <TableCell className="flex flex-col">
@@ -157,11 +153,26 @@ function WishlistItemTableRow({
                 <span>-{discount}%</span>
             </TableCell>
             <TableCell>
-                <CartCounter
-                    productId={productId}
-                    quantity={quantity}
-                    stock={stock}
-                />
+                <div className="space-y-3">
+                    <div className="flex items-center gap-4">
+                        <div className="flex items-center justify-center p-1 h-6 w-8 rounded ring-2 ring-zinc-200 ring-offset-2 bg-white">
+                            <span className="uppercase">{size}</span>
+                        </div>
+                        <div
+                            className="flex items-center justify-center p-2 h-6 w-6 rounded-full ring-2 ring-zinc-200 ring-offset-2"
+                            style={{
+                                backgroundColor: color,
+                            }}
+                        >
+                            <span className="sr-only">{color}</span>
+                        </div>
+                    </div>
+                    <CartCounter
+                        productId={productId}
+                        quantity={quantity}
+                        stock={stock}
+                    />
+                </div>
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-2">

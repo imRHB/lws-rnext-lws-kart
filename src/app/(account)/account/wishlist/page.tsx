@@ -27,8 +27,10 @@ interface Props {
     price: number;
     discount: number;
     thumbnail: string;
-    stock: number;
     sku: string;
+    stock: number;
+    size: string;
+    color: string;
 }
 
 export const metadata: Metadata = {
@@ -49,7 +51,7 @@ export default async function AccountWishlistPage() {
         <React.Fragment>
             <UserWishlistIntro />
 
-            {(wishlist as any[]).length > 0 ? (
+            {(wishlist && (wishlist as any[])).length > 0 ? (
                 <Card>
                     <Table>
                         <TableHeader>
@@ -84,6 +86,8 @@ export default async function AccountWishlistPage() {
                                     thumbnail={product.thumbnail}
                                     stock={product.stock}
                                     sku={product.sku}
+                                    size={product.size?.[0]}
+                                    color={product.color?.[0]}
                                 />
                             ))}
                         </TableBody>
@@ -112,8 +116,10 @@ function WishlistItemTableRow({
     name,
     price,
     thumbnail,
-    stock,
     sku,
+    stock,
+    size,
+    color,
 }: Props) {
     return (
         <TableRow>
@@ -139,7 +145,12 @@ function WishlistItemTableRow({
             </TableCell>
             <TableCell>
                 <div className="flex items-center gap-4">
-                    <AddToCart productId={productId} />
+                    <AddToCart
+                        productId={productId}
+                        stock={stock}
+                        size={size}
+                        color={color}
+                    />
                     <RemoveWished productId={productId} />
                 </div>
             </TableCell>

@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+import React from "react";
 
 import { auth } from "@/auth";
 import { getCart, getUserByEmail } from "@/lib/actions/user.action";
 import { SearchParamsProps } from "@/types";
-import Link from "next/link";
 import AddressCard from "./AddressCard";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutSummary from "./CheckoutSummary";
@@ -87,7 +88,7 @@ export default async function CheckoutPage({
                     <CheckoutSummary />
                 </div>
             ) : searchParams?.oid ? (
-                <>
+                <React.Fragment>
                     {validOrderId ? (
                         <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
                             <h3 className="text-3xl font-semibold text-zinc-800">
@@ -115,7 +116,7 @@ export default async function CheckoutPage({
                             </p>
                         </div>
                     )}
-                </>
+                </React.Fragment>
             ) : (
                 <div className="flex flex-col h-[40vh] items-center justify-center gap-2">
                     <h3 className="text-3xl font-semibold text-zinc-800">

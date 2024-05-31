@@ -32,6 +32,8 @@ interface Props {
     discount: number;
     thumbnail: string;
     stock: number;
+    size: string;
+    color: string;
 }
 
 export default function ProductCard({
@@ -41,6 +43,8 @@ export default function ProductCard({
     price,
     thumbnail,
     stock,
+    size,
+    color,
 }: Props) {
     const { data: session } = useSession();
     const pathname = usePathname();
@@ -56,8 +60,8 @@ export default function ProductCard({
                     email: session?.user?.email!,
                     cartData: {
                         quantity: 1,
-                        size: "md",
-                        color: "orange",
+                        size,
+                        color,
                     },
                     productId,
                     path: pathname,
