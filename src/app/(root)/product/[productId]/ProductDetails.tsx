@@ -1,5 +1,4 @@
-import AddToCart from "./AddToCart";
-import AddToWishlist from "./AddToWishlist";
+import ProductActions from "./ProductActions";
 import Share from "./Share";
 
 interface Props {
@@ -11,6 +10,8 @@ interface Props {
     price: number;
     discount: number;
     stock: number;
+    size: string;
+    color: string;
 }
 
 enum ProductAvailability {
@@ -27,6 +28,8 @@ export default async function ProductDetails({
     price,
     discount,
     stock,
+    size,
+    color,
 }: Props) {
     return (
         <div>
@@ -82,9 +85,15 @@ export default async function ProductDetails({
                 <p className="text-base text-gray-400 line-through">${price}</p>
             </div>
 
-            <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5 pt-5">
-                <AddToCart productId={JSON.parse(productId)} stock={stock} />
-                <AddToWishlist productId={JSON.parse(productId)} />
+            <div className="flex gap-3 border-b border-gray-200 pb-5 pt-5">
+                <ProductActions
+                    productId={JSON.parse(productId)}
+                    size={size}
+                    color={color}
+                    stock={stock}
+                />
+                {/* <AddToCart productId={JSON.parse(productId)} stock={stock} /> */}
+                {/* <AddToWishlist productId={JSON.parse(productId)} /> */}
             </div>
 
             <div className="mt-4">

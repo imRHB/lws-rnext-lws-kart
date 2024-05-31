@@ -58,6 +58,8 @@ export default async function ProductPage({ params }: Props) {
         thumbnail,
         images,
         features,
+        size,
+        color,
     } = product || {};
 
     return (
@@ -77,6 +79,8 @@ export default async function ProductPage({ params }: Props) {
                     price={price}
                     discount={discount}
                     stock={stock}
+                    size={JSON.stringify(size)}
+                    color={JSON.stringify(color)}
                 />
             </div>
 

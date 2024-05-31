@@ -150,19 +150,21 @@ export async function addToCart(params: AddToCartParams) {
             (item: any) => item.product.toString() === productId
         );
 
-        if (existingProductIndex > -1) {
-            user.cart[existingProductIndex].quantity += 1;
-            // if (size) user.cart[existingProductIndex].size = size;
-            // if (color) user.cart[existingProductIndex].color = color;
+        if (
+            existingProductIndex > -1 &&
+            user.cart[existingProductIndex].size === cartData.size &&
+            user.cart[existingProductIndex].color === cartData.color
+        ) {
+            user.cart[existingProductIndex].quantity += cartData.quantity;
             user.cart[existingProductIndex].updatedAt = new Date();
-            product.stock -= 1;
+            product.stock -= cartData.quantity;
         } else {
             user.cart.push({
                 product: new ObjectId(productId),
                 ...cartData,
                 updatedAt: new Date(),
             });
-            product.stock -= 1;
+            product.stock -= cartData.quantity;
         }
 
         await product.save();

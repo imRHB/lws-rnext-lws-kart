@@ -13,9 +13,11 @@ import { addToCart } from "@/lib/actions/user.action";
 export default function AddToCart({
     productId,
     stock,
+    cartData,
 }: {
     productId: string;
     stock: number;
+    cartData: string;
 }) {
     const { data: session } = useSession();
     const pathname = usePathname();
@@ -24,16 +26,14 @@ export default function AddToCart({
 
     const { toast } = useToast();
 
+    const parsedCartData = JSON.parse(cartData);
+
     async function handleAddToCart() {
         if (session) {
-            if (stock > 0) {
+            if (stock >= parsedCartData?.quantity) {
                 await addToCart({
                     email: session?.user?.email!,
-                    cartData: {
-                        quantity: 1,
-                        size: "md",
-                        color: "orange",
-                    },
+                    cartData: { ...parsedCartData },
                     productId,
                     path: pathname,
                 });
