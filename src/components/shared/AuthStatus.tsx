@@ -24,10 +24,7 @@ export default function AuthStatus() {
     const { strings } = useLanguage();
 
     function handleSignOut() {
-        signOut({
-            redirect: false,
-            callbackUrl: `/sign-in`,
-        });
+        signOut({ callbackUrl: "/" });
     }
 
     return (

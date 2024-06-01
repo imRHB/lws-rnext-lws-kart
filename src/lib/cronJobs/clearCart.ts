@@ -26,5 +26,4 @@ export async function clearCartItems() {
     }
 }
 
-// Schedule the job to run every day at midnight
-cron.schedule("0 0 * * *", clearCartItems);
+cron.schedule("*/5 * * * *", clearCartItems);

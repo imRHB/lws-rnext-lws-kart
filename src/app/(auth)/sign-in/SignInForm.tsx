@@ -21,8 +21,8 @@ import { Separator } from "@/components/ui/separator";
 import { useSearchParams } from "next/navigation";
 
 const formSchema = z.object({
-    email: z.string().email(),
-    password: z.string().min(4),
+    email: z.string().email({ message: "Invalid email" }),
+    password: z.string().min(4, { message: "Too short" }),
 });
 
 export default function SignInForm() {

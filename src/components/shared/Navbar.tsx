@@ -4,7 +4,7 @@ import AuthStatus from "./AuthStatus";
 
 export default async function Navbar() {
     const categories = await getCategories();
-    const selectedCategoryItems = categories.map((category) => {
+    const selectedCategoryItems = categories.map((category: any) => {
         return {
             name: category.name,
             icon: category.icon,

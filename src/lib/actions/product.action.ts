@@ -206,15 +206,23 @@ export async function getRelatedProducts(params: {
     }
 }
 
-/* 
+interface GetProductStockByIdProps {
+    productId: string;
+}
 
-export async function getProducts() {
+export async function getProductStockById(params: GetProductStockByIdProps) {
     try {
         await connectToDatabase();
+
+        const { productId } = params;
+
+        const product = await Product.findById(productId);
+
+        if (!product) throw new Error("Product not found");
+
+        return product.stock;
     } catch (error) {
         console.log(error);
         throw error;
     }
 }
-
-*/

@@ -4,7 +4,6 @@ import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -24,15 +23,19 @@ import { useToast } from "@/components/ui/use-toast";
 import Link from "next/link";
 
 const formSchema = z.object({
-    firstName: z.string().min(2).max(20),
-    lastName: z.string().min(2).max(20),
-    email: z.string().email(),
-    password: z.string().min(4),
+    firstName: z
+        .string()
+        .min(2, { message: "Too short" })
+        .max(20, { message: "Too long" }),
+    lastName: z
+        .string()
+        .min(2, { message: "Too short" })
+        .max(20, { message: "Too long" }),
+    email: z.string().email({ message: "Invalid email" }),
+    password: z.string().min(4, { message: "Too short" }),
 });
 
 export default function SignUpForm() {
-    const router = useRouter();
-
     const { toast } = useToast();
 
     const handleGoogleSignIn = () => {
