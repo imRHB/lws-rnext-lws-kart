@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import PageNavigation from "@/components/PageNavigation";
 import ProductCard from "@/components/product/ProductCard";
 import {
     Card,
@@ -23,13 +24,14 @@ export const metadata: Metadata = {
 };
 
 export default async function ShopPage({ searchParams }: SearchParamsProps) {
-    const products = await getProducts({
+    const results = await getProducts({
         searchQuery: searchParams.q,
         category: searchParams.category,
         pmin: searchParams.pmin,
         pmax: searchParams.pmax,
         color: searchParams.color,
         size: searchParams.size,
+        page: searchParams.page ? +searchParams.page : 1,
     });
 
     return (
@@ -78,9 +80,9 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                 </div>
 
                 <div className="col-span-3">
-                    {products.length > 0 ? (
+                    {results.products.length > 0 ? (
                         <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
-                            {products.map((product) => (
+                            {results.products.map((product) => (
                                 <ProductCard
                                     key={String(product._id)}
                                     productId={String(product._id)}
@@ -100,6 +102,14 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                         </div>
                     )}
                 </div>
+            </div>
+
+            <div className="my-4">
+                <PageNavigation
+                    pageNumber={searchParams?.page ? +searchParams.page : 1}
+                    isNext={results?.isNext}
+                    pageCount={results?.pageCount}
+                />
             </div>
         </section>
     );

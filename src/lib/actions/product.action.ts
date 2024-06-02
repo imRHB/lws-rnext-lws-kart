@@ -8,11 +8,22 @@ import { GetProductByIdParams, GetProductsParams } from "./shared.types";
 
 export async function getProducts(
     params: GetProductsParams
-): Promise<IProduct[]> {
+): Promise<{ products: IProduct[]; isNext: boolean; pageCount: number }> {
     try {
         await connectToDatabase();
 
-        const { searchQuery, category, pmin, pmax, color, size } = params;
+        const {
+            searchQuery,
+            category,
+            pmin,
+            pmax,
+            color,
+            size,
+            page = 1,
+            pageSize = 3,
+        } = params;
+
+        const skipAmount = (page - 1) * pageSize;
 
         const query: FilterQuery<typeof Product> = {};
 
@@ -44,9 +55,19 @@ export async function getProducts(
             query.size = { $in: sizeArray };
         }
 
-        const products = await Product.find(query);
+        const products = await Product.find(query)
+            .skip(skipAmount)
+            .limit(pageSize);
 
-        return products;
+        const totalProducts = await Product.countDocuments(query);
+        const isNext = totalProducts > skipAmount + products.length;
+        const pageCount = Math.ceil(totalProducts / pageSize);
+
+        return {
+            products,
+            isNext,
+            pageCount,
+        };
     } catch (error) {
         console.log(error);
         throw error;
@@ -132,21 +153,43 @@ export async function getNewArrivalProducts(
 
 interface GetProductByCategoryParams {
     category: string;
+    page: number;
+    pageSize?: number;
 }
 
 export async function getProductsByCategory(
     params: GetProductByCategoryParams
-): Promise<IProduct[]> {
+): Promise<{ products: IProduct[]; isNext: boolean; pageCount: number }> {
     try {
         await connectToDatabase();
 
-        const { category } = params;
+        const { category, page = 1, pageSize = 3 } = params;
 
-        const products = await Product.find({ category }).sort({
-            createdAt: -1,
-        });
+        const skipAmount = (page - 1) * pageSize;
 
-        return products;
+        const query: FilterQuery<typeof Product> = {};
+
+        if (category) {
+            const categoriesArray = category.split(",");
+            query.category = { $in: categoriesArray };
+        }
+
+        const products = await Product.find(query)
+            .skip(skipAmount)
+            .limit(pageSize)
+            .sort({
+                createdAt: -1,
+            });
+
+        const totalProducts = await Product.countDocuments(query);
+        const isNext = totalProducts > skipAmount + products.length;
+        const pageCount = Math.ceil(totalProducts / pageSize);
+
+        return {
+            products,
+            isNext,
+            pageCount,
+        };
     } catch (error) {
         console.log(error);
         throw error;

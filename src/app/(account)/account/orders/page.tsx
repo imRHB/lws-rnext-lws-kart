@@ -55,7 +55,7 @@ export default async function AccountOrdersPage() {
             {(orders as any[]).length > 0 ? (
                 <React.Fragment>
                     {(orders as any[]).map((order: any) => (
-                        <Card key={order._id}>
+                        <Card key={String(order._id)}>
                             <CardHeader>
                                 <CardDescription>
                                     Order ID: {String(order._id)}
@@ -92,7 +92,7 @@ export default async function AccountOrdersPage() {
                                     {(order?.items as any[]).map(
                                         (item: any) => (
                                             <OrderItemTableRow
-                                                key={item._id}
+                                                key={String(item._id)}
                                                 orderId={String(order._id)}
                                                 productId={String(
                                                     item.product._id

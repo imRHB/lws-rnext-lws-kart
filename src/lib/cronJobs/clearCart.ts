@@ -26,4 +26,4 @@ export async function clearCartItems() {
     }
 }
 
-cron.schedule("*/5 * * * *", clearCartItems);
+cron.schedule("*/1 * * * *", clearCartItems);

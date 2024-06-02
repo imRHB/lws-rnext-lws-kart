@@ -2,12 +2,13 @@ import { Document, model, models, Schema } from "mongoose";
 
 export interface IProduct extends Document {
     name: string;
+    description?: string;
     price: number;
     discount: number;
     thumbnail: string;
-    images?: string[];
+    images: string[];
     category: string;
-    features?: string[];
+    features: string[];
     size: string[];
     color: string[];
     sku: string;
@@ -19,10 +20,11 @@ export interface IProduct extends Document {
 const ProductSchema = new Schema<IProduct>(
     {
         name: { type: String, required: true },
+        description: { type: String },
         price: { type: Number, required: true },
         discount: { type: Number, required: true },
         thumbnail: { type: String, required: true },
-        images: [{ type: String }],
+        images: [{ type: String, required: true }],
         category: { type: String, required: true },
         features: [{ type: String, required: true }],
         size: [{ type: String, required: true }],

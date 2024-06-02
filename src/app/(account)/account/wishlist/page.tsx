@@ -78,7 +78,7 @@ export default async function AccountWishlistPage() {
                         <TableBody>
                             {(wishlist as any[]).map((product: any) => (
                                 <WishlistItemTableRow
-                                    key={product._id}
+                                    key={String(product._id)}
                                     productId={String(product._id)}
                                     name={product.name}
                                     price={product.price}

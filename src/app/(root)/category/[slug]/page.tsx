@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import PageNavigation from "@/components/PageNavigation";
 import ProductCard from "@/components/product/ProductCard";
 import { getCategoryByName } from "@/lib/actions/category.action";
 import { getProductsByCategory } from "@/lib/actions/product.action";
@@ -9,6 +10,7 @@ interface Props {
     params: {
         slug: string;
     };
+    searchParams?: { page: number };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -38,7 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
 }
 
-export default async function CategoryWiseProductPage({ params }: Props) {
+export default async function CategoryWiseProductPage({
+    params,
+    searchParams,
+}: Props) {
     const category = await getCategoryByName({
         name: decodeURIComponent(params.slug),
     });
@@ -47,8 +52,9 @@ export default async function CategoryWiseProductPage({ params }: Props) {
 
     const { name, description, thumbnail } = category || {};
 
-    const products = await getProductsByCategory({
+    const results = await getProductsByCategory({
         category: decodeURIComponent(params.slug),
+        page: searchParams?.page ? +searchParams?.page : 1,
     });
 
     return (
@@ -59,9 +65,9 @@ export default async function CategoryWiseProductPage({ params }: Props) {
                 thumbnail={thumbnail}
             />
 
-            {products.length > 0 ? (
+            {results.products.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    {products.map((product) => (
+                    {results.products.map((product) => (
                         <ProductCard
                             key={String(product._id)}
                             productId={String(product._id)}
@@ -86,6 +92,14 @@ export default async function CategoryWiseProductPage({ params }: Props) {
                     </p>
                 </div>
             )}
+
+            <div className="my-4">
+                <PageNavigation
+                    pageNumber={searchParams?.page ? +searchParams.page : 1}
+                    isNext={results?.isNext}
+                    pageCount={results?.pageCount}
+                />
+            </div>
         </section>
     );
 }

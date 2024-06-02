@@ -22,6 +22,8 @@ export interface GetProductsParams {
     pmax?: string | number;
     color?: string;
     size?: string;
+    page?: number;
+    pageSize?: number;
 }
 
 export interface UpdateAddressParams {

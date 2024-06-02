@@ -21,11 +21,11 @@ export default function GlobalSearch() {
 
     useEffect(() => {
         async function fetchProducts() {
-            const products = await getProducts({
+            const results = await getProducts({
                 searchQuery: query!,
             });
 
-            setProducts(products);
+            setProducts(results.products);
         }
 
         if (query) {
@@ -60,10 +60,9 @@ export default function GlobalSearch() {
                             <div className="flex flex-col space-y-2">
                                 {products.map((product) => (
                                     <Link
-                                        key={product.id}
-                                        href={`/product/${product._id}`}
+                                        key={String(product._id)}
+                                        href={`/product/${String(product._id)}`}
                                         className="flex items-center gap-2 py-1 px-2 rounded-lg hover:bg-zinc-100"
-                                        // onClick={handleProductClick}
                                     >
                                         <Image
                                             src={product.thumbnail}
