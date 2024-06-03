@@ -21,9 +21,9 @@ import RemoveCartItem from "./RemoveCartItem";
 
 interface Props {
     productId: string;
-    name: string;
+    title: string;
     price: number;
-    discount: number;
+    discountPercentage: number;
     thumbnail: string;
     stock: number;
     quantity: number;
@@ -50,7 +50,7 @@ export default async function CartPage() {
         (acc: number, item: any) =>
             acc +
             (item.product.price -
-                (item.product.discount * item.product.price) / 100) *
+                (item.product.discountPercentage * item.product.price) / 100) *
                 item.quantity,
         0
     );
@@ -66,7 +66,7 @@ export default async function CartPage() {
                                     <TableHead className="hidden w-[150px] sm:table-cell">
                                         <span className="sr-only">Image</span>
                                     </TableHead>
-                                    <TableHead>Name</TableHead>
+                                    <TableHead>Title</TableHead>
                                     <TableHead>Price</TableHead>
                                     <TableHead>Variants</TableHead>
                                     <TableHead>
@@ -79,9 +79,11 @@ export default async function CartPage() {
                                     <WishlistItemTableRow
                                         key={item._id}
                                         productId={String(item.product._id)}
-                                        name={item.product.name}
+                                        title={item.product.title}
                                         price={item.product.price}
-                                        discount={item.product.discount}
+                                        discountPercentage={
+                                            item.product.discountPercentage
+                                        }
                                         thumbnail={item.product.thumbnail}
                                         stock={item.product.stock}
                                         quantity={item.quantity}
@@ -116,8 +118,8 @@ export default async function CartPage() {
 
 function WishlistItemTableRow({
     productId,
-    discount,
-    name,
+    discountPercentage,
+    title,
     price,
     thumbnail,
     stock,
@@ -133,7 +135,7 @@ function WishlistItemTableRow({
                     height={160}
                     width={160}
                     className="aspect-video rounded-md"
-                    alt={name}
+                    alt={title}
                 />
             </TableCell>
             <TableCell>
@@ -141,16 +143,16 @@ function WishlistItemTableRow({
                     href={`/product/${productId}`}
                     className="font-medium text-lg"
                 >
-                    {name}
+                    {title}
                 </Link>
                 <p>Only {stock} left</p>
             </TableCell>
             <TableCell className="flex flex-col">
                 <span className="font-semibold text-lg text-red-500">
-                    ${(price - (discount * price) / 100).toFixed(2)}
+                    ${(price - (discountPercentage * price) / 100).toFixed(2)}
                 </span>
                 <span className="line-through">${price}</span>
-                <span>-{discount}%</span>
+                <span>-{discountPercentage}%</span>
             </TableCell>
             <TableCell>
                 <div className="space-y-3">

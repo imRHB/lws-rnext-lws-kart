@@ -23,9 +23,9 @@ import RemoveWished from "./RemoveWished";
 
 interface Props {
     productId: string;
-    name: string;
+    title: string;
     price: number;
-    discount: number;
+    discountPercentage: number;
     thumbnail: string;
     sku: string;
     stock: number;
@@ -59,7 +59,7 @@ export default async function AccountWishlistPage() {
                                 <TableHead className="hidden w-[150px] sm:table-cell">
                                     <span className="sr-only">Image</span>
                                 </TableHead>
-                                <TableHead>Name</TableHead>
+                                <TableHead>Title</TableHead>
                                 <TableHead>SKU</TableHead>
                                 <TableHead className="hidden md:table-cell">
                                     Price
@@ -80,14 +80,16 @@ export default async function AccountWishlistPage() {
                                 <WishlistItemTableRow
                                     key={String(product._id)}
                                     productId={String(product._id)}
-                                    name={product.name}
+                                    title={product.title}
                                     price={product.price}
-                                    discount={product.discount}
+                                    discountPercentage={
+                                        product.discountPercentage
+                                    }
                                     thumbnail={product.thumbnail}
                                     stock={product.stock}
                                     sku={product.sku}
-                                    size={product.size?.[0]}
-                                    color={product.color?.[0]}
+                                    size={product.sizes?.[0]}
+                                    color={product.colors?.[0]}
                                 />
                             ))}
                         </TableBody>
@@ -112,8 +114,8 @@ export default async function AccountWishlistPage() {
 
 function WishlistItemTableRow({
     productId,
-    discount,
-    name,
+    discountPercentage,
+    title,
     price,
     thumbnail,
     sku,
@@ -129,13 +131,15 @@ function WishlistItemTableRow({
                     height={200}
                     width={200}
                     className="aspect-video rounded-md"
-                    alt={name}
+                    alt={title}
                 />
             </TableCell>
-            <TableCell className="font-medium">{name}</TableCell>
+            <TableCell className="font-medium">{title}</TableCell>
             <TableCell className="hidden md:table-cell">{sku}</TableCell>
             <TableCell className="hidden md:table-cell">${price}</TableCell>
-            <TableCell className="hidden md:table-cell">{discount}%</TableCell>
+            <TableCell className="hidden md:table-cell">
+                {discountPercentage}%
+            </TableCell>
             <TableCell className="hidden md:table-cell">
                 {stock > 0 ? (
                     <Badge variant="secondary">In stock</Badge>

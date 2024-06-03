@@ -23,7 +23,7 @@ export default async function CheckoutSummary() {
         (acc: number, item: any) =>
             acc +
             (item.product.price -
-                (item.product.discount * item.product.price) / 100) *
+                (item.product.discountPercentage * item.product.price) / 100) *
                 item.quantity,
         0
     );
@@ -49,17 +49,17 @@ export default async function CheckoutSummary() {
                                 height={64}
                                 width={64}
                                 className="aspect-video rounded-md"
-                                alt={item.product.name}
+                                alt={item.product.title}
                             />
                             <CardDescription className="flex flex-col gap-1">
                                 <span className="font-semibold">
-                                    {item.product.name}
+                                    {item.product.title}
                                 </span>
                                 <span className="font-semibold">
                                     $
                                     {(
                                         item.product.price -
-                                        (item.product.discount *
+                                        (item.product.discountPercentage *
                                             item.product.price) /
                                             100
                                     ).toFixed(2)}

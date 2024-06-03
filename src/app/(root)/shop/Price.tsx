@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { formUrlQuery, removeKeysFromQuery } from "@/lib";
 
 interface Props {
@@ -74,6 +75,7 @@ export default function Price({ route }: Props) {
     return (
         <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-3">
+                <Label className="text-zinc-600">min</Label>
                 <Input
                     type="number"
                     placeholder="min"
@@ -82,6 +84,7 @@ export default function Price({ route }: Props) {
                 />
             </div>
             <div className="grid gap-3">
+                <Label className="text-zinc-600">max</Label>
                 <Input
                     type="number"
                     placeholder="max"

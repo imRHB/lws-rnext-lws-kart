@@ -4,7 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { formUrlQuery, removeKeysFromQuery } from "@/lib";
+import { formUrlQuery, getInitials, removeKeysFromQuery } from "@/lib";
 
 interface Props {
     route: string;
@@ -40,6 +40,8 @@ export default function Size({ route }: Props) {
         }
     }, [size, route, pathname, router, searchParams, query]);
 
+    const sizeList: string[] = ["sm", "md", "lg"];
+
     return (
         <div>
             <ToggleGroup
@@ -48,9 +50,13 @@ export default function Size({ route }: Props) {
                 value={size}
                 variant="outline"
             >
-                <ToggleGroupItem value="sm">S</ToggleGroupItem>
-                <ToggleGroupItem value="md">M</ToggleGroupItem>
-                <ToggleGroupItem value="lg">L</ToggleGroupItem>
+                {sizeList.map((sz) => (
+                    <ToggleGroupItem key={sz} value={sz}>
+                        <span className="uppercase">
+                            {getInitials(sz, true)}
+                        </span>
+                    </ToggleGroupItem>
+                ))}
             </ToggleGroup>
         </div>
     );

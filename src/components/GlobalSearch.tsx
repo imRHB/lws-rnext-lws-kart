@@ -12,6 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader } from "./ui/card";
 
 export default function GlobalSearch() {
     const [products, setProducts] = useState<IProduct[]>([]);
+    const [docCount, setDocCount] = useState<number | null>(null);
 
     const pathname = usePathname();
     const searchParams = useSearchParams();
@@ -25,6 +26,7 @@ export default function GlobalSearch() {
                 searchQuery: query!,
             });
 
+            setDocCount(results.docCount);
             setProducts(results.products);
         }
 
@@ -48,12 +50,26 @@ export default function GlobalSearch() {
                                 {query}
                             </span>
                         </CardDescription>
-                        <CardDescription>
-                            {products.length}
-                            {products.length > 1
-                                ? " products found"
-                                : " product found"}
-                        </CardDescription>
+                        {docCount && (
+                            <CardDescription className="flex items-center justify-between gap-4">
+                                {docCount > 0 && (
+                                    <span>
+                                        Total {docCount}
+                                        {docCount > 1
+                                            ? " products found"
+                                            : " product found"}
+                                    </span>
+                                )}
+                                {products.length !== docCount && (
+                                    <Link
+                                        href="/shop"
+                                        className="text-violet-500 font-semibold rounded-md underline underline-offset-4"
+                                    >
+                                        visit shop
+                                    </Link>
+                                )}
+                            </CardDescription>
+                        )}
                     </CardHeader>
                     <CardContent>
                         {products.length > 0 ? (
@@ -68,12 +84,12 @@ export default function GlobalSearch() {
                                             src={product.thumbnail}
                                             height={48}
                                             width={64}
-                                            alt={product.name}
+                                            alt={product.title}
                                             className="aspect-video object-cover rounded"
                                         />
                                         <div className="flex flex-col">
                                             <p className="font-semibold">
-                                                {product.name}
+                                                {product.title}
                                             </p>
                                             <p className="text-sm">
                                                 ${product.price}

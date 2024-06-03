@@ -81,7 +81,7 @@ export async function getWishlist(params: {
         const user = await User.findOne({ email: params.email }).populate({
             path: "wishlist",
             model: Product,
-            select: "_id name price discount thumbnail stock sku",
+            select: "title price discountPercentage thumbnail stock sku",
         });
         const wishlist = user.wishlist;
 
@@ -191,7 +191,7 @@ export async function getCart(params: {
                 {
                     path: "product",
                     model: Product,
-                    select: "_id name price discount thumbnail stock",
+                    select: "title price discountPercentage thumbnail stock",
                 },
             ],
         });

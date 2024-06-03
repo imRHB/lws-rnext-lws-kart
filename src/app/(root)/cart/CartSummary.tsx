@@ -26,7 +26,7 @@ export default async function CartSummary() {
         (acc: number, item: any) =>
             acc +
             (item.product.price -
-                (item.product.discount * item.product.price) / 100) *
+                (item.product.discountPercentage * item.product.price) / 100) *
                 item.quantity,
         0
     );

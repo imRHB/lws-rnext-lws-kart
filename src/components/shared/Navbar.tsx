@@ -6,6 +6,7 @@ export default async function Navbar() {
     const categories = await getCategories();
     const selectedCategoryItems = categories.map((category: any) => {
         return {
+            slug: category.slug,
             name: category.name,
             icon: category.icon,
         };

@@ -13,7 +13,8 @@ export default async function CategoryList() {
             <div className="grid grid-cols-3 gap-8">
                 {categories.map((category) => (
                     <CategoryCard
-                        key={category.name}
+                        key={category.slug}
+                        slug={category.slug}
                         name={category.name}
                         thumbnail={category.thumbnail}
                     />
@@ -24,23 +25,25 @@ export default async function CategoryList() {
 }
 
 function CategoryCard({
+    slug,
     name,
     thumbnail,
 }: {
+    slug: string;
     name: string;
     thumbnail: string;
 }) {
     return (
-        <div className="relative rounded-sm overflow-hidden group">
+        <div className="relative rounded-lg overflow-hidden group">
             <Image
                 src={thumbnail}
                 height={300}
                 width={300}
-                className="w-full h-auto"
+                className="w-full aspect-video object-cover rounded-lg"
                 alt={name}
             />
             <Link
-                href={`/category/${name}`}
+                href={`/category/${slug}`}
                 className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
             >
                 {name}

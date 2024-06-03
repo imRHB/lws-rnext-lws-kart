@@ -40,6 +40,8 @@ export default function Color({ route }: Props) {
         }
     }, [color, route, pathname, router, searchParams, query]);
 
+    const colorList: string[] = ["red", "green", "blue", "orange"];
+
     return (
         <div>
             <ToggleGroup
@@ -48,24 +50,18 @@ export default function Color({ route }: Props) {
                 value={color}
                 variant="outline"
             >
-                <ToggleGroupItem
-                    value="violet"
-                    className="rounded-full p-2 border-none"
-                >
-                    <div className="size-6 bg-violet-400 rounded-full" />
-                </ToggleGroupItem>
-                <ToggleGroupItem
-                    value="green"
-                    className="rounded-full p-2 border-none"
-                >
-                    <div className="size-6 bg-green-400 rounded-full" />
-                </ToggleGroupItem>
-                <ToggleGroupItem
-                    value="orange"
-                    className="rounded-full p-2 border-none"
-                >
-                    <div className="size-6 bg-orange-400 rounded-full" />
-                </ToggleGroupItem>
+                {colorList?.map((clr) => (
+                    <ToggleGroupItem
+                        key={clr}
+                        value={clr}
+                        className="rounded-full p-2 border-none"
+                    >
+                        <div
+                            className="size-6 rounded-full"
+                            style={{ backgroundColor: clr }}
+                        />
+                    </ToggleGroupItem>
+                ))}
             </ToggleGroup>
         </div>
     );

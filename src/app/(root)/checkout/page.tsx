@@ -39,7 +39,7 @@ export default async function CheckoutPage({
             unitPrice: Number(
                 (
                     item.product.price -
-                    (item.product.discount * item.product.price) / 100
+                    (item.product.discountPercentage * item.product.price) / 100
                 ).toFixed(2)
             ),
             size: item.size,
@@ -52,7 +52,7 @@ export default async function CheckoutPage({
         (acc: number, item: any) =>
             acc +
             (item.product.price -
-                (item.product.discount * item.product.price) / 100) *
+                (item.product.discountPercentage * item.product.price) / 100) *
                 item.quantity,
         0
     );

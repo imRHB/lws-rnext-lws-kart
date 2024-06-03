@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getProducts } from "@/lib/actions/product.action";
+import { IProduct } from "@/models/product.model";
 import { SearchParamsProps } from "@/types";
 import Category from "./Category";
 import Color from "./Color";
@@ -37,7 +38,7 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
     return (
         <section className="container pt-4 pb-16">
             <div className="grid md:grid-cols-4 grid-cols-2 gap-6 items-start">
-                <div className="col-span-1 overflow-hidden hidden md:block sticky top-36">
+                <div className="col-span-1 overflow-hidden hidden md:block">
                     <Card>
                         <Category route="/shop" />
                         <Separator />
@@ -82,17 +83,19 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                 <div className="col-span-3">
                     {results.products.length > 0 ? (
                         <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
-                            {results.products.map((product) => (
+                            {results.products.map((product: IProduct) => (
                                 <ProductCard
                                     key={String(product._id)}
                                     productId={String(product._id)}
-                                    name={product.name}
+                                    title={product.title}
                                     price={product.price}
-                                    discount={product.discount}
+                                    discountPercentage={
+                                        product.discountPercentage
+                                    }
                                     thumbnail={product.thumbnail}
                                     stock={product.stock}
-                                    size={product.size?.[0]}
-                                    color={product.color?.[0]}
+                                    size={product.sizes?.[0] ?? null}
+                                    color={product.colors?.[0] ?? null}
                                 />
                             ))}
                         </div>

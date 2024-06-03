@@ -18,21 +18,21 @@ import AddToWishlist from "./AddToWishlist";
 
 interface Props {
     productId: string;
-    size: string;
-    color: string;
+    sizes: string;
+    colors: string;
     stock: number;
 }
 
 export default function ProductActions(props: Props) {
-    const { productId, size, color, stock } = props;
+    const { productId, sizes, colors, stock } = props;
 
     const variants = {
-        sizes: JSON.parse(size),
-        colors: JSON.parse(color),
+        sizes: JSON.parse(sizes),
+        colors: JSON.parse(colors),
     };
 
-    const [pdColor, setPdColor] = useState(variants.colors[0]);
-    const [pdSize, setPdSize] = useState(variants.sizes[0]);
+    const [pdColor, setPdColor] = useState(variants.colors?.[0]);
+    const [pdSize, setPdSize] = useState(variants.sizes?.[0]);
     const [pdCount, setPdCount] = useState(1);
 
     function handleDecrease() {
@@ -55,77 +55,83 @@ export default function ProductActions(props: Props) {
 
     return (
         <div className="flex flex-col items-start gap-4">
-            <div className="space-y-2">
-                <h4 className="font-semibold">Size</h4>
+            {variants.sizes && (
+                <div className="space-y-2">
+                    <h4 className="font-semibold">Size</h4>
 
-                <RadioGroup
-                    value={pdSize}
-                    onValueChange={(value: string) => setPdSize(value)}
-                    className="flex items-center gap-4"
-                >
-                    {(variants.sizes as any[]).map((size) => (
-                        <div key={size} className="flex items-center">
-                            <RadioGroupItem
-                                value={size}
-                                id={size}
-                                className="sr-only"
-                            />
-                            <Label
-                                htmlFor={size}
-                                className={`flex items-center justify-center p-2 h-8 w-10 rounded cursor-pointer ring-2 ring-zinc-200 ring-offset-2 hover:bg-zinc-100 ${
-                                    pdSize === size &&
-                                    "ring-2 ring-violet-500 ring-offset-2 bg-white hover:bg-white"
-                                }`}
-                            >
-                                <span className="uppercase">{size}</span>
-                            </Label>
-                        </div>
-                    ))}
-                </RadioGroup>
-            </div>
+                    <RadioGroup
+                        value={pdSize}
+                        onValueChange={(value: string) => setPdSize(value)}
+                        className="flex items-center gap-4"
+                    >
+                        {(variants.sizes as any[]).map((size) => (
+                            <div key={size} className="flex items-center">
+                                <RadioGroupItem
+                                    value={size}
+                                    id={size}
+                                    className="sr-only"
+                                />
+                                <Label
+                                    htmlFor={size}
+                                    className={`flex items-center justify-center p-2 h-8 w-10 rounded cursor-pointer ring-2 ring-zinc-200 ring-offset-2 hover:bg-zinc-100 ${
+                                        pdSize === size &&
+                                        "ring-2 ring-violet-500 ring-offset-2 bg-white hover:bg-white"
+                                    }`}
+                                >
+                                    <span className="uppercase">{size}</span>
+                                </Label>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+            )}
 
-            <div className="space-y-2">
-                <h4 className="font-semibold">Color</h4>
+            {variants.colors && (
+                <div className="space-y-2">
+                    <h4 className="font-semibold">Color</h4>
 
-                <RadioGroup
-                    value={pdColor}
-                    onValueChange={(value: string) => setPdColor(value)}
-                    className="flex items-center gap-4"
-                >
-                    {(variants.colors as any[]).map((color) => (
-                        <div key={color} className="flex items-center">
-                            <RadioGroupItem
-                                value={color}
-                                id={color}
-                                className="sr-only"
-                            />
-                            <TooltipProvider>
-                                <Tooltip>
-                                    <TooltipTrigger asChild>
-                                        <Label
-                                            htmlFor={color}
-                                            className={`flex items-center justify-center p-2 h-8 w-8 rounded-full cursor-pointer ring-2 ring-zinc-200 ring-offset-2 ${
-                                                pdColor === color &&
-                                                "ring-2 ring-violet-500 ring-offset-2"
-                                            }`}
-                                            style={{
-                                                backgroundColor: color,
-                                            }}
-                                        >
-                                            <span className="sr-only">
+                    <RadioGroup
+                        value={pdColor}
+                        onValueChange={(value: string) => setPdColor(value)}
+                        className="flex items-center gap-4"
+                    >
+                        {(variants.colors as any[]).map((color) => (
+                            <div key={color} className="flex items-center">
+                                <RadioGroupItem
+                                    value={color}
+                                    id={color}
+                                    className="sr-only"
+                                />
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Label
+                                                htmlFor={color}
+                                                className={`flex items-center justify-center p-2 h-8 w-8 rounded-full cursor-pointer ring-2 ring-zinc-200 ring-offset-2 ${
+                                                    pdColor === color &&
+                                                    "ring-2 ring-violet-500 ring-offset-2"
+                                                }`}
+                                                style={{
+                                                    backgroundColor: color,
+                                                }}
+                                            >
+                                                <span className="sr-only">
+                                                    {color}
+                                                </span>
+                                            </Label>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p className="capitalize">
                                                 {color}
-                                            </span>
-                                        </Label>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        <p className="capitalize">{color}</p>
-                                    </TooltipContent>
-                                </Tooltip>
-                            </TooltipProvider>
-                        </div>
-                    ))}
-                </RadioGroup>
-            </div>
+                                            </p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                            </div>
+                        ))}
+                    </RadioGroup>
+                </div>
+            )}
 
             <div className="space-y-2">
                 <h4 className="font-semibold">Quantity</h4>

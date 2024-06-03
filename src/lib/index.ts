@@ -11,11 +11,15 @@ export function getYears(): number[] {
     return years;
 }
 
-export function getInitials(fullName: string): string {
-    const splitNames = fullName.split(" ");
+export function getInitials(string: string, first?: boolean): string {
+    const splitNames = string.split(" ");
 
     const firstInitial = splitNames[0].charAt(0);
     const lastInitial = splitNames[splitNames.length - 1].charAt(0);
+
+    if (first) {
+        return `${firstInitial}`;
+    }
 
     return `${firstInitial}${lastInitial}`;
 }

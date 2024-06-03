@@ -319,8 +319,12 @@
         "description": "Start your day right with perfectly toasted bread using this stainless steel toaster. Its wide slots accommodate various bread sizes, and the adjustable browning control ensures your toast is just the way you like it.",
         "price": 39.99,
         "discount": 0,
-        "thumbnail": "",
-        "images": [],
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717414739/lws-kart/products/daniel-salgado-Wo85cmMo9Hg-unsplash_ht8nk7.jpg",
+        "images": [
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414738/lws-kart/products/gabriel-mccallin-TohEAWImTrU-unsplash_keglyl.jpg",
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414738/lws-kart/products/vlad-kutepov-DDbuCg0OTIE-unsplash_pllcmd.jpg",
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414738/lws-kart/products/kristyna-squared-one-aaQdIkeJoAI-unsplash_n9o4gg.jpg"
+        ],
         "category": "Kitchen",
         "features": [
             "Stainless steel construction for durability",
@@ -571,8 +575,13 @@
         "description": "Grill your favorite foods indoors with this electric countertop grill. Its non-stick surface and adjustable temperature control make it perfect for cooking everything from burgers to veggies with minimal cleanup.",
         "price": 59.99,
         "discount": 0,
-        "thumbnail": "",
-        "images": [],
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717414136/lws-kart/products/vince-fleming-a-DvxZo69YY-unsplash_1_ortdgq.jpg",
+        "images": [
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414136/lws-kart/products/evan-wise-D99y38Na5Xo-unsplash_1_nc20yz.jpg",
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414136/lws-kart/products/andrik-langfield-iPNilBHvNvg-unsplash_1_wrgyvc.jpg",
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414136/lws-kart/products/pam-menegakis-qQcEiWTZCbI-unsplash_1_dcksht.jpg",
+            "https://res.cloudinary.com/rhbabu/image/upload/v1717414135/lws-kart/products/philipp-kammerer-Xm8XD2b9AUs-unsplash_1_p1dlca.jpg"
+        ],
         "category": "Kitchen",
         "features": [
             "Large cooking surface: 13 x 9 inches",
@@ -1880,7 +1889,7 @@
             "Carrying handle for portability."
         ],
         "size": ["md"],
-        "color": ["gree", "blue"],
+        "color": ["green", "blue"],
         "sku": "FOLD-TABLE-14",
         "brand": "FlexTable",
         "stock": 60

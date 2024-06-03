@@ -21,13 +21,23 @@ export default function Category({ route }: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
 
-    const [categories, setCategories] = useState<string[]>([]);
+    const [categories, setCategories] = useState<
+        { slug: string; name: string }[]
+    >([]);
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
     useEffect(() => {
         async function fetchCategories() {
             const categories = await getCategories();
-            setCategories(categories.map((category) => category.name));
+
+            setCategories(
+                categories.map((category) => {
+                    return {
+                        slug: category.slug,
+                        name: category.name,
+                    };
+                })
+            );
         }
 
         fetchCategories();
@@ -76,21 +86,21 @@ export default function Category({ route }: Props) {
             </CardHeader>
             <CardContent className="space-y-2">
                 {categories.map((cat) => (
-                    <div key={cat} className="flex items-center space-x-2">
+                    <div key={cat.slug} className="flex items-center space-x-2">
                         <input
                             type="checkbox"
-                            id={cat}
-                            value={cat}
-                            checked={selectedCategories.includes(cat)}
+                            id={cat.slug}
+                            value={cat.slug}
+                            checked={selectedCategories.includes(cat.slug)}
                             onChange={(evt) =>
                                 handleCheckboxChange(evt.target.value)
                             }
                         />
                         <label
-                            htmlFor={cat}
+                            htmlFor={cat.slug}
                             className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                            {cat}
+                            {cat.name}
                         </label>
                     </div>
                 ))}

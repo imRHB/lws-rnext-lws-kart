@@ -27,19 +27,19 @@ import { useToast } from "../ui/use-toast";
 
 interface Props {
     productId: string;
-    name: string;
+    title: string;
     price: number;
-    discount: number;
+    discountPercentage: number;
     thumbnail: string;
     stock: number;
-    size: string;
-    color: string;
+    size: string | null;
+    color: string | null;
 }
 
 export default function ProductCard({
     productId,
-    discount,
-    name,
+    discountPercentage,
+    title,
     price,
     thumbnail,
     stock,
@@ -60,8 +60,8 @@ export default function ProductCard({
                     email: session?.user?.email!,
                     cartData: {
                         quantity: 1,
-                        size,
-                        color,
+                        size: size ?? undefined,
+                        color: color ?? undefined,
                     },
                     productId,
                     path: pathname,
@@ -101,7 +101,7 @@ export default function ProductCard({
     }
 
     return (
-        <Card className="relative">
+        <Card className="relative hover:shadow-lg transition-all">
             <Link href={`/product/${productId}`}>
                 <span className="absolute inset-0" />
             </Link>
@@ -109,21 +109,25 @@ export default function ProductCard({
                 src={thumbnail}
                 height={200}
                 width={300}
-                className="w-full aspect-video rounded-t-lg"
-                alt={name}
+                className="w-full aspect-[3/2] object-cover rounded-t-lg"
+                alt={title}
             />
-            <CardHeader>
-                <CardTitle>{name}</CardTitle>
+            <Separator />
+            <CardHeader className="bg-gradient-to-t from-zinc-50 to-white">
+                <CardTitle>{title}</CardTitle>
                 <div className="flex gap-4 items-baseline">
                     <CardDescription className="text-lg font-bold text-red-500">
-                        ${(price - (discount * price) / 100).toFixed(2)}
+                        $
+                        {(price - (discountPercentage * price) / 100).toFixed(
+                            2
+                        )}
                     </CardDescription>
                     <CardDescription className="font-semibold line-through">
                         ${price}
                     </CardDescription>
                 </div>
             </CardHeader>
-            <CardFooter className="flex items-center gap-4">
+            <CardFooter className="flex items-center gap-4 bg-gradient-to-t from-zinc-100 to-zinc-50 rounded-b-lg">
                 <Button className="w-full z-10" onClick={handleAddToCart}>
                     <ShoppingCart className="h-4 w-4" />
                     <Separator orientation="vertical" className="mx-4" />

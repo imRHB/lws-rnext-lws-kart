@@ -4,8 +4,8 @@ import ProductCard from "./product/ProductCard";
 
 export default async function TrendingProducts() {
     const products = await getTrendingProducts({
-        fields: "_id name price discount thumbnail",
-        limit: 4,
+        fields: "title price discountPercentage thumbnail",
+        limit: 8,
     });
 
     return (
@@ -16,13 +16,13 @@ export default async function TrendingProducts() {
                     <ProductCard
                         key={String(product._id)}
                         productId={String(product._id)}
-                        name={product.name}
+                        title={product.title}
                         price={product.price}
-                        discount={product.discount}
+                        discountPercentage={product.discountPercentage}
                         thumbnail={product.thumbnail}
                         stock={product.stock}
-                        size={product.size?.[0]}
-                        color={product.color?.[0]}
+                        size={product.sizes?.[0] ?? null}
+                        color={product.colors?.[0] ?? null}
                     />
                 ))}
             </div>

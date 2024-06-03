@@ -34,11 +34,15 @@ export function NavigationItems({ categories }: { categories: string }) {
                     <NavigationMenuContent>
                         <ul className="p-4 w-[220px]">
                             {parsedCategories.map(
-                                (category: { name: string; icon: string }) => (
-                                    <li key={category.name}>
+                                (category: {
+                                    slug: string;
+                                    name: string;
+                                    icon: string;
+                                }) => (
+                                    <li key={category.slug}>
                                         <NavigationMenuLink asChild>
                                             <Link
-                                                href={`/category/${category.name}`}
+                                                href={`/category/${category.slug}`}
                                                 className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                                             >
                                                 <div className="flex items-center gap-4">

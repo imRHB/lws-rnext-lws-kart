@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 
 import PageNavigation from "@/components/PageNavigation";
 import ProductCard from "@/components/product/ProductCard";
-import { getCategoryByName } from "@/lib/actions/category.action";
-import { getProductsByCategory } from "@/lib/actions/product.action";
+import {
+    getCategoryByName,
+    getCategoryBySlug,
+} from "@/lib/actions/category.action";
+import { getProductsByCategorySlug } from "@/lib/actions/product.action";
 
 interface Props {
     params: {
@@ -16,22 +19,24 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = params;
 
-    const category = await getCategoryByName({
+    const categoryOld = await getCategoryByName({
         name: decodeURIComponent(slug),
     });
 
+    const category = await getCategoryBySlug({ slug });
+
     return {
         title: `LWS Kart | ${category ? category.name : "not found"}`,
-        description: category.description,
+        description: category?.description,
         openGraph: {
             title: `LWS Kart | ${category ? category.name : "not found"}`,
-            description: category.description,
+            description: category?.description,
             images: [
                 {
                     url: category?.thumbnail,
                     width: 1200,
                     height: 630,
-                    alt: category.name,
+                    alt: category?.name,
                 },
             ],
             siteName: "LWS Kart",
@@ -44,16 +49,20 @@ export default async function CategoryWiseProductPage({
     params,
     searchParams,
 }: Props) {
-    const category = await getCategoryByName({
+    const { slug } = params;
+
+    const categoryOld = await getCategoryByName({
         name: decodeURIComponent(params.slug),
     });
+
+    const category = await getCategoryBySlug({ slug });
 
     if (!category) notFound();
 
     const { name, description, thumbnail } = category || {};
 
-    const results = await getProductsByCategory({
-        category: decodeURIComponent(params.slug),
+    const results = await getProductsByCategorySlug({
+        slug,
         page: searchParams?.page ? +searchParams?.page : 1,
     });
 
@@ -71,13 +80,13 @@ export default async function CategoryWiseProductPage({
                         <ProductCard
                             key={String(product._id)}
                             productId={String(product._id)}
-                            name={product.name}
+                            title={product.title}
                             price={product.price}
-                            discount={product.discount}
+                            discountPercentage={product.discountPercentage}
                             thumbnail={product.thumbnail}
                             stock={product.stock}
-                            size={product.size?.[0]}
-                            color={product.color?.[0]}
+                            size={product.sizes?.[0] ?? null}
+                            color={product.colors?.[0] ?? null}
                         />
                     ))}
                 </div>

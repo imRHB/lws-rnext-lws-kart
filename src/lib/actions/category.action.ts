@@ -36,3 +36,24 @@ export async function getCategoryByName(
         throw error;
     }
 }
+
+interface GetCategoryBySlugParams {
+    slug: string;
+}
+
+export async function getCategoryBySlug(
+    params: GetCategoryBySlugParams
+): Promise<ICategory> {
+    try {
+        await connectToDatabase();
+
+        const { slug } = params;
+
+        const category = await Category.findOne({ slug });
+
+        return category;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}

@@ -15,15 +15,15 @@ export default async function RelatedProducts({
             <div className="grid grid-cols-4 gap-6">
                 {products.map((product) => (
                     <ProductCard
-                        key={product.name}
+                        key={product.title}
                         productId={String(product._id)}
-                        name={product.name}
+                        title={product.title}
                         price={product.price}
-                        discount={product.discount}
+                        discountPercentage={product.discountPercentage}
                         thumbnail={product.thumbnail}
                         stock={product.stock}
-                        size={product.size?.[0]}
-                        color={product.color?.[0]}
+                        size={product.sizes?.[0] ?? null}
+                        color={product.colors?.[0] ?? null}
                     />
                 ))}
             </div>

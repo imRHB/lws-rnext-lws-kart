@@ -1,0 +1,44 @@
+[
+    {
+        "slug": "groceries",
+        "name": "Groceries",
+        "description": "Discover our comprehensive Groceries category, designed to meet all your daily needs and more. Here, you will find an extensive selection of high-quality food items and household essentials, ensuring you have everything you need to keep your home well-stocked and your family well-fed.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438523/lws-kart/categories/groceries_yt4w49.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438602/lws-kart/categories/joshua-rawson-harris-YNaSz-E7Qss-unsplash_askamm.jpg"
+    },
+    {
+        "slug": "kitchen-accessories",
+        "name": "Kitchen Accessories",
+        "description": "Elevate your cooking experience with our extensive range of Kitchen Accessories, designed to bring efficiency, convenience, and style to your kitchen. Our Kitchen Accessories category includes everything you need to prepare, cook, and serve your favorite meals with ease.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438523/lws-kart/categories/kitchen_yai5eh.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438601/lws-kart/categories/becca-tapert-sY5RjMB1KkE-unsplash_apy7mu.jpg"
+    },
+    {
+        "slug": "mens-watches",
+        "name": "Mens Watches",
+        "description": "Elevate your style with our sophisticated collection of Men's Watches, meticulously curated to complement every occasion and personality. Our Men's Watches category features an exquisite selection of timepieces crafted with precision and style, offering both functionality and fashion-forward design.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438523/lws-kart/categories/watch_bgd9jl.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438603/lws-kart/categories/paul-cuoco-aY0UX6xzGik-unsplash_jmc9pp.jpg"
+    },
+    {
+        "slug": "mobile-accessories",
+        "name": "Mobile Accessories",
+        "description": "Enhance the functionality and style of your mobile devices with our diverse collection of Mobile Accessories, designed to cater to your every need and preference. From protecting your phone to boosting its performance, our Mobile Accessories category offers a wide array of products to complement your mobile lifestyle.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438523/lws-kart/categories/mobile_t3t9f6.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438603/lws-kart/categories/martin-engel-44zXCbDd2WQ-unsplash_w5icdd.jpg"
+    },
+    {
+        "slug": "smartphones",
+        "name": "Smartphones",
+        "description": "Embark on a journey of innovation and connectivity with our exceptional range of Smartphones, meticulously selected to cater to your diverse needs and preferences. Our Smartphones category features cutting-edge devices from leading brands, offering a seamless blend of performance, design, and functionality.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438523/lws-kart/categories/smartphone_knisyt.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438602/lws-kart/categories/mark-chan-489jbTi51sg-unsplash_wfmow4.jpg"
+    },
+    {
+        "slug": "sports-accessories",
+        "name": "Sports Accessories",
+        "description": "Gear up for peak performance and maximum enjoyment with our comprehensive collection of Sports Accessories, meticulously curated to enhance your athletic endeavors and outdoor adventures. Our Sports Accessories category offers a wide range of products designed to optimize your comfort, safety, and performance across various sports and activities.",
+        "icon": "https://res.cloudinary.com/rhbabu/image/upload/v1717438524/lws-kart/categories/sports_lrpl7l.png",
+        "thumbnail": "https://res.cloudinary.com/rhbabu/image/upload/v1717438603/lws-kart/categories/saif71-com-Hw8YJaNyQ_8-unsplash_u6j8qh.jpg"
+    }
+]

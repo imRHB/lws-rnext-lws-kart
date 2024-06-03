@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 import { getProductById } from "@/lib/actions/product.action";
-import ProductDescription from "./ProductDescription";
 import ProductDetails from "./ProductDetails";
 import ProductImageGallery from "./ProductImageGallery";
 import RelatedProducts from "./RelatedProducts";
@@ -14,17 +13,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const product = await getProductById({ productId });
 
     return {
-        title: `LWS Kart | ${product ? product.name : "not found"}`,
-        description: product.features?.join(", "),
+        title: `LWS Kart | ${product ? product.title : "not found"}`,
+        description: product.description,
         openGraph: {
-            title: `LWS Kart | ${product ? product.name : "not found"}`,
-            description: product.features?.join(", "),
+            title: `LWS Kart | ${product ? product.title : "not found"}`,
+            description: product.description,
             images: [
                 {
                     url: product?.thumbnail,
                     width: 1200,
                     height: 630,
-                    alt: product.name,
+                    alt: product.title,
                 },
             ],
             siteName: "LWS Kart",
@@ -48,18 +47,18 @@ export default async function ProductPage({ params }: Props) {
 
     const {
         _id,
-        name,
+        title,
+        description,
         brand,
         category,
         sku,
         price,
-        discount,
+        discountPercentage,
         stock,
         thumbnail,
         images,
-        features,
-        size,
-        color,
+        sizes,
+        colors,
     } = product || {};
 
     return (
@@ -72,19 +71,19 @@ export default async function ProductPage({ params }: Props) {
 
                 <ProductDetails
                     productId={JSON.stringify(_id)}
-                    name={name}
-                    brand={brand}
+                    title={title}
+                    brand={brand ?? null}
                     category={category}
                     sku={sku}
                     price={price}
-                    discount={discount}
+                    discountPercentage={discountPercentage}
                     stock={stock}
-                    size={JSON.stringify(size)}
-                    color={JSON.stringify(color)}
+                    sizes={JSON.stringify(sizes)}
+                    colors={JSON.stringify(colors)}
                 />
             </div>
 
-            <ProductDescription features={product.features ?? []} />
+            {/* <ProductDescription features={product.features ?? []} /> */}
 
             <RelatedProducts productId={productId} />
         </React.Fragment>

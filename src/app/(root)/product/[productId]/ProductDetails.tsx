@@ -3,15 +3,15 @@ import Share from "./Share";
 
 interface Props {
     productId: string;
-    name: string;
-    brand: string;
+    title: string;
+    brand: string | null;
     category: string;
     sku: string;
     price: number;
-    discount: number;
+    discountPercentage: number;
     stock: number;
-    size: string;
-    color: string;
+    sizes: string;
+    colors: string;
 }
 
 enum ProductAvailability {
@@ -21,19 +21,19 @@ enum ProductAvailability {
 
 export default async function ProductDetails({
     productId,
-    name,
+    title,
     brand,
     category,
     sku,
     price,
-    discount,
+    discountPercentage,
     stock,
-    size,
-    color,
+    sizes,
+    colors,
 }: Props) {
     return (
         <div>
-            <h2 className="text-3xl font-medium uppercase mb-2">{name}</h2>
+            <h2 className="text-3xl font-medium uppercase mb-2">{title}</h2>
             {/* <div className="flex items-center mb-4">
                 <div className="flex gap-1 text-sm text-yellow-400">
                     <span>
@@ -63,10 +63,14 @@ export default async function ProductDetails({
                             : ProductAvailability.OUT_OF_STOCK}
                     </span>
                 </p>
-                <p className="space-x-2">
-                    <span className="text-gray-800 font-semibold">Brand: </span>
-                    <span className="text-gray-600">{brand}</span>
-                </p>
+                {brand && (
+                    <p className="space-x-2">
+                        <span className="text-gray-800 font-semibold">
+                            Brand:{" "}
+                        </span>
+                        <span className="text-gray-600">{brand}</span>
+                    </p>
+                )}
                 <p className="space-x-2">
                     <span className="text-gray-800 font-semibold">
                         Category:{" "}
@@ -80,7 +84,7 @@ export default async function ProductDetails({
             </div>
             <div className="flex items-baseline mb-1 space-x-2 font-roboto mt-4">
                 <p className="text-xl text-primary font-semibold">
-                    ${(price - (discount * price) / 100).toFixed(2)}
+                    ${(price - (discountPercentage * price) / 100).toFixed(2)}
                 </p>
                 <p className="text-base text-gray-400 line-through">${price}</p>
             </div>
@@ -88,8 +92,8 @@ export default async function ProductDetails({
             <div className="flex gap-3 border-b border-gray-200 pb-5 pt-5">
                 <ProductActions
                     productId={JSON.parse(productId)}
-                    size={size}
-                    color={color}
+                    sizes={sizes}
+                    colors={colors}
                     stock={stock}
                 />
                 {/* <AddToCart productId={JSON.parse(productId)} stock={stock} /> */}
