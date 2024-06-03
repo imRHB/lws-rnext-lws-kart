@@ -131,8 +131,8 @@ interface AddToCartParams {
     productId: string;
     cartData: {
         quantity: number;
-        size?: string;
-        color?: string;
+        size?: string | null | undefined;
+        color?: string | null | undefined;
     };
     path: string;
 }

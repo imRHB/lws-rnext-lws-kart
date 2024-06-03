@@ -81,8 +81,11 @@ export default async function CheckoutPage({
                                 label="Billing Address"
                             />
                         </div>
-                        {isShippingAdEmpty ||
-                            (isBillingAdEmpty && <AddressAlert />)}
+
+                        {(isShippingAdEmpty || isBillingAdEmpty) && (
+                            <AddressAlert />
+                        )}
+
                         <CheckoutForm
                             userId={String(user._id)}
                             shippingAddress={JSON.stringify(shippingAddress)}
@@ -107,10 +110,10 @@ export default async function CheckoutPage({
                             </p>
 
                             <Link
-                                href="/account/orders"
+                                href={`/invoice/${searchParams?.oid}`}
                                 className="flex items-center py-2.5 px-4 bg-zinc-100 rounded-lg"
                             >
-                                Check orders
+                                View invoice
                             </Link>
                         </div>
                     ) : (

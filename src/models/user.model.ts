@@ -1,13 +1,5 @@
 import { Document, model, models, Schema } from "mongoose";
 
-export interface ICartItem {
-    productId: Schema.Types.ObjectId;
-    quantity: number;
-    size?: string;
-    color?: string;
-    updatedAt: Date;
-}
-
 export const AddressSchema = new Schema(
     {
         firstName: { type: String, required: true },
@@ -34,8 +26,8 @@ export interface IUser extends Document {
     cart?: {
         product: Schema.Types.ObjectId;
         quantity: number;
-        size: string;
-        color: string;
+        size?: string | null | undefined;
+        color?: string | null | undefined;
         updatedAt: Date;
     }[];
     orders?: Schema.Types.ObjectId[];
@@ -56,8 +48,8 @@ const UserSchema = new Schema<IUser>(
             {
                 product: { type: Schema.Types.ObjectId, ref: "Product" },
                 quantity: { type: Number, required: true, default: 1 },
-                size: { type: String, required: true },
-                color: { type: String, required: true },
+                size: { type: String, default: null },
+                color: { type: String, default: null },
                 updatedAt: { type: Date, default: Date.now },
             },
         ],

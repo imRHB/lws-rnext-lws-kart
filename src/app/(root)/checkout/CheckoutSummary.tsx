@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { getCart } from "@/lib/actions/user.action";
-import RemoveCartItem from "./RemoveCartItem";
 
 export default async function CheckoutSummary() {
     const session = await auth();
@@ -44,36 +43,33 @@ export default async function CheckoutSummary() {
                 {(cart as any[]).map((item: any) => (
                     <div key={item._id} className="mt-4 space-y-4">
                         <CardContent className="flex items-center justify-between gap-4">
-                            <Image
-                                src={item.product.thumbnail}
-                                height={64}
-                                width={64}
-                                className="aspect-video rounded-md"
-                                alt={item.product.title}
-                            />
-                            <CardDescription className="flex flex-col gap-1">
-                                <span className="font-semibold">
-                                    {item.product.title}
-                                </span>
-                                <span className="font-semibold">
-                                    $
-                                    {(
-                                        item.product.price -
-                                        (item.product.discountPercentage *
-                                            item.product.price) /
-                                            100
-                                    ).toFixed(2)}
-                                </span>
-                            </CardDescription>
+                            <div className="flex items-center gap-4">
+                                <Image
+                                    src={item.product.thumbnail}
+                                    height={64}
+                                    width={64}
+                                    className="aspect-video object-cover rounded-md"
+                                    alt={item.product.title}
+                                />
+                                <CardDescription className="flex flex-col gap-1">
+                                    <span className="font-semibold">
+                                        {item.product.title}
+                                    </span>
+                                    <span className="font-semibold">
+                                        $
+                                        {(
+                                            item.product.price -
+                                            (item.product.discountPercentage *
+                                                item.product.price) /
+                                                100
+                                        ).toFixed(2)}
+                                    </span>
+                                </CardDescription>
+                            </div>
                             <CardDescription>
                                 <span className="font-semibold">
                                     x{item.quantity}
                                 </span>
-                            </CardDescription>
-                            <CardDescription>
-                                <RemoveCartItem
-                                    productId={String(item.product._id)}
-                                />
                             </CardDescription>
                         </CardContent>
                     </div>

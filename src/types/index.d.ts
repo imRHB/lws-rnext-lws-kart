@@ -82,7 +82,7 @@ export interface InvoiceData {
     customerEmail: string;
     items: {
         _id: string;
-        name: string;
+        title: string;
         description: string;
         quantity: number;
         price: number;

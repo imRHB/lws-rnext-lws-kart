@@ -95,8 +95,8 @@ const itemSchema = z.object({
     }),
     quantity: z.number(),
     unitPrice: z.number(),
-    size: z.string(),
-    color: z.string(),
+    size: z.union([z.string(), z.null(), z.undefined()]),
+    color: z.union([z.string(), z.null(), z.undefined()]),
 });
 
 const paymentSchema = z.object({

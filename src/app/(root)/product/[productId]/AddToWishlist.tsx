@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/components/ui/use-toast";
 import useLanguage from "@/hooks/useLanguage";
 import { addProductToWishlist } from "@/lib/actions/user.action";
 
@@ -15,12 +16,22 @@ export default function AddToWishlist({ productId }: { productId: string }) {
 
     const { strings } = useLanguage();
 
+    const { toast } = useToast();
+
     async function saveToWishlist() {
         if (session) {
             await addProductToWishlist({
                 email: session?.user?.email!,
                 productId,
                 path: pathname,
+            });
+
+            toast({
+                title: strings.wishlist.addText,
+            });
+        } else {
+            toast({
+                title: "Please login to add to cart",
             });
         }
     }

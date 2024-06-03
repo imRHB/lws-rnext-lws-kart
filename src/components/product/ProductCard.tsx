@@ -32,8 +32,8 @@ interface Props {
     discountPercentage: number;
     thumbnail: string;
     stock: number;
-    size: string | null;
-    color: string | null;
+    size: string | null | undefined;
+    color: string | null | undefined;
 }
 
 export default function ProductCard({
@@ -60,8 +60,8 @@ export default function ProductCard({
                     email: session?.user?.email!,
                     cartData: {
                         quantity: 1,
-                        size: size ?? undefined,
-                        color: color ?? undefined,
+                        size,
+                        color,
                     },
                     productId,
                     path: pathname,
@@ -114,7 +114,7 @@ export default function ProductCard({
             />
             <Separator />
             <CardHeader className="bg-gradient-to-t from-zinc-50 to-white">
-                <CardTitle>{title}</CardTitle>
+                <CardTitle className="line-clamp-1">{title}</CardTitle>
                 <div className="flex gap-4 items-baseline">
                     <CardDescription className="text-lg font-bold text-red-500">
                         $

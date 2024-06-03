@@ -134,7 +134,7 @@ function WishlistItemTableRow({
                     src={thumbnail}
                     height={160}
                     width={160}
-                    className="aspect-video rounded-md"
+                    className="aspect-video object-cover rounded-md"
                     alt={title}
                 />
             </TableCell>
@@ -157,17 +157,21 @@ function WishlistItemTableRow({
             <TableCell>
                 <div className="space-y-3">
                     <div className="flex items-center gap-4">
-                        <div className="flex items-center justify-center p-1 h-6 w-8 rounded ring-2 ring-zinc-200 ring-offset-2 bg-white">
-                            <span className="uppercase">{size}</span>
-                        </div>
-                        <div
-                            className="flex items-center justify-center p-2 h-6 w-6 rounded-full ring-2 ring-zinc-200 ring-offset-2"
-                            style={{
-                                backgroundColor: color,
-                            }}
-                        >
-                            <span className="sr-only">{color}</span>
-                        </div>
+                        {size && (
+                            <div className="flex items-center justify-center p-1 h-6 w-8 rounded ring-2 ring-zinc-200 ring-offset-2 bg-white">
+                                <span className="uppercase">{size}</span>
+                            </div>
+                        )}
+                        {color && (
+                            <div
+                                className="flex items-center justify-center p-2 h-6 w-6 rounded-full ring-2 ring-zinc-200 ring-offset-2"
+                                style={{
+                                    backgroundColor: color,
+                                }}
+                            >
+                                <span className="sr-only">{color}</span>
+                            </div>
+                        )}
                     </div>
                     <CartCounter
                         productId={productId}

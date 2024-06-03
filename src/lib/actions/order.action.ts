@@ -2,12 +2,12 @@
 
 import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { Resend } from "resend";
 
 import Order, { IOrder } from "@/models/order.model";
 import Product from "@/models/product.model";
 import User from "@/models/user.model";
-import { redirect } from "next/navigation";
 import { connectToDatabase } from "../mongoose";
 import { transporter } from "../nodemailer";
 
@@ -35,8 +35,8 @@ interface CreateOrderParams {
         product: string;
         quantity: number;
         unitPrice: number;
-        size: string;
-        color: string;
+        size?: string | null | undefined;
+        color?: string | null | undefined;
     }[];
     amount: number;
     payment: {
@@ -134,7 +134,7 @@ export async function getOrdersByCustomerId(
             .populate({
                 path: "items.product",
                 model: Product,
-                select: "_id name thumbnail",
+                select: "title thumbnail",
             })
             .sort({ createdAt: -1 });
 
@@ -168,7 +168,7 @@ export async function getOrderById(params: GetOrderByIdProps) {
         const order = await Order.findById(orderId).populate({
             path: "items.product",
             model: Product,
-            select: "name",
+            select: "title",
         });
 
         return order;

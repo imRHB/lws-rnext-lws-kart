@@ -80,7 +80,7 @@ export default function InvoiceGenerator({
     const renderItems = () => {
         return items.map((item) => (
             <tr key={item._id}>
-                <td className="p-2 border text-left">{item.name}</td>
+                <td className="p-2 border text-left">{item.title}</td>
                 <td className="p-2 border text-center">{item.quantity}</td>
                 <td className="p-2 border text-right">${item.price}</td>
                 <td className="p-2 border text-right">

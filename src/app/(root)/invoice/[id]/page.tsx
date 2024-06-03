@@ -42,7 +42,7 @@ export default async function InvoicePage({ params }: Props) {
         customerEmail: order.shippingAddress.email,
         items: order.items.map((item: any) => ({
             _id: String(item.product._id),
-            name: item.product.name,
+            title: item.product.title,
             description: `Size: ${item.size}, Color: ${item.color}`,
             quantity: item.quantity,
             price: item.unitPrice,

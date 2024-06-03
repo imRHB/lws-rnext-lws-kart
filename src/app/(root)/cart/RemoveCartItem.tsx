@@ -11,11 +11,17 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useToast } from "@/components/ui/use-toast";
+import useLanguage from "@/hooks/useLanguage";
 import { removeProductFromCart } from "@/lib/actions/user.action";
 
 export default function RemoveCartItem({ productId }: { productId: string }) {
     const { data: session } = useSession();
     const pathname = usePathname();
+
+    const { strings } = useLanguage();
+
+    const { toast } = useToast();
 
     async function removeCartItem() {
         if (session) {
@@ -23,6 +29,10 @@ export default function RemoveCartItem({ productId }: { productId: string }) {
                 email: session?.user?.email!,
                 productId,
                 path: pathname,
+            });
+
+            toast({
+                title: strings.cart.removeText,
             });
         }
     }

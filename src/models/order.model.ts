@@ -10,8 +10,8 @@ export interface IOrder extends Document {
         product: Schema.Types.ObjectId;
         quantity: number;
         unitPrice: number;
-        size: string;
-        color: string;
+        size?: string | null | undefined;
+        color?: string | null | undefined;
     }[];
     amount: number;
     payment: {
@@ -36,8 +36,8 @@ const OrderSchema = new Schema<IOrder>(
                 product: { type: Schema.Types.ObjectId, ref: "Product" },
                 quantity: { type: Number, required: true },
                 unitPrice: { type: Number, required: true },
-                size: { type: String, required: true },
-                color: { type: String, required: true },
+                size: { type: String, default: null },
+                color: { type: String, default: null },
             },
             { _id: false },
         ],

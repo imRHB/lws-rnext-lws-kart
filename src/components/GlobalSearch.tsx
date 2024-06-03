@@ -88,7 +88,7 @@ export default function GlobalSearch() {
                                             className="aspect-video object-cover rounded"
                                         />
                                         <div className="flex flex-col">
-                                            <p className="font-semibold">
+                                            <p className="font-semibold line-clamp-1">
                                                 {product.title}
                                             </p>
                                             <p className="text-sm">

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
                     url: product?.thumbnail,
                     width: 1200,
                     height: 630,
-                    alt: product.title,
+                    alt: product?.title,
                 },
             ],
             siteName: "LWS Kart",
