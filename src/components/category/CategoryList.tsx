@@ -39,12 +39,12 @@ function CategoryCard({
                 src={thumbnail}
                 height={300}
                 width={300}
-                className="w-full aspect-video object-cover rounded-lg"
+                className="w-full aspect-video object-cover rounded-lg group-hover:scale-110 group-hover:blur-[2px] transition-all"
                 alt={name}
             />
             <Link
                 href={`/category/${slug}`}
-                className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition"
+                className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-2xl text-white font-semibold tracking-wider transition-all"
             >
                 {name}
             </Link>
