@@ -3,10 +3,14 @@
 import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertCircle } from "lucide-react";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -20,7 +24,6 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/components/ui/use-toast";
-import Link from "next/link";
 
 const formSchema = z.object({
     firstName: z
@@ -36,6 +39,8 @@ const formSchema = z.object({
 });
 
 export default function SignUpForm() {
+    const [error, setError] = useState<null | string>(null);
+
     const { toast } = useToast();
 
     const handleGoogleSignIn = () => {
@@ -57,6 +62,8 @@ export default function SignUpForm() {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setError(null);
+
         try {
             const response = await fetch("/api/auth/sign-up", {
                 method: "POST",
@@ -77,6 +84,10 @@ export default function SignUpForm() {
                         </ToastAction>
                     ),
                 });
+            }
+
+            if (response?.status === 409) {
+                setError("User already exists");
             }
         } catch (error) {
             console.error(error);
@@ -146,6 +157,14 @@ export default function SignUpForm() {
                         </FormItem>
                     )}
                 />
+
+                {error && (
+                    <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>{error}</AlertDescription>
+                    </Alert>
+                )}
 
                 <Button
                     type="submit"

@@ -49,8 +49,6 @@ export async function updateUser(params: UpdateUserParams) {
 
         const user = await User.updateOne({ email }, { $set: { name, phone } });
 
-        console.log(user);
-
         revalidatePath(path);
         return user;
     } catch (error) {

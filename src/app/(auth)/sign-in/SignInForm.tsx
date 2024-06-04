@@ -3,10 +3,12 @@
 import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertCircle } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -19,6 +21,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
     email: z.string().email({ message: "Invalid email" }),
@@ -26,6 +29,8 @@ const formSchema = z.object({
 });
 
 export default function SignInForm() {
+    const [error, setError] = useState<null | string>(null);
+
     const searchParams = useSearchParams();
     const callbackUrl = searchParams.get("callbackUrl");
 
@@ -54,8 +59,10 @@ export default function SignInForm() {
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
+        setError(null);
+
         try {
-            await signIn("credentials", {
+            const response = await signIn("credentials", {
                 email: values.email,
                 password: values.password,
                 redirect: false,
@@ -63,9 +70,16 @@ export default function SignInForm() {
                     ? `${process.env.SITE_URL}${callbackUrl}`
                     : `${process.env.SITE_URL}/shop`,
             });
+
+            if (!!response?.error) {
+                setError(
+                    response?.error === "Configuration"
+                        ? "Invalid credentials"
+                        : "An unknown error occurred"
+                );
+            }
         } catch (error) {
-            console.log(error);
-            throw error;
+            setError(error as string);
         }
     }
 
@@ -103,6 +117,14 @@ export default function SignInForm() {
                         </FormItem>
                     )}
                 />
+
+                {error && (
+                    <Alert variant="destructive">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertTitle>Error</AlertTitle>
+                        <AlertDescription>{error}</AlertDescription>
+                    </Alert>
+                )}
 
                 <Button
                     type="submit"

@@ -30,19 +30,22 @@ export default {
                         email,
                     });
 
-                    if (!user) return null;
+                    if (!user) throw new Error("Invalid credentials");
 
                     const isMatched = await bcrypt.compare(
                         password,
                         user.password
                     );
 
-                    if (!isMatched) return null;
+                    if (!isMatched) throw new Error("Invalid credentials");
 
                     return user;
                 } catch (error) {
-                    console.log(error);
-                    throw error;
+                    throw new Error(
+                        error instanceof Error
+                            ? error.message
+                            : "An unknown error occurred"
+                    );
                 }
             },
         }),
