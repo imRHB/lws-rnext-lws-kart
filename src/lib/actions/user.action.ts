@@ -34,6 +34,31 @@ export async function getUserByEmail(params: { email: string }) {
     }
 }
 
+interface UpdateUserParams {
+    email: string;
+    name: string;
+    phone: string;
+    path: string;
+}
+
+export async function updateUser(params: UpdateUserParams) {
+    try {
+        await connectToDatabase();
+
+        const { email, name, phone, path } = params;
+
+        const user = await User.updateOne({ email }, { $set: { name, phone } });
+
+        console.log(user);
+
+        revalidatePath(path);
+        return user;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 export async function toggleWishlist(params: ToggleWishlistParams) {
     try {
         await connectToDatabase();

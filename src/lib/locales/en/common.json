@@ -1,6 +1,14 @@
 {
     "product": {
+        "availability": "Availability",
+        "category": "Category",
+        "sku": "SKU",
+        "size": "Size",
+        "color": "Color",
+        "quantity": "Quantity",
+        "price": "Price",
         "productDetails": "Product details",
+        "dimensions": "Dimensions",
         "inStock": "In stock",
         "outOfStock": "Out of stock",
         "notFound": {

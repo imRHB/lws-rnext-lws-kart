@@ -73,9 +73,9 @@ export default function ProductActions(props: Props) {
                                 />
                                 <Label
                                     htmlFor={size}
-                                    className={`flex items-center justify-center p-2 h-8 w-10 rounded cursor-pointer ring-2 ring-zinc-200 ring-offset-2 hover:bg-zinc-100 ${
+                                    className={`flex items-center justify-center p-2 h-8 w-8 bg-zinc-100 rounded cursor-pointer ${
                                         pdSize === size &&
-                                        "ring-2 ring-violet-500 ring-offset-2 bg-white hover:bg-white"
+                                        "ring-2 ring-violet-500 ring-offset-2"
                                     }`}
                                 >
                                     <span className="uppercase">{size}</span>
@@ -107,7 +107,7 @@ export default function ProductActions(props: Props) {
                                         <TooltipTrigger asChild>
                                             <Label
                                                 htmlFor={color}
-                                                className={`flex items-center justify-center p-2 h-8 w-8 rounded-full cursor-pointer ring-2 ring-zinc-200 ring-offset-2 ${
+                                                className={`flex items-center justify-center p-2 h-8 w-8 rounded-full cursor-pointer ${
                                                     pdColor === color &&
                                                     "ring-2 ring-violet-500 ring-offset-2"
                                                 }`}

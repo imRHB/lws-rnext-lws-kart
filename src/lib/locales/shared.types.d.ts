@@ -1,5 +1,13 @@
 interface Product {
+    availability: string;
+    category: string;
+    sku: string;
+    size: string;
+    color: string;
+    quantity: string;
+    price: string;
     productDetails: string;
+    dimensions: string;
     inStock: string;
     outOfStock: string;
     notFound: {

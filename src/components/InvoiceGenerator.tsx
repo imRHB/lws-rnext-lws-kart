@@ -20,12 +20,13 @@ export default function InvoiceGenerator({
         businessName,
         businessAddress,
         businessEmail,
-        phoneNumber,
+        businessPhone,
         invoiceNumber,
         invoiceDate,
         customerName,
         customerAddress,
         customerEmail,
+        customerPhone,
         items,
         subTotal,
         taxAmount,
@@ -114,7 +115,7 @@ export default function InvoiceGenerator({
                         <p className="text-sm">{businessName}</p>
                         <p className="text-sm">{businessAddress}</p>
                         <p className="text-sm">{businessEmail}</p>
-                        <p className="text-sm">{phoneNumber}</p>
+                        <p className="text-sm">{businessPhone}</p>
                     </div>
 
                     {/* customer */}
@@ -123,7 +124,7 @@ export default function InvoiceGenerator({
                         <p className="text-sm">{customerName}</p>
                         <p className="text-sm">{customerAddress}</p>
                         <p className="text-sm">{customerEmail}</p>
-                        <p className="text-sm">{customerEmail}</p>
+                        <p className="text-sm">{customerPhone}</p>
                     </div>
                 </div>
 

@@ -29,6 +29,9 @@ export interface IProduct extends Document {
     sku: string;
     weight: number;
     dimensions: IDimensions;
+    warrantyInformation: string;
+    shippingInformation: string;
+    returnPolicy: string;
     reviews: IReview[];
     createdAt: string;
     updatedAt: string;
@@ -57,6 +60,9 @@ const ProductSchema = new Schema<IProduct>(
             height: { type: Number, required: true },
             depth: { type: Number, required: true },
         },
+        warrantyInformation: { type: String, required: true },
+        shippingInformation: { type: String, required: true },
+        returnPolicy: { type: String, required: true },
         reviews: [
             {
                 rating: { type: Number, required: true },

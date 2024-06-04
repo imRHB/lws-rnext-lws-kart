@@ -25,7 +25,7 @@ import User from "@/models/user.model";
 interface Props {
     orderId: string;
     productId: string;
-    name: string;
+    title: string;
     quantity: number;
     unitPrice: number;
     thumbnail: string;
@@ -88,26 +88,27 @@ export default async function AccountOrdersPage() {
                                         </TableHead>
                                     </TableRow>
                                 </TableHeader>
-                                <TableBody>
-                                    {(order?.items as any[]).map(
-                                        (item: any) => (
-                                            <OrderItemTableRow
-                                                key={String(item._id)}
-                                                orderId={String(order._id)}
-                                                productId={String(
-                                                    item.product._id
-                                                )}
-                                                name={item.product.name}
-                                                thumbnail={
-                                                    item.product.thumbnail
-                                                }
-                                                quantity={item.quantity}
-                                                unitPrice={item.unitPrice}
-                                                status={order.status}
-                                            />
-                                        )
-                                    )}
-                                </TableBody>
+                                    <TableBody>
+                                        {(order?.items as any[]).map(
+                                            (item: any) => (
+                                                <OrderItemTableRow
+                                                    key={String(item._id)}
+                                                    orderId={String(order._id)}
+                                                    productId={String(
+                                                        item.product._id
+                                                    )}
+                                                    title={item.product.title}
+                                                    thumbnail={
+                                                        item.product.thumbnail
+                                                    }
+                                                    quantity={item.quantity}
+                                                    unitPrice={item.unitPrice}
+                                                    status={order.status}
+                                                />
+                                            )
+                                        )}
+                                    </TableBody>
+                                
                             </Table>
                         </Card>
                     ))}
@@ -132,7 +133,7 @@ export default async function AccountOrdersPage() {
 function OrderItemTableRow({
     orderId,
     productId,
-    name,
+    title,
     unitPrice,
     quantity,
     thumbnail,
@@ -146,7 +147,7 @@ function OrderItemTableRow({
                     height={200}
                     width={200}
                     className="aspect-video rounded-md"
-                    alt={name}
+                    alt={title}
                 />
             </TableCell>
             <TableCell className="font-medium">
@@ -154,7 +155,7 @@ function OrderItemTableRow({
                     href={`/product/${productId}`}
                     className="text-violet-500"
                 >
-                    {name}
+                    {title}
                 </Link>
             </TableCell>
             <TableCell className="table-cell">${unitPrice}</TableCell>

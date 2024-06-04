@@ -1,6 +1,14 @@
 {
     "product": {
+        "availability": "Availability",
+        "category": "ক্যাটেগরি",
+        "sku": "SKU",
+        "size": "সাইজ",
+        "color": "রঙ",
+        "quantity": "পরিমাণ",
+        "price": "মূল্য",
         "productDetails": "পণ্যের বিবরণ",
+        "dimensions": "মাত্রা",
         "inStock": "স্টকে আছে",
         "outOfStock": "স্টকে নেই",
         "notFound": {

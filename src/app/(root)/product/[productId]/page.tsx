@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 
+import { Separator } from "@/components/ui/separator";
 import { getProductById } from "@/lib/actions/product.action";
+import ProductDescription from "./ProductDescription";
 import ProductDetails from "./ProductDetails";
 import ProductImageGallery from "./ProductImageGallery";
 import RelatedProducts from "./RelatedProducts";
@@ -14,10 +16,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     return {
         title: `LWS Kart | ${product ? product.title : "not found"}`,
-        description: product.description,
+        description: product?.description,
         openGraph: {
             title: `LWS Kart | ${product ? product.title : "not found"}`,
-            description: product.description,
+            description: product?.description,
             images: [
                 {
                     url: product?.thumbnail,
@@ -51,6 +53,7 @@ export default async function ProductPage({ params }: Props) {
         description,
         brand,
         category,
+        dimensions,
         sku,
         price,
         discountPercentage,
@@ -59,11 +62,15 @@ export default async function ProductPage({ params }: Props) {
         images,
         sizes,
         colors,
+        weight,
+        warrantyInformation,
+        shippingInformation,
+        returnPolicy,
     } = product || {};
 
     return (
         <React.Fragment>
-            <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 my-4">
+            <div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 my-4 space-y-6">
                 <ProductImageGallery
                     thumbnail={thumbnail}
                     images={images ?? []}
@@ -82,8 +89,17 @@ export default async function ProductPage({ params }: Props) {
                     colors={JSON.stringify(colors)}
                 />
             </div>
-
-            {/* <ProductDescription features={product.features ?? []} /> */}
+            <div className="container">
+                <Separator />
+            </div>
+            <ProductDescription
+                description={description}
+                dimensions={dimensions}
+                weight={weight}
+                warrantyInformation={warrantyInformation}
+                shippingInformation={shippingInformation}
+                returnPolicy={returnPolicy}
+            />
 
             <RelatedProducts productId={productId} />
         </React.Fragment>

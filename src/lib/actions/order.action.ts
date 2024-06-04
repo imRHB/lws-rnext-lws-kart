@@ -241,16 +241,17 @@ interface SendEmailProps {
 
 export async function sendEmail(props: SendEmailProps) {
     const { toEmail, emailBody } = props;
-    console.log(props);
+
     const mailOptions = {
-        from: "'LWS Kart' <75a144002@smtp-brevo.com>",
+        from: "'LWS Kart' <75a144004@smtp-brevo.com>",
         to: toEmail,
         subject: `Order confirmation`,
         text: emailBody,
     };
 
     try {
-        transporter.sendMail(mailOptions);
+        const brevoNodemailerResponse = await transporter.sendMail(mailOptions);
+        console.log("brevoNodemailerResponse:", brevoNodemailerResponse);
     } catch (error) {
         console.log(error);
         throw error;

@@ -74,12 +74,13 @@ export interface InvoiceData {
     businessName: string;
     businessAddress: string;
     businessEmail: string;
-    phoneNumber: string;
+    businessPhone: string;
     invoiceNumber: string;
     invoiceDate: string;
     customerName: string;
     customerAddress: string;
     customerEmail: string;
+    customerPhone: string;
     items: {
         _id: string;
         title: string;

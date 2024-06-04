@@ -18,6 +18,9 @@
             "height": 5.58,
             "depth": 12.41
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -67,6 +70,9 @@
             "height": 13.48,
             "depth": 26.4
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -116,6 +122,9 @@
             "height": 13.97,
             "depth": 25.13
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -165,6 +174,9 @@
             "height": 29.24,
             "depth": 26.25
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -215,6 +227,9 @@
             "height": 27.45,
             "depth": 27.88
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -264,6 +279,9 @@
             "height": 20.5,
             "depth": 8.18
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -313,6 +331,9 @@
             "height": 29.77,
             "depth": 20.54
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -362,6 +383,9 @@
             "height": 10.99,
             "depth": 15.53
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -411,6 +435,9 @@
             "height": 8.4,
             "depth": 10.01
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -460,6 +487,9 @@
             "height": 14.31,
             "depth": 21.38
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -509,6 +539,9 @@
             "height": 21.17,
             "depth": 25.26
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -558,6 +591,9 @@
             "height": 27.11,
             "depth": 6.63
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -607,6 +643,9 @@
             "height": 24.49,
             "depth": 25.98
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -659,6 +698,9 @@
             "height": 12.26,
             "depth": 15.05
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -708,6 +750,9 @@
             "height": 7.48,
             "depth": 15.08
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -757,6 +802,9 @@
             "height": 27.47,
             "depth": 6.31
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -806,6 +854,9 @@
             "height": 20.9,
             "depth": 12.48
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -855,6 +906,9 @@
             "height": 27.3,
             "depth": 27.57
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -904,6 +958,9 @@
             "height": 24.54,
             "depth": 15.05
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -953,6 +1010,9 @@
             "height": 6.44,
             "depth": 20.07
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1002,6 +1062,9 @@
             "height": 7.88,
             "depth": 23.48
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -1051,6 +1114,9 @@
             "height": 17.13,
             "depth": 14.05
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1100,6 +1166,9 @@
             "height": 6.26,
             "depth": 11.04
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1149,6 +1218,9 @@
             "height": 24.93,
             "depth": 27.19
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -1198,6 +1270,9 @@
             "height": 15.81,
             "depth": 14.89
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1247,6 +1322,9 @@
             "height": 19.74,
             "depth": 5.48
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1297,6 +1375,9 @@
             "height": 25.86,
             "depth": 18.06
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1346,6 +1427,9 @@
             "height": 21.77,
             "depth": 21.38
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1395,6 +1479,9 @@
             "height": 23.98,
             "depth": 12.84
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1445,6 +1532,9 @@
             "height": 15.46,
             "depth": 13.28
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -1494,6 +1584,9 @@
             "height": 10.93,
             "depth": 14.75
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1546,6 +1639,9 @@
             "height": 11.23,
             "depth": 28.05
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1595,6 +1691,9 @@
             "height": 26.51,
             "depth": 6.93
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -1644,6 +1743,9 @@
             "height": 7.6,
             "depth": 18.04
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1693,6 +1795,9 @@
             "height": 11.58,
             "depth": 11.79
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1742,6 +1847,9 @@
             "height": 11.43,
             "depth": 20.68
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1794,6 +1902,9 @@
             "height": 9.64,
             "depth": 20.53
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1843,6 +1954,9 @@
             "height": 25.62,
             "depth": 5.67
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -1892,6 +2006,9 @@
             "height": 18.98,
             "depth": 21.93
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -1941,6 +2058,9 @@
             "height": 28.86,
             "depth": 21.12
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -1990,6 +2110,9 @@
             "height": 6.21,
             "depth": 16.77
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2039,6 +2162,9 @@
             "height": 20.42,
             "depth": 17.45
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2088,6 +2214,9 @@
             "height": 11.91,
             "depth": 20.47
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2137,6 +2266,9 @@
             "height": 23.99,
             "depth": 24.62
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2186,6 +2318,9 @@
             "height": 18.36,
             "depth": 27.9
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2235,6 +2370,9 @@
             "height": 25.64,
             "depth": 12.31
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2287,6 +2425,9 @@
             "height": 13.1,
             "depth": 12
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -2337,6 +2478,9 @@
             "height": 17.96,
             "depth": 23.24
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2386,6 +2530,9 @@
             "height": 21.78,
             "depth": 29.1
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -2435,6 +2582,9 @@
             "height": 20.49,
             "depth": 26.65
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -2484,6 +2634,9 @@
             "height": 25.84,
             "depth": 26.13
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2533,6 +2686,9 @@
             "height": 24.06,
             "depth": 7.05
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2582,6 +2738,9 @@
             "height": 6.81,
             "depth": 24.14
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2631,6 +2790,9 @@
             "height": 25.16,
             "depth": 17.43
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2680,6 +2842,9 @@
             "height": 5.72,
             "depth": 5.25
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2729,6 +2894,9 @@
             "height": 19.62,
             "depth": 25.23
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2778,6 +2946,9 @@
             "height": 17.41,
             "depth": 27.38
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2827,6 +2998,9 @@
             "height": 10.82,
             "depth": 10.52
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -2878,6 +3052,9 @@
             "height": 12.48,
             "depth": 7.65
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -2929,6 +3106,9 @@
             "height": 27.99,
             "depth": 10.36
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -2980,6 +3160,9 @@
             "height": 13.43,
             "depth": 10.81
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -3031,6 +3214,9 @@
             "height": 7.29,
             "depth": 5.67
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3082,6 +3268,9 @@
             "height": 27.59,
             "depth": 16.93
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -3133,6 +3322,9 @@
             "height": 7.74,
             "depth": 5.68
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -3183,6 +3375,9 @@
             "height": 9.92,
             "depth": 18.15
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -3234,6 +3429,9 @@
             "height": 18.36,
             "depth": 17.87
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -3283,6 +3481,9 @@
             "height": 20.44,
             "depth": 26.48
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3332,6 +3533,9 @@
             "height": 12.62,
             "depth": 20.13
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -3381,6 +3585,9 @@
             "height": 25.05,
             "depth": 29.55
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3431,6 +3638,9 @@
             "height": 7.98,
             "depth": 9.32
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3481,6 +3691,9 @@
             "height": 28.26,
             "depth": 26.46
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -3532,6 +3745,9 @@
             "height": 15.22,
             "depth": 20.05
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3581,6 +3797,9 @@
             "height": 23.37,
             "depth": 21.62
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -3633,6 +3852,9 @@
             "height": 25.12,
             "depth": 29.9
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -3683,6 +3905,9 @@
             "height": 26.33,
             "depth": 22.71
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3732,6 +3957,9 @@
             "height": 27.92,
             "depth": 23.63
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3781,6 +4009,9 @@
             "height": 16.66,
             "depth": 13.85
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3830,6 +4061,9 @@
             "height": 25.34,
             "depth": 18.12
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -3881,6 +4115,9 @@
             "height": 22.94,
             "depth": 5.63
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3932,6 +4169,9 @@
             "height": 9.77,
             "depth": 19.6
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -3983,6 +4223,9 @@
             "height": 8.53,
             "depth": 17.07
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -4034,6 +4277,9 @@
             "height": 11.25,
             "depth": 14.41
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -4085,6 +4331,9 @@
             "height": 16.4,
             "depth": 13.31
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 1-2 business days",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4136,6 +4385,9 @@
             "height": 27.83,
             "depth": 27.47
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -4188,6 +4440,9 @@
             "height": 28.75,
             "depth": 22.22
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4239,6 +4494,9 @@
             "height": 16.3,
             "depth": 24.12
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4290,6 +4548,9 @@
             "height": 23.44,
             "depth": 6.21
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4341,6 +4602,9 @@
             "height": 27.33,
             "depth": 27.02
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4392,6 +4656,9 @@
             "height": 8.96,
             "depth": 18.13
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -4443,6 +4710,9 @@
             "height": 7.35,
             "depth": 10.68
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4494,6 +4764,9 @@
             "height": 26.69,
             "depth": 23.12
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4545,6 +4818,9 @@
             "height": 9.73,
             "depth": 14.79
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -4596,6 +4872,9 @@
             "height": 16.47,
             "depth": 27.76
         },
+        "warrantyInformation": "1 week warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4647,6 +4926,9 @@
             "height": 23.16,
             "depth": 26.86
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4696,6 +4978,9 @@
             "height": 20.59,
             "depth": 18.28
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4745,6 +5030,9 @@
             "height": 18.72,
             "depth": 26.09
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4796,6 +5084,9 @@
             "height": 23.18,
             "depth": 16.25
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 2,
@@ -4845,6 +5136,9 @@
             "height": 15.58,
             "depth": 15.23
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -4894,6 +5188,9 @@
             "height": 13.92,
             "depth": 26.59
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4943,6 +5240,9 @@
             "height": 25.99,
             "depth": 9.02
         },
+        "warrantyInformation": "Lifetime warranty",
+        "shippingInformation": "Ships overnight",
+        "returnPolicy": "90 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -4992,6 +5292,9 @@
             "height": 16.08,
             "depth": 6.2
         },
+        "warrantyInformation": "3 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -5044,6 +5347,9 @@
             "height": 7.36,
             "depth": 6.91
         },
+        "warrantyInformation": "No warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -5093,6 +5399,9 @@
             "height": 28.04,
             "depth": 13.49
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 1,
@@ -5142,6 +5451,9 @@
             "height": 7.19,
             "depth": 13.42
         },
+        "warrantyInformation": "2 year warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -5191,6 +5503,9 @@
             "height": 18.98,
             "depth": 7.29
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "60 days return policy",
         "reviews": [
             {
                 "rating": 5,
@@ -5240,6 +5555,9 @@
             "height": 14.38,
             "depth": 23.56
         },
+        "warrantyInformation": "3 months warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -5289,6 +5607,9 @@
             "height": 10.81,
             "depth": 24.92
         },
+        "warrantyInformation": "1 month warranty",
+        "shippingInformation": "Ships in 3-5 business days",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 4,
@@ -5338,6 +5659,9 @@
             "height": 27.05,
             "depth": 28.32
         },
+        "warrantyInformation": "5 year warranty",
+        "shippingInformation": "Ships in 1 week",
+        "returnPolicy": "No return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -5387,6 +5711,9 @@
             "height": 27.86,
             "depth": 19.37
         },
+        "warrantyInformation": "6 months warranty",
+        "shippingInformation": "Ships in 2 weeks",
+        "returnPolicy": "30 days return policy",
         "reviews": [
             {
                 "rating": 3,
@@ -5436,6 +5763,9 @@
             "height": 17.62,
             "depth": 16.97
         },
+        "warrantyInformation": "1 year warranty",
+        "shippingInformation": "Ships in 1 month",
+        "returnPolicy": "7 days return policy",
         "reviews": [
             {
                 "rating": 1,

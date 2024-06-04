@@ -6,6 +6,7 @@ import React from "react";
 
 import { auth } from "@/auth";
 import UserAccountIntro from "@/components/metrics/UserAccountIntro";
+import ProfileCard from "@/components/ProfileCard";
 import { Button } from "@/components/ui/button";
 import {
     Card,
@@ -40,23 +41,11 @@ export default async function AccountPage() {
             <UserAccountIntro />
 
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
-                <Card>
-                    <CardHeader>
-                        <CardTitle className="flex items-center justify-between gap-4">
-                            <span>Personal Profile</span>
-                            {/* <Button variant="outline" size="icon">
-                                <Link href="/account">
-                                    <SquarePen className="h-4 w-4" />
-                                </Link>
-                            </Button> */}
-                        </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <CardDescription>{user?.name}</CardDescription>
-                        <CardDescription>{user?.email}</CardDescription>
-                        <CardDescription>{user?.phone}</CardDescription>
-                    </CardContent>
-                </Card>
+                <ProfileCard
+                    email={user?.email}
+                    name={user?.name}
+                    phone={user?.phone}
+                />
 
                 <Card>
                     <CardHeader>

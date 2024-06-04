@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/separator";
 import ProductActions from "./ProductActions";
 import Share from "./Share";
 
@@ -89,17 +90,15 @@ export default async function ProductDetails({
                 <p className="text-base text-gray-400 line-through">${price}</p>
             </div>
 
-            <div className="flex gap-3 border-b border-gray-200 pb-5 pt-5">
+            <div className="flex gap-3 py-5">
                 <ProductActions
                     productId={JSON.parse(productId)}
                     sizes={sizes}
                     colors={colors}
                     stock={stock}
                 />
-                {/* <AddToCart productId={JSON.parse(productId)} stock={stock} /> */}
-                {/* <AddToWishlist productId={JSON.parse(productId)} /> */}
             </div>
-
+            <Separator />
             <div className="mt-4">
                 <Share productId={String(productId)} />
             </div>
