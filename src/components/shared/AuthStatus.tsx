@@ -72,8 +72,8 @@ export default function AuthStatus() {
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
-                <Link href="/sign-in">
-                    <Button>Sign in</Button>
+                <Link href={strings.auth.signIn.href}>
+                    <Button>{strings.auth.signIn.label}</Button>
                 </Link>
             )}
         </React.Fragment>

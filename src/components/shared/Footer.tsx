@@ -1,203 +1,86 @@
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 
-export default function Footer() {
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { getCategories } from "@/lib/actions/category.action";
+
+const explore = [
+    { label: "Shop", href: "/shop" },
+    { label: "About", href: "#" },
+    { label: "Contact", href: "#" },
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms & Conditions", href: "#" },
+    { label: "FAQ", href: "#" },
+];
+
+export default async function Component() {
+    const categories = await getCategories();
+
     return (
-        <React.Fragment>
-            <footer className="bg-white pt-16 pb-12 border-t border-gray-100">
-                <div className="container grid grid-cols-1 ">
-                    <div className="col-span-1 space-y-4">
+        <footer className="bg-gray-100 py-24">
+            <div className="container mx-auto grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div className="space-y-4">
+                    <Link
+                        href="/"
+                        className="flex items-center gap-2"
+                        prefetch={false}
+                    >
                         <Image
-                            src="assets/images/logo.svg"
+                            src="/assets/images/logo.svg"
                             height={64}
-                            width={300}
+                            width={200}
                             className="w-30"
                             alt="logo"
                         />
-                        <div className="mr-2">
-                            <p className="text-gray-500">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Quia, hic?
-                            </p>
-                        </div>
-                        <div className="flex space-x-5">
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-gray-500"
-                            >
-                                <i className="fa-brands fa-facebook-square"></i>
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-gray-500"
-                            >
-                                <i className="fa-brands fa-instagram-square"></i>
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-gray-500"
-                            >
-                                <i className="fa-brands fa-twitter-square"></i>
-                            </a>
-                            <a
-                                href="#"
-                                className="text-gray-400 hover:text-gray-500"
-                            >
-                                <i className="fa-brands fa-github-square"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="col-span-2 grid grid-cols-2 gap-4">
-                        <div className="grid grid-cols-2 gap-4 md:gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Solutions
-                                </h3>
-                                <div className="mt-4 space-y-4">
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Marketing
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Analitycs
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Commerce
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Insights
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Support
-                                </h3>
-                                <div className="mt-4 space-y-4">
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Pricing
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Documentation
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Guides
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        API Status
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="grid grid-cols-2 gap-8">
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Solutions
-                                </h3>
-                                <div className="mt-4 space-y-4">
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Marketing
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Analytics
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Commerce
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Insights
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">
-                                    Support
-                                </h3>
-                                <div className="mt-4 space-y-4">
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Pricing
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Documentation
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        Guides
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="text-base text-gray-500 hover:text-gray-900 block"
-                                    >
-                                        API Status
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-
-            <div className="bg-gray-800 py-4">
-                <div className="container flex items-center justify-between">
-                    <p className="text-white">
-                        &copy; TailCommerce - All Right Reserved
+                        <span className="sr-only">LWS Kart</span>
+                    </Link>
+                    <p className="text-gray-500 dark:text-gray-400">
+                        An online shop brought to you by Learn With Sumit.
                     </p>
-                    <div>
-                        <Image
-                            src="/assets/images/methods.png"
-                            height={24}
-                            width={300}
-                            alt="methods"
+                </div>
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-semibold">Shop</h3>
+                    {categories.map((category) => (
+                        <Link
+                            href={`/category/${category.slug}`}
+                            key={category.slug}
+                            className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                            prefetch={false}
+                        >
+                            {category.name}
+                        </Link>
+                    ))}
+                </div>
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-semibold">Explore</h3>
+                    {explore.map((expItem) => (
+                        <Link
+                            key={expItem.href}
+                            href={expItem.href}
+                            className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                            prefetch={false}
+                        >
+                            {expItem.label}
+                        </Link>
+                    ))}
+                </div>
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-lg font-semibold">Newsletter</h3>
+                    <p className="text-gray-500 dark:text-gray-400">
+                        Subscribe to our newsletter to get the latest updates
+                        and exclusive offers.
+                    </p>
+                    <form className="flex space-x-2">
+                        <Input
+                            type="email"
+                            placeholder="Enter your email"
+                            className="flex-1"
                         />
-                    </div>
+                        <Button type="submit">Subscribe</Button>
+                    </form>
                 </div>
             </div>
-        </React.Fragment>
+        </footer>
     );
 }

@@ -37,8 +37,8 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
 
     return (
         <section className="container pt-4 pb-16">
-            <div className="grid md:grid-cols-4 grid-cols-2 gap-6 items-start">
-                <div className="col-span-1 overflow-hidden hidden md:block">
+            <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-6">
+                <div className="col-span-1 overflow-hidden hidden md:block max-w-64">
                     <Card>
                         <Category route="/shop" />
                         <Separator />
@@ -80,9 +80,9 @@ export default async function ShopPage({ searchParams }: SearchParamsProps) {
                     </Card>
                 </div>
 
-                <div className="col-span-3">
+                <div className="md:col-span-2 xl:col-span-3">
                     {results.products.length > 0 ? (
-                        <div className="grid md:grid-cols-3 grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                             {results.products.map((product: IProduct) => (
                                 <ProductCard
                                     key={String(product._id)}
